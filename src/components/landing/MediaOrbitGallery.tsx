@@ -296,26 +296,13 @@ export function MediaOrbitGallery() {
                       : ""
                   )}
                 >
-                  {item.kind === "video" ? (
-                    <video
-                      className="h-full w-full object-cover"
-                      src={item.src}
-                      poster={"poster" in item ? item.poster : undefined}
-                      muted
-                      loop
-                      playsInline
-                      autoPlay={activeIndex === index}
-                      preload="metadata"
-                    />
-                  ) : (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
-                      className="h-full w-full object-cover"
-                      src={item.src}
-                      alt={item.title}
-                      loading="lazy"
-                    />
-                  )}
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    className="h-full w-full object-cover"
+                    src={item.src}
+                    alt={item.title}
+                    loading="lazy"
+                  />
                   <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-4">
                     <p className="text-base font-medium text-[#f8fafc]">{item.title}</p>
                     <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.2em] text-[#d4af37]/90">
