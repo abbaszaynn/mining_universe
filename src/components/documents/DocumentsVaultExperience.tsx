@@ -89,7 +89,7 @@ export function DocumentsVaultExperience({
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[#94a3b8]">
               Geological reports, licenses, and concession papers from every
-              licensed operator — available for investor review and due diligence.
+              licensed operator, available for investor review and due diligence.
             </p>
             <div className="mt-8 flex items-center gap-4" aria-hidden>
               <span className="h-px w-16 bg-gradient-to-r from-[#d4af37]/50 to-transparent" />

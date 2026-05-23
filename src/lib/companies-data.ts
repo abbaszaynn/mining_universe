@@ -151,8 +151,8 @@ export const companies: Company[] = [
       { id: 'doc-topography-gultari', title: 'Topography Map - Gultari', url: 'https://mega.nz/file/9RQlxCIY#wBlkzySRZj_bx0SgmlkTaAndSYVLqGbus18uiX7XD8o', type: 'Map' }
     ],
     deposits: [
-      { name: 'Gemstones & Minerals', location: 'Bagicha, Skardu', type: 'Variety of Minerals', details: ['Rubi Gemstones', 'Snow White Marble', 'Lithium Deposits', 'Quartz', 'Area: 20 Sq/Km – 4,942 Acres'] },
-      { name: 'Polymetallic Ores', location: 'Gultari', type: 'Complex Ores', details: ['Molybdenum', 'Antimony', 'Lead', 'Gem Stones', 'Area: 20 Sq/Km – 4,942 Acres'] },
+      { name: 'Gemstones & Minerals', location: 'Bagicha, Skardu', type: 'Variety of Minerals', details: ['Rubi Gemstones', 'Snow White Marble', 'Lithium Deposits', 'Quartz', 'Area: 20 Sq/Km, 4,942 Acres'] },
+      { name: 'Polymetallic Ores', location: 'Gultari', type: 'Complex Ores', details: ['Molybdenum', 'Antimony', 'Lead', 'Gem Stones', 'Area: 20 Sq/Km, 4,942 Acres'] },
       { name: 'Polymetallic Structure', location: 'Kharmang', type: 'Polymetallic Ore', details: ['Copper', 'Iron', 'Silver', 'Complex Polymetallic Structure', 'Area: 9.90 Sq/Km'] },
       { name: 'Placer Gold', location: 'Skardu', type: 'Placer Gold', details: ['Placer Gold', 'Black Sand', 'Riverbed Length: 26 km'] }
     ]
@@ -212,8 +212,8 @@ export const companies: Company[] = [
       { id: 'doc-report-gupis', title: 'Geological Report - Gupis', url: 'https://mega.nz/file/5Ih2ARZQ#JXvUAfDZsxfiWlTOWGHEP64WQWvArnKuwEseFZX6UBU', type: 'Geological Report' }
     ],
     deposits: [
-      { name: 'Polymetallic Ores', location: 'Jutial Nala, Gilgit', type: 'Polymetallic Ore', details: ['Silver', 'Minralized Copper Veins', 'Lead Deposits', 'Area: 9.97 Sq/Km – 2,471 Acres'] },
-      { name: 'Construction & Precious Stones', location: 'Gupis, Ghizer', type: 'Mixed Deposits', details: ['Granite', 'Premium Marble', 'Copper Indications', 'Area: 10 Sq/Km – 2,471 Acres'] }
+      { name: 'Polymetallic Ores', location: 'Jutial Nala, Gilgit', type: 'Polymetallic Ore', details: ['Silver', 'Minralized Copper Veins', 'Lead Deposits', 'Area: 9.97 Sq/Km, 2,471 Acres'] },
+      { name: 'Construction & Precious Stones', location: 'Gupis, Ghizer', type: 'Mixed Deposits', details: ['Granite', 'Premium Marble', 'Copper Indications', 'Area: 10 Sq/Km, 2,471 Acres'] }
     ]
   },
   {

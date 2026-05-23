@@ -10,7 +10,7 @@ const CONTACT = {
   emails: ["abbaszayn08@gmail.com", "mineszircon@gmail.com"],
   office:
     "Office 23, Noor Market, Khomer Yarkot, Gilgit, Gilgit Baltistan",
-  hours: "Mon–Fri, 9am – 6pm (PKT)",
+  hours: "Mon to Fri, 9am to 6pm (PKT)",
   support: "Online support available 24/7",
   lead: { name: "Zain Abbas", title: "Investor relations lead" },
 };
@@ -137,102 +137,97 @@ export function ContactPageClient() {
         className="relative min-h-[100dvh] overflow-x-hidden bg-[#030712] text-[#e2e8f0]"
       >
         <div
-          className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(212,175,55,0.022)_1px,transparent_1px),linear-gradient(90deg,rgba(212,175,55,0.022)_1px,transparent_1px)] bg-[size:80px_80px] [mask-image:radial-gradient(ellipse_at_top,black,transparent_72%)]"
-          aria-hidden
-        />
-        <div
           className="pointer-events-none absolute inset-x-0 top-0 h-[28rem] bg-[radial-gradient(ellipse_at_top,rgba(212,175,55,0.09),transparent_58%)]"
           aria-hidden
         />
 
-        <main className="relative z-10 mx-auto max-w-6xl px-6 pb-24 pt-[6.5rem] md:px-10 md:pb-32 md:pt-[7.5rem] lg:max-w-7xl">
-          <header data-contact-hero className="mb-12 md:mb-16">
-            <p className="font-mono text-xs uppercase tracking-[0.35em] text-[#d4af37]/90">
-              Investor desk
-            </p>
-            <h1 className="mt-4 max-w-3xl font-[family-name:var(--font-display)] text-4xl font-semibold tracking-tight text-[#f0f4f7] md:text-5xl lg:text-6xl">
-              Get in touch
-            </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[#94a3b8]">
-              We are open to discussing mineral assets, site visits, and partnership
-              opportunities across Gilgit Baltistan&apos;s licensed mining portfolio.
-            </p>
-          </header>
-
-          <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-start xl:grid-cols-[minmax(0,1fr)_24rem] xl:gap-16">
-            <div className="space-y-4">
-              <div
-                data-contact-card
-                className="mb-6 rounded-2xl border border-[#d4af37]/15 bg-gradient-to-br from-[#d4af37]/[0.07] to-transparent p-6 md:p-7"
-              >
-                <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#d4af37]/80">
-                  Relations lead
-                </p>
-                <p className="mt-2 font-[family-name:var(--font-display)] text-xl font-semibold text-[#f0f4f7]">
-                  {CONTACT.lead.name}
-                </p>
-                <p className="mt-1 text-sm text-[#94a3b8]">{CONTACT.lead.title}</p>
-              </div>
-
-              <div className="grid gap-4 sm:grid-cols-2">
-                <div data-contact-card>
-                  <ContactCard icon={<PhoneIcon />} label="Phone">
-                    {CONTACT.phones.map((phone) => (
-                      <a
-                        key={phone}
-                        href={`tel:${phone.replace(/\s/g, "")}`}
-                        className="block transition hover:text-[#d4af37]"
-                      >
-                        {phone}
-                      </a>
-                    ))}
-                    <p className="pt-1 text-xs text-[#64748b]">{CONTACT.hours}</p>
-                  </ContactCard>
-                </div>
-
-                <div data-contact-card>
-                  <ContactCard icon={<MailIcon />} label="Email">
-                    {CONTACT.emails.map((email) => (
-                      <a
-                        key={email}
-                        href={`mailto:${email}`}
-                        className="block break-all transition hover:text-[#d4af37]"
-                      >
-                        {email}
-                      </a>
-                    ))}
-                    <p className="pt-1 text-xs text-[#64748b]">{CONTACT.support}</p>
-                  </ContactCard>
-                </div>
-
-                <div data-contact-card className="sm:col-span-2">
-                  <ContactCard icon={<PinIcon />} label="Office">
-                    <p>{CONTACT.office}</p>
-                  </ContactCard>
-                </div>
-
-                <div data-contact-card className="sm:col-span-2">
-                  <ContactCard icon={<ClockIcon />} label="Availability">
-                    <p>{CONTACT.hours}</p>
-                    <p className="text-[#94a3b8]">{CONTACT.support}</p>
-                  </ContactCard>
-                </div>
-              </div>
-            </div>
+        <main className="relative z-10 mx-auto grid max-w-6xl gap-12 px-6 pb-24 pt-[6.5rem] md:px-10 md:pb-32 md:pt-[7.5rem] lg:grid-cols-2 lg:items-start lg:gap-16 xl:max-w-7xl">
+          <div>
+            <header data-contact-hero>
+              <p className="font-mono text-xs uppercase tracking-[0.35em] text-[#d4af37]/90">
+                Get in touch
+              </p>
+              <h1 className="mt-4 font-[family-name:var(--font-display)] text-4xl font-semibold tracking-tight text-[#f0f4f7] md:text-5xl">
+                Contact us
+              </h1>
+              <p className="mt-6 text-lg font-light leading-relaxed text-[#94a3b8]">
+                Questions on mineral assets, site visits, or partnerships across
+                Gilgit Baltistan? Reach our team directly.
+              </p>
+            </header>
 
             <div
-              data-contact-form
-              className="rounded-2xl border border-white/[0.08] bg-white/[0.03] p-6 sm:p-8 lg:sticky lg:top-28"
+              data-contact-card
+              className="mt-10 rounded-2xl border border-[#d4af37]/15 bg-gradient-to-br from-[#d4af37]/[0.07] to-transparent p-6 md:p-7"
             >
-              <h2 className="font-[family-name:var(--font-display)] text-2xl font-semibold text-[#d4af37]">
-                Contact us
-              </h2>
-              <p className="mt-2 text-sm leading-relaxed text-[#94a3b8]">
-                Have questions or investment inquiries? Send us a message directly.
+              <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#d4af37]/80">
+                Relations lead
               </p>
-              <div className="mt-6">
-                <ContactForm />
+              <p className="mt-2 font-[family-name:var(--font-display)] text-xl font-semibold text-[#f0f4f7]">
+                {CONTACT.lead.name}
+              </p>
+              <p className="mt-1 text-sm text-[#94a3b8]">{CONTACT.lead.title}</p>
+            </div>
+
+            <div className="mt-4 grid gap-4 sm:grid-cols-2">
+              <div data-contact-card>
+                <ContactCard icon={<PhoneIcon />} label="Phone">
+                  {CONTACT.phones.map((phone) => (
+                    <a
+                      key={phone}
+                      href={`tel:${phone.replace(/\s/g, "")}`}
+                      className="block transition hover:text-[#d4af37]"
+                    >
+                      {phone}
+                    </a>
+                  ))}
+                  <p className="pt-1 text-xs text-[#64748b]">{CONTACT.hours}</p>
+                </ContactCard>
               </div>
+
+              <div data-contact-card>
+                <ContactCard icon={<MailIcon />} label="Email">
+                  {CONTACT.emails.map((email) => (
+                    <a
+                      key={email}
+                      href={`mailto:${email}`}
+                      className="block break-all transition hover:text-[#d4af37]"
+                    >
+                      {email}
+                    </a>
+                  ))}
+                  <p className="pt-1 text-xs text-[#64748b]">{CONTACT.support}</p>
+                </ContactCard>
+              </div>
+
+              <div data-contact-card className="sm:col-span-2">
+                <ContactCard icon={<PinIcon />} label="Office">
+                  <p>{CONTACT.office}</p>
+                </ContactCard>
+              </div>
+
+              <div data-contact-card className="sm:col-span-2">
+                <ContactCard icon={<ClockIcon />} label="Availability">
+                  <p>{CONTACT.hours}</p>
+                  <p className="text-[#94a3b8]">{CONTACT.support}</p>
+                </ContactCard>
+              </div>
+            </div>
+          </div>
+
+          <div
+            data-contact-form
+            className="rounded-2xl border border-white/[0.08] bg-white/[0.03] p-6 sm:p-8 lg:sticky lg:top-28"
+          >
+            <h2 className="font-[family-name:var(--font-display)] text-2xl font-semibold text-[#d4af37]">
+              Send a message
+            </h2>
+            <p className="mt-2 text-sm font-light leading-relaxed text-[#94a3b8]">
+              Have a quick question? Use the form below and we will reply to your
+              email shortly.
+            </p>
+            <div className="mt-6">
+              <ContactForm />
             </div>
           </div>
         </main>

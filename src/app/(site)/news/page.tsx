@@ -3,7 +3,7 @@ import { getNews, getCompanies } from "@/lib/data";
 import { BlogListingExperience } from "@/components/blog/BlogListingExperience";
 
 export const metadata: Metadata = {
-  title: "Blogs & Insights | Mining Universe",
+  title: "Blogs & Insights | GOS",
   description:
     "Articles on mining potential, geological discoveries, and investment opportunities in Gilgit Baltistan.",
 };

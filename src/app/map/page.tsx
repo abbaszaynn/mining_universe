@@ -5,7 +5,7 @@ import { getCompanies } from "@/lib/data";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Mining Map | Mining Universe",
+  title: "Mining Map | GOS",
   description:
     "3D terrain map with satellite imagery and licensed mine coordinates across Gilgit Baltistan.",
 };

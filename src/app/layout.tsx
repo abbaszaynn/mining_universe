@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Syne } from "next/font/google";
+import { Cinzel_Decorative, Inter, Syne } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -15,10 +15,17 @@ const syne = Syne({
   display: "swap",
 });
 
+const cinzelDecorative = Cinzel_Decorative({
+  subsets: ["latin"],
+  variable: "--font-got",
+  weight: ["400", "700", "900"],
+  display: "swap",
+});
+
 export const metadata: Metadata = {
-  title: "Mining Universe | Mineral Intelligence Platform",
+  title: "GOS | Game of Stones, Mining in Gilgit Baltistan",
   description:
-    "Scroll-native 3D experience for mining companies, regional intelligence, and mineral exploration in Gilgit Baltistan.",
+    "Game of Stones connects global investors with licensed mining operators across Gilgit Baltistan, from copper and marble to gold and polymetallic assets under full regulatory compliance.",
 };
 
 export default function RootLayout({
@@ -29,7 +36,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${syne.variable} min-h-[100dvh] bg-[#030712] font-sans antialiased`}
+        className={`${inter.variable} ${syne.variable} ${cinzelDecorative.variable} min-h-[100dvh] bg-[#030712] font-sans antialiased`}
       >
         {children}
       </body>

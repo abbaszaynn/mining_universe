@@ -3,7 +3,7 @@ import { getCompanies } from "@/lib/data";
 import { DocumentsVaultExperience } from "@/components/documents/DocumentsVaultExperience";
 
 export const metadata: Metadata = {
-  title: "Documents | Mining Universe",
+  title: "Documents | GOS",
   description:
     "Geological reports, licenses, and concession papers from licensed mining operators in Gilgit Baltistan.",
 };

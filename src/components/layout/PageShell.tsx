@@ -70,8 +70,8 @@ export function ComingSoonPanel({ title, description }: ComingSoonProps) {
       <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.06] to-transparent p-10 md:p-14">
         <p className="max-w-2xl text-[#94a3b8]">
           This section is part of the phased rollout. The homepage, blogs, and
-          shared navigation are live now — full company profiles, maps, and
-          documents arrive in the next phase.
+          shared navigation are live now, with full company profiles, maps, and
+          documents arriving in the next phase.
         </p>
         <div className="mt-8 flex flex-wrap gap-4">
           <Link

@@ -6,20 +6,20 @@ import { cn } from "@/lib/utils";
 
 const CARDS = [
   {
-    title: "3D site intelligence",
-    body: "Scroll-synced scenes that feel cinematic, not gimmicky.",
+    title: "Copper & polymetallic ore",
+    body: "High-grade copper and complex polymetallic structures across Skardu, Shigar, and Gultari.",
   },
   {
-    title: "Investor-ready clarity",
-    body: "Layered storytelling for projects, permits, and milestones.",
+    title: "Marble & construction stone",
+    body: "Premium marble and granite deposits in Bagicha and Ghizer, ready for export and domestic supply.",
   },
   {
-    title: "Geospatial presence",
-    body: "Room for maps, tours, and location narratives in phase two.",
+    title: "Gold & precious minerals",
+    body: "Placer gold, gemstones, and rare earth indications across multiple licensed concessions.",
   },
   {
-    title: "Document depth",
-    body: "Designed to plug into reports, licenses, and technical PDFs.",
+    title: "Verified documentation",
+    body: "Geological reports, incorporation letters, and topography maps available for due diligence.",
   },
 ];
 
@@ -60,10 +60,10 @@ export function HorizontalStrip() {
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#d4af37]/40 to-transparent" />
       <div className="flex h-[100dvh] flex-col justify-center px-6 py-16 md:px-12">
         <p className="mb-10 max-w-xl font-mono text-xs uppercase tracking-[0.35em] text-[#d4af37]/90">
-          Horizontal drift
+          Mineral portfolio
         </p>
         <h2 className="mb-12 max-w-3xl font-[family-name:var(--font-display)] text-3xl font-semibold tracking-tight text-[#f0f4f7] md:text-5xl">
-          A long runway for product story — built for scroll depth.
+          Variety beneath the peaks, three operators, one region.
         </h2>
         <div className="relative -mx-6 flex-1 md:-mx-12">
           <div

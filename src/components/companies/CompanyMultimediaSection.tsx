@@ -68,7 +68,7 @@ export function CompanyMultimediaSection({ company }: CompanyMultimediaSectionPr
               Multimedia gallery
             </h3>
             <p className="mt-3 text-sm leading-relaxed text-[#94a3b8] md:text-base">
-              Click any specimen to open full preview — view details, navigate the
+              Click any specimen to open full preview, view details, navigate the
               set, or download the image.
             </p>
           </div>

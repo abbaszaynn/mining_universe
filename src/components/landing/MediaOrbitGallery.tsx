@@ -1,60 +1,15 @@
 "use client";
 
+import Link from "next/link";
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { gsap } from "@/lib/gsap";
+import { ORBIT_GALLERY_ITEMS, type OrbitMediaItem } from "@/lib/gallery-orbit-items";
 import { useIsMobile } from "@/lib/use-is-mobile";
 import { cn } from "@/lib/utils";
 
-type MediaItem = {
-  id: string;
-  kind: "image" | "video";
-  src: string;
-  poster?: string;
-  title: string;
-};
+type MediaItem = OrbitMediaItem;
 
-const MEDIA_ITEMS: MediaItem[] = [
-  {
-    id: "atlas-core",
-    kind: "image",
-    src: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1400&q=80",
-    title: "Atlas Core Pit",
-  },
-  {
-    id: "ore-flow",
-    kind: "video",
-    src: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
-    poster:
-      "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?auto=format&fit=crop&w=1400&q=80",
-    title: "Ore Flow Capture",
-  },
-  {
-    id: "ridge-array",
-    kind: "image",
-    src: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1400&q=80",
-    title: "Ridge Array",
-  },
-  {
-    id: "drone-pass",
-    kind: "video",
-    src: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm",
-    poster:
-      "https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=1400&q=80",
-    title: "Drone Recon Pass",
-  },
-  {
-    id: "formation-scan",
-    kind: "image",
-    src: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=1400&q=80",
-    title: "Formation Scan",
-  },
-  {
-    id: "geology-sweep",
-    kind: "image",
-    src: "https://images.unsplash.com/photo-1516939884455-1445c8652f83?auto=format&fit=crop&w=1400&q=80",
-    title: "Geology Sweep",
-  },
-];
+const MEDIA_ITEMS: MediaItem[] = ORBIT_GALLERY_ITEMS;
 
 export function MediaOrbitGallery() {
   const isMobile = useIsMobile();
@@ -232,19 +187,19 @@ export function MediaOrbitGallery() {
       <div className="relative mx-auto max-w-6xl">
         <div className="mb-10 md:mb-16" data-gallery-reveal>
           <p className="font-mono text-xs uppercase tracking-[0.35em] text-[#d4af37]/90">
-            3D media vault
+            Field photography
           </p>
           <h2 className="mt-3 font-[family-name:var(--font-display)] text-3xl font-semibold tracking-tight text-[#f0f4f7] md:text-5xl">
-            Circular gallery for image and video stories.
+            Landscapes and specimens from the north.
           </h2>
-          <p className="mt-5 max-w-3xl text-[#94a3b8]">
+          <p className="mt-5 max-w-3xl font-light text-[#94a3b8]">
             <span className="md:hidden">
-              Swipe or drag horizontally to browse drilling visuals, site footage,
-              and investor media. Tap a card to focus.
+              Swipe to browse site photography, geological landscapes, and mineral
+              specimens from our operators.
             </span>
             <span className="hidden md:inline">
-              Interactive orbit layout for drilling visuals, site footage, and
-              investor media. Hover to steer depth, click a tile to focus.
+              Rotate the gallery to explore landscapes, geological vistas, and
+              mineral specimens from across Gilgit Baltistan.
             </span>
           </p>
         </div>
@@ -343,7 +298,7 @@ export function MediaOrbitGallery() {
                     <video
                       className="h-full w-full object-cover"
                       src={item.src}
-                      poster={item.poster}
+                      poster={"poster" in item ? item.poster : undefined}
                       muted
                       loop
                       playsInline
@@ -362,7 +317,7 @@ export function MediaOrbitGallery() {
                   <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-4">
                     <p className="text-base font-medium text-[#f8fafc]">{item.title}</p>
                     <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.2em] text-[#d4af37]/90">
-                      {item.kind}
+                      Gallery
                     </p>
                   </div>
                 </button>
@@ -468,7 +423,7 @@ export function MediaOrbitGallery() {
                     <video
                       className="h-full w-full object-cover"
                       src={item.src}
-                      poster={item.poster}
+                      poster={"poster" in item ? item.poster : undefined}
                       muted
                       loop
                       playsInline
@@ -487,7 +442,7 @@ export function MediaOrbitGallery() {
                   <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-4 text-left">
                     <p className="text-sm font-medium text-[#f8fafc]">{item.title}</p>
                     <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.2em] text-[#d4af37]/90">
-                      {item.kind}
+                      Gallery
                     </p>
                   </div>
                 </button>
@@ -495,6 +450,14 @@ export function MediaOrbitGallery() {
             </div>
           </div>
         )}
+        <div className="pointer-events-auto mt-10 flex justify-center md:mt-14" data-gallery-reveal>
+          <Link
+            href="/gallery"
+            className="text-sm font-medium uppercase tracking-[0.22em] text-[#d4af37] transition hover:text-[#f5e6a8]"
+          >
+            View all
+          </Link>
+        </div>
       </div>
     </section>
   );

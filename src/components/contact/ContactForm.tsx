@@ -24,7 +24,7 @@ export function ContactForm({
 
   const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
   const defaultSubject = companyName
-    ? `Inquiry — ${companyName.split(" (")[0]}`
+    ? `Inquiry, ${companyName.split(" (")[0]}`
     : "General inquiry";
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -45,7 +45,7 @@ export function ContactForm({
     const form = event.currentTarget;
     const formData = new FormData(form);
     formData.append("access_key", accessKey);
-    formData.append("from_name", "Mining Universe Contact");
+    formData.append("from_name", "GOS Contact");
     if (companyName) {
       formData.append("company", companyName);
     }

@@ -92,7 +92,7 @@ export function CompaniesExperience({ companies }: CompaniesExperienceProps) {
               data-co-animate
               className="mt-6 max-w-2xl text-lg leading-relaxed text-[#94a3b8]"
             >
-              Three licensed operators across Northern Pakistan — explore each
+              Three licensed operators across Northern Pakistan. Explore each
               profile through overview, leadership, deposits, and active sites.
             </p>
             <div data-co-animate className="mt-8 flex items-center gap-4" aria-hidden>

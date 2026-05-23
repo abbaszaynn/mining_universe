@@ -16,6 +16,21 @@ const CanvasLayer = dynamic(
   { ssr: false }
 );
 
+const SERVICE_POINTS = [
+  {
+    title: "Open to global investors",
+    body: "We welcome partners from every market, with transparent profiles, verified licenses, and direct access to our investor desk.",
+  },
+  {
+    title: "Guided field visits",
+    body: "We accompany you to active sites across Gilgit Baltistan. Your safety is our responsibility from arrival to departure.",
+  },
+  {
+    title: "Government clearance handled",
+    body: "NOCs, security permissions, and regulatory liaison with authorities, all managed so you can focus on the opportunity.",
+  },
+];
+
 function LandingInner({
   latestArticles,
   companyNames,
@@ -37,34 +52,40 @@ function LandingInner({
 
       <main className="relative z-10">
         <section className="pointer-events-none flex min-h-[100dvh] flex-col justify-end px-6 pb-24 pt-32 md:px-12 md:pb-32">
-          <div className="max-w-4xl">
+          <div className="max-w-3xl">
             <p className="mb-6 font-mono text-xs uppercase tracking-[0.4em] text-[#d4af37]/90 md:text-sm">
-              Front-end only · scroll-native 3D
+              Gilgit Baltistan · Licensed mining operators
             </p>
-            <h1 className="font-[family-name:var(--font-display)] text-4xl font-semibold leading-[1.05] tracking-tight text-[#f0f4f7] md:text-6xl lg:text-7xl">
-              A mineral intelligence surface,
-              <span className="block bg-gradient-to-r from-[#f0f4f7] via-[#d4af37] to-[#94a3b8] bg-clip-text text-transparent">
-                rendered in depth.
+            <h1 className="font-[family-name:var(--font-display)] text-4xl font-semibold uppercase leading-[0.92] tracking-tight text-[#f0f4f7] md:text-5xl lg:text-6xl">
+              <span className="block text-[clamp(1.5rem,3.5vw,2.25rem)] font-normal tracking-[0.45em] text-[#e8e4dc]">
+                The
+              </span>
+              <span className="mt-1 block whitespace-nowrap text-[clamp(1.35rem,5.8vw,4.5rem)] font-semibold leading-none tracking-[0.05em] text-[#d4af37]">
+                Game of Stones
               </span>
             </h1>
-            <p className="mt-8 max-w-2xl text-lg leading-relaxed text-[#94a3b8] md:text-xl">
-              Smooth Lenis scrolling, GSAP reveals, and a live Three.js canvas
-              that responds to your journey — a client-ready shell with no
-              backend dependencies in this phase.
+            <p className="mt-4 font-mono text-xs uppercase tracking-[0.35em] text-[#d4af37]/90 md:text-sm">
+              Mines in the North
+            </p>
+            <p className="mt-8 max-w-2xl text-lg font-light leading-relaxed text-[#a8b4c4] md:text-xl">
+              Three licensed operators working across Skardu, Gilgit, and Ghizer.
+              Copper, marble, gold, lithium, nephrite, serpentine, antimony, and
+              polymetallic assets, all backed by geological reports, government
+              permits, and a team that stands behind every site visit.
             </p>
             <div className="pointer-events-auto mt-12 flex flex-wrap items-center gap-4">
               <Link
                 href="/map"
-                className="inline-flex items-center gap-3 rounded-full border border-[#d4af37]/45 bg-[#d4af37]/15 px-6 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-[#d4af37] shadow-[0_0_32px_rgba(212,175,55,0.2)] backdrop-blur-sm transition hover:border-[#d4af37]/70 hover:bg-[#d4af37]/25 hover:text-[#f0f4f7]"
+                className="inline-flex items-center gap-3 rounded-full border border-[#d4af37]/30 bg-[#d4af37]/8 px-6 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-[#d4af37] transition hover:border-[#d4af37]/50 hover:bg-[#d4af37]/12 hover:text-[#f0f4f7]"
               >
-                EXPLORE THE MINES
+                Explore the mines
                 <span
-                  className="inline-block h-2 w-2 animate-pulse rounded-full bg-[#d4af37]"
+                  className="inline-block h-2 w-2 rounded-full bg-[#d4af37]/80"
                   aria-hidden
                 />
               </Link>
               <span className="text-sm text-[#64748b]">
-                Opens the interactive mine map with live coordinates.
+                Interactive map of active concessions and coordinates.
               </span>
             </div>
           </div>
@@ -83,25 +104,25 @@ function LandingInner({
           <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-2 md:items-center">
             <div>
               <h2 className="font-[family-name:var(--font-display)] text-3xl font-semibold tracking-tight text-[#f0f4f7] md:text-4xl">
-                Motion that carries meaning.
+                Trustworthy partners for serious capital.
               </h2>
               <p className="mt-6 text-lg leading-relaxed text-[#94a3b8]">
-                Parallax copy, depth cues, and restrained gold accents echo the
-                Game of Stones palette — professional, geological, and calm under
-                pressure.
+                Game of Stones is built for investors who need more than a pitch deck.
+                We operate in one of Pakistan&apos;s richest mineral corridors with
+                full regulatory standing, and we make sure you are safe, informed,
+                and cleared at every step.
               </p>
             </div>
             <div className="grid gap-4">
-              {[
-                "Scroll-choreographed camera drift in WebGL",
-                "Bloom-adjacent lighting without heavy post stacks",
-                "Pinned horizontal chapter for dense narratives",
-              ].map((item) => (
+              {SERVICE_POINTS.map((item) => (
                 <div
-                  key={item}
+                  key={item.title}
                   className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 backdrop-blur-sm transition hover:border-[#d4af37]/25"
                 >
-                  <p className="text-[#cbd5e1]">{item}</p>
+                  <p className="font-medium text-[#f0f4f7]">{item.title}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-[#94a3b8]">
+                    {item.body}
+                  </p>
                 </div>
               ))}
             </div>
@@ -115,20 +136,25 @@ function LandingInner({
         <AnimatedSection className="px-6 py-32 md:px-12">
           <div className="mx-auto flex max-w-5xl flex-col items-center text-center">
             <h2 className="font-[family-name:var(--font-display)] text-3xl font-semibold text-[#f0f4f7] md:text-5xl">
-              Ready when you are.
+              Ready to visit the ground?
             </h2>
             <p className="mt-6 max-w-2xl text-lg text-[#94a3b8]">
-              This MVP is intentionally front-end only: ship it as a demo,
-              iterate on art direction, then wire Firebase, Supabase, and the
-              assistant when you are ready.
+              Browse company profiles, review geological documents, or reach our
+              investor desk to arrange a field visit. We handle the rest.
             </p>
             <div className="mt-12 flex flex-wrap justify-center gap-4">
-              <span className="rounded-full bg-[#d4af37] px-8 py-3 text-sm font-semibold text-[#0f172a] shadow-[0_0_40px_rgba(212,175,55,0.25)] transition hover:brightness-110">
-                Book a walkthrough
-              </span>
-              <span className="rounded-full border border-white/15 px-8 py-3 text-sm text-[#e2e8f0] transition hover:border-[#d4af37]/40">
-                Request the roadmap PDF
-              </span>
+              <Link
+                href="/investor-desk"
+                className="rounded-full bg-[#d4af37] px-8 py-3 text-sm font-semibold text-[#0f172a] transition hover:brightness-110"
+              >
+                Contact investor desk
+              </Link>
+              <Link
+                href="/map"
+                className="rounded-full border border-[#d4af37]/35 bg-[#d4af37]/10 px-8 py-3 text-sm font-semibold text-[#d4af37] transition hover:border-[#d4af37]/55 hover:bg-[#d4af37]/15"
+              >
+                Virtual 3D tour
+              </Link>
             </div>
           </div>
         </AnimatedSection>
@@ -145,48 +171,69 @@ function LandingInner({
             <div className="grid gap-12 border-b border-white/10 pb-12 md:grid-cols-4">
               <div className="md:col-span-2">
                 <p className="font-[family-name:var(--font-display)] text-2xl text-[#dbe5f3]">
-                  Mining Universe
+                  GOS
+                </p>
+                <p className="mt-1 font-mono text-xs uppercase tracking-[0.22em] text-[#d4af37]/80">
+                  Game of Stones
                 </p>
                 <p className="mt-4 max-w-xl text-base leading-relaxed text-[#94a3b8]">
-                  A cinematic investor interface for mineral assets, regional
-                  intelligence, and project storytelling across Gilgit Baltistan.
+                  Licensed mining operators across Gilgit Baltistan, connecting
+                  global investors with copper, marble, gold, and polymetallic
+                  assets under full regulatory compliance.
                 </p>
-                <div className="mt-6 inline-flex items-center rounded-full border border-[#d4af37]/30 bg-[#d4af37]/10 px-4 py-1.5 font-mono text-xs uppercase tracking-[0.2em] text-[#d4af37]">
-                  Investor Preview Environment
-                </div>
               </div>
 
               <div>
                 <p className="font-mono text-xs uppercase tracking-[0.2em] text-[#d4af37]/90">
-                  Platform
+                  Explore
                 </p>
                 <ul className="mt-4 space-y-2 text-[#94a3b8]">
-                  <li>Vision</li>
-                  <li>3D Experience</li>
-                  <li>Media Vault</li>
-                  <li>Roadmap</li>
+                  <li>
+                    <Link href="/companies" className="transition hover:text-[#d4af37]">
+                      Companies
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/map" className="transition hover:text-[#d4af37]">
+                      Mine map
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/documents" className="transition hover:text-[#d4af37]">
+                      Documents
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/news" className="transition hover:text-[#d4af37]">
+                      Blogs
+                    </Link>
+                  </li>
                 </ul>
               </div>
 
               <div>
                 <p className="font-mono text-xs uppercase tracking-[0.2em] text-[#d4af37]/90">
-                  Investor Desk
+                  Investor desk
                 </p>
                 <ul className="mt-4 space-y-2 text-[#94a3b8]">
-                  <li>partnerships@mininguniverse.io</li>
-                  <li>+92 51 000 0000</li>
-                  <li>Islamabad / Gilgit Region</li>
-                  <li>Mon - Fri, 09:00 - 18:00 PKT</li>
+                  <li>
+                    <a
+                      href="mailto:abbaszayn08@gmail.com"
+                      className="transition hover:text-[#d4af37]"
+                    >
+                      abbaszayn08@gmail.com
+                    </a>
+                  </li>
+                  <li>+92 310 9108714</li>
+                  <li>Gilgit, Gilgit Baltistan</li>
+                  <li>Mon to Fri, 9am to 6pm PKT</li>
                 </ul>
               </div>
             </div>
 
             <div className="flex flex-col gap-4 pt-6 text-xs md:flex-row md:items-center md:justify-between">
               <p className="font-mono uppercase tracking-widest">
-                © {new Date().getFullYear()} Mining Universe · All rights reserved
-              </p>
-              <p className="text-[#64748b]">
-                Demonstration experience · production integrations arrive in the next phase.
+                © {new Date().getFullYear()} GOS · Game of Stones · All rights reserved
               </p>
             </div>
           </div>

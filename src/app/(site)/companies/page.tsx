@@ -3,9 +3,9 @@ import { getCompanies } from "@/lib/data";
 import { CompaniesExperience } from "@/components/companies/CompaniesExperience";
 
 export const metadata: Metadata = {
-  title: "Mining Companies | Mining Universe",
+  title: "Mining Companies | GOS",
   description:
-    "Profiles of licensed mining operators in Gilgit Baltistan — leadership, deposits, and active sites.",
+    "Profiles of licensed mining operators in Gilgit Baltistan, including leadership, deposits, and active sites.",
 };
 
 export default async function CompaniesPage() {

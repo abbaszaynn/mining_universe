@@ -14,7 +14,7 @@ export async function generateMetadata({
   if (!article) return { title: "Blog Not Found" };
 
   return {
-    title: `${article.title} | Mining Universe`,
+    title: `${article.title} | GOS`,
     description: article.excerpt,
     openGraph: {
       title: article.title,

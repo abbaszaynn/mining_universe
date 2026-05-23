@@ -59,7 +59,7 @@ export function SiteHeader({ variant = "solid" }: SiteHeaderProps) {
           <Link
             href="/"
             className="group flex min-w-0 items-center gap-3"
-            aria-label="Mining Universe home"
+            aria-label="GOS home"
           >
             <span
               className="relative flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#d4af37]/35 bg-[#d4af37]/10 shadow-[0_0_24px_rgba(212,175,55,0.18)] transition group-hover:border-[#d4af37]/60 group-hover:shadow-[0_0_32px_rgba(212,175,55,0.28)]"
@@ -69,10 +69,10 @@ export function SiteHeader({ variant = "solid" }: SiteHeaderProps) {
             </span>
             <span className="min-w-0">
               <span className="block truncate font-[family-name:var(--font-display)] text-base font-semibold tracking-tight text-[#f0f4f7] md:text-lg">
-                Mining Universe
+                GOS
               </span>
               <span className="hidden truncate font-mono text-[10px] uppercase tracking-[0.28em] text-[#64748b] sm:block">
-                Mineral intelligence
+                Game of Stones
               </span>
             </span>
           </Link>
@@ -112,7 +112,7 @@ export function SiteHeader({ variant = "solid" }: SiteHeaderProps) {
 
           <div className="flex items-center gap-3">
             <Link
-              href="/contact"
+              href="/investor-desk"
               className="hidden rounded-full bg-[#d4af37] px-5 py-2 text-sm font-semibold text-[#0f172a] shadow-[0_0_28px_rgba(212,175,55,0.22)] transition hover:brightness-110 md:inline-flex"
             >
               Investor desk
@@ -199,7 +199,7 @@ export function SiteHeader({ variant = "solid" }: SiteHeaderProps) {
             })}
           </ul>
           <Link
-            href="/contact"
+            href="/investor-desk"
             className="mt-8 inline-flex justify-center rounded-full bg-[#d4af37] px-6 py-3 text-sm font-semibold text-[#0f172a]"
           >
             Investor desk

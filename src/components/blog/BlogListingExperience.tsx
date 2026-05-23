@@ -117,7 +117,7 @@ export function BlogListingExperience({
               className="mt-6 max-w-2xl text-lg leading-relaxed text-[#94a3b8] md:text-xl"
             >
               Explore mineral potential, sustainable practices, and the future of
-              mining across Northern Pakistan — scroll the archive one story at
+              mining across Northern Pakistan. Scroll the archive one story at
               a time.
             </p>
             <div

@@ -94,7 +94,7 @@ export function CompanyShowcase({ companies }: CompanyShowcaseProps) {
             data-company-header
             className="max-w-md text-base leading-relaxed text-[#94a3b8] md:text-lg"
           >
-            Pioneers shaping the future of mining across Gilgit Baltistan — tap
+            Pioneers shaping the future of mining across Gilgit Baltistan. Tap
             a profile to explore.
           </p>
         </div>
