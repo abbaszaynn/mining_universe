@@ -1,0 +1,82 @@
+{
+  "placeholderImages": [
+    {
+      "id": "hero-1",
+      "description": "Photo of outer space",
+      "imageUrl": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1920",
+      "imageHint": "outer space"
+    },
+    {
+      "id": "logo-durr",
+      "description": "Logo for Durr Mines and Minerals",
+      "imageUrl": "https://i.postimg.cc/B6139bM5/Generated_Image_November_14_2025_8_13PM.png",
+      "imageHint": "company logo"
+    },
+    {
+      "id": "logo-lux",
+      "description": "Logo for Earth Lux Mines",
+      "imageUrl": "https://i.postimg.cc/tgcbMWtp/Generated_Image_November_14_2025_8_19PM_1.png",
+      "imageHint": "company logo"
+    },
+    {
+      "id": "logo-himalayan",
+      "description": "Logo for Himalayan Minerals",
+      "imageUrl": "https://i.postimg.cc/tRxWRHTC/Generated-Image-November-14-2025-8-28PM.png",
+      "imageHint": "company logo"
+    },
+    {
+      "id": "gallery-durr-1",
+      "description": "Mining equipment at a Durr site",
+      "imageUrl": "https://images.unsplash.com/photo-1682268294146-13a263ae7224?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxtaW5pbmclMjBlcXVpcG1lbnR8ZW58MHx8fHwxNzU4ODEyNDc5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "mining equipment"
+    },
+    {
+      "id": "gallery-durr-2",
+      "description": "Geological survey at a Durr site",
+      "imageUrl": "https://images.unsplash.com/photo-1673079600239-188d85f3b886?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxnZW9sb2dpY2FsJTIwc3VydmV5fGVufDB8fHx8MTc1ODgxMTc0OHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "geological survey"
+    },
+    {
+      "id": "gallery-lux-1",
+      "description": "Excavation at an Earth Lux site",
+      "imageUrl": "https://images.unsplash.com/photo-1646228394965-ad1dd058ea9e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxtaW5lJTIwZXhjYXZhdGlvbnxlbnwwfHx8fDE3NTg4MTU4NDN8MA&ixlibrb-4.1.0&q=80&w=1080",
+      "imageHint": "mine excavation"
+    },
+    {
+      "id": "gallery-lux-2",
+      "description": "Mineral sample from Earth Lux Mines",
+      "imageUrl": "https://images.unsplash.com/photo-1614272284054-2422b1a528c2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxtaW5lcmFsJTIwc2FtcGxlfGVufDB8fHx8MTc1ODgxNTg0NHww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageHint": "mineral sample"
+    },
+    {
+      "id": "gallery-himalayan-1",
+      "description": "Himalayan Minerals mountain range view",
+      "imageUrl": "https://images.unsplash.com/photo-1622172322044-ffd81d677d32?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxtb3VudGFpbiUyMHJhbmdlfGVufDB8fHx8MTc1ODY5ODk4N3ww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageHint": "mountain range"
+    },
+    {
+      "id": "gallery-himalayan-2",
+      "description": "Drilling operation at Himalayan Minerals",
+      "imageUrl": "https://images.unsplash.com/photo-1563883980716-df710d018a53?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkcmlsbGluZyUyMG9wZXJhdGlvbnxlbnwwfHx8fDE3NTg4MTU4NDN8MA&ixlibrb-4.1.0&q=80&w=1080",
+      "imageHint": "drilling operation"
+    },
+    {
+      "id": "news-1",
+      "description": "Image for news article about market trends",
+      "imageUrl": "https://images.unsplash.com/photo-1640451859877-1374a1155215?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8c3RvY2slMjBtYXJrZXR8ZW58MHx8fHwxNzU4ODEyMDA2fDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageHint": "stock market"
+    },
+    {
+      "id": "news-2",
+      "description": "Image for news article about new technology",
+      "imageUrl": "https://images.unsplash.com/photo-1758750521402-2d3956c2f75b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxtaW5pbmclMjB0ZWNobm9sb2d5fGVufDB8fHx8MTc1ODgxNTg0NHww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageHint": "mining technology"
+    },
+    {
+      "id": "news-3",
+      "description": "Image for news article about environmental regulations",
+      "imageUrl": "https://images.unsplash.com/photo-1758518730037-a16581a040e8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxlbnZpcm9ubWVudGFsJTIwcG9saWN5fGVufDB8fHx8MTc1ODgxNTg0NXww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageHint": "environmental policy"
+    }
+  ]
+}
