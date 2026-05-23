@@ -1,3 +1,5 @@
+import { galleryImages } from "@/lib/gallery-images-data";
+
 export type OrbitMediaItem = {
   id: string;
   kind: "image";
@@ -5,7 +7,27 @@ export type OrbitMediaItem = {
   title: string;
 };
 
-/** Curated subset for the homepage circular gallery */
+/** Five varied specimens — six tiles total with cover (matches original ring spacing) */
+const ORBIT_SPECIMEN_IDS = [
+  "gal-mo-1",
+  "gal-ruby-bagicha",
+  "gal-lithium-bagicha",
+  "gal-copper-hilalabad",
+  "gal-qz-3",
+] as const;
+
+function specimenToOrbitItem(id: string): OrbitMediaItem | null {
+  const image = galleryImages.find((entry) => entry.id === id);
+  if (!image) return null;
+  return {
+    id: image.id,
+    kind: "image",
+    src: image.url,
+    title: image.mineral ?? image.title,
+  };
+}
+
+/** Cover + five specimens — six tiles, evenly spaced on the ring */
 export const ORBIT_GALLERY_ITEMS: OrbitMediaItem[] = [
   {
     id: "cover",
@@ -13,46 +35,7 @@ export const ORBIT_GALLERY_ITEMS: OrbitMediaItem[] = [
     src: "/images/cover_photo.png",
     title: "The Game of Stones",
   },
-  {
-    id: "shigar",
-    kind: "image",
-    src: "/blogs/shigar_geology.png",
-    title: "Shigar Valley geology",
-  },
-  {
-    id: "hilal-abad",
-    kind: "image",
-    src: "/blogs/hilal_abad_geology.png",
-    title: "Hilal Abad landscape",
-  },
-  {
-    id: "copper-region",
-    kind: "image",
-    src: "/blogs/gb_copper_mining.png",
-    title: "Copper belt, Gilgit Baltistan",
-  },
-  {
-    id: "placer-gold",
-    kind: "image",
-    src: "/blogs/gb_placer_gold.png",
-    title: "Placer gold rivers",
-  },
-  {
-    id: "nephrite",
-    kind: "image",
-    src: "/images/nephrite-1.jpg",
-    title: "Nephrite specimen",
-  },
-  {
-    id: "ruby-bagicha",
-    kind: "image",
-    src: "/images/ruby-bagicha.jpg",
-    title: "Ruby, Bagicha",
-  },
-  {
-    id: "lithium",
-    kind: "image",
-    src: "/images/lithium-bagicha.jpg",
-    title: "Lithium ore, Bagicha",
-  },
+  ...ORBIT_SPECIMEN_IDS.map(specimenToOrbitItem).filter(
+    (item): item is OrbitMediaItem => item !== null
+  ),
 ];

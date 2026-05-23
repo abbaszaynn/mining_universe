@@ -165,9 +165,11 @@ export function MediaOrbitGallery() {
     drag.momentumFrame = requestAnimationFrame(step);
   };
 
-  const focusedRotation = activeIndex * (360 / MEDIA_ITEMS.length);
+  const itemCount = MEDIA_ITEMS.length;
+  const focusedRotation = activeIndex * (360 / itemCount);
   const orbitRotationY = rotation + dragRotation - focusedRotation;
 
+  // Original ring proportions — tight circular layout
   const orbitRadius = 340;
   const perspective = "1800px";
 
@@ -190,16 +192,16 @@ export function MediaOrbitGallery() {
             Field photography
           </p>
           <h2 className="mt-3 font-[family-name:var(--font-display)] text-3xl font-semibold tracking-tight text-[#f0f4f7] md:text-5xl">
-            Landscapes and specimens from the north.
+            Specimens from the field.
           </h2>
           <p className="mt-5 max-w-3xl font-light text-[#94a3b8]">
             <span className="md:hidden">
-              Swipe to browse site photography, geological landscapes, and mineral
-              specimens from our operators.
+              Swipe to browse mineral specimens and site photography from our
+              operators.
             </span>
             <span className="hidden md:inline">
-              Rotate the gallery to explore landscapes, geological vistas, and
-              mineral specimens from across Gilgit Baltistan.
+              Rotate the ring to browse mineral specimens, ore samples, and site
+              photography from across Gilgit Baltistan.
             </span>
           </p>
         </div>
@@ -372,11 +374,11 @@ export function MediaOrbitGallery() {
             onPointerUp={(event) => {
               const drag = dragState.current;
               if (drag.active) {
-                const step = 360 / MEDIA_ITEMS.length;
+                const step = 360 / itemCount;
                 const nearestIndex =
-                  ((Math.round((rotation + dragRotation) / step) % MEDIA_ITEMS.length) +
-                    MEDIA_ITEMS.length) %
-                  MEDIA_ITEMS.length;
+                  ((Math.round((rotation + dragRotation) / step) % itemCount) +
+                    itemCount) %
+                  itemCount;
                 setActiveIndex(nearestIndex);
               }
               drag.active = false;
@@ -419,26 +421,13 @@ export function MediaOrbitGallery() {
                     transform: `translate3d(-50%, -50%, 0px) rotateY(${item.angle}deg) translateZ(${orbitRadius}px)`,
                   }}
                 >
-                  {item.kind === "video" ? (
-                    <video
-                      className="h-full w-full object-cover"
-                      src={item.src}
-                      poster={"poster" in item ? item.poster : undefined}
-                      muted
-                      loop
-                      playsInline
-                      autoPlay={activeIndex === index}
-                      preload="metadata"
-                    />
-                  ) : (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
-                      className="h-full w-full object-cover"
-                      src={item.src}
-                      alt={item.title}
-                      loading="lazy"
-                    />
-                  )}
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    className="h-full w-full object-cover"
+                    src={item.src}
+                    alt={item.title}
+                    loading="lazy"
+                  />
                   <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-4 text-left">
                     <p className="text-sm font-medium text-[#f8fafc]">{item.title}</p>
                     <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.2em] text-[#d4af37]/90">
