@@ -221,11 +221,10 @@ export const companies: Company[] = [
     name: 'Zircon Mines (PVT) LTD',
     tagline: 'Precision Mining for Rare Earth Elements.',
     logoUrl: '/images/zircon-mines-logo.jpg', // Updated local logo
-    description: 'Zircon Mines is a forward-thinking mining enterprise incorporated on January 30, 2026. Strategically located in Hilal Abad, Gilgit-Baltistan, we focus on the exploration and extraction of Copper and other high-value polymetallic structures. Our mission is to leverage modern extraction technologies to unlock the true mineral potential of the region.',
+    description: 'Strategically positioned across Hilal Abad and Shigar, Zircon Mines focuses on the exploration and extraction of copper and high-value polymetallic structures. Our mission is to apply modern extraction technologies and rigorous geological standards to unlock the region\'s mineral potential responsibly.',
     history: 'Zircon Mines was established to capitalize on the rich metallogenic belts of Northern Pakistan. With a leadership team rooted in both geological expertise and strategic management, the company has quickly moved to secure key exploration sites. Our incorporation in early 2026 marks the beginning of a dedicated effort to bring world-class mining standards to our operations in Hilal Abad.',
     leadership: [
-      { name: 'Zain Abbas', title: 'Chief Executive Officer (CEO)' },
-      { name: 'Zain Abbas', title: 'Director' },
+      { name: 'Zain Abbas', title: 'CEO & Director' },
       { name: 'Tabish Hassan', title: 'Director' },
     ],
     projects: [

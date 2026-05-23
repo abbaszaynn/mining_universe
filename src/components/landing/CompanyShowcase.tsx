@@ -103,7 +103,7 @@ export function CompanyShowcase({ companies }: CompanyShowcaseProps) {
           {companies.map((company, index) => (
             <Link
               key={company.id}
-              href="/companies"
+              href={`/companies#${company.id}`}
               data-company-card
               className={cn(
                 "group relative flex flex-col items-center rounded-[1.75rem] border border-white/10 bg-gradient-to-b from-white/[0.07] to-white/[0.02] px-6 py-10 text-center backdrop-blur-sm transition duration-500",
@@ -148,16 +148,6 @@ export function CompanyShowcase({ companies }: CompanyShowcaseProps) {
               </span>
             </Link>
           ))}
-        </div>
-
-        <div className="mt-10 flex justify-center md:mt-12" data-company-header>
-          <Link
-            href="/companies"
-            className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.03] px-6 py-2.5 text-sm text-[#e2e8f0] backdrop-blur-sm transition hover:border-[#d4af37]/40 hover:text-[#d4af37]"
-          >
-            View all companies
-            <span aria-hidden>→</span>
-          </Link>
         </div>
       </div>
     </section>

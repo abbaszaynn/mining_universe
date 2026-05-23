@@ -1,10 +1,15 @@
-import { ComingSoonPanel } from "@/components/layout/PageShell";
+import type { Metadata } from "next";
+import { getCompanies } from "@/lib/data";
+import { CompaniesExperience } from "@/components/companies/CompaniesExperience";
 
-export default function CompaniesPage() {
-  return (
-    <ComingSoonPanel
-      title="Mining companies"
-      description="Company profiles, deposits, and investor contacts — migrating from Game of Stones in the next phase."
-    />
-  );
+export const metadata: Metadata = {
+  title: "Mining Companies | Mining Universe",
+  description:
+    "Profiles of licensed mining operators in Gilgit Baltistan — leadership, deposits, and active sites.",
+};
+
+export default async function CompaniesPage() {
+  const companies = await getCompanies();
+
+  return <CompaniesExperience companies={companies} />;
 }
