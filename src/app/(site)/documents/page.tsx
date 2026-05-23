@@ -1,10 +1,15 @@
-import { ComingSoonPanel } from "@/components/layout/PageShell";
+import type { Metadata } from "next";
+import { getCompanies } from "@/lib/data";
+import { DocumentsVaultExperience } from "@/components/documents/DocumentsVaultExperience";
 
-export default function DocumentsPage() {
-  return (
-    <ComingSoonPanel
-      title="Documents vault"
-      description="Geological reports, licenses, and technical PDFs — wired in a later phase."
-    />
-  );
+export const metadata: Metadata = {
+  title: "Documents | Mining Universe",
+  description:
+    "Geological reports, licenses, and concession papers from licensed mining operators in Gilgit Baltistan.",
+};
+
+export default async function DocumentsPage() {
+  const companies = await getCompanies();
+
+  return <DocumentsVaultExperience companies={companies} />;
 }
