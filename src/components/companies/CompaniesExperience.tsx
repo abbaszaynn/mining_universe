@@ -5,6 +5,7 @@ import { gsap } from "@/lib/gsap";
 import type { Company } from "@/lib/types";
 import { BlogMotionProvider } from "@/components/blog/BlogMotionProvider";
 import { CompanyProfilePanel } from "./CompanyProfilePanel";
+import { CompanyNavStrip } from "./CompanyNavStrip";
 
 type CompaniesExperienceProps = {
   companies: Company[];
@@ -35,19 +36,6 @@ export function CompaniesExperience({ companies }: CompaniesExperienceProps) {
           filter: "blur(0px)",
           duration: 0.9,
           stagger: 0.1,
-          ease: "power3.out",
-        }
-      );
-
-      gsap.fromTo(
-        "[data-co-nav-item]",
-        { opacity: 0, y: 20 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.7,
-          stagger: 0.08,
-          delay: 0.25,
           ease: "power3.out",
         }
       );
@@ -103,26 +91,7 @@ export function CompaniesExperience({ companies }: CompaniesExperienceProps) {
             </div>
           </header>
 
-          <nav
-            className="sticky top-[4.25rem] z-40 mb-12 flex flex-wrap gap-2 border-b border-white/[0.06] bg-[#030712]/80 pb-4 backdrop-blur-xl md:top-[4.75rem] md:gap-3"
-            aria-label="Jump to company"
-          >
-            {companies.map((company, index) => (
-              <a
-                key={company.id}
-                href={`#${company.id}`}
-                data-co-nav-item
-                className="group inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-sm text-[#94a3b8] transition hover:border-[#d4af37]/35 hover:text-[#f0f4f7]"
-              >
-                <span className="font-mono text-[10px] text-[#d4af37]/80">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <span className="max-w-[8rem] truncate sm:max-w-none">
-                  {company.name.split(" (")[0]}
-                </span>
-              </a>
-            ))}
-          </nav>
+          <CompanyNavStrip companies={companies} />
 
           <div className="flex flex-col gap-20 md:gap-28">
             {companies.map((company, index) => (

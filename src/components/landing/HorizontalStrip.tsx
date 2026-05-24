@@ -10,8 +10,8 @@ const CARDS = [
     body: "High-grade copper and complex polymetallic structures across Skardu, Shigar, and Gultari.",
   },
   {
-    title: "Marble & construction stone",
-    body: "Premium marble and granite deposits in Bagicha and Ghizer, ready for export and domestic supply.",
+    title: "Antimony, lead, nephrite & silver",
+    body: "Antimony and lead at Gultari and Jutial, nephrite across Hilal Abad and Gupis, and silver-bearing polymetallic veins across Kharmang and Gilgit.",
   },
   {
     title: "Gold & precious minerals",
