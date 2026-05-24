@@ -9,6 +9,8 @@ type MiningMapGlProps = {
   selectedMineId: string | null;
   onMineSelect: (id: string | null) => void;
   terrain3d: boolean;
+  /** Tighter bounds + padding tuned for small screens */
+  mobileFocus?: boolean;
 };
 
 function polygonCenter(polygon: { lat: number; lng: number }[]) {
@@ -78,11 +80,21 @@ function buildGeoJson(companies: Company[]) {
   };
 }
 
+function polygonBounds(polygon: { lat: number; lng: number }[]) {
+  const lats = polygon.map((p) => p.lat);
+  const lngs = polygon.map((p) => p.lng);
+  return [
+    [Math.min(...lngs), Math.min(...lats)],
+    [Math.max(...lngs), Math.max(...lats)],
+  ] as [[number, number], [number, number]];
+}
+
 export function MiningMapGl({
   companies,
   selectedMineId,
   onMineSelect,
   terrain3d,
+  mobileFocus = false,
 }: MiningMapGlProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<MapLibreMap | null>(null);
@@ -273,14 +285,29 @@ export function MiningMapGl({
           const mineId = `${company.id}::${location.name}`;
           if (mineId === selectedMineId && location.polygon.length > 0) {
             const center = polygonCenter(location.polygon);
-            map.flyTo({
-              center: [center.lng, center.lat],
-              zoom: 12.5,
-              pitch: terrain3d ? 58 : 0,
-              bearing: terrain3d ? -18 : 0,
-              duration: 1600,
-              essential: true,
-            });
+            const pitch = terrain3d ? (mobileFocus ? 62 : 58) : 0;
+            const bearing = terrain3d ? -18 : 0;
+
+            if (mobileFocus && location.polygon.length >= 3) {
+              map.fitBounds(polygonBounds(location.polygon), {
+                padding: { top: 72, bottom: 96, left: 28, right: 28 },
+                maxZoom: 14.5,
+                duration: 1600,
+                essential: true,
+              });
+              map.once("moveend", () => {
+                map.easeTo({ pitch, bearing, duration: 600 });
+              });
+            } else {
+              map.flyTo({
+                center: [center.lng, center.lat],
+                zoom: mobileFocus ? 13.5 : 12.5,
+                pitch,
+                bearing,
+                duration: 1600,
+                essential: true,
+              });
+            }
             return;
           }
         }
@@ -292,7 +319,7 @@ export function MiningMapGl({
     } else {
       map.once("load", applySelection);
     }
-  }, [selectedMineId, companies, terrain3d]);
+  }, [selectedMineId, companies, terrain3d, mobileFocus]);
 
   useEffect(() => {
     const map = mapRef.current;
