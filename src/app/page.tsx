@@ -1,11 +1,5 @@
-import dynamic from "next/dynamic";
 import { getLatestNews, getCompanies } from "@/lib/data";
-
-const LandingPage = dynamic(
-  () =>
-    import("@/components/landing/LandingPage").then((m) => m.LandingPage),
-  { ssr: false }
-);
+import { LandingPage } from "@/components/landing/LandingPage";
 
 export default async function Home() {
   const [latestArticles, companies] = await Promise.all([

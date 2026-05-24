@@ -1,9 +1,8 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import Link from "next/link";
-import { useEffect } from "react";
-import { ScrollProvider, useScrollState } from "@/context/scroll-context";
+import dynamic from "next/dynamic";
+import { useScrollState } from "@/context/scroll-context";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { AnimatedSection } from "./AnimatedSection";
 import { HorizontalStrip } from "./HorizontalStrip";
@@ -42,10 +41,6 @@ function LandingInner({
   companies: Pick<Company, "id" | "name" | "logoUrl" | "status">[];
 }) {
   const { progressRef } = useScrollState();
-
-  useEffect(() => {
-    void import("../canvas/CanvasLayer");
-  }, []);
 
   return (
     <div
@@ -262,12 +257,10 @@ export function LandingPage({
   companies: Pick<Company, "id" | "name" | "logoUrl" | "status">[];
 }) {
   return (
-    <ScrollProvider>
-      <LandingInner
-        latestArticles={latestArticles}
-        companyNames={companyNames}
-        companies={companies}
-      />
-    </ScrollProvider>
+    <LandingInner
+      latestArticles={latestArticles}
+      companyNames={companyNames}
+      companies={companies}
+    />
   );
 }

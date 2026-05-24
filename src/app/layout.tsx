@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Cinzel_Decorative, Inter, Syne } from "next/font/google";
-import { LoadingProvider } from "@/components/loading/LoadingProvider";
+import { AppProviders } from "@/components/providers/AppProviders";
 import "./globals.css";
 
 const inter = Inter({
@@ -36,11 +36,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        {process.env.NODE_ENV === "development" && (
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `(function(){var k="gos-chunk-reload";function hit(m){return m&&(m.indexOf("ChunkLoadError")!==-1||m.indexOf("Loading chunk")!==-1||m.indexOf("Failed to fetch dynamically imported module")!==-1);}function reload(){if(sessionStorage.getItem(k)==="1")return;sessionStorage.setItem(k,"1");location.reload();}window.addEventListener("error",function(e){if(hit(e.message||""))reload();});window.addEventListener("unhandledrejection",function(e){var r=e.reason&&(e.reason.message||String(e.reason))||"";if(hit(r))reload();});window.addEventListener("load",function(){sessionStorage.removeItem(k);});})();`,
+            }}
+          />
+        )}
+      </head>
       <body
         style={{ backgroundColor: "#030712" }}
         className={`${inter.variable} ${syne.variable} ${cinzelDecorative.variable} min-h-[100dvh] bg-[#030712] font-sans antialiased`}
       >
-        <LoadingProvider>{children}</LoadingProvider>
+        <AppProviders>{children}</AppProviders>
       </body>
     </html>
   );

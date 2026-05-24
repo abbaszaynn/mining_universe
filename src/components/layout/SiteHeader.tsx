@@ -4,11 +4,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
+import { GosMark } from "@/components/brand/GosMark";
 
 const NAV_ITEMS = [
   { href: "/", label: "Home" },
   { href: "/companies", label: "Companies" },
   { href: "/map", label: "Map" },
+  { href: "/gallery", label: "Gallery" },
   { href: "/news", label: "Blogs" },
   { href: "/documents", label: "Documents" },
   { href: "/contact", label: "Contact" },
@@ -62,10 +64,10 @@ export function SiteHeader({ variant = "solid" }: SiteHeaderProps) {
             aria-label="GOS home"
           >
             <span
-              className="relative flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#d4af37]/35 bg-[#d4af37]/10 shadow-[0_0_24px_rgba(212,175,55,0.18)] transition group-hover:border-[#d4af37]/60 group-hover:shadow-[0_0_32px_rgba(212,175,55,0.28)]"
+              className="relative flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-full border border-[#d4af37]/35 bg-[#030712] shadow-[0_0_24px_rgba(212,175,55,0.18)] transition group-hover:border-[#d4af37]/60 group-hover:shadow-[0_0_32px_rgba(212,175,55,0.28)]"
               aria-hidden
             >
-              <span className="h-2 w-2 rounded-full bg-[#d4af37]" />
+              <GosMark size={36} className="h-full w-full" />
             </span>
             <span className="min-w-0">
               <span className="block truncate font-[family-name:var(--font-display)] text-base font-semibold tracking-tight text-[#f0f4f7] md:text-lg">

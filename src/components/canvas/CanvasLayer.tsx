@@ -1,8 +1,7 @@
 "use client";
 
 import { Canvas } from "@react-three/fiber";
-import { Suspense, useEffect } from "react";
-import { clearCanvasReady } from "@/lib/app-ready";
+import { Suspense } from "react";
 import { MiningScene } from "./MiningScene";
 import type { MutableRefObject } from "react";
 
@@ -11,11 +10,6 @@ type CanvasLayerProps = {
 };
 
 export function CanvasLayer({ progressRef }: CanvasLayerProps) {
-  useEffect(() => {
-    clearCanvasReady();
-    return () => clearCanvasReady();
-  }, []);
-
   return (
     <div className="fixed inset-0 z-0">
       <Suspense fallback={null}>

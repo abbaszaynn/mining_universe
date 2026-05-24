@@ -10,7 +10,15 @@ import {
   type ReactNode,
 } from "react";
 import { usePathname } from "next/navigation";
+import { ScrollTrigger } from "@/lib/gsap";
 import { clearRouteReady, clearCanvasReady, waitForRouteReady } from "@/lib/app-ready";
+import {
+  disableScrollRestoration,
+  notifyLoaderComplete,
+  resetAppScroll,
+} from "@/lib/scroll-reset";
+import { useScrollLock } from "@/hooks/useScrollLock";
+import { cn } from "@/lib/utils";
 import { GosLoaderScreen } from "./GosLoaderScreen";
 import { AppReadyMarker } from "./AppReadyMarker";
 
@@ -58,9 +66,14 @@ export function LoadingProvider({ children }: { children: ReactNode }) {
   const bootPathRef = useRef(pathname);
   const routeTokenRef = useRef(0);
 
+  const initialLocked = visible && mode === "initial" && !exiting;
+  useScrollLock(initialLocked);
+
   const beginExit = useCallback(() => {
     if (exitStartedRef.current) return;
     exitStartedRef.current = true;
+    resetAppScroll();
+    ScrollTrigger.refresh();
     setExiting(true);
   }, []);
 
@@ -74,16 +87,23 @@ export function LoadingProvider({ children }: { children: ReactNode }) {
   const handleExitComplete = useCallback(() => {
     setVisible(false);
     setExiting(false);
+    resetAppScroll();
+    notifyLoaderComplete();
   }, []);
 
   const finishWhenReady = useCallback(
     async (token: number, loaderMode: LoaderMode) => {
       const minDelay = new Promise<void>((resolve) => {
-        window.setTimeout(resolve, loaderMode === "initial" ? 1200 : 450);
+        window.setTimeout(resolve, loaderMode === "initial" ? 1200 : 350);
       });
 
-      await Promise.all([minDelay, waitForRouteReady(15000)]);
+      await Promise.all([minDelay, waitForRouteReady(loaderMode === "initial" ? 30000 : 12000)]);
       if (routeTokenRef.current !== token) return;
+
+      resetAppScroll();
+      await new Promise<void>((resolve) => {
+        requestAnimationFrame(() => requestAnimationFrame(() => resolve()));
+      });
 
       beginExit();
     },
@@ -94,10 +114,16 @@ export function LoadingProvider({ children }: { children: ReactNode }) {
   finishWhenReadyRef.current = finishWhenReady;
 
   useEffect(() => {
+    disableScrollRestoration();
+    resetAppScroll();
+  }, []);
+
+  useEffect(() => {
     let cancelled = false;
     const token = ++routeTokenRef.current;
 
     const boot = async () => {
+      resetAppScroll();
       clearRouteReady();
       clearCanvasReady();
 
@@ -176,14 +202,14 @@ export function LoadingProvider({ children }: { children: ReactNode }) {
     return () => document.removeEventListener("click", onClick, true);
   }, [showLoader]);
 
-  const contentHidden = visible && !exiting;
-
   return (
-    <LoadingContext.Provider value={{ isLoading: contentHidden }}>
+    <LoadingContext.Provider value={{ isLoading: visible && !exiting }}>
       <AppReadyMarker />
       <div
-        aria-hidden={contentHidden}
-        className={contentHidden ? "pointer-events-none invisible" : undefined}
+        aria-hidden={initialLocked}
+        className={cn(
+          initialLocked && "pointer-events-none opacity-0"
+        )}
       >
         {children}
       </div>

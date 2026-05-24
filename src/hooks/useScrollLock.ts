@@ -31,7 +31,9 @@ export function useScrollLock(active = true) {
       body.style.position = prevBodyPosition;
       body.style.top = prevBodyTop;
       body.style.width = prevBodyWidth;
-      window.scrollTo(0, scrollY);
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
       startModalLenis();
     };
   }, [active]);

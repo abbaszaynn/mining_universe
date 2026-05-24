@@ -11,7 +11,7 @@ export function SceneReadyMarker() {
   useFrame(() => {
     if (marked.current) return;
     frames.current += 1;
-    if (frames.current >= 2) {
+    if (frames.current >= 4) {
       marked.current = true;
       markCanvasReady();
     }

@@ -225,8 +225,13 @@ export function BlogArticleExperience({
             data-blog-hero
             data-blog-animate
             className="relative mb-14 aspect-[16/9] overflow-hidden rounded-3xl border border-white/10 shadow-[0_32px_100px_rgba(0,0,0,0.55)] md:mb-16"
+            style={{ aspectRatio: "16 / 9", overflow: "hidden" }}
           >
-            <div ref={heroImageRef} className="absolute inset-0 scale-110">
+            <div
+              ref={heroImageRef}
+              className="absolute inset-0 scale-110"
+              style={{ overflow: "hidden" }}
+            >
               <Image
                 src={article.imageUrl}
                 alt={article.title}

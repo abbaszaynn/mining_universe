@@ -38,8 +38,7 @@ export function GosLoaderScreen({
     }
 
     const tl = gsap.timeline();
-    tl.fromTo(shell, { opacity: 0 }, { opacity: 1, duration: 0.35, ease: "power2.out" })
-      .fromTo(
+    tl.fromTo(
         the,
         { opacity: 0, y: 12, letterSpacing: "0.65em" },
         { opacity: 1, y: 0, letterSpacing: "0.45em", duration: 0.7, ease: "power3.out" },
@@ -123,7 +122,7 @@ export function GosLoaderScreen({
       style={{ backgroundColor: "#030712", color: "#e2e8f0" }}
       className={cn(
         "fixed inset-0 z-[99999] flex items-center justify-center",
-        "pointer-events-auto touch-none select-none"
+        "pointer-events-auto touch-none select-none overscroll-none"
       )}
       aria-live="polite"
       aria-busy={!exiting}

@@ -46,8 +46,8 @@ export function AppReadyMarker() {
     });
 
     fallbackId = window.setTimeout(() => {
-      if (!cancelled) markRouteReady();
-    }, 20000);
+      if (!cancelled && isPageReady()) markRouteReady();
+    }, 25000);
 
     return () => {
       cancelled = true;

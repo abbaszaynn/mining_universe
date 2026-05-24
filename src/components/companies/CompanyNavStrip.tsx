@@ -60,41 +60,41 @@ function CompanyNavCard({
       />
 
       <span className="co-nav-float relative block">
-        <span className="relative flex min-h-[5.5rem] flex-col justify-between rounded-[calc(1rem-1px)] bg-[#0a0f1e]/95 px-5 py-4 md:min-h-[6.25rem] md:px-6 md:py-5">
-        <div className="flex items-start justify-between gap-3">
-          <div className="relative h-11 w-11 shrink-0 overflow-hidden rounded-xl border border-white/10 bg-[#030712] p-1.5 shadow-inner transition duration-500 group-hover:border-[#d4af37]/35 group-hover:shadow-[0_0_24px_rgba(212,175,55,0.2)] md:h-12 md:w-12">
-            <Image
-              src={company.logoUrl}
-              alt=""
-              fill
-              className="object-contain p-0.5 transition duration-500 group-hover:scale-105"
-              sizes="48px"
-            />
+        <span className="relative flex flex-col gap-2.5 rounded-[calc(1rem-1px)] bg-[#0a0f1e]/95 px-4 py-3.5 md:px-5 md:py-4">
+          <div className="flex items-center justify-between gap-3">
+            <div className="flex min-w-0 flex-1 items-center gap-3">
+              <div className="relative h-9 w-9 shrink-0 overflow-hidden rounded-lg border border-white/10 bg-[#030712] p-1 shadow-inner transition duration-500 group-hover:border-[#d4af37]/35 group-hover:shadow-[0_0_20px_rgba(212,175,55,0.18)] md:h-10 md:w-10">
+                <Image
+                  src={company.logoUrl}
+                  alt=""
+                  fill
+                  className="object-contain p-0.5 transition duration-500 group-hover:scale-105"
+                  sizes="40px"
+                />
+              </div>
+              <p className="min-w-0 flex-1 font-[family-name:var(--font-display)] text-sm font-semibold leading-snug text-[#f0f4f7] transition duration-500 group-hover:text-white md:text-[15px]">
+                {displayName(company.name)}
+              </p>
+            </div>
+            <span
+              className="shrink-0 font-[family-name:var(--font-display)] text-2xl font-bold leading-none text-[#d4af37]/20 transition duration-500 group-hover:text-[#d4af37]/45 md:text-3xl"
+              aria-hidden
+            >
+              {label}
+            </span>
           </div>
-          <span
-            className="font-[family-name:var(--font-display)] text-3xl font-bold leading-none text-[#d4af37]/20 transition duration-500 group-hover:text-[#d4af37]/45 md:text-4xl"
-            aria-hidden
-          >
-            {label}
-          </span>
-        </div>
 
-        <div className="mt-4">
-          <p className="font-[family-name:var(--font-display)] text-base font-semibold leading-snug text-[#f0f4f7] transition duration-500 group-hover:text-white md:text-lg">
-            {displayName(company.name)}
-          </p>
-          <p className="mt-1.5 line-clamp-2 text-xs leading-relaxed text-[#64748b] transition duration-500 group-hover:text-[#94a3b8] md:text-sm">
+          <p className="line-clamp-1 text-[11px] leading-relaxed text-[#64748b] transition duration-500 group-hover:text-[#94a3b8] md:text-xs">
             {company.tagline}
           </p>
-        </div>
 
-        <span className="mt-4 inline-flex items-center gap-2 text-[10px] font-medium uppercase tracking-[0.22em] text-[#d4af37]/70 transition duration-500 group-hover:text-[#d4af37]">
-          <span className="h-px w-6 bg-[#d4af37]/50 transition-all duration-500 group-hover:w-10" />
-          View profile
-          <span className="translate-x-0 transition-transform duration-500 group-hover:translate-x-0.5">
-            →
+          <span className="inline-flex items-center gap-2 text-[10px] font-medium uppercase tracking-[0.22em] text-[#d4af37]/70 transition duration-500 group-hover:text-[#d4af37]">
+            <span className="h-px w-5 bg-[#d4af37]/50 transition-all duration-500 group-hover:w-8" />
+            View profile
+            <span className="translate-x-0 transition-transform duration-500 group-hover:translate-x-0.5">
+              →
+            </span>
           </span>
-        </span>
         </span>
       </span>
     </a>

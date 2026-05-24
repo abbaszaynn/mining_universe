@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useCallback, useLayoutEffect, useRef, useState, type PointerEvent } from "react";
-import { gsap } from "@/lib/gsap";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState, type PointerEvent } from "react";
+import { gsap, ScrollTrigger } from "@/lib/gsap";
+import { LOADER_COMPLETE_EVENT } from "@/lib/scroll-reset";
 import { formatDate, cn } from "@/lib/utils";
 import type { NewsArticle } from "@/lib/types";
 
@@ -121,6 +122,7 @@ function StrataCard({
             ? "md:col-span-7 h-64 sm:h-72 md:h-[26rem]"
             : "h-44 sm:h-48"
         )}
+        style={{ overflow: "hidden", isolation: "isolate" }}
       >
         <Image
           src={article.imageUrl}
@@ -250,10 +252,11 @@ export function BlogStrataShowcase({
 
       const image = featured.querySelector(".strata-image");
       if (image && !reduceMotion) {
+        gsap.set(image, { scale: 1 });
         tweens.push(
           gsap.fromTo(
             image,
-            { scale: 1.18 },
+            { scale: 1.08 },
             {
               scale: 1,
               ease: "none",
@@ -262,6 +265,7 @@ export function BlogStrataShowcase({
                 start: "top bottom",
                 end: "bottom top",
                 scrub: 1.2,
+                invalidateOnRefresh: true,
               },
             }
           )
@@ -327,6 +331,18 @@ export function BlogStrataShowcase({
       });
     };
   }, [articles]);
+
+  useEffect(() => {
+    const onLoaderComplete = () => {
+      gsap.set(sectionRef.current?.querySelectorAll(".strata-image") ?? [], {
+        clearProps: "transform",
+      });
+      ScrollTrigger.refresh();
+    };
+
+    window.addEventListener(LOADER_COMPLETE_EVENT, onLoaderComplete);
+    return () => window.removeEventListener(LOADER_COMPLETE_EVENT, onLoaderComplete);
+  }, []);
 
   if (!articles.length) return null;
 

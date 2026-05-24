@@ -42,29 +42,28 @@ export function isPageReady() {
   return true;
 }
 
-export function waitForRouteReady(timeoutMs = 20000): Promise<void> {
+export function waitForRouteReady(timeoutMs = 30000): Promise<void> {
   if (typeof window === "undefined") return Promise.resolve();
 
   return new Promise((resolve) => {
-    if (document.documentElement.dataset.routeReady === "true" && isPageReady()) {
-      resolve();
-      return;
-    }
-
     let settled = false;
+
     const finish = () => {
       if (settled) return;
       settled = true;
       observer.disconnect();
-      clearTimeout(timeoutId);
+      clearTimeout(hardTimeoutId);
+      clearInterval(pollId);
       window.removeEventListener(ROUTE_READY_EVENT, onReady);
       window.removeEventListener(CANVAS_READY_EVENT, onReady);
       resolve();
     };
 
-    const onReady = () => {
+    const tryFinish = () => {
       if (isPageReady()) finish();
     };
+
+    const onReady = () => tryFinish();
 
     const observer = new MutationObserver(onReady);
     observer.observe(document.body, { childList: true, subtree: true });
@@ -73,9 +72,11 @@ export function waitForRouteReady(timeoutMs = 20000): Promise<void> {
       attributeFilter: ["data-gos-canvas-ready"],
     });
 
-    const timeoutId = window.setTimeout(finish, timeoutMs);
+    const pollId = window.setInterval(tryFinish, 120);
+    const hardTimeoutId = window.setTimeout(finish, timeoutMs);
+
     window.addEventListener(ROUTE_READY_EVENT, onReady);
     window.addEventListener(CANVAS_READY_EVENT, onReady);
-    onReady();
+    tryFinish();
   });
 }
