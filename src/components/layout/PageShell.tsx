@@ -18,7 +18,10 @@ export function PageShell({
   description,
 }: PageShellProps) {
   return (
-    <div className="relative min-h-[100dvh] overflow-x-hidden bg-[#030712] text-[#e2e8f0]">
+    <div
+      data-gos-page-root
+      className="relative min-h-[100dvh] overflow-x-hidden bg-[#030712] text-[#e2e8f0]"
+    >
       <div
         className="pointer-events-none absolute inset-x-0 top-0 h-[28rem] bg-[radial-gradient(ellipse_at_top,rgba(212,175,55,0.08),transparent_55%)]"
         aria-hidden

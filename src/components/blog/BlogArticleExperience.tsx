@@ -154,6 +154,7 @@ export function BlogArticleExperience({
     <BlogMotionProvider>
       <div
         ref={rootRef}
+        data-gos-page-root
         className="relative min-h-[100dvh] overflow-x-hidden bg-[#030712] text-[#e2e8f0]"
       >
         <div

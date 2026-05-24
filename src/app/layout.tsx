@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Cinzel_Decorative, Inter, Syne } from "next/font/google";
+import { LoadingProvider } from "@/components/loading/LoadingProvider";
 import "./globals.css";
 
 const inter = Inter({
@@ -36,9 +37,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
+        style={{ backgroundColor: "#030712" }}
         className={`${inter.variable} ${syne.variable} ${cinzelDecorative.variable} min-h-[100dvh] bg-[#030712] font-sans antialiased`}
       >
-        {children}
+        <LoadingProvider>{children}</LoadingProvider>
       </body>
     </html>
   );

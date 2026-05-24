@@ -2,6 +2,7 @@
 
 import dynamic from "next/dynamic";
 import Link from "next/link";
+import { useEffect } from "react";
 import { ScrollProvider, useScrollState } from "@/context/scroll-context";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { AnimatedSection } from "./AnimatedSection";
@@ -42,8 +43,16 @@ function LandingInner({
 }) {
   const { progressRef } = useScrollState();
 
+  useEffect(() => {
+    void import("../canvas/CanvasLayer");
+  }, []);
+
   return (
-    <div className="relative min-h-[100dvh] bg-[#030712] text-[#e2e8f0]">
+    <div
+      data-gos-page-root
+      data-gos-requires-canvas
+      className="relative min-h-[100dvh] bg-[#030712] text-[#e2e8f0]"
+    >
       <CanvasLayer progressRef={progressRef} />
 
       <div className="pointer-events-none fixed inset-x-0 top-0 z-[5] h-24 bg-gradient-to-b from-[#030712] to-transparent" />

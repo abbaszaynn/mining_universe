@@ -1,7 +1,8 @@
 "use client";
 
 import { Canvas } from "@react-three/fiber";
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
+import { clearCanvasReady } from "@/lib/app-ready";
 import { MiningScene } from "./MiningScene";
 import type { MutableRefObject } from "react";
 
@@ -9,18 +10,15 @@ type CanvasLayerProps = {
   progressRef: MutableRefObject<number>;
 };
 
-function CanvasFallback() {
-  return (
-    <div className="absolute inset-0 flex items-center justify-center bg-[#030712]">
-      <div className="h-10 w-10 animate-spin rounded-full border-2 border-[#d4af37]/30 border-t-[#d4af37]" />
-    </div>
-  );
-}
-
 export function CanvasLayer({ progressRef }: CanvasLayerProps) {
+  useEffect(() => {
+    clearCanvasReady();
+    return () => clearCanvasReady();
+  }, []);
+
   return (
     <div className="fixed inset-0 z-0">
-      <Suspense fallback={<CanvasFallback />}>
+      <Suspense fallback={null}>
         <Canvas
           dpr={[1, 2]}
           gl={{

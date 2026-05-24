@@ -51,7 +51,7 @@ export function MapExperience({ companies }: MapExperienceProps) {
   const selectedMine = mines.find((m) => m.id === selectedMineId) ?? null;
 
   return (
-    <div className="relative h-full w-full overflow-hidden">
+    <div data-gos-page-root className="relative h-full w-full overflow-hidden">
       <MiningMapGl
         companies={companies}
         selectedMineId={selectedMineId}

@@ -106,6 +106,7 @@ export function GalleryExperience({ images }: GalleryExperienceProps) {
       <div
         ref={rootRef}
         className="relative min-h-[100dvh] overflow-x-hidden bg-[#030712] text-[#e2e8f0]"
+        data-gos-page-root
       >
         <div
           className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(212,175,55,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(212,175,55,0.02)_1px,transparent_1px)] bg-[size:72px_72px] [mask-image:radial-gradient(ellipse_at_top,black,transparent_75%)]"

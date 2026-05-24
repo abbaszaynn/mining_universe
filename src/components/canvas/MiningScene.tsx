@@ -4,6 +4,7 @@ import { useMemo, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import { Sparkles, Stars, useTexture } from "@react-three/drei";
 import * as THREE from "three";
+import { SceneReadyMarker } from "./SceneReadyMarker";
 import type { MutableRefObject } from "react";
 import type { ThreeEvent } from "@react-three/fiber";
 
@@ -248,6 +249,7 @@ export function MiningScene({ progressRef }: MiningSceneProps) {
       <GlobeMotionGroup progressRef={progressRef} />
 
       <CameraRig progressRef={progressRef} />
+      <SceneReadyMarker />
     </>
   );
 }
