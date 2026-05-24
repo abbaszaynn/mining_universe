@@ -8,6 +8,7 @@ import {
   getInvestorDeskCompanies,
   type InvestorDeskCompany,
 } from "@/lib/investor-desk-data";
+import { FaqSection } from "@/components/faq/FaqSection";
 
 const HIGHLIGHTS = [
   {
@@ -165,6 +166,21 @@ export function InvestorDeskPageClient({
             or call +92 310 9108714
           </p>
         </main>
+
+        <FaqSection
+          subtitle="Answers to common questions before you submit an inquiry or plan a field visit to Gilgit Baltistan."
+        />
+
+        <footer className="border-t border-white/10 bg-[#020617] px-6 py-12 text-sm text-[#64748b] md:px-10 md:py-14">
+          <div className="mx-auto flex max-w-6xl flex-col gap-3 text-center md:flex-row md:items-center md:justify-between lg:max-w-7xl">
+            <p className="font-[family-name:var(--font-display)] text-lg text-[#dbe5f3]">
+              GOS · Game of Stones
+            </p>
+            <p className="font-mono text-xs uppercase tracking-widest">
+              © {new Date().getFullYear()} All rights reserved
+            </p>
+          </div>
+        </footer>
       </div>
     </BlogMotionProvider>
   );

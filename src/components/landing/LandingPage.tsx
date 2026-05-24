@@ -9,6 +9,7 @@ import { HorizontalStrip } from "./HorizontalStrip";
 import { MediaOrbitGallery } from "./MediaOrbitGallery";
 import { BlogStrataShowcase } from "@/components/blog/BlogStrataShowcase";
 import { CompanyShowcase } from "./CompanyShowcase";
+import { FaqSection } from "@/components/faq/FaqSection";
 import type { Company, NewsArticle } from "@/lib/types";
 
 const CanvasLayer = dynamic(
@@ -169,6 +170,8 @@ function LandingInner({
           articles={latestArticles}
           companyNames={companyNames}
         />
+
+        <FaqSection />
 
         <footer className="border-t border-white/10 bg-[#020617] px-6 py-16 text-sm text-[#64748b] md:px-12 md:py-20">
           <div className="mx-auto max-w-6xl">
