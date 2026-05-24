@@ -1,7 +1,10 @@
-/** Canonical site URL — set NEXT_PUBLIC_SITE_URL in Vercel (e.g. https://yourdomain.com). */
+/** Canonical site URL — set NEXT_PUBLIC_SITE_URL in Vercel (e.g. https://game-of-stones.vercel.app). */
 export function getSiteUrl() {
   if (process.env.NEXT_PUBLIC_SITE_URL) {
     return process.env.NEXT_PUBLIC_SITE_URL.replace(/\/$/, "");
+  }
+  if (process.env.VERCEL_PROJECT_PRODUCTION_URL) {
+    return `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`;
   }
   if (process.env.VERCEL_URL) {
     return `https://${process.env.VERCEL_URL}`;

@@ -1,27 +1,25 @@
 import type { MetadataRoute } from "next";
-import { getNews } from "@/lib/data";
-import { absoluteUrl } from "@/lib/seo";
+import { getSiteUrl } from "@/lib/site";
+import { NEWS_ROUTES, STATIC_ROUTES } from "@/lib/sitemap-routes";
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const articles = await getNews();
+export const dynamic = "force-static";
+export const revalidate = 86400;
 
-  const staticRoutes: MetadataRoute.Sitemap = [
-    { url: absoluteUrl("/"), changeFrequency: "weekly", priority: 1 },
-    { url: absoluteUrl("/companies"), changeFrequency: "weekly", priority: 0.9 },
-    { url: absoluteUrl("/map"), changeFrequency: "monthly", priority: 0.85 },
-    { url: absoluteUrl("/gallery"), changeFrequency: "weekly", priority: 0.85 },
-    { url: absoluteUrl("/news"), changeFrequency: "weekly", priority: 0.8 },
-    { url: absoluteUrl("/documents"), changeFrequency: "monthly", priority: 0.8 },
-    { url: absoluteUrl("/contact"), changeFrequency: "monthly", priority: 0.75 },
-    { url: absoluteUrl("/investor-desk"), changeFrequency: "monthly", priority: 0.9 },
-  ];
+export default function sitemap(): MetadataRoute.Sitemap {
+  const base = getSiteUrl();
 
-  const articleRoutes: MetadataRoute.Sitemap = articles.map((article) => ({
-    url: absoluteUrl(`/news/${article.id}`),
+  const staticEntries: MetadataRoute.Sitemap = STATIC_ROUTES.map((route) => ({
+    url: `${base}${route.path}`,
+    changeFrequency: route.changeFrequency,
+    priority: route.priority,
+  }));
+
+  const articleEntries: MetadataRoute.Sitemap = NEWS_ROUTES.map((article) => ({
+    url: `${base}/news/${article.id}`,
     lastModified: new Date(article.publishDate),
     changeFrequency: "monthly",
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...articleRoutes];
+  return [...staticEntries, ...articleEntries];
 }
