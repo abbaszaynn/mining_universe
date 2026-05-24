@@ -1,3 +1,4 @@
+import "maplibre-gl/dist/maplibre-gl.css";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 
 export default function MapLayout({

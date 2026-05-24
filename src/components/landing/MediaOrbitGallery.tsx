@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { gsap } from "@/lib/gsap";
 import { ORBIT_GALLERY_ITEMS, type OrbitMediaItem } from "@/lib/gallery-orbit-items";
@@ -296,12 +297,12 @@ export function MediaOrbitGallery() {
                       : ""
                   )}
                 >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    className="h-full w-full object-cover"
+                  <Image
                     src={item.src}
                     alt={item.title}
-                    loading="lazy"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 82vw, 340px"
                   />
                   <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-4">
                     <p className="text-base font-medium text-[#f8fafc]">{item.title}</p>
@@ -408,12 +409,12 @@ export function MediaOrbitGallery() {
                     transform: `translate3d(-50%, -50%, 0px) rotateY(${item.angle}deg) translateZ(${orbitRadius}px)`,
                   }}
                 >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    className="h-full w-full object-cover"
+                  <Image
                     src={item.src}
                     alt={item.title}
-                    loading="lazy"
+                    fill
+                    className="object-cover"
+                    sizes="320px"
                   />
                   <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-4 text-left">
                     <p className="text-sm font-medium text-[#f8fafc]">{item.title}</p>

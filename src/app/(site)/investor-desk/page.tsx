@@ -1,12 +1,13 @@
-import type { Metadata } from "next";
 import { getInvestorDeskCompanies } from "@/lib/investor-desk-data";
 import { InvestorDeskPageClient } from "@/components/contact/InvestorDeskPageClient";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Investor Desk | GOS",
+export const metadata = createPageMetadata({
+  title: "Investor Desk",
   description:
-    "Submit an initial inquiry to the Game of Stones investor desk. Partner with licensed mining operators across Gilgit Baltistan.",
-};
+    "Partner with Game of Stones. Submit an inquiry to connect with licensed mining operators in Gilgit Baltistan — field visits, due diligence, and global investment opportunities.",
+  path: "/investor-desk",
+});
 
 export default function InvestorDeskPage() {
   const companies = getInvestorDeskCompanies();

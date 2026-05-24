@@ -1,29 +1,30 @@
 import { notFound } from "next/navigation";
-import type { Metadata } from "next";
 import { getNewsById, getCompanies, getNews } from "@/lib/data";
 import { BlogArticleExperience } from "@/components/blog/BlogArticleExperience";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { articleJsonLd, createPageMetadata } from "@/lib/seo";
 
 type PageProps = {
   params: { id: string };
 };
 
-export async function generateMetadata({
-  params,
-}: PageProps): Promise<Metadata> {
-  const article = await getNewsById(params.id);
-  if (!article) return { title: "Blog Not Found" };
+export async function generateStaticParams() {
+  const articles = await getNews();
+  return articles.map((article) => ({ id: article.id }));
+}
 
-  return {
-    title: `${article.title} | GOS`,
+export async function generateMetadata({ params }: PageProps) {
+  const article = await getNewsById(params.id);
+  if (!article) return { title: "Article Not Found" };
+
+  return createPageMetadata({
+    title: article.title,
     description: article.excerpt,
-    openGraph: {
-      title: article.title,
-      description: article.excerpt,
-      type: "article",
-      publishedTime: article.publishDate,
-      images: [{ url: article.imageUrl, alt: article.title }],
-    },
-  };
+    path: `/news/${article.id}`,
+    ogImage: article.imageUrl,
+    ogType: "article",
+    publishedTime: article.publishDate,
+  });
 }
 
 export default async function NewsDetailPage({ params }: PageProps) {
@@ -50,11 +51,14 @@ export default async function NewsDetailPage({ params }: PageProps) {
     .slice(0, 3);
 
   return (
-    <BlogArticleExperience
-      article={article}
-      companyName={companyName}
-      relatedArticles={relatedArticles}
-      companyNames={companyNames}
-    />
+    <>
+      <JsonLd data={articleJsonLd(article)} />
+      <BlogArticleExperience
+        article={article}
+        companyName={companyName}
+        relatedArticles={relatedArticles}
+        companyNames={companyNames}
+      />
+    </>
   );
 }

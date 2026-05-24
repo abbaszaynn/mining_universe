@@ -66,7 +66,7 @@ function CompanyNavCard({
               <div className="relative h-9 w-9 shrink-0 overflow-hidden rounded-lg border border-white/10 bg-[#030712] p-1 shadow-inner transition duration-500 group-hover:border-[#d4af37]/35 group-hover:shadow-[0_0_20px_rgba(212,175,55,0.18)] md:h-10 md:w-10">
                 <Image
                   src={company.logoUrl}
-                  alt=""
+                  alt={`${displayName(company.name)} logo`}
                   fill
                   className="object-contain p-0.5 transition duration-500 group-hover:scale-105"
                   sizes="40px"

@@ -1,12 +1,13 @@
-import type { Metadata } from "next";
 import { getGalleryImages } from "@/lib/data";
 import { GalleryExperience } from "@/components/gallery/GalleryExperience";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Gallery | GOS",
+export const metadata = createPageMetadata({
+  title: "Gallery",
   description:
-    "Multimedia gallery of specimens, landscapes, and field photography from Game of Stones mining operators in Gilgit Baltistan.",
-};
+    "Specimens, landscapes, and field photography from licensed Game of Stones mining operators across Gilgit Baltistan — copper, gold, nephrite, and polymetallic assets.",
+  path: "/gallery",
+});
 
 export default async function GalleryPage() {
   const images = await getGalleryImages();

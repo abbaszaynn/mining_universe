@@ -1,14 +1,15 @@
-import type { Metadata } from "next";
 import nextDynamic from "next/dynamic";
 import { getCompanies } from "@/lib/data";
+import { createPageMetadata } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
 
-export const metadata: Metadata = {
-  title: "Mining Map | GOS",
+export const metadata = createPageMetadata({
+  title: "Mining Map",
   description:
-    "3D terrain map with satellite imagery and licensed mine coordinates across Gilgit Baltistan.",
-};
+    "Interactive 3D terrain map with satellite imagery and licensed mine coordinates across Skardu, Gilgit, and Ghizer in Gilgit Baltistan.",
+  path: "/map",
+});
 
 const MapExperience = nextDynamic(
   () =>
@@ -39,7 +40,7 @@ export default async function MapPage() {
   const companies = await getCompanies();
 
   return (
-    <div className="h-full w-full">
+    <div className="h-full w-full" data-gos-page-root>
       <MapExperience companies={companies} />
     </div>
   );

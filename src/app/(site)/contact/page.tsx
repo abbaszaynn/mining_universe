@@ -1,11 +1,12 @@
-import type { Metadata } from "next";
 import { ContactPageClient } from "@/components/contact/ContactPageClient";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Contact | GOS",
+export const metadata = createPageMetadata({
+  title: "Contact",
   description:
-    "Reach the Game of Stones team by phone, email, or message for general inquiries across Gilgit Baltistan.",
-};
+    "Contact Game of Stones for general inquiries about licensed mining operations, field visits, and partnerships across Gilgit Baltistan.",
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return <ContactPageClient />;

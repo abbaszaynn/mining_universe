@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Cinzel_Decorative, Inter, Syne } from "next/font/google";
 import { AppProviders } from "@/components/providers/AppProviders";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { createPageMetadata, organizationJsonLd } from "@/lib/seo";
 import "./globals.css";
 
 const inter = Inter({
@@ -23,11 +25,12 @@ const cinzelDecorative = Cinzel_Decorative({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: "GOS | Game of Stones, Mining in Gilgit Baltistan",
+export const metadata: Metadata = createPageMetadata({
+  title: "Game of Stones",
   description:
-    "Game of Stones connects global investors with licensed mining operators across Gilgit Baltistan, from copper and marble to gold and polymetallic assets under full regulatory compliance.",
-};
+    "Game of Stones connects global investors with licensed mining operators across Gilgit Baltistan — copper, gold, lithium, nephrite, antimony, and polymetallic assets under full regulatory compliance.",
+  path: "/",
+});
 
 export default function RootLayout({
   children,
@@ -37,6 +40,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <JsonLd data={organizationJsonLd()} />
         {process.env.NODE_ENV === "development" && (
           <script
             dangerouslySetInnerHTML={{

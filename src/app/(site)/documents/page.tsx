@@ -1,12 +1,13 @@
-import type { Metadata } from "next";
 import { getCompanies } from "@/lib/data";
 import { DocumentsVaultExperience } from "@/components/documents/DocumentsVaultExperience";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Documents | GOS",
+export const metadata = createPageMetadata({
+  title: "Documents Vault",
   description:
-    "Geological reports, licenses, and concession papers from licensed mining operators in Gilgit Baltistan.",
-};
+    "Geological reports, mining licenses, incorporation letters, and concession documents from licensed operators in Gilgit Baltistan for investor due diligence.",
+  path: "/documents",
+});
 
 export default async function DocumentsPage() {
   const companies = await getCompanies();

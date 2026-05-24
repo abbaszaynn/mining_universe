@@ -1,12 +1,13 @@
-import type { Metadata } from "next";
 import { getCompanies } from "@/lib/data";
 import { CompaniesExperience } from "@/components/companies/CompaniesExperience";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Mining Companies | GOS",
+export const metadata = createPageMetadata({
+  title: "Mining Companies",
   description:
-    "Profiles of licensed mining operators in Gilgit Baltistan, including leadership, deposits, and active sites.",
-};
+    "Licensed mining operators in Gilgit Baltistan — Durr Mines, Earth Lux, and Zircon Mines. Leadership, deposits, active sites, and investor-ready profiles.",
+  path: "/companies",
+});
 
 export default async function CompaniesPage() {
   const companies = await getCompanies();

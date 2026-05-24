@@ -94,7 +94,15 @@ export function LoadingProvider({ children }: { children: ReactNode }) {
   const finishWhenReady = useCallback(
     async (token: number, loaderMode: LoaderMode) => {
       const minDelay = new Promise<void>((resolve) => {
-        window.setTimeout(resolve, loaderMode === "initial" ? 1200 : 350);
+        const ms =
+          loaderMode === "initial"
+            ? process.env.NODE_ENV === "production"
+              ? 900
+              : 1200
+            : process.env.NODE_ENV === "production"
+              ? 280
+              : 350;
+        window.setTimeout(resolve, ms);
       });
 
       await Promise.all([minDelay, waitForRouteReady(loaderMode === "initial" ? 30000 : 12000)]);
