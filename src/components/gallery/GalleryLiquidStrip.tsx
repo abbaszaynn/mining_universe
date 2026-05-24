@@ -12,15 +12,108 @@ type GalleryLiquidStripProps = {
   onClick?: () => void;
   ariaLabel?: string;
   className?: string;
-  /** Phase offset so each strip feels unique */
   phase?: number;
+  mirror?: boolean;
 };
+
+type FeatherSpec = {
+  nx: number;
+  ny: number;
+  lengthRatio: number;
+  widthRatio: number;
+  baseAngle: number;
+  curveA: number;
+  curveB: number;
+  curveC: number;
+  alpha: number;
+  barbSpread: number;
+  animOffset: number;
+};
+
+function seededRandom(seed: number) {
+  const x = Math.sin(seed * 127.1 + 311.7) * 43758.5453;
+  return x - Math.floor(x);
+}
+
+function buildFeathers(stripPhase: number, height: number): FeatherSpec[] {
+  const count = Math.max(5, Math.min(12, Math.floor(height / 70)));
+  return Array.from({ length: count }, (_, i) => {
+    const s = stripPhase * 137.5 + i * 23.17 + 1;
+    return {
+      nx: 0.12 + seededRandom(s) * 0.76,
+      ny: seededRandom(s + 1.3) * 0.78,
+      lengthRatio: 0.28 + seededRandom(s + 2.1) * 0.52,
+      widthRatio: 0.45 + seededRandom(s + 3.7) * 0.65,
+      baseAngle: (seededRandom(s + 4.2) - 0.5) * 0.42,
+      curveA: 0.28 + seededRandom(s + 5.1) * 0.38,
+      curveB: 0.55 + seededRandom(s + 6.4) * 0.35,
+      curveC: 0.12 + seededRandom(s + 7.2) * 0.22,
+      alpha: 0.58 + seededRandom(s + 8.5) * 0.38,
+      barbSpread: 0.18 + seededRandom(s + 9.1) * 0.22,
+      animOffset: seededRandom(s + 10.7) * Math.PI * 2,
+    };
+  });
+}
+
+function drawFeatherVane(
+  ctx: CanvasRenderingContext2D,
+  length: number,
+  width: number,
+  hover: number,
+  spec: FeatherSpec
+) {
+  const gradient = ctx.createLinearGradient(-width / 2, 0, width / 2, 0);
+  gradient.addColorStop(0, "#040406");
+  gradient.addColorStop(0.22, "#0a0a0e");
+  gradient.addColorStop(0.46, `rgba(34,34,42,${0.5 + hover * 0.08})`);
+  gradient.addColorStop(0.54, `rgba(26,26,34,${0.45 + hover * 0.07})`);
+  gradient.addColorStop(0.78, "#08080c");
+  gradient.addColorStop(1, "#030305");
+
+  const a = spec.curveA;
+  const b = spec.curveB;
+  const c = spec.curveC;
+
+  ctx.fillStyle = gradient;
+  ctx.beginPath();
+  ctx.moveTo(0, 0);
+  ctx.quadraticCurveTo(width * a, length * b, width * c, length * 0.68);
+  ctx.quadraticCurveTo(width * (c * 0.7), length * 0.92, 0, length);
+  ctx.quadraticCurveTo(-width * (c * 0.85), length * 0.9, -width * (a * 0.95), length * 0.62);
+  ctx.quadraticCurveTo(-width * (a * 1.1), length * (b * 0.55), 0, 0);
+  ctx.closePath();
+  ctx.fill();
+
+  ctx.strokeStyle = `rgba(5,5,7,${0.8 + hover * 0.08})`;
+  ctx.lineWidth = Math.max(0.8, width * 0.055);
+  ctx.beginPath();
+  ctx.moveTo(0, length * 0.03);
+  ctx.lineTo(0, length * 0.97);
+  ctx.stroke();
+
+  const barbCount = Math.max(4, Math.floor(length / (8 + spec.barbSpread * 6)));
+  for (let bIdx = 0; bIdx < barbCount; bIdx += 1) {
+    const by = length * 0.1 + (bIdx / barbCount) * length * 0.82;
+    const spread = width * (spec.barbSpread + (bIdx % 4) * 0.025);
+    ctx.strokeStyle = `rgba(16,16,22,${0.18 + hover * 0.06})`;
+    ctx.lineWidth = 0.5;
+    ctx.beginPath();
+    ctx.moveTo(0, by);
+    ctx.lineTo(spread, by + 1.8 + (bIdx % 2));
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(0, by);
+    ctx.lineTo(-spread * 0.92, by + 2.2 - (bIdx % 2) * 0.5);
+    ctx.stroke();
+  }
+}
 
 export function GalleryLiquidStrip({
   onClick,
   ariaLabel = "Navigate gallery",
   className,
   phase = 0,
+  mirror = false,
 }: GalleryLiquidStripProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const hoverRef = useRef(0);
@@ -28,77 +121,84 @@ export function GalleryLiquidStrip({
   const mouseRef = useRef({ x: 0.5, y: 0.5 });
   const reduceMotionRef = useRef(false);
   const phaseRef = useRef(phase);
+  const mirrorRef = useRef(mirror);
+  const feathersRef = useRef<FeatherSpec[]>([]);
 
   phaseRef.current = phase;
+  mirrorRef.current = mirror;
 
   const draw = useCallback(
     (ctx: CanvasRenderingContext2D, w: number, h: number, t: number) => {
       const hover = hoverRef.current;
-      const p = phaseRef.current;
+      const mirrored = mirrorRef.current ? -1 : 1;
       const mx = mouseRef.current.x;
       const my = mouseRef.current.y;
 
-      // Slow boutique drift — no fast blob motion
-      const speed = 0.00011 + hover * 0.00014;
-      const drift = t * speed + p * 1.3;
+      // Always-on slow drift; hover adds a modest boost only
+      const idleSpeed = 0.000045;
+      const hoverSpeed = hover * 0.000028;
+      const time = t * (idleSpeed + hoverSpeed);
 
-      ctx.fillStyle = "#060608";
+      ctx.fillStyle = "#020203";
       ctx.fillRect(0, 0, w, h);
 
-      // Vertical marble veins — soft grey bands
-      const veinCount = 5;
-      for (let i = 0; i < veinCount; i += 1) {
-        const wave =
-          Math.sin(drift * 0.9 + i * 1.45) * 0.5 +
-          Math.sin(drift * 0.55 + i * 2.1 + p) * 0.3;
-        const cx = w * (0.5 + wave * 0.42 + (mx - 0.5) * 0.12 * hover);
-        const band = ctx.createLinearGradient(cx - w * 0.9, 0, cx + w * 0.9, 0);
-        const peak = 0.1 + hover * 0.06 + i * 0.015;
-        band.addColorStop(0, "rgba(6,6,8,0)");
-        band.addColorStop(0.32, `rgba(28,28,32,${peak * 0.55})`);
-        band.addColorStop(0.5, `rgba(48,48,54,${peak})`);
-        band.addColorStop(0.68, `rgba(26,26,30,${peak * 0.5})`);
-        band.addColorStop(1, "rgba(6,6,8,0)");
-        ctx.fillStyle = band;
-        ctx.fillRect(0, 0, w, h);
+      const feathers = feathersRef.current;
+
+      for (const spec of feathers) {
+        const sway =
+          Math.sin(time * 1.15 + spec.animOffset) * 0.035 +
+          Math.sin(time * 0.72 + spec.animOffset * 1.6) * 0.022;
+        const breathe = Math.sin(time * 0.55 + spec.animOffset * 0.8) * h * 0.006;
+
+        const hoverSway = hover * 0.025 * Math.sin(time * 1.8 + spec.animOffset);
+        const mouseAngle = (mx - 0.5) * 0.035 * hover;
+        const angle =
+          spec.baseAngle * mirrored + mirrored * (sway + hoverSway) + mouseAngle;
+
+        const driftX =
+          Math.sin(time * 0.85 + spec.animOffset) * w * 0.014 +
+          (mx - 0.5) * w * 0.018 * hover;
+        const driftY =
+          Math.cos(time * 0.62 + spec.animOffset * 1.2) * h * 0.01 + breathe;
+
+        const cx = w * spec.nx + driftX;
+        const cy = h * spec.ny + driftY;
+        const length = h * spec.lengthRatio;
+        const width = w * spec.widthRatio;
+
+        ctx.save();
+        ctx.translate(cx, cy);
+        ctx.rotate(angle);
+        ctx.globalAlpha = spec.alpha;
+        drawFeatherVane(ctx, length, width, hover, spec);
+        ctx.restore();
       }
 
-      // Slow vertical flow — smoke columns
-      const flowY = ((drift * 0.35) % 1) * h;
-      for (let layer = 0; layer < 3; layer += 1) {
-        const ly = flowY + layer * (h / 3) - h * 0.15;
-        const flow = ctx.createLinearGradient(0, ly, 0, ly + h * 0.55);
-        const a = 0.08 + hover * 0.05 + layer * 0.02;
-        flow.addColorStop(0, "rgba(8,8,10,0)");
-        flow.addColorStop(0.35, `rgba(36,36,40,${a})`);
-        flow.addColorStop(0.55, `rgba(58,58,64,${a * 1.15})`);
-        flow.addColorStop(0.75, `rgba(32,32,36,${a * 0.7})`);
-        flow.addColorStop(1, "rgba(8,8,10,0)");
-        ctx.fillStyle = flow;
-        ctx.fillRect(0, 0, w, h);
-      }
-
-      // Hover: gentle pull toward cursor — marble swirl, not molecules
       if (hover > 0.04) {
-        const hx = mx * w;
-        const hy = my * h;
-        const pull = ctx.createRadialGradient(hx, hy, 0, hx, hy, h * 0.55);
-        pull.addColorStop(0, `rgba(72,72,78,${0.14 * hover})`);
-        pull.addColorStop(0.45, `rgba(40,40,46,${0.08 * hover})`);
-        pull.addColorStop(1, "rgba(6,6,8,0)");
-        ctx.fillStyle = pull;
+        const sheen = ctx.createRadialGradient(
+          mx * w,
+          my * h,
+          0,
+          mx * w,
+          my * h,
+          h * 0.4
+        );
+        sheen.addColorStop(0, `rgba(42,40,50,${0.08 * hover})`);
+        sheen.addColorStop(1, "rgba(2,2,3,0)");
+        ctx.fillStyle = sheen;
         ctx.fillRect(0, 0, w, h);
       }
 
-      // Fine grain overlay
-      ctx.globalAlpha = 0.04 + hover * 0.02;
-      const grain = ctx.createLinearGradient(0, 0, w, h);
-      grain.addColorStop(0, "#1a1a1e");
-      grain.addColorStop(0.5, "#0c0c0e");
-      grain.addColorStop(1, "#242428");
-      ctx.fillStyle = grain;
+      const edge = ctx.createLinearGradient(
+        mirrored > 0 ? w : 0,
+        0,
+        mirrored > 0 ? 0 : w,
+        0
+      );
+      edge.addColorStop(0, "rgba(2,2,3,0)");
+      edge.addColorStop(1, "rgba(2,2,3,0.5)");
+      ctx.fillStyle = edge;
       ctx.fillRect(0, 0, w, h);
-      ctx.globalAlpha = 1;
     },
     []
   );
@@ -143,6 +243,7 @@ export function GalleryLiquidStrip({
       canvas.width = Math.max(1, Math.floor(rect.width * dpr));
       canvas.height = Math.max(1, Math.floor(rect.height * dpr));
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      feathersRef.current = buildFeathers(phaseRef.current, rect.height);
       if (reduceMotionRef.current) {
         draw(ctx, canvas.clientWidth, canvas.clientHeight, 0);
       }
@@ -154,7 +255,7 @@ export function GalleryLiquidStrip({
 
     let raf = 0;
     const loop = (now: number) => {
-      hoverRef.current += (targetHoverRef.current - hoverRef.current) * 0.04;
+      hoverRef.current += (targetHoverRef.current - hoverRef.current) * 0.025;
       if (!reduceMotionRef.current) {
         draw(ctx, canvas.clientWidth, canvas.clientHeight, now);
       }
@@ -178,16 +279,12 @@ export function GalleryLiquidStrip({
       onPointerLeave={onPointerLeave}
       onPointerMove={onPointerMove}
       className={cn(
-        "group relative shrink-0 overflow-hidden bg-[#060608] transition-opacity duration-700",
-        "hover:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#d4af37]/40",
+        "group relative min-h-0 overflow-hidden bg-[#020203] transition-opacity duration-700",
+        "hover:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#d4af37]/35",
         className
       )}
     >
       <canvas ref={canvasRef} className="absolute inset-0 h-full w-full" />
-      <span
-        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent opacity-0 transition-opacity duration-700 group-hover:opacity-100"
-        aria-hidden
-      />
     </button>
   );
 }

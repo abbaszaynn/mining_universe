@@ -11,6 +11,7 @@ import {
 } from "react";
 import Lenis from "lenis";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
+import { registerModalLenis, unregisterModalLenis } from "@/lib/modal-scroll";
 
 type ScrollContextValue = {
   progressRef: MutableRefObject<number>;
@@ -34,6 +35,7 @@ export function ScrollProvider({ children }: { children: ReactNode }) {
       touchMultiplier: 1.8,
     });
     lenisRef.current = lenis;
+    registerModalLenis(lenis);
 
     lenis.on("scroll", ({ scroll, limit }) => {
       progressRef.current = limit > 0 ? scroll / limit : 0;
@@ -73,6 +75,7 @@ export function ScrollProvider({ children }: { children: ReactNode }) {
     return () => {
       window.removeEventListener("resize", onResize);
       gsap.ticker.remove(ticker);
+      unregisterModalLenis(lenis);
       lenis.destroy();
       lenisRef.current = null;
       ScrollTrigger.scrollerProxy(document.body, {});

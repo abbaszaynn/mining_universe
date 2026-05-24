@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 import { BlogMotionProvider } from "@/components/blog/BlogMotionProvider";
 import { CompanyMediaLightbox } from "@/components/companies/CompanyMediaLightbox";
 import { GalleryCynxShowcase } from "@/components/gallery/GalleryCynxShowcase";
+import { GalleryEditorialSection } from "@/components/gallery/GalleryEditorialSection";
 
 type GalleryExperienceProps = {
   images: GalleryImage[];
@@ -90,14 +91,14 @@ export function GalleryExperience({ images }: GalleryExperienceProps) {
     }, root);
 
     return () => ctx.revert();
-  }, []);
+  }, [grouped.length, activeFilter]);
 
   const openAt = useCallback(
     (image: GalleryImage) => {
-      const index = allImages.findIndex((item) => item.id === image.id);
+      const index = filteredImages.findIndex((item) => item.id === image.id);
       if (index >= 0) setLightboxIndex(index);
     },
-    [allImages]
+    [filteredImages]
   );
 
   return (
@@ -186,11 +187,35 @@ export function GalleryExperience({ images }: GalleryExperienceProps) {
               onOpen={openAt}
             />
           </div>
+
+          {grouped.length > 0 && (
+            <div className="mt-20 md:mt-28">
+              <div className="mb-10 border-b border-white/[0.06] pb-6 md:mb-14">
+                <p className="font-mono text-[10px] uppercase tracking-[0.32em] text-[#64748b]">
+                  By operator
+                </p>
+                <h2 className="mt-2 font-[family-name:var(--font-display)] text-xl font-semibold uppercase tracking-[0.1em] text-[#f0f4f7] md:text-2xl">
+                  Company archives
+                </h2>
+              </div>
+
+              {grouped.map(([companyName, companyImages], index) => (
+                <GalleryEditorialSection
+                  key={companyName}
+                  title={companyName}
+                  subtitle={`${companyImages.length} field photographs`}
+                  images={companyImages}
+                  onOpen={openAt}
+                  index={index}
+                />
+              ))}
+            </div>
+          )}
         </main>
 
         {lightboxIndex !== null && (
           <CompanyMediaLightbox
-            images={allImages}
+            images={filteredImages}
             initialIndex={lightboxIndex}
             onClose={() => setLightboxIndex(null)}
           />

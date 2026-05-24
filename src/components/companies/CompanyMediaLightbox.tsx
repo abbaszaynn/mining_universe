@@ -2,6 +2,9 @@
 
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
+import { createPortal } from "react-dom";
+import { ZoomableImage } from "@/components/shared/ZoomableImage";
+import { useScrollLock } from "@/hooks/useScrollLock";
 import { gsap } from "@/lib/gsap";
 import type { GalleryImage } from "@/lib/types";
 
@@ -117,12 +120,7 @@ export function CompanyMediaLightbox({
     setIndex(initialIndex);
   }, [initialIndex]);
 
-  useEffect(() => {
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, []);
+  useScrollLock(true);
 
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
@@ -179,63 +177,34 @@ export function CompanyMediaLightbox({
   const hasMultiple = images.length > 1;
 
   if (fullscreen) {
-    return (
+    if (typeof document === "undefined") return null;
+
+    return createPortal(
       <div
-        className="fixed inset-0 z-[100] flex items-center justify-center bg-[#030712]/97 p-4"
+        className="fixed inset-0 z-[9999] flex touch-none items-center justify-center overflow-hidden overscroll-none bg-black/92 p-4 backdrop-blur-md"
         onClick={() => setFullscreen(false)}
         role="dialog"
         aria-modal
         aria-label="Full screen image"
+        data-lenis-prevent
       >
-        <div className="absolute right-4 top-4 z-10 flex gap-1">
-          <IconButton
-            label="Download image"
-            href={image.url}
-            download={downloadName}
-            accent
-          >
-            <DownloadIcon />
-          </IconButton>
-          <IconButton label="Close full screen" onClick={() => setFullscreen(false)}>
-            ✕
-          </IconButton>
+        <button
+          type="button"
+          onClick={() => setFullscreen(false)}
+          className="absolute right-5 top-5 z-10 flex h-11 w-11 items-center justify-center text-2xl font-light leading-none text-[#94a3b8] transition hover:text-[#f0f4f7] md:right-8 md:top-8"
+          aria-label="Close full screen"
+        >
+          ✕
+        </button>
+
+        <div
+          className="relative h-full w-full max-h-[94vh] max-w-[96vw]"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <ZoomableImage key={image.url} src={image.url} alt={image.title} />
         </div>
-        {hasMultiple && (
-          <>
-            <button
-              type="button"
-              onClick={(e) => {
-                e.stopPropagation();
-                go(-1);
-              }}
-              className="absolute left-4 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-[#030712]/60 text-[#e2e8f0] backdrop-blur-sm transition hover:text-[#d4af37]"
-              aria-label="Previous image"
-            >
-              ←
-            </button>
-            <button
-              type="button"
-              onClick={(e) => {
-                e.stopPropagation();
-                go(1);
-              }}
-              className="absolute right-4 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-[#030712]/60 text-[#e2e8f0] backdrop-blur-sm transition hover:text-[#d4af37]"
-              aria-label="Next image"
-            >
-              →
-            </button>
-          </>
-        )}
-        <div onClick={(e) => e.stopPropagation()}>
-          <Image
-            src={image.url}
-            alt={image.title}
-            width={1920}
-            height={1440}
-            className="max-h-[94vh] max-w-[96vw] object-contain"
-          />
-        </div>
-      </div>
+      </div>,
+      document.body
     );
   }
 
@@ -250,7 +219,8 @@ export function CompanyMediaLightbox({
   return (
     <div
       data-lightbox-backdrop
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-[#030712]/80 p-4 backdrop-blur-sm sm:p-6"
+      data-lenis-prevent
+      className="fixed inset-0 z-[200] flex items-center justify-center overflow-hidden bg-[#030712]/80 p-4 backdrop-blur-sm overscroll-none sm:p-6"
       onClick={onClose}
       role="dialog"
       aria-modal

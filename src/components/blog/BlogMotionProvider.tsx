@@ -3,6 +3,7 @@
 import { useEffect, type ReactNode } from "react";
 import Lenis from "lenis";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
+import { registerModalLenis, unregisterModalLenis } from "@/lib/modal-scroll";
 
 export function BlogMotionProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
@@ -20,6 +21,7 @@ export function BlogMotionProvider({ children }: { children: ReactNode }) {
       smoothWheel: true,
       touchMultiplier: 1.6,
     });
+    registerModalLenis(lenis);
 
     lenis.on("scroll", () => ScrollTrigger.update());
 
@@ -54,6 +56,7 @@ export function BlogMotionProvider({ children }: { children: ReactNode }) {
     return () => {
       window.removeEventListener("resize", onResize);
       gsap.ticker.remove(ticker);
+      unregisterModalLenis(lenis);
       lenis.destroy();
       ScrollTrigger.scrollerProxy(document.body, {});
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());

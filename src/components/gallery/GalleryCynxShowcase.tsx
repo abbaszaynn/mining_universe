@@ -13,6 +13,8 @@ import { cn } from "@/lib/utils";
 import { GalleryLiquidStrip } from "@/components/gallery/GalleryLiquidStrip";
 
 const STRIP_COUNT = 3;
+const CENTER_WIDTH =
+  "w-[min(92vw,680px)] sm:w-[min(72vw,720px)] lg:w-[min(58vw,740px)]";
 
 type GalleryCynxShowcaseProps = {
   images: GalleryImage[];
@@ -20,26 +22,34 @@ type GalleryCynxShowcaseProps = {
   className?: string;
 };
 
-function StripColumn({
+function StripWing({
   side,
   onNavigate,
 }: {
   side: "left" | "right";
   onNavigate: () => void;
 }) {
+  const isLeft = side === "left";
+
   return (
-    <div className="hidden h-full shrink-0 items-stretch gap-2 sm:flex md:gap-2.5 lg:gap-3">
+    <div
+      className={cn(
+        "hidden h-full min-w-0 flex-1 items-stretch gap-2 sm:flex md:gap-2.5 lg:gap-3",
+        isLeft ? "justify-end pr-1.5 md:pr-2" : "justify-start pl-1.5 md:pl-2"
+      )}
+    >
       {Array.from({ length: STRIP_COUNT }).map((_, i) => (
         <GalleryLiquidStrip
           key={`${side}-${i}`}
-          phase={side === "left" ? i * 0.7 : i * 0.9 + 1.2}
+          phase={isLeft ? i * 0.85 : i * 1.05 + 1.4}
+          mirror={!isLeft}
           onClick={onNavigate}
           ariaLabel={
-            side === "left"
+            isLeft
               ? `Previous specimen, strip ${i + 1}`
               : `Next specimen, strip ${i + 1}`
           }
-          className="h-full w-[clamp(1.5rem,2.2vw,2.5rem)] opacity-95"
+          className="h-full min-w-[2rem] flex-1"
         />
       ))}
     </div>
@@ -173,14 +183,18 @@ export function GalleryCynxShowcase({
       aria-roledescription="carousel"
       aria-label="Specimen gallery"
     >
-      <div className="mx-auto flex justify-center px-2 sm:px-4">
-        <div className="flex h-[min(52vh,440px)] w-full max-w-[1180px] items-stretch justify-center gap-3 md:h-[min(58vh,520px)] md:gap-4 lg:h-[min(60vh,560px)] lg:gap-5">
-          <StripColumn side="left" onNavigate={goPrev} />
+      {/* Full-bleed strip wings + fixed center image */}
+      <div className="relative left-1/2 w-screen -translate-x-1/2">
+        <div className="flex h-[min(52vh,440px)] w-full items-stretch md:h-[min(58vh,520px)] lg:h-[min(60vh,560px)]">
+          <StripWing side="left" onNavigate={goPrev} />
 
           <button
             type="button"
             onClick={() => onOpen(active)}
-            className="group relative h-full min-w-0 flex-1 overflow-hidden border border-white/[0.07] bg-[#0a0f1e] shadow-[0_40px_120px_rgba(0,0,0,0.5)] transition-[border-color] duration-500 hover:border-[#d4af37]/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#d4af37]/40"
+            className={cn(
+              "group relative h-full shrink-0 overflow-hidden border border-white/[0.07] bg-[#0a0f1e] shadow-[0_40px_120px_rgba(0,0,0,0.5)] transition-[border-color] duration-500 hover:border-[#d4af37]/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#d4af37]/40",
+              CENTER_WIDTH
+            )}
           >
             <div ref={imageWrapRef} className="relative h-full w-full">
               <Image
@@ -189,7 +203,7 @@ export function GalleryCynxShowcase({
                 alt={active.title}
                 fill
                 className="object-cover transition duration-[1.2s] ease-out group-hover:scale-[1.02]"
-                sizes="(max-width: 768px) 85vw, (max-width: 1200px) 65vw, 720px"
+                sizes="(max-width: 768px) 92vw, 740px"
                 priority={activeIndex === 0}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#030712]/70 via-transparent to-[#030712]/8" />
@@ -200,7 +214,7 @@ export function GalleryCynxShowcase({
             </div>
           </button>
 
-          <StripColumn side="right" onNavigate={goNext} />
+          <StripWing side="right" onNavigate={goNext} />
         </div>
       </div>
 
