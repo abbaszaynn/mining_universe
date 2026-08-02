@@ -3,6 +3,7 @@
 import { useState, type FormEvent } from "react";
 import { getInvestorDeskCompanies, type InvestorDeskCompany } from "@/lib/investor-desk-data";
 import { cn } from "@/lib/utils";
+import { SquareButton } from "@/components/ui/SquareButton";
 
 type InvestorDeskFormProps = {
   companies?: InvestorDeskCompany[];
@@ -83,32 +84,33 @@ export function InvestorDeskForm({
   };
 
   const inputClass =
-    "w-full rounded-lg border border-white/10 bg-[#030712]/40 px-4 py-3 text-sm font-light text-[#f0f4f7] placeholder:text-[#64748b] outline-none transition focus:border-[#d4af37]/45 focus:ring-1 focus:ring-[#d4af37]/15";
+    "w-full rounded-lg border border-graphite-950/10 bg-white px-4 py-3 text-sm font-light text-graphite-950 placeholder:text-graphite-400 outline-none transition focus:border-copper-500/40 focus:ring-1 focus:ring-copper-500/10";
   const labelClass =
-    "mb-2 block text-[11px] font-medium uppercase tracking-[0.14em] text-[#94a3b8]";
+    "mb-2 block text-[11px] font-medium uppercase tracking-[0.14em] text-graphite-500";
 
   if (status === "success") {
     return (
       <div
         className={cn(
-          "rounded-2xl border border-[#d4af37]/20 bg-gradient-to-br from-[#d4af37]/[0.08] to-transparent p-10 text-center md:p-14",
+          "rounded-2xl border border-copper-500/20 bg-gradient-to-br from-copper-500/10 to-transparent p-10 text-center md:p-14",
           className
         )}
       >
-        <p className="font-[family-name:var(--font-display)] text-2xl font-semibold text-[#f0f4f7]">
+        <p className="font-[family-name:var(--font-display)] text-2xl font-semibold text-graphite-950">
           Inquiry received
         </p>
-        <p className="mx-auto mt-4 max-w-md text-sm font-light leading-relaxed text-[#94a3b8]">
+        <p className="mx-auto mt-4 max-w-md text-sm font-light leading-relaxed text-graphite-600">
           Thank you for reaching out. Our investor desk will review your details
           and respond within one to two business days.
         </p>
-        <button
+        <SquareButton
           type="button"
           onClick={() => setStatus("idle")}
-          className="mt-8 text-sm font-semibold text-[#d4af37] transition hover:text-[#f5e6a8]"
+          tone="accent"
+          className="mt-8"
         >
           Submit another inquiry
-        </button>
+        </SquareButton>
       </div>
     );
   }
@@ -117,15 +119,15 @@ export function InvestorDeskForm({
     <form
       onSubmit={handleSubmit}
       className={cn(
-        "rounded-2xl border border-white/[0.08] bg-white/[0.02] p-6 sm:p-8 md:p-10",
+        "rounded-2xl border border-graphite-950/[0.05] bg-bone-50/50 p-6 shadow-sm sm:p-8 md:p-10",
         className
       )}
     >
-      <div className="mb-8 border-b border-white/[0.06] pb-6">
-        <h2 className="font-[family-name:var(--font-display)] text-xl font-semibold text-[#f0f4f7] md:text-2xl">
+      <div className="mb-8 border-b border-graphite-950/[0.06] pb-6">
+        <h2 className="font-[family-name:var(--font-display)] text-xl font-semibold text-graphite-950 md:text-2xl">
           Initial inquiry form
         </h2>
-        <p className="mt-2 text-sm font-light leading-relaxed text-[#94a3b8]">
+        <p className="mt-2 text-sm font-light leading-relaxed text-graphite-600">
           Tell us about your interest and we will connect you with the right
           operator, site, and documentation package.
         </p>
@@ -133,7 +135,7 @@ export function InvestorDeskForm({
 
       <div className="space-y-8">
         <fieldset className="space-y-4">
-          <legend className="mb-2 font-mono text-[10px] uppercase tracking-[0.28em] text-[#d4af37]/80">
+          <legend className="mb-2 font-mono text-[10px] uppercase tracking-[0.28em] text-copper-600/80">
             Your details
           </legend>
           <div className="grid gap-4 sm:grid-cols-2">
@@ -206,7 +208,7 @@ export function InvestorDeskForm({
         </fieldset>
 
         <fieldset className="space-y-4">
-          <legend className="mb-2 font-mono text-[10px] uppercase tracking-[0.28em] text-[#d4af37]/80">
+          <legend className="mb-2 font-mono text-[10px] uppercase tracking-[0.28em] text-copper-600/80">
             Investment interest
           </legend>
           <div className="grid gap-4 sm:grid-cols-2">
@@ -261,10 +263,10 @@ export function InvestorDeskForm({
         </fieldset>
 
         <fieldset className="space-y-4">
-          <legend className="mb-2 font-mono text-[10px] uppercase tracking-[0.28em] text-[#d4af37]/80">
+          <legend className="mb-2 font-mono text-[10px] uppercase tracking-[0.28em] text-copper-600/80">
             Field visit
           </legend>
-          <p className="text-sm font-light text-[#94a3b8]">
+          <p className="text-sm font-light text-graphite-600">
             We arrange guided site visits across Gilgit Baltistan with full safety
             and government clearance support.
           </p>
@@ -276,7 +278,7 @@ export function InvestorDeskForm({
             ].map((option) => (
               <label
                 key={option.value}
-                className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-white/10 bg-[#030712]/30 px-4 py-2.5 text-sm font-light text-[#cbd5e1] transition has-[:checked]:border-[#d4af37]/40 has-[:checked]:bg-[#d4af37]/10 has-[:checked]:text-[#f0f4f7]"
+                className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-graphite-950/10 bg-white px-4 py-2.5 text-sm font-light text-graphite-700 transition has-[:checked]:border-copper-500/40 has-[:checked]:bg-copper-500/10 has-[:checked]:text-copper-700"
               >
                 <input
                   type="radio"
@@ -306,18 +308,19 @@ export function InvestorDeskForm({
         </div>
 
         {status === "error" && (
-          <p className="rounded-lg border border-red-500/20 bg-red-500/10 px-4 py-3 text-sm text-red-300">
+          <p className="rounded-lg border border-red-500/20 bg-red-500/10 px-4 py-3 text-sm text-red-600">
             {errorMessage}
           </p>
         )}
 
-        <button
+        <SquareButton
           type="submit"
           disabled={loading}
-          className="w-full rounded-lg bg-[#d4af37] py-3.5 text-sm font-semibold text-[#0f172a] transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto sm:px-12"
+          tone="accent"
+          className="w-full sm:w-auto justify-center"
         >
           {loading ? "Sending inquiry…" : "Submit inquiry"}
-        </button>
+        </SquareButton>
       </div>
     </form>
   );

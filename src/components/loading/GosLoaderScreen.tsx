@@ -98,7 +98,14 @@ export function GosLoaderScreen({
       return;
     }
 
-    const tl = gsap.timeline({ onComplete: onExitComplete });
+    let done = false;
+    const finish = () => {
+      if (done) return;
+      done = true;
+      onExitComplete?.();
+    };
+
+    const tl = gsap.timeline({ onComplete: finish });
     tl.to(title, {
       opacity: 0,
       y: -16,
@@ -111,7 +118,13 @@ export function GosLoaderScreen({
       0.12
     );
 
+    // GSAP is driven by requestAnimationFrame, which browsers suspend in
+    // background tabs — without this the timeline never completes and the
+    // loader would hold the page hostage (scroll locked) until refocus.
+    const failSafe = window.setTimeout(finish, 1200);
+
     return () => {
+      window.clearTimeout(failSafe);
       tl.kill();
     };
   }, [exiting, onExitComplete]);
@@ -119,9 +132,8 @@ export function GosLoaderScreen({
   return (
     <div
       ref={shellRef}
-      style={{ backgroundColor: "#030712", color: "#e2e8f0" }}
       className={cn(
-        "fixed inset-0 z-[99999] flex items-center justify-center",
+        "fixed inset-0 z-[99999] flex items-center justify-center bg-bone-50 text-graphite-950",
         "pointer-events-auto touch-none select-none overscroll-none"
       )}
       aria-live="polite"
@@ -129,44 +141,34 @@ export function GosLoaderScreen({
       role="status"
       aria-label="Loading The Game of Stones"
     >
-      <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(212,175,55,0.08),transparent_62%)]"
-        aria-hidden
-      />
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.35] bg-[linear-gradient(rgba(212,175,55,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(212,175,55,0.03)_1px,transparent_1px)] bg-[size:64px_64px]"
-        aria-hidden
-      />
-
       <div className="relative z-10 px-8 text-center">
         <p
           ref={theRef}
-          style={{ color: "rgba(232,228,220,0.9)", letterSpacing: "0.45em" }}
-          className="font-mono text-[10px] uppercase md:text-xs"
+          style={{ letterSpacing: "0.45em" }}
+          className="text-[10px] uppercase text-graphite-400 md:text-xs"
         >
           The
         </p>
         <h1
           ref={titleRef}
-          style={{ color: "#d4af37", letterSpacing: "0.12em" }}
-          className="mt-3 font-[family-name:var(--font-got)] text-[clamp(1.75rem,6vw,3.25rem)] font-bold uppercase leading-[0.95]"
+          className="mt-3 text-[clamp(2rem,6vw,3.5rem)] font-medium leading-[0.9] tracking-[-0.04em] text-graphite-950"
         >
           Game of Stones
         </h1>
         {mode === "initial" && (
           <p
             ref={tagRef}
-            style={{ color: "#64748b", letterSpacing: "0.32em" }}
-            className="mt-4 font-mono text-[9px] uppercase md:text-[10px]"
+            style={{ letterSpacing: "0.3em" }}
+            className="mt-4 text-[9px] uppercase text-graphite-400 md:text-[10px]"
           >
-            Gilgit Baltistan · Mining operators
+            Gilgit Baltistan · Licensed mining operators
           </p>
         )}
 
-        <div className="mx-auto mt-8 h-px w-40 overflow-hidden rounded-full bg-white/[0.06] md:mt-10 md:w-52">
+        <div className="mx-auto mt-8 h-px w-40 overflow-hidden bg-graphite-950/10 md:mt-10 md:w-52">
           <div
             ref={lineRef}
-            className="h-full w-full origin-left scale-x-0 bg-[linear-gradient(90deg,transparent,#d4af37,#f0e6c8,#d4af37,transparent)] bg-[length:200%_100%]"
+            className="h-full w-full origin-left scale-x-0 bg-[linear-gradient(90deg,transparent,#b05b29,#e0a87c,#b05b29,transparent)] bg-[length:200%_100%]"
           />
         </div>
       </div>

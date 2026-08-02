@@ -1,27 +1,16 @@
 import type { Metadata } from "next";
-import { Cinzel_Decorative, Inter, Syne } from "next/font/google";
+import { Figtree } from "next/font/google";
 import { AppProviders } from "@/components/providers/AppProviders";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { createPageMetadata, organizationJsonLd } from "@/lib/seo";
 import "./globals.css";
 
-const inter = Inter({
+/** One family across the whole site — body and display both draw from Figtree,
+ *  with weight/leading (not a second typeface) carrying the hierarchy. */
+const figtree = Figtree({
   subsets: ["latin"],
   variable: "--font-sans",
-  display: "swap",
-});
-
-const syne = Syne({
-  subsets: ["latin"],
-  variable: "--font-display",
-  weight: ["400", "500", "600", "700", "800"],
-  display: "swap",
-});
-
-const cinzelDecorative = Cinzel_Decorative({
-  subsets: ["latin"],
-  variable: "--font-got",
-  weight: ["400", "700", "900"],
+  weight: ["300", "400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -50,8 +39,10 @@ export default function RootLayout({
         )}
       </head>
       <body
-        style={{ backgroundColor: "#030712" }}
-        className={`${inter.variable} ${syne.variable} ${cinzelDecorative.variable} min-h-[100dvh] bg-[#030712] font-sans antialiased`}
+        // globals.css already sets `body { background: var(--background) }` —
+        // no inline style needed (one was here before and caused a dev-only
+        // hydration warning from the browser normalizing the color string).
+        className={`${figtree.variable} min-h-[100dvh] bg-background font-sans antialiased`}
       >
         <AppProviders>{children}</AppProviders>
       </body>

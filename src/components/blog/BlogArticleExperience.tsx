@@ -6,7 +6,6 @@ import { useLayoutEffect, useRef } from "react";
 import { gsap } from "@/lib/gsap";
 import { formatDate, cn } from "@/lib/utils";
 import type { NewsArticle } from "@/lib/types";
-import { BlogMotionProvider } from "./BlogMotionProvider";
 import { MineralTitle } from "./MineralTitle";
 import { BlogCard } from "./BlogCard";
 
@@ -151,24 +150,24 @@ export function BlogArticleExperience({
   }, [article.id]);
 
   return (
-    <BlogMotionProvider>
+    <>
       <div
         ref={rootRef}
         data-gos-page-root
-        className="relative min-h-[100dvh] overflow-x-hidden bg-[#030712] text-[#e2e8f0]"
+        className="relative min-h-[100dvh] overflow-x-hidden bg-bone-50 text-graphite-950"
       >
         <div
           ref={progressRef}
-          className="pointer-events-none fixed left-0 right-0 top-[4.25rem] z-[60] h-px origin-left scale-x-0 bg-gradient-to-r from-[#d4af37] via-[#f5e6a8] to-[#d4af37] md:top-[4.75rem]"
+          className="pointer-events-none fixed left-0 right-0 top-[4.25rem] z-[60] h-px origin-left scale-x-0 bg-gradient-to-r from-copper-500 via-copper-200 to-copper-500 md:top-[4.75rem]"
           aria-hidden
         />
 
         <div
-          className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(212,175,55,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(212,175,55,0.03)_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_at_top,black,transparent_72%)]"
+          className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(233,122,60,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(233,122,60,0.03)_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_at_top,black,transparent_72%)]"
           aria-hidden
         />
         <div
-          className="pointer-events-none absolute inset-x-0 top-0 h-[32rem] bg-[radial-gradient(ellipse_at_top,rgba(212,175,55,0.1),transparent_58%)]"
+          className="pointer-events-none absolute inset-x-0 top-0 h-[32rem] bg-[radial-gradient(ellipse_at_top,rgba(233,122,60,0.1),transparent_58%)]"
           aria-hidden
         />
 
@@ -177,7 +176,7 @@ export function BlogArticleExperience({
             href="/news"
             data-blog-back
             data-blog-animate
-            className="group mb-10 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.22em] text-[#64748b] transition hover:text-[#d4af37]"
+            className="group mb-10 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.22em] text-graphite-600 transition hover:text-copper-500"
           >
             <span className="transition-transform group-hover:-translate-x-1">
               ←
@@ -191,18 +190,18 @@ export function BlogArticleExperience({
               className="flex flex-wrap items-center justify-center gap-3"
             >
               {companyName && (
-                <span className="rounded-full border border-[#d4af37]/35 bg-[#d4af37]/10 px-4 py-1.5 text-xs font-medium text-[#d4af37] shadow-[0_0_24px_rgba(212,175,55,0.12)]">
+                <span className="rounded-full border border-copper-500/35 bg-copper-500/10 px-4 py-1.5 text-xs font-medium text-copper-500 shadow-[0_0_24px_rgba(233,122,60,0.12)]">
                   {companyName}
                 </span>
               )}
               <time
                 dateTime={article.publishDate}
-                className="font-mono text-xs uppercase tracking-[0.24em] text-[#64748b]"
+                className="font-mono text-xs uppercase tracking-[0.24em] text-graphite-600"
               >
                 {formatDate(article.publishDate)}
               </time>
-              <span className="hidden h-1 w-1 rounded-full bg-[#d4af37]/50 sm:inline-block" />
-              <span className="hidden font-mono text-xs uppercase tracking-[0.2em] text-[#475569] sm:inline">
+              <span className="hidden h-1 w-1 rounded-full bg-copper-500/50 sm:inline-block" />
+              <span className="hidden font-mono text-xs uppercase tracking-[0.2em] text-graphite-600 sm:inline">
                 {paragraphs.length} sections
               </span>
             </div>
@@ -215,7 +214,7 @@ export function BlogArticleExperience({
             <p
               data-blog-excerpt
               data-blog-animate
-              className="mx-auto max-w-2xl text-lg leading-relaxed text-[#94a3b8] md:text-xl"
+              className="mx-auto max-w-2xl text-lg leading-relaxed text-graphite-600 md:text-xl"
             >
               {article.excerpt}
             </p>
@@ -224,7 +223,7 @@ export function BlogArticleExperience({
           <div
             data-blog-hero
             data-blog-animate
-            className="relative mb-14 aspect-[16/9] overflow-hidden rounded-3xl border border-white/10 shadow-[0_32px_100px_rgba(0,0,0,0.55)] md:mb-16"
+            className="relative mb-14 aspect-[16/9] overflow-hidden rounded-3xl border border-graphite-950/10 shadow-[0_32px_100px_rgba(0,0,0,0.15)] md:mb-16"
             style={{ aspectRatio: "16 / 9", overflow: "hidden" }}
           >
             <div
@@ -241,8 +240,8 @@ export function BlogArticleExperience({
                 sizes="(max-width: 896px) 100vw, 896px"
               />
             </div>
-            <div className="absolute inset-0 bg-gradient-to-t from-[#030712]/70 via-[#030712]/10 to-transparent" />
-            <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#d4af37]/40 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-graphite-950/50 via-graphite-950/5 to-transparent" />
+            <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-copper-500/40 to-transparent" />
           </div>
 
           <div
@@ -250,7 +249,7 @@ export function BlogArticleExperience({
             className="relative mx-auto max-w-3xl space-y-8 md:space-y-10"
           >
             <div
-              className="pointer-events-none absolute -left-6 top-0 hidden h-full w-px bg-gradient-to-b from-[#d4af37]/40 via-[#d4af37]/10 to-transparent md:block"
+              className="pointer-events-none absolute -left-6 top-0 hidden h-full w-px bg-gradient-to-b from-copper-500/40 via-copper-500/10 to-transparent md:block"
               aria-hidden
             />
 
@@ -260,16 +259,16 @@ export function BlogArticleExperience({
                 data-blog-paragraph
                 data-blog-animate
                 className={cn(
-                  "relative text-base leading-[1.85] text-[#cbd5e1] md:text-lg md:leading-[1.9]",
+                  "relative text-base leading-[1.85] text-graphite-950 md:text-lg md:leading-[1.9]",
                   index === 0 &&
-                    "first-letter:float-left first-letter:mr-3 first-letter:mt-1 first-letter:font-[family-name:var(--font-display)] first-letter:text-5xl first-letter:font-semibold first-letter:text-[#d4af37] md:first-letter:text-6xl",
+                    "first-letter:float-left first-letter:mr-3 first-letter:mt-1 first-letter:font-[family-name:var(--font-display)] first-letter:text-5xl first-letter:font-semibold first-letter:text-copper-500 md:first-letter:text-6xl",
                   index % 2 === 1 &&
-                    "border-l border-[#d4af37]/20 pl-6 md:pl-8"
+                    "border-l border-copper-500/20 pl-6 md:pl-8"
                 )}
               >
                 {index > 0 && (
                   <span
-                    className="mb-3 block font-mono text-[10px] uppercase tracking-[0.35em] text-[#d4af37]/70"
+                    className="mb-3 block font-mono text-[10px] uppercase tracking-[0.35em] text-copper-500/70"
                     aria-hidden
                   >
                     {String(index + 1).padStart(2, "0")}
@@ -281,12 +280,12 @@ export function BlogArticleExperience({
           </div>
 
           {relatedArticles.length > 0 && (
-            <section className="mt-24 border-t border-white/10 pt-16 md:mt-32 md:pt-20">
+            <section className="mt-24 border-t border-graphite-950/10 pt-16 md:mt-32 md:pt-20">
               <div className="mb-10 max-w-xl">
-                <p className="font-mono text-xs uppercase tracking-[0.35em] text-[#d4af37]/90">
+                <p className="font-mono text-xs uppercase tracking-[0.35em] text-copper-500/90">
                   Continue reading
                 </p>
-                <h2 className="mt-3 font-[family-name:var(--font-display)] text-2xl font-semibold text-[#f0f4f7] md:text-3xl">
+                <h2 className="mt-3 font-[family-name:var(--font-display)] text-2xl font-semibold text-graphite-950 md:text-3xl">
                   More from the field
                 </h2>
               </div>
@@ -311,6 +310,6 @@ export function BlogArticleExperience({
           )}
         </main>
       </div>
-    </BlogMotionProvider>
+    </>
   );
 }

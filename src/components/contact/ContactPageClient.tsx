@@ -2,7 +2,6 @@
 
 import { useLayoutEffect, useRef } from "react";
 import { gsap } from "@/lib/gsap";
-import { BlogMotionProvider } from "@/components/blog/BlogMotionProvider";
 import { ContactForm } from "@/components/contact/ContactForm";
 
 const CONTACT = {
@@ -131,7 +130,7 @@ export function ContactPageClient() {
   }, []);
 
   return (
-    <BlogMotionProvider>
+    <>
       <div
         ref={rootRef}
         data-gos-page-root
@@ -233,6 +232,6 @@ export function ContactPageClient() {
           </div>
         </main>
       </div>
-    </BlogMotionProvider>
+    </>
   );
 }

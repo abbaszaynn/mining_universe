@@ -10,16 +10,62 @@ const config: Config = {
     extend: {
       fontFamily: {
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],
-        display: ["var(--font-display)", "var(--font-sans)", "system-ui"],
+        // Single-family system: `font-display` still resolves (30+ legacy call
+        // sites on not-yet-redesigned pages) but now draws from the same face.
+        display: ["var(--font-sans)", "system-ui", "sans-serif"],
       },
       colors: {
+        // Semantic layer — aliases onto the primitive scales below via CSS vars.
         background: "var(--background)",
         foreground: "var(--foreground)",
-        accent: "var(--accent)",
         muted: "var(--muted)",
+        accent: {
+          DEFAULT: "var(--accent)",
+          hover: "var(--accent-hover)",
+          active: "var(--accent-active)",
+        },
+        // Primitive layer — "quartz & graphite": warm stone neutrals + copper.
+        bone: {
+          50: "#faf8f3",
+          100: "#f1eee6",
+          200: "#e4ded2",
+          300: "#d6cebd",
+        },
+        sand: {
+          100: "#efe3d4",
+          200: "#e6d4bf",
+        },
+        graphite: {
+          300: "#9c9488",
+          400: "#7a7266",
+          500: "#5c554b",
+          700: "#35302a",
+          900: "#1c1916",
+          950: "#121010",
+        },
+        copper: {
+          300: "#e0a87c",
+          400: "#c9743e",
+          500: "#b05b29",
+          600: "#8e461c",
+          700: "#6b3414",
+        },
       },
-      animation: {
-        "pulse-slow": "pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+      fontSize: {
+        // Display scale — tight leading (~0.9) is the signature of this design.
+        "display-xl": ["clamp(2.75rem,7.2vw,7.5rem)", { lineHeight: "0.9", fontWeight: "500" }],
+        "display-lg": ["clamp(2.25rem,4.6vw,4.5rem)", { lineHeight: "0.95", fontWeight: "500" }],
+        "display-md": ["clamp(2rem,3.4vw,3.25rem)", { lineHeight: "1.05", fontWeight: "500" }],
+        marquee: ["clamp(3.5rem,10vw,7.5rem)", { lineHeight: "0.9", fontWeight: "500" }],
+      },
+      transitionTimingFunction: {
+        out: "var(--ease-out)",
+        drawer: "var(--ease-drawer)",
+      },
+      transitionDuration: {
+        fast: "160ms",
+        base: "300ms",
+        slow: "600ms",
       },
     },
   },

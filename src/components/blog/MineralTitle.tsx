@@ -16,8 +16,8 @@ export function MineralTitle({
   return (
     <Tag
       className={cn(
-        "font-[family-name:var(--font-display)] font-semibold tracking-tight text-[#f0f4f7]",
-        "text-balance leading-[1.12] [text-shadow:0_1px_0_rgba(212,175,55,0.28),0_4px_24px_rgba(0,0,0,0.35)]",
+        "font-[family-name:var(--font-display)] font-semibold tracking-tight text-graphite-950",
+        "text-balance leading-[1.12]",
         className
       )}
     >

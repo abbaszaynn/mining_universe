@@ -3,36 +3,22 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { GosMark } from "@/components/brand/GosMark";
+import { SquareButton } from "@/components/ui/SquareButton";
 
 const NAV_ITEMS = [
   { href: "/", label: "Home" },
-  { href: "/companies", label: "Companies" },
+  { href: "/about", label: "About" },
   { href: "/map", label: "Map" },
   { href: "/gallery", label: "Gallery" },
-  { href: "/news", label: "Blogs" },
+  { href: "/news", label: "Press" },
   { href: "/documents", label: "Documents" },
-  { href: "/contact", label: "Contact" },
 ] as const;
 
-type SiteHeaderProps = {
-  variant?: "overlay" | "solid";
-};
-
-export function SiteHeader({ variant = "solid" }: SiteHeaderProps) {
+export function SiteHeader() {
   const pathname = usePathname();
-  const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-
-  const isOverlay = variant === "overlay";
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   useEffect(() => {
     setMenuOpen(false);
@@ -45,42 +31,21 @@ export function SiteHeader({ variant = "solid" }: SiteHeaderProps) {
     };
   }, [menuOpen]);
 
-  const showBar = !isOverlay || scrolled || menuOpen;
-
   return (
     <>
-      <header
-        className={cn(
-          "fixed left-0 right-0 top-0 z-50 transition-all duration-500",
-          showBar
-            ? "border-b border-white/[0.06] bg-[#030712]/75 shadow-[0_8px_32px_rgba(0,0,0,0.35)] backdrop-blur-xl"
-            : "border-b border-transparent bg-transparent"
-        )}
-      >
-        <div className="mx-auto flex h-[4.25rem] max-w-7xl items-center justify-between gap-4 px-6 md:h-[4.75rem] md:px-10">
+      <header className="fixed inset-x-0 top-0 z-50">
+        <div className="mx-auto flex max-w-[105rem] items-center justify-between gap-4 px-5 py-5 md:px-10 md:py-6">
           <Link
             href="/"
-            className="group flex min-w-0 items-center gap-3"
-            aria-label="GOS home"
+            aria-label="Game of Stones home"
+            className="text-xl font-semibold tracking-[-0.06em] text-graphite-950 transition-colors duration-base ease-out hover:text-copper-500 md:text-2xl"
           >
-            <span
-              className="relative flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-full border border-[#d4af37]/35 bg-[#030712] shadow-[0_0_24px_rgba(212,175,55,0.18)] transition group-hover:border-[#d4af37]/60 group-hover:shadow-[0_0_32px_rgba(212,175,55,0.28)]"
-              aria-hidden
-            >
-              <GosMark size={36} className="h-full w-full" />
-            </span>
-            <span className="min-w-0">
-              <span className="block truncate font-[family-name:var(--font-display)] text-base font-semibold tracking-tight text-[#f0f4f7] md:text-lg">
-                GOS
-              </span>
-              <span className="hidden truncate font-mono text-[10px] uppercase tracking-[0.28em] text-[#64748b] sm:block">
-                Game of Stones
-              </span>
-            </span>
+            GOS
           </Link>
 
+          {/* Centred segmented nav — plain white plate, square corners */}
           <nav
-            className="hidden items-center gap-1 rounded-full border border-white/[0.08] bg-white/[0.03] p-1.5 backdrop-blur-md lg:flex"
+            className="hidden items-center bg-white px-1.5 py-1.5 lg:flex"
             aria-label="Main navigation"
           >
             {NAV_ITEMS.map((item) => {
@@ -94,35 +59,29 @@ export function SiteHeader({ variant = "solid" }: SiteHeaderProps) {
                   key={item.href}
                   href={item.href}
                   className={cn(
-                    "relative rounded-full px-4 py-2 text-sm font-medium transition-colors duration-300",
+                    "inline-flex items-center gap-2 px-3.5 py-2 text-[0.9375rem] leading-none transition-colors duration-base ease-out",
                     active
-                      ? "text-[#f0f4f7]"
-                      : "text-[#94a3b8] hover:text-[#e2e8f0]"
+                      ? "text-graphite-950"
+                      : "text-graphite-500 hover:text-graphite-950"
                   )}
                 >
                   {active && (
-                    <span
-                      className="absolute inset-0 rounded-full border border-[#d4af37]/25 bg-[#d4af37]/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]"
-                      aria-hidden
-                    />
+                    <span className="h-2 w-2 bg-copper-500" aria-hidden />
                   )}
-                  <span className="relative">{item.label}</span>
+                  {item.label}
                 </Link>
               );
             })}
           </nav>
 
           <div className="flex items-center gap-3">
-            <Link
-              href="/investor-desk"
-              className="hidden rounded-full bg-[#d4af37] px-5 py-2 text-sm font-semibold text-[#0f172a] shadow-[0_0_28px_rgba(212,175,55,0.22)] transition hover:brightness-110 md:inline-flex"
-            >
-              Investor desk
-            </Link>
+            <SquareButton href="/investor-desk" tone="accent" className="hidden md:inline-flex">
+              Speak with us
+            </SquareButton>
 
             <button
               type="button"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-[#e2e8f0] transition hover:border-[#d4af37]/35 lg:hidden"
+              className="inline-flex h-11 w-11 items-center justify-center bg-white text-graphite-950 lg:hidden"
               aria-expanded={menuOpen}
               aria-controls="mobile-nav"
               aria-label={menuOpen ? "Close menu" : "Open menu"}
@@ -131,19 +90,19 @@ export function SiteHeader({ variant = "solid" }: SiteHeaderProps) {
               <span className="relative h-3.5 w-4">
                 <span
                   className={cn(
-                    "absolute left-0 h-0.5 w-full rounded-full bg-current transition-all duration-300",
+                    "absolute left-0 h-0.5 w-full bg-current transition-all duration-base ease-out",
                     menuOpen ? "top-[6px] rotate-45" : "top-0"
                   )}
                 />
                 <span
                   className={cn(
-                    "absolute left-0 top-[6px] h-0.5 w-full rounded-full bg-current transition-opacity duration-300",
+                    "absolute left-0 top-[6px] h-0.5 w-full bg-current transition-opacity duration-base ease-out",
                     menuOpen ? "opacity-0" : "opacity-100"
                   )}
                 />
                 <span
                   className={cn(
-                    "absolute left-0 h-0.5 w-full rounded-full bg-current transition-all duration-300",
+                    "absolute left-0 h-0.5 w-full bg-current transition-all duration-base ease-out",
                     menuOpen ? "top-[6px] -rotate-45" : "top-3"
                   )}
                 />
@@ -153,61 +112,57 @@ export function SiteHeader({ variant = "solid" }: SiteHeaderProps) {
         </div>
       </header>
 
-      <div
-        id="mobile-nav"
-        className={cn(
-          "fixed inset-0 z-40 bg-[#030712]/90 backdrop-blur-xl transition-opacity duration-300 lg:hidden",
-          menuOpen ? "opacity-100" : "pointer-events-none opacity-0"
-        )}
-        aria-hidden={!menuOpen}
-      >
-        <nav
-          className="flex h-full flex-col justify-center px-8 pt-20"
-          aria-label="Mobile navigation"
-        >
-          <ul className="space-y-2">
-            {NAV_ITEMS.map((item, index) => {
-              const active =
-                item.href === "/"
-                  ? pathname === "/"
-                  : pathname.startsWith(item.href);
-
-              return (
-                <li
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            id="mobile-nav"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25, ease: [0.23, 1, 0.32, 1] }}
+            className="fixed inset-0 z-40 bg-copper-500 lg:hidden"
+          >
+            <nav
+              className="flex h-full flex-col justify-center px-6"
+              aria-label="Mobile navigation"
+            >
+              {NAV_ITEMS.map((item, index) => (
+                <motion.div
                   key={item.href}
-                  className="translate-y-0 opacity-100 transition-all duration-500"
-                  style={{
-                    transitionDelay: menuOpen ? `${index * 45}ms` : "0ms",
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.4,
+                    delay: 0.05 + index * 0.045,
+                    ease: [0.23, 1, 0.32, 1],
                   }}
                 >
                   <Link
                     href={item.href}
-                    className={cn(
-                      "flex items-center justify-between rounded-2xl border px-5 py-4 text-lg font-medium transition",
-                      active
-                        ? "border-[#d4af37]/30 bg-[#d4af37]/10 text-[#f0f4f7]"
-                        : "border-white/10 bg-white/[0.03] text-[#94a3b8] hover:border-[#d4af37]/20 hover:text-[#e2e8f0]"
-                    )}
+                    className="block border-b border-white/20 py-5 text-3xl tracking-[-0.03em] text-bone-50"
                   >
                     {item.label}
-                    {active && (
-                      <span className="font-mono text-xs uppercase tracking-widest text-[#d4af37]">
-                        Active
-                      </span>
-                    )}
                   </Link>
-                </li>
-              );
-            })}
-          </ul>
-          <Link
-            href="/investor-desk"
-            className="mt-8 inline-flex justify-center rounded-full bg-[#d4af37] px-6 py-3 text-sm font-semibold text-[#0f172a]"
-          >
-            Investor desk
-          </Link>
-        </nav>
-      </div>
+                </motion.div>
+              ))}
+              <motion.div
+                className="mt-10"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.4,
+                  delay: 0.05 + NAV_ITEMS.length * 0.045,
+                  ease: [0.23, 1, 0.32, 1],
+                }}
+              >
+                <SquareButton href="/investor-desk" tone="light">
+                  Speak with us
+                </SquareButton>
+              </motion.div>
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }

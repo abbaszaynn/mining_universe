@@ -3,12 +3,12 @@ import { galleryImages } from '@/lib/gallery-images-data';
 
 export const companies: Company[] = [
   {
-    id: 'durr-mines-and-minerals',
-    name: 'Durr Mines and Minerals (PVT) LTD',
-    tagline: 'Unearthing the Future, Responsibly.',
-    logoUrl: '/images/durr-mines-logo.png', // Updated local logo
-    description: 'Durr Mines and Minerals is a leading exploration and development company incorporated under the Securities and Exchange Commission of Pakistan. We are focused on critical and precious metals including Copper, Marble, and Gold in the mineral-rich Gilgit-Baltistan region. With a commitment to sustainable practices and community engagement, we are at the forefront of unlocking the mineral wealth of Pakistan.',
-    history: 'Durr Mines & Minerals (Private) Limited was incorporated on the 13th of June, 2025, under the Companies Act, 2017 (Corporate Unique ID: 0297552). Since our inception, we have secured multiple mining leases in key strategic locations. Our journey began with a vision to modernize mining in Northern Pakistan, leveraging local expertise and adhering to international safety and environmental standards. We have rapidly expanded our portfolio to include Copper Ore at Skardu, Marble Ore at Bagicha, and Placer Gold deposits.',
+    id: 'durr-zircon',
+    name: 'Durr & Zircon Mines Consortium',
+    tagline: 'Gilgit-Baltistan’s leading copper and gold extraction operations.',
+    logoUrl: '/images/durr-mines-logo.png',
+    description: 'Durr & Zircon Mines Consortium is a leading exploration and development company incorporated under the Securities and Exchange Commission of Pakistan. We are focused on critical and precious metals including Copper, Marble, and Gold in the mineral-rich Gilgit-Baltistan region. With a commitment to sustainable practices and community engagement, we are at the forefront of unlocking the mineral wealth of Pakistan.',
+    history: 'Durr & Zircon Mines Consortium was formed as a unified entity under the Companies Act, 2017 (Corporate Unique ID: 0297552). Since our inception, we have secured multiple mining leases in key strategic locations. Our journey began with a vision to modernize mining in Northern Pakistan, leveraging local expertise and adhering to international safety and environmental standards. We have rapidly expanded our portfolio to include Copper Ore at Skardu, Marble Ore at Bagicha, and Placer Gold deposits.',
     leadership: [
       { name: 'Tabish Hassan', title: 'Chief Executive Officer (CEO)' },
       { name: 'Daniyal Hassan', title: 'Director' },
@@ -230,6 +230,8 @@ export const companies: Company[] = [
     projects: [
       { name: 'Hilal Abad Copper Project' },
       { name: 'Shigar Copper Project' },
+      { name: 'Gojal Antimony Project' },
+      { name: 'Ishkoman Granite Project' },
     ],
     status: 'Exploratory Phase',
     investorContacts: [
@@ -274,6 +276,36 @@ export const companies: Company[] = [
           { lat: 35.637525, lng: 75.902132 },
         ],
       },
+      {
+        name: 'Gojal Antimony Site',
+        polygon: [
+          { lat: 36.548798, lng: 74.956666 },
+          { lat: 36.53642, lng: 74.983949 },
+          { lat: 36.541902, lng: 74.988895 },
+          { lat: 36.542023, lng: 74.990955 },
+          { lat: 36.517574, lng: 74.980805 },
+          { lat: 36.50997, lng: 74.987658 },
+          { lat: 36.523243, lng: 75.000026 },
+          { lat: 36.499473, lng: 75.003443 },
+          { lat: 36.49899, lng: 75.00163 },
+          { lat: 36.488342, lng: 74.996787 },
+        ],
+      },
+      {
+        name: 'Ishkoman Granite Site',
+        polygon: [
+          { lat: 35.973216, lng: 72.707464 },
+          { lat: 35.967071, lng: 72.73336 },
+          { lat: 35.945915, lng: 72.769755 },
+          { lat: 35.949822, lng: 72.784703 },
+          { lat: 35.950645, lng: 72.784345 },
+          { lat: 35.951208, lng: 72.774913 },
+          { lat: 35.95849, lng: 72.756798 },
+          { lat: 35.969402, lng: 72.761606 },
+          { lat: 35.969525, lng: 72.786187 },
+          { lat: 35.956067, lng: 72.772847 },
+        ],
+      },
     ],
     images: galleryImages.filter(img => img.companyName === 'Zircon Mines'),
     videos: [],
@@ -283,7 +315,9 @@ export const companies: Company[] = [
     ],
     deposits: [
       { name: 'Hilal Abad Polymetallic Complex', location: 'Hilal Abad', type: 'Polymetallic Structure', details: ['Copper', 'Iron', 'Silver', 'Gold', 'Polymetallic Ore Structure', 'Area: 9.97 Sq/Km'] },
-      { name: 'Shigar Copper Deposit', location: 'Shigar', type: 'Copper Ore', details: ['Copper Ore', 'Strong Geological Position', 'High Copper Potential', 'Gold with Copper as a strong indication', 'Area: 8.87 Sq/Km'] }
+      { name: 'Shigar Copper Deposit', location: 'Shigar', type: 'Copper Ore', details: ['Copper Ore', 'Strong Geological Position', 'High Copper Potential', 'Gold with Copper as a strong indication', 'Area: 8.87 Sq/Km'] },
+      { name: 'Gojal Antimony Deposit', location: 'Gojal, Hunza', type: 'Antimony', details: ['Antimony', 'Exploration License', 'Application # 2024-3435'] },
+      { name: 'Ishkoman Granite Deposit', location: 'Ishkoman, Ghizar', type: 'Granite', details: ['Granite', 'Reconnaissance License', 'Application # 2024-3122'] }
     ]
   },
 ];

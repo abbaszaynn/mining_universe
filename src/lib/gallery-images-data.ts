@@ -9,8 +9,8 @@ export const galleryImages: GalleryImage[] = [
     id: 'gal-mo-1',
     url: '/images/mo-1.jpg',
     title: 'Molybdenum - Gultari Mine',
-    description: 'Molybdenum discovered at Durr Mines and Minerals, Gultari. A potential high-value resource for industrial applications.',
-    companyName: 'Durr Mines and Minerals',
+    description: 'Molybdenum discovered at Durr & Zircon Mines Consortium, Gultari. A potential high-value resource for industrial applications.',
+    companyName: 'Durr & Zircon Mines Consortium',
     mineral: 'Molybdenum',
     properties: 'Molybdenite'
   },
@@ -19,7 +19,7 @@ export const galleryImages: GalleryImage[] = [
     url: '/images/mo-2.jpg',
     title: 'Molybdenum Ore Sample',
     description: 'Close-up of Molybdenum ore from the Gultari site. This mineral is essential for high-strength steel alloys.',
-    companyName: 'Durr Mines and Minerals',
+    companyName: 'Durr & Zircon Mines Consortium',
     mineral: 'Molybdenum',
     properties: 'Molybdenite, Quartz'
   },
@@ -28,7 +28,7 @@ export const galleryImages: GalleryImage[] = [
     url: '/images/mo-3.jpg',
     title: 'Mineral Exploration - Gultari',
     description: 'Surveying the Gultari mine for Molybdenum deposits. The site shows promising geological indicators.',
-    companyName: 'Durr Mines and Minerals',
+    companyName: 'Durr & Zircon Mines Consortium',
     mineral: 'Molybdenum',
     properties: 'Molybdenite'
   },
@@ -91,7 +91,7 @@ export const galleryImages: GalleryImage[] = [
     url: '/images/durr-quartz-1.jpg',
     title: 'Quartz Specimen - Gultari & Bagicha',
     description: 'High-quality Quartz crystal. These gemstones are found in Gultari, Bagicha, and other mines.',
-    companyName: 'Durr Mines and Minerals',
+    companyName: 'Durr & Zircon Mines Consortium',
     mineral: 'Quartz',
     properties: 'Quartz, Gemstone'
   },
@@ -100,7 +100,7 @@ export const galleryImages: GalleryImage[] = [
     url: '/images/durr-quartz-2.jpg',
     title: 'Quartz Specimen - Gultari & Bagicha',
     description: 'High-quality Quartz crystal. These gemstones are found in Gultari, Bagicha, and other mines.',
-    companyName: 'Durr Mines and Minerals',
+    companyName: 'Durr & Zircon Mines Consortium',
     mineral: 'Quartz',
     properties: 'Quartz, Gemstone'
   },
@@ -109,7 +109,7 @@ export const galleryImages: GalleryImage[] = [
     url: '/images/durr-quartz-3.jpg',
     title: 'Quartz Specimen - Gultari & Bagicha',
     description: 'High-quality Quartz crystal. These gemstones are found in Gultari, Bagicha, and other mines.',
-    companyName: 'Durr Mines and Minerals',
+    companyName: 'Durr & Zircon Mines Consortium',
     mineral: 'Quartz',
     properties: 'Quartz, Gemstone'
   },
@@ -118,7 +118,7 @@ export const galleryImages: GalleryImage[] = [
     url: '/images/durr-quartz-4.jpg',
     title: 'Quartz Specimen - Gultari & Bagicha',
     description: 'High-quality Quartz crystal. These gemstones are found in Gultari, Bagicha, and other mines.',
-    companyName: 'Durr Mines and Minerals',
+    companyName: 'Durr & Zircon Mines Consortium',
     mineral: 'Quartz',
     properties: 'Quartz, Gemstone'
   },
@@ -127,7 +127,7 @@ export const galleryImages: GalleryImage[] = [
     url: '/images/durr-quartz-5.jpg',
     title: 'Quartz Specimen - Gultari & Bagicha',
     description: 'High-quality Quartz crystal. These gemstones are found in Gultari, Bagicha, and other mines.',
-    companyName: 'Durr Mines and Minerals',
+    companyName: 'Durr & Zircon Mines Consortium',
     mineral: 'Quartz',
     properties: 'Quartz, Gemstone'
   },
@@ -136,7 +136,7 @@ export const galleryImages: GalleryImage[] = [
     url: '/images/durr-quartz-6.jpg',
     title: 'Quartz Specimen - Gultari & Bagicha',
     description: 'High-quality Quartz crystal. These gemstones are found in Gultari, Bagicha, and other mines.',
-    companyName: 'Durr Mines and Minerals',
+    companyName: 'Durr & Zircon Mines Consortium',
     mineral: 'Quartz',
     properties: 'Quartz, Gemstone'
   },
@@ -145,7 +145,7 @@ export const galleryImages: GalleryImage[] = [
     url: '/images/durr-quartz-7.jpg',
     title: 'Quartz Specimen - Gultari & Bagicha',
     description: 'High-quality Quartz crystal. These gemstones are found in Gultari, Bagicha, and other mines.',
-    companyName: 'Durr Mines and Minerals',
+    companyName: 'Durr & Zircon Mines Consortium',
     mineral: 'Quartz',
     properties: 'Quartz, Gemstone'
   },
@@ -154,7 +154,7 @@ export const galleryImages: GalleryImage[] = [
     url: '/images/durr-quartz-8.jpg',
     title: 'Quartz Specimen - Gultari & Bagicha',
     description: 'High-quality Quartz crystal. These gemstones are found in Gultari, Bagicha, and other mines.',
-    companyName: 'Durr Mines and Minerals',
+    companyName: 'Durr & Zircon Mines Consortium',
     mineral: 'Quartz',
     properties: 'Quartz, Gemstone'
   },
@@ -163,7 +163,7 @@ export const galleryImages: GalleryImage[] = [
     url: '/images/durr-quartz-9.jpg',
     title: 'Quartz Specimen - Gultari & Bagicha',
     description: 'High-quality Quartz crystal. These gemstones are found in Gultari, Bagicha, and other mines.',
-    companyName: 'Durr Mines and Minerals',
+    companyName: 'Durr & Zircon Mines Consortium',
     mineral: 'Quartz',
     properties: 'Quartz, Gemstone'
   },
@@ -200,7 +200,7 @@ export const galleryImages: GalleryImage[] = [
     url: '/images/ruby-bagicha.jpg',
     title: 'Ruby Specimen - Bagicha',
     description: 'Precious Ruby gemstone found in the Bagicha mine.',
-    companyName: 'Durr Mines and Minerals',
+    companyName: 'Durr & Zircon Mines Consortium',
     mineral: 'Ruby',
     properties: 'Ruby, Gemstone'
   },
@@ -210,7 +210,7 @@ export const galleryImages: GalleryImage[] = [
     url: '/images/lithium-bagicha.jpg',
     title: 'Lithium Ore - Bagicha',
     description: 'Lithium deposits found in the Bagicha mine.',
-    companyName: 'Durr Mines and Minerals',
+    companyName: 'Durr & Zircon Mines Consortium',
     mineral: 'Lithium',
     properties: 'Lithium, Spodumene'
   },
@@ -240,7 +240,7 @@ export const galleryImages: GalleryImage[] = [
     url: '/images/copper-generic-3.jpg',
     title: 'Copper Ore - Mehdiabad & Kharmang',
     description: 'Copper ore found in Mehdiabad and Kharmang mines.',
-    companyName: 'Durr Mines and Minerals',
+    companyName: 'Durr & Zircon Mines Consortium',
     mineral: 'Copper',
     properties: 'Copper Ore'
   },
@@ -297,7 +297,7 @@ export const galleryImages: GalleryImage[] = [
     url: '/images/lithium-bagicha-2.jpg',
     title: 'Lithium Ore - Bagicha',
     description: 'Additional Lithium ore sample from Bagicha mine.',
-    companyName: 'Durr Mines and Minerals',
+    companyName: 'Durr & Zircon Mines Consortium',
     mineral: 'Lithium',
     properties: 'Lithium, Spodumene'
   },
@@ -307,7 +307,7 @@ export const galleryImages: GalleryImage[] = [
     url: '/images/lead-gultari-1.jpg',
     title: 'Lead Ore - Gultari',
     description: 'High-grade Lead ore found in Gultari mine.',
-    companyName: 'Durr Mines and Minerals',
+    companyName: 'Durr & Zircon Mines Consortium',
     mineral: 'Lead',
     properties: 'Galena, Lead'
   },
@@ -316,7 +316,7 @@ export const galleryImages: GalleryImage[] = [
     url: '/images/lead-gultari-2.jpg',
     title: 'Lead Ore - Gultari',
     description: 'High-grade Lead ore found in Gultari mine.',
-    companyName: 'Durr Mines and Minerals',
+    companyName: 'Durr & Zircon Mines Consortium',
     mineral: 'Lead',
     properties: 'Galena, Lead'
   },

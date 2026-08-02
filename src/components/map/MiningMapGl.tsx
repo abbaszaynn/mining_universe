@@ -101,6 +101,8 @@ export function MiningMapGl({
   const onSelectRef = useRef(onMineSelect);
   onSelectRef.current = onMineSelect;
 
+  const animFrameRef = useRef<number | null>(null);
+
   useEffect(() => {
     if (!containerRef.current || mapRef.current) return;
 
@@ -181,7 +183,7 @@ export function MiningMapGl({
           type: "line",
           source: "mine-boundaries",
           paint: {
-            "line-color": "#d4af37",
+            "line-color": "#e97a3c",
             "line-width": 2,
             "line-opacity": 0.9,
           },
@@ -192,7 +194,7 @@ export function MiningMapGl({
           type: "line",
           source: "mine-boundaries",
           paint: {
-            "line-color": "#f5e6a8",
+            "line-color": "#ff9f66",
             "line-width": 3.5,
             "line-opacity": 1,
           },
@@ -232,6 +234,58 @@ export function MiningMapGl({
           map!.getCanvas().style.cursor = "";
         });
 
+        // Custom Keyboard Rotation (Google Earth Pro style)
+        const canvas = map.getCanvasContainer();
+        canvas.tabIndex = 0; // Ensure canvas can receive focus
+
+        const keys = { ArrowLeft: false, ArrowRight: false, ArrowUp: false, ArrowDown: false };
+        
+        const updateCamera = () => {
+          animFrameRef.current = requestAnimationFrame(updateCamera);
+          const currentMap = mapRef.current;
+          if (!currentMap) return;
+          
+          let changed = false;
+          let bearing = currentMap.getBearing();
+          let pitch = currentMap.getPitch();
+          const speed = 1.25; // Rotation speed per frame
+
+          if (keys.ArrowLeft) { bearing += speed; changed = true; }
+          if (keys.ArrowRight) { bearing -= speed; changed = true; }
+          if (keys.ArrowUp) { pitch -= speed; changed = true; }
+          if (keys.ArrowDown) { pitch += speed; changed = true; }
+
+          if (changed) {
+            currentMap.jumpTo({ bearing, pitch: Math.max(0, Math.min(85, pitch)) });
+          }
+        };
+        animFrameRef.current = requestAnimationFrame(updateCamera);
+
+        const onKeyDown = (e: KeyboardEvent) => {
+          if (keys.hasOwnProperty(e.code)) {
+            keys[e.code as keyof typeof keys] = true;
+            e.preventDefault();
+            e.stopPropagation(); // Stop maplibre from panning
+          }
+        };
+        
+        const onKeyUp = (e: KeyboardEvent) => {
+          if (keys.hasOwnProperty(e.code)) {
+            keys[e.code as keyof typeof keys] = false;
+            e.preventDefault();
+            e.stopPropagation();
+          }
+        };
+
+        // Use capture phase to intercept before maplibre
+        canvas.addEventListener("keydown", onKeyDown, { capture: true });
+        canvas.addEventListener("keyup", onKeyUp, { capture: true });
+
+        // Ensure canvas focuses when map is clicked
+        map.on("mousedown", () => {
+          canvas.focus();
+        });
+
         requestAnimationFrame(() => map?.resize());
       });
 
@@ -247,6 +301,9 @@ export function MiningMapGl({
 
     return () => {
       disposed = true;
+      if (animFrameRef.current !== null) {
+        cancelAnimationFrame(animFrameRef.current);
+      }
       resizeObserver.disconnect();
       mapRef.current?.remove();
       mapRef.current = null;

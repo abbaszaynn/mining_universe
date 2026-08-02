@@ -8,7 +8,7 @@ export default function MapLayout({
 }) {
   return (
     <div className="fixed inset-0 h-[100dvh] w-full overflow-hidden bg-[#030712]">
-      <SiteHeader variant="overlay" />
+      <SiteHeader />
       <div className="absolute inset-0 top-[4.75rem]">{children}</div>
     </div>
   );

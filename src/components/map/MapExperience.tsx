@@ -113,25 +113,25 @@ export function MapExperience({ companies }: MapExperienceProps) {
               className={cn(
                 "w-full rounded-xl border px-4 py-3 text-left backdrop-blur-md transition duration-300",
                 active
-                  ? "border-[#d4af37]/50 bg-[#030712]/35 shadow-[0_0_24px_rgba(212,175,55,0.14)]"
-                  : "border-white/15 bg-[#030712]/25 hover:border-[#d4af37]/30 hover:bg-[#030712]/40"
+                  ? "border-copper-500/50 bg-white/80 shadow-[0_0_24px_rgba(233,122,60,0.14)]"
+                  : "border-graphite-950/10 bg-white/40 hover:border-copper-500/30 hover:bg-white/60"
               )}
             >
-              <p className="text-sm font-medium leading-snug text-[#f0f4f7]">
+              <p className="text-sm font-medium leading-snug text-graphite-950">
                 {mine.locationName}
               </p>
-              <p className="mt-1 line-clamp-1 text-xs text-[#94a3b8]">
+              <p className="mt-1 line-clamp-1 text-xs text-graphite-600">
                 {mine.companyName}
               </p>
-              <p className="mt-1 font-mono text-[10px] text-[#64748b]">
+              <p className="mt-1 font-mono text-[10px] text-graphite-500">
                 {mine.lat.toFixed(4)}°N · {mine.lng.toFixed(4)}°E
               </p>
               <span
                 className={cn(
                   "mt-2 inline-block rounded-full px-2 py-0.5 font-mono text-[9px] uppercase tracking-wider",
                   mine.status === "Operational"
-                    ? "bg-emerald-500/15 text-emerald-400"
-                    : "bg-amber-500/15 text-amber-400"
+                    ? "bg-emerald-500/15 text-emerald-600"
+                    : "bg-amber-500/15 text-amber-600"
                 )}
               >
                 {mine.status}
@@ -144,14 +144,14 @@ export function MapExperience({ companies }: MapExperienceProps) {
   );
 
   const listHeader = (
-    <div className="border-b border-white/10 px-5 py-5 backdrop-blur-[2px] md:px-6 md:py-6">
-      <p className="font-mono text-[10px] uppercase tracking-[0.35em] text-[#d4af37]/90">
-        Mine registry
+    <div className="border-b border-graphite-950/10 px-5 py-5 backdrop-blur-[2px] md:px-6 md:py-6">
+      <p className="font-mono text-[10px] uppercase tracking-[0.35em] text-copper-500">
+        Durr & Zircon Mines Consortium
       </p>
-      <h1 className="mt-2 font-[family-name:var(--font-display)] text-xl font-semibold text-[#f0f4f7] drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)] md:text-2xl">
+      <h1 className="mt-2 font-[family-name:var(--font-display)] text-xl font-semibold text-graphite-950 md:text-2xl">
         Explore the mines
       </h1>
-      <p className="mt-2 text-sm leading-relaxed text-[#cbd5e1] drop-shadow-[0_1px_8px_rgba(0,0,0,0.8)]">
+      <p className="mt-2 text-sm leading-relaxed text-graphite-600">
         {mines.length} licensed sites · 3D terrain with satellite imagery. Select a
         site to fly to its coordinates.
       </p>
@@ -159,7 +159,7 @@ export function MapExperience({ companies }: MapExperienceProps) {
   );
 
   return (
-    <div data-gos-page-root className="relative h-full w-full overflow-hidden">
+    <div data-gos-page-root className="relative h-full w-full overflow-hidden bg-bone-50">
       <MiningMapGl
         companies={companies}
         selectedMineId={selectedMineId}
@@ -183,8 +183,8 @@ export function MapExperience({ companies }: MapExperienceProps) {
             isMobile ? "px-3 py-1.5 text-[10px]" : "px-4 py-2 text-xs",
             "font-semibold uppercase tracking-wider",
             terrain3d
-              ? "border-[#d4af37]/50 bg-[#d4af37]/20 text-[#f0f4f7]"
-              : "border-white/15 bg-[#030712]/40 text-[#94a3b8] hover:border-[#d4af37]/30"
+              ? "border-copper-500/50 bg-copper-500/20 text-graphite-950"
+              : "border-graphite-950/10 bg-white/40 text-graphite-600 hover:border-copper-500/30"
           )}
         >
           3D terrain
@@ -197,8 +197,8 @@ export function MapExperience({ companies }: MapExperienceProps) {
             isMobile ? "px-3 py-1.5 text-[10px]" : "px-4 py-2 text-xs",
             "font-semibold uppercase tracking-wider",
             !terrain3d
-              ? "border-[#d4af37]/50 bg-[#d4af37]/20 text-[#f0f4f7]"
-              : "border-white/15 bg-[#030712]/40 text-[#94a3b8] hover:border-[#d4af37]/30"
+              ? "border-copper-500/50 bg-copper-500/20 text-graphite-950"
+              : "border-graphite-950/10 bg-white/40 text-graphite-600 hover:border-copper-500/30"
           )}
         >
           Flat view
@@ -210,8 +210,8 @@ export function MapExperience({ companies }: MapExperienceProps) {
         type="button"
         onClick={() => setIsListOpen((open) => !open)}
         className={cn(
-          "pointer-events-auto absolute left-3 top-3 z-30 flex items-center gap-2 rounded-xl border border-white/15 bg-[#030712]/85 px-3 py-2.5 text-sm font-medium text-[#f0f4f7] shadow-lg backdrop-blur-md transition md:hidden",
-          isListOpen && "border-[#d4af37]/40 bg-[#030712]/95"
+          "pointer-events-auto absolute left-3 top-3 z-30 flex items-center gap-2 rounded-xl border border-graphite-950/10 bg-white/85 px-3 py-2.5 text-sm font-medium text-graphite-950 shadow-lg backdrop-blur-md transition md:hidden",
+          isListOpen && "border-copper-500/40 bg-white/95"
         )}
         aria-expanded={isListOpen}
         aria-controls="mobile-mines-list"
@@ -223,8 +223,8 @@ export function MapExperience({ companies }: MapExperienceProps) {
           </>
         ) : (
           <>
-            <MoreIcon className="h-4 w-4 text-[#d4af37]" />
-            <MinesListIcon className="h-4 w-4 text-[#94a3b8]" />
+            <MoreIcon className="h-4 w-4 text-copper-500" />
+            <MinesListIcon className="h-4 w-4 text-graphite-600" />
             Mines list
           </>
         )}
@@ -234,7 +234,7 @@ export function MapExperience({ companies }: MapExperienceProps) {
       {isListOpen && (
         <button
           type="button"
-          className="absolute inset-0 z-20 bg-[#030712]/55 backdrop-blur-[1px] md:hidden"
+          className="absolute inset-0 z-20 bg-bone-50/55 backdrop-blur-[1px] md:hidden"
           aria-label="Close mines list"
           onClick={() => setIsListOpen(false)}
         />
@@ -244,7 +244,7 @@ export function MapExperience({ companies }: MapExperienceProps) {
       <aside
         id="mobile-mines-list"
         className={cn(
-          "pointer-events-auto absolute left-0 top-0 z-30 flex h-full w-[min(100%,340px)] flex-col border-r border-white/10 bg-[#030712]/92 shadow-[24px_0_80px_rgba(0,0,0,0.45)] backdrop-blur-xl transition-transform duration-300 ease-out md:hidden",
+          "pointer-events-auto absolute left-0 top-0 z-30 flex h-full w-[min(100%,340px)] flex-col border-r border-graphite-950/10 bg-white/92 shadow-[24px_0_80px_rgba(0,0,0,0.15)] backdrop-blur-xl transition-transform duration-300 ease-out md:hidden",
           isListOpen ? "translate-x-0" : "-translate-x-full"
         )}
       >
@@ -253,7 +253,7 @@ export function MapExperience({ companies }: MapExperienceProps) {
       </aside>
 
       {/* Desktop: persistent sidebar */}
-      <aside className="pointer-events-none absolute inset-y-0 left-0 z-10 hidden w-full max-w-[min(100%,380px)] flex-col bg-gradient-to-r from-[#030712]/50 via-[#030712]/15 to-transparent md:flex">
+      <aside className="pointer-events-none absolute inset-y-0 left-0 z-10 hidden w-full max-w-[min(100%,380px)] flex-col bg-gradient-to-r from-white/70 via-white/30 to-transparent md:flex">
         <div className="pointer-events-auto">{listHeader}</div>
         <div className="pointer-events-auto flex min-h-0 flex-1 flex-col">{mineList}</div>
       </aside>
@@ -261,24 +261,24 @@ export function MapExperience({ companies }: MapExperienceProps) {
       {/* Mobile: compact site label when focused — map stays clear */}
       {selectedMine && isMobile && (
         <div className="pointer-events-auto absolute bottom-4 left-4 right-4 z-20 md:hidden">
-          <div className="flex items-center gap-3 rounded-2xl border border-[#d4af37]/35 bg-[#030712]/80 px-4 py-3 shadow-[0_16px_48px_rgba(0,0,0,0.5)] backdrop-blur-xl">
+          <div className="flex items-center gap-3 rounded-2xl border border-copper-500/35 bg-white/90 px-4 py-3 shadow-[0_16px_48px_rgba(0,0,0,0.15)] backdrop-blur-xl">
             <span
-              className="h-2.5 w-2.5 shrink-0 rounded-full bg-[#d4af37]"
-              style={{ boxShadow: "0 0 12px rgba(212,175,55,0.65)" }}
+              className="h-2.5 w-2.5 shrink-0 rounded-full bg-copper-500"
+              style={{ boxShadow: "0 0 12px rgba(233,122,60,0.65)" }}
               aria-hidden
             />
             <div className="min-w-0 flex-1">
-              <p className="truncate text-sm font-semibold text-[#f0f4f7]">
+              <p className="truncate text-sm font-semibold text-graphite-950">
                 {selectedMine.locationName}
               </p>
-              <p className="truncate text-xs text-[#94a3b8]">
+              <p className="truncate text-xs text-graphite-600">
                 {selectedMine.companyName}
               </p>
             </div>
             <button
               type="button"
               onClick={() => handleMineSelect(null)}
-              className="shrink-0 rounded-lg border border-white/10 px-3 py-1.5 text-xs font-medium text-[#cbd5e1] transition hover:border-white/25 hover:text-[#f0f4f7]"
+              className="shrink-0 rounded-lg border border-graphite-950/10 px-3 py-1.5 text-xs font-medium text-graphite-600 transition hover:border-graphite-950/25 hover:text-graphite-950"
             >
               Clear
             </button>
@@ -289,38 +289,38 @@ export function MapExperience({ companies }: MapExperienceProps) {
       {/* Desktop: detail panel */}
       {selectedMine && !isMobile && (
         <div className="pointer-events-auto absolute bottom-6 right-6 z-20 w-[22rem]">
-          <div className="relative rounded-2xl border border-[#d4af37]/35 bg-[#030712]/75 p-5 shadow-[0_24px_80px_rgba(0,0,0,0.55)] backdrop-blur-xl">
+          <div className="relative rounded-2xl border border-copper-500/35 bg-white/85 p-5 shadow-[0_24px_80px_rgba(0,0,0,0.15)] backdrop-blur-xl">
             <button
               type="button"
               onClick={() => handleMineSelect(null)}
-              className="absolute right-3 top-3 text-[#64748b] transition hover:text-[#f0f4f7]"
+              className="absolute right-3 top-3 text-graphite-500 transition hover:text-graphite-950"
               aria-label="Close details"
             >
               ✕
             </button>
-            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#d4af37]/90">
+            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-copper-500">
               {selectedMine.companyName}
             </p>
-            <h2 className="mt-1 pr-6 font-[family-name:var(--font-display)] text-lg font-semibold text-[#f0f4f7]">
+            <h2 className="mt-1 pr-6 font-[family-name:var(--font-display)] text-lg font-semibold text-graphite-950">
               {selectedMine.locationName}
             </h2>
-            <p className="mt-2 text-sm leading-relaxed text-[#94a3b8]">
+            <p className="mt-2 text-sm leading-relaxed text-graphite-600">
               {selectedMine.tagline}
             </p>
             <dl className="mt-4 grid grid-cols-2 gap-3 text-xs">
               <div>
-                <dt className="font-mono uppercase tracking-wider text-[#64748b]">
+                <dt className="font-mono uppercase tracking-wider text-graphite-500">
                   Latitude
                 </dt>
-                <dd className="mt-0.5 text-[#e2e8f0]">
+                <dd className="mt-0.5 text-graphite-950">
                   {selectedMine.lat.toFixed(5)}°
                 </dd>
               </div>
               <div>
-                <dt className="font-mono uppercase tracking-wider text-[#64748b]">
+                <dt className="font-mono uppercase tracking-wider text-graphite-500">
                   Longitude
                 </dt>
-                <dd className="mt-0.5 text-[#e2e8f0]">
+                <dd className="mt-0.5 text-graphite-950">
                   {selectedMine.lng.toFixed(5)}°
                 </dd>
               </div>

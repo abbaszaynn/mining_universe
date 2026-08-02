@@ -124,11 +124,11 @@ export function BlogHorizonRow({
     >
       {index > 0 && (
         <div className="mb-8 flex items-center gap-4 md:mb-12" aria-hidden>
-          <span className="h-px w-12 bg-gradient-to-r from-[#d4af37]/45 to-transparent sm:w-16" />
-          <span className="font-mono text-[10px] uppercase tracking-[0.4em] text-[#334155]">
+          <span className="h-px w-12 bg-gradient-to-r from-copper-500/45 to-transparent sm:w-16" />
+          <span className="font-mono text-[10px] uppercase tracking-[0.4em] text-graphite-500">
             {label}
           </span>
-          <span className="h-px flex-1 bg-gradient-to-r from-white/[0.08] to-transparent" />
+          <span className="h-px flex-1 bg-gradient-to-r from-graphite-950/[0.08] to-transparent" />
         </div>
       )}
 
@@ -145,7 +145,7 @@ export function BlogHorizonRow({
           data-horizon-part
           className="relative w-[34%] shrink-0 sm:w-[32%] md:w-[30%] lg:w-[28%] lg:max-w-[15rem]"
         >
-          <div className="relative aspect-[3/4] overflow-hidden rounded-xl shadow-[0_16px_48px_rgba(0,0,0,0.4)] sm:rounded-2xl">
+          <div className="relative aspect-[3/4] overflow-hidden rounded-xl shadow-[0_16px_48px_rgba(0,0,0,0.15)] sm:rounded-2xl">
             <div ref={imageWrapRef} className="absolute inset-0 scale-105">
               <Image
                 src={article.imageUrl}
@@ -155,15 +155,15 @@ export function BlogHorizonRow({
                 sizes="(max-width: 640px) 34vw, (max-width: 1024px) 30vw, 240px"
               />
             </div>
-            <div className="absolute inset-0 bg-gradient-to-t from-[#030712]/45 via-transparent to-[#030712]/10" />
+            <div className="absolute inset-0 bg-gradient-to-t from-graphite-950/45 via-transparent to-graphite-950/10" />
           </div>
 
-          <span className="pointer-events-none absolute -left-1 -top-2 font-[family-name:var(--font-display)] text-4xl font-bold text-[#d4af37]/12 sm:-left-2 sm:-top-4 sm:text-6xl md:text-7xl">
+          <span className="pointer-events-none absolute -left-1 -top-2 font-[family-name:var(--font-display)] text-4xl font-bold text-copper-500/12 sm:-left-2 sm:-top-4 sm:text-6xl md:text-7xl">
             {label}
           </span>
 
           {companyName && (
-            <p className="mt-3 hidden font-mono text-[9px] uppercase leading-relaxed tracking-[0.16em] text-[#64748b] sm:mt-4 sm:block sm:text-[10px]">
+            <p className="mt-3 hidden font-mono text-[9px] uppercase leading-relaxed tracking-[0.16em] text-graphite-600 sm:mt-4 sm:block sm:text-[10px]">
               {companyName}
             </p>
           )}
@@ -174,7 +174,7 @@ export function BlogHorizonRow({
           className="hidden shrink-0 self-center sm:flex"
           aria-hidden
         >
-          <span className="block h-20 w-px bg-gradient-to-b from-transparent via-[#d4af37]/35 to-transparent md:h-28" />
+          <span className="block h-20 w-px bg-gradient-to-b from-transparent via-copper-500/35 to-transparent md:h-28" />
         </div>
 
         <div
@@ -187,31 +187,31 @@ export function BlogHorizonRow({
           <div data-horizon-part className="flex flex-wrap items-center gap-2 sm:gap-4">
             <time
               dateTime={article.publishDate}
-              className="font-mono text-[10px] uppercase tracking-[0.22em] text-[#64748b] sm:text-[11px] sm:tracking-[0.28em]"
+              className="font-mono text-[10px] uppercase tracking-[0.22em] text-graphite-600 sm:text-[11px] sm:tracking-[0.28em]"
             >
               {formatDate(article.publishDate)}
             </time>
-            <span className="h-px w-6 bg-[#d4af37]/30 sm:w-10" aria-hidden />
-            <span className="font-mono text-[9px] uppercase tracking-[0.28em] text-[#475569] sm:text-[10px] sm:tracking-[0.32em]">
+            <span className="h-px w-6 bg-copper-500/30 sm:w-10" aria-hidden />
+            <span className="font-mono text-[9px] uppercase tracking-[0.28em] text-graphite-500 sm:text-[10px] sm:tracking-[0.32em]">
               Archive
             </span>
           </div>
 
           <span
             data-horizon-part
-            className="mt-4 block h-px w-12 bg-gradient-to-r from-[#d4af37]/55 to-transparent sm:mt-6 sm:w-14"
+            className="mt-4 block h-px w-12 bg-gradient-to-r from-copper-500/55 to-transparent sm:mt-6 sm:w-14"
             aria-hidden
           />
 
           <MineralTitle
             text={article.title}
             as="h2"
-            className="mt-4 text-lg leading-snug transition duration-500 group-hover:text-[#f5e6a8] sm:mt-6 sm:text-2xl md:text-[1.75rem] lg:text-4xl lg:leading-tight"
+            className="mt-4 text-lg leading-snug transition duration-500 group-hover:text-copper-600 sm:mt-6 sm:text-2xl md:text-[1.75rem] lg:text-4xl lg:leading-tight"
           />
 
           <p
             data-horizon-part
-            className="mt-3 line-clamp-4 text-sm leading-[1.75] text-[#94a3b8] sm:mt-5 sm:line-clamp-none sm:text-base sm:leading-[1.85] md:text-lg md:leading-[1.88]"
+            className="mt-3 line-clamp-4 text-sm leading-[1.75] text-graphite-600 sm:mt-5 sm:line-clamp-none sm:text-base sm:leading-[1.85] md:text-lg md:leading-[1.88]"
           >
             {article.excerpt}
           </p>
@@ -219,21 +219,21 @@ export function BlogHorizonRow({
           {companyName && (
             <p
               data-horizon-part
-              className="mt-3 font-mono text-[9px] uppercase tracking-[0.14em] text-[#64748b] sm:hidden"
+              className="mt-3 font-mono text-[9px] uppercase tracking-[0.14em] text-graphite-600 sm:hidden"
             >
               {companyName}
             </p>
           )}
 
           <div data-horizon-part className="mt-5 flex items-center gap-3 sm:mt-8 sm:gap-5">
-            <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-[#d4af37] transition duration-500 group-hover:gap-3 group-hover:text-[#f5e6a8] sm:gap-2.5 sm:text-sm sm:tracking-[0.18em]">
+            <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-copper-500 transition duration-500 group-hover:gap-3 group-hover:text-copper-600 sm:gap-2.5 sm:text-sm sm:tracking-[0.18em]">
               Read insight
               <span className="transition-transform duration-500 group-hover:translate-x-1">
                 →
               </span>
             </span>
-            <span className="h-px w-6 bg-white/10 sm:w-8" aria-hidden />
-            <span className="font-mono text-[9px] uppercase tracking-[0.24em] text-[#475569] sm:text-[10px] sm:tracking-[0.28em]">
+            <span className="h-px w-6 bg-graphite-950/10 sm:w-8" aria-hidden />
+            <span className="font-mono text-[9px] uppercase tracking-[0.24em] text-graphite-500 sm:text-[10px] sm:tracking-[0.28em]">
               Field report
             </span>
           </div>

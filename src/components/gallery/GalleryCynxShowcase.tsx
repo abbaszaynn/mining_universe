@@ -4,6 +4,7 @@ import Image from "next/image";
 import {
   useCallback,
   useEffect,
+  useLayoutEffect,
   useRef,
   useState,
 } from "react";
@@ -62,103 +63,101 @@ export function GalleryCynxShowcase({
   className,
 }: GalleryCynxShowcaseProps) {
   const [activeIndex, setActiveIndex] = useState(0);
-  const imageWrapRef = useRef<HTMLDivElement>(null);
-  const captionRef = useRef<HTMLDivElement>(null);
+  const [prevIndex, setPrevIndex] = useState<number | null>(null);
+  const [slideDir, setSlideDir] = useState<1 | -1>(1);
   const animatingRef = useRef(false);
-  const activeIndexRef = useRef(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const captionRef = useRef<HTMLDivElement>(null);
 
   const total = images.length;
   const active = images[activeIndex] ?? images[0];
 
-  activeIndexRef.current = activeIndex;
-
   const animateTo = useCallback(
-    (index: number, slideDir: 1 | -1) => {
+    (index: number, dir: 1 | -1) => {
       if (!total || animatingRef.current) return;
-      const current = activeIndexRef.current;
       const next = ((index % total) + total) % total;
-      if (next === current) return;
-
-      const wrap = imageWrapRef.current;
-      const caption = captionRef.current;
-      if (!wrap) {
-        setActiveIndex(next);
-        return;
-      }
+      if (next === activeIndex) return;
 
       animatingRef.current = true;
+      setSlideDir(dir);
+      setPrevIndex(activeIndex);
+      setActiveIndex(next);
+    },
+    [activeIndex, total]
+  );
 
-      const tl = gsap.timeline({
-        onComplete: () => {
-          animatingRef.current = false;
-        },
+  useLayoutEffect(() => {
+    if (prevIndex === null || !containerRef.current) return;
+
+    const prevSlide = containerRef.current.querySelector(`[data-slide-index="${prevIndex}"]`);
+    const nextSlide = containerRef.current.querySelector(`[data-slide-index="${activeIndex}"]`);
+    
+    // Caption animations
+    const captionTitle = captionRef.current?.querySelector('.caption-title');
+    const captionSub = captionRef.current?.querySelector('.caption-sub');
+
+    const tl = gsap.timeline({
+      onComplete: () => {
+        animatingRef.current = false;
+        setPrevIndex(null); // clean up previous slide
+      },
+    });
+
+    if (prevSlide && nextSlide) {
+      // Setup initial state for next slide
+      gsap.set(nextSlide, { 
+        zIndex: 10, 
+        xPercent: 20 * slideDir, 
+        scale: 1.05, 
+        opacity: 0 
       });
+      gsap.set(prevSlide, { zIndex: 5 });
 
-      tl.to(wrap, {
+      tl.to(prevSlide, {
+        xPercent: -15 * slideDir,
+        scale: 0.95,
         opacity: 0,
-        x: 56 * slideDir,
-        scale: 0.96,
-        duration: 0.42,
-        ease: "power2.in",
-      });
+        duration: 0.75,
+        ease: "power3.inOut",
+      }, 0);
 
-      if (caption) {
-        tl.to(
-          caption,
-          { opacity: 0, y: 10, duration: 0.28, ease: "power2.in" },
-          0
-        );
-      }
+      tl.to(nextSlide, {
+        xPercent: 0,
+        scale: 1,
+        opacity: 1,
+        duration: 0.75,
+        ease: "power3.inOut",
+      }, 0);
+    }
+    
+    if (captionTitle && captionSub) {
+       tl.fromTo(captionTitle, 
+         { y: 15, opacity: 0 }, 
+         { y: 0, opacity: 1, duration: 0.5, ease: "power2.out" }, 
+         0.2
+       );
+       tl.fromTo(captionSub, 
+         { y: 10, opacity: 0 }, 
+         { y: 0, opacity: 1, duration: 0.4, ease: "power2.out" }, 
+         0.3
+       );
+    }
 
-      tl.call(() => {
-        setActiveIndex(next);
-      });
-
-      tl.fromTo(
-        wrap,
-        { opacity: 0, x: -56 * slideDir, scale: 0.96 },
-        {
-          opacity: 1,
-          x: 0,
-          scale: 1,
-          duration: 0.58,
-          ease: "power3.out",
-        }
-      );
-
-      if (caption) {
-        tl.fromTo(
-          caption,
-          { opacity: 0, y: 12 },
-          { opacity: 1, y: 0, duration: 0.48, ease: "power3.out" },
-          "-=0.35"
-        );
-      }
-    },
-    [total]
-  );
-
-  const goTo = useCallback(
-    (index: number) => {
-      const current = activeIndexRef.current;
-      const next = ((index % total) + total) % total;
-      const slideDir: 1 | -1 = next >= current ? 1 : -1;
-      animateTo(index, slideDir);
-    },
-    [animateTo, total]
-  );
+  }, [activeIndex, prevIndex, slideDir]);
 
   const goPrev = useCallback(() => {
-    animateTo(activeIndexRef.current - 1, -1);
-  }, [animateTo]);
+    animateTo(activeIndex - 1, -1);
+  }, [animateTo, activeIndex]);
 
   const goNext = useCallback(() => {
-    animateTo(activeIndexRef.current + 1, 1);
-  }, [animateTo]);
+    animateTo(activeIndex + 1, 1);
+  }, [animateTo, activeIndex]);
 
+  // Handle activeIndex out of bounds when images change
   useEffect(() => {
     if (activeIndex >= total && total > 0) {
       setActiveIndex(0);
+      setPrevIndex(null);
     }
   }, [activeIndex, total]);
 
@@ -171,9 +170,18 @@ export function GalleryCynxShowcase({
     return () => window.removeEventListener("keydown", onKey);
   }, [goNext, goPrev]);
 
+  // Auto-play functionality
+  useEffect(() => {
+    if (total <= 1) return;
+    const timer = setInterval(() => {
+      goNext();
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [activeIndex, total, goNext]);
+
   if (!total || !active) {
     return (
-      <p className="py-16 text-center text-[#64748b]">No specimens to display.</p>
+      <p className="py-16 text-center text-graphite-500">No specimens to display.</p>
     );
   }
 
@@ -183,7 +191,6 @@ export function GalleryCynxShowcase({
       aria-roledescription="carousel"
       aria-label="Specimen gallery"
     >
-      {/* Full-bleed strip wings + fixed center image */}
       <div className="relative left-1/2 w-screen -translate-x-1/2">
         <div className="flex h-[min(52vh,440px)] w-full items-stretch md:h-[min(58vh,520px)] lg:h-[min(60vh,560px)]">
           <StripWing side="left" onNavigate={goPrev} />
@@ -192,23 +199,40 @@ export function GalleryCynxShowcase({
             type="button"
             onClick={() => onOpen(active)}
             className={cn(
-              "group relative h-full shrink-0 overflow-hidden border border-white/[0.07] bg-[#0a0f1e] shadow-[0_40px_120px_rgba(0,0,0,0.5)] transition-[border-color] duration-500 hover:border-[#d4af37]/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#d4af37]/40",
+              "group relative h-full shrink-0 overflow-hidden border border-graphite-950/[0.07] bg-bone-50 shadow-[0_40px_120px_rgba(0,0,0,0.1)] transition-[border-color] duration-500 hover:border-copper-500/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-copper-500/40",
               CENTER_WIDTH
             )}
           >
-            <div ref={imageWrapRef} className="relative h-full w-full">
-              <Image
-                key={active.id}
-                src={active.url}
-                alt={active.title}
-                fill
-                className="object-cover transition duration-[1.2s] ease-out group-hover:scale-[1.02]"
-                sizes="(max-width: 768px) 92vw, 740px"
-                priority={activeIndex === 0}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#030712]/70 via-transparent to-[#030712]/8" />
-              <span className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-white/[0.05]" />
-              <span className="pointer-events-none absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full border border-[#d4af37]/25 bg-[#030712]/55 text-sm text-[#d4af37] opacity-0 backdrop-blur-md transition duration-300 group-hover:opacity-100 md:right-4 md:top-4">
+            <div ref={containerRef} className="relative h-full w-full">
+              {/* Render only active and previous slide for performance */}
+              {images.map((image, i) => {
+                const isActive = i === activeIndex;
+                const isPrev = i === prevIndex;
+                
+                if (!isActive && !isPrev) return null;
+                
+                return (
+                  <div 
+                    key={image.id}
+                    data-slide-index={i}
+                    className="absolute inset-0 h-full w-full will-change-transform"
+                    style={{ zIndex: isActive ? 10 : (isPrev ? 5 : 0) }}
+                  >
+                    <Image
+                      src={image.url}
+                      alt={image.title}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 92vw, 740px"
+                      priority={isActive || isPrev}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-graphite-950/70 via-transparent to-graphite-950/8" />
+                  </div>
+                );
+              })}
+              
+              <span className="pointer-events-none absolute inset-0 z-20 ring-1 ring-inset ring-graphite-950/[0.05]" />
+              <span className="pointer-events-none absolute right-3 top-3 z-20 flex h-9 w-9 items-center justify-center rounded-full border border-copper-500/25 bg-bone-50/70 text-sm text-copper-500 opacity-0 backdrop-blur-md transition duration-300 group-hover:opacity-100 md:right-4 md:top-4">
                 ↗
               </span>
             </div>
@@ -220,17 +244,17 @@ export function GalleryCynxShowcase({
 
       <div
         ref={captionRef}
-        className="mx-auto mt-8 flex max-w-[1180px] flex-wrap items-end justify-between gap-4 border-t border-white/[0.06] pt-6 md:mt-10 md:pt-7"
+        className="mx-auto mt-8 flex max-w-[1180px] flex-wrap items-end justify-between gap-4 border-t border-graphite-950/[0.06] pt-6 md:mt-10 md:pt-7"
       >
         <div className="min-w-0 max-w-xl">
-          <p className="font-mono text-[10px] uppercase tracking-[0.32em] text-[#64748b]">
+          <p className="caption-sub font-mono text-[10px] uppercase tracking-[0.32em] text-graphite-500">
             {active.companyName}
           </p>
-          <h3 className="mt-2 font-[family-name:var(--font-display)] text-xl font-semibold tracking-tight text-[#f0f4f7] md:text-2xl lg:text-[1.75rem]">
+          <h3 className="caption-title mt-2 font-[family-name:var(--font-display)] text-xl font-semibold tracking-tight text-graphite-950 md:text-2xl lg:text-[1.75rem]">
             {active.title}
           </h3>
           {active.mineral && (
-            <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.24em] text-[#d4af37]/85">
+            <p className="caption-sub mt-2 font-mono text-[10px] uppercase tracking-[0.24em] text-copper-500/85">
               {active.mineral}
             </p>
           )}
@@ -240,22 +264,22 @@ export function GalleryCynxShowcase({
           <button
             type="button"
             onClick={goPrev}
-            className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-[#94a3b8] transition hover:border-[#d4af37]/35 hover:text-[#d4af37] md:h-10 md:w-10"
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-graphite-950/10 text-graphite-500 transition hover:border-copper-500/35 hover:text-copper-500 md:h-10 md:w-10"
             aria-label="Previous specimen"
           >
             ←
           </button>
-          <p className="font-mono text-sm tabular-nums tracking-widest text-[#64748b]">
-            <span className="text-[#f0f4f7]">
+          <p className="font-mono text-sm tabular-nums tracking-widest text-graphite-500">
+            <span className="text-graphite-950">
               {String(activeIndex + 1).padStart(2, "0")}
             </span>
-            <span className="mx-2 text-[#475569]">—</span>
+            <span className="mx-2 text-graphite-400">—</span>
             {String(total).padStart(2, "0")}
           </p>
           <button
             type="button"
             onClick={goNext}
-            className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-[#94a3b8] transition hover:border-[#d4af37]/35 hover:text-[#d4af37] md:h-10 md:w-10"
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-graphite-950/10 text-graphite-500 transition hover:border-copper-500/35 hover:text-copper-500 md:h-10 md:w-10"
             aria-label="Next specimen"
           >
             →
@@ -268,10 +292,15 @@ export function GalleryCynxShowcase({
           <button
             key={image.id}
             type="button"
-            onClick={() => goTo(index)}
+            onClick={() => {
+               if (index !== activeIndex) {
+                 const dir = index > activeIndex ? 1 : -1;
+                 animateTo(index, dir);
+               }
+            }}
             className={cn(
               "h-1 shrink-0 rounded-full transition-all duration-300",
-              index === activeIndex ? "w-8 bg-[#d4af37]" : "w-3 bg-white/15"
+              index === activeIndex ? "w-8 bg-copper-500" : "w-3 bg-graphite-950/15"
             )}
             aria-label={`Go to ${image.title}`}
           />

@@ -109,8 +109,19 @@ export function LoadingProvider({ children }: { children: ReactNode }) {
       if (routeTokenRef.current !== token) return;
 
       resetAppScroll();
+      // Wait two frames so the page has painted before we uncover it — but race
+      // a timer, because browsers suspend rAF in background tabs and an
+      // un-raced await here strands the loader with scroll locked.
       await new Promise<void>((resolve) => {
-        requestAnimationFrame(() => requestAnimationFrame(() => resolve()));
+        let settled = false;
+        const done = () => {
+          if (settled) return;
+          settled = true;
+          window.clearTimeout(fallback);
+          resolve();
+        };
+        const fallback = window.setTimeout(done, 400);
+        requestAnimationFrame(() => requestAnimationFrame(done));
       });
 
       beginExit();
@@ -134,10 +145,6 @@ export function LoadingProvider({ children }: { children: ReactNode }) {
       resetAppScroll();
       clearRouteReady();
       clearCanvasReady();
-
-      if (window.location.pathname === "/") {
-        void import("@/components/canvas/CanvasLayer");
-      }
 
       await new Promise<void>((resolve) => {
         if (document.readyState === "complete") resolve();

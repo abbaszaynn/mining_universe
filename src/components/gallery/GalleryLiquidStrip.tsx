@@ -63,12 +63,12 @@ function drawFeatherVane(
   spec: FeatherSpec
 ) {
   const gradient = ctx.createLinearGradient(-width / 2, 0, width / 2, 0);
-  gradient.addColorStop(0, "#040406");
-  gradient.addColorStop(0.22, "#0a0a0e");
-  gradient.addColorStop(0.46, `rgba(34,34,42,${0.5 + hover * 0.08})`);
-  gradient.addColorStop(0.54, `rgba(26,26,34,${0.45 + hover * 0.07})`);
-  gradient.addColorStop(0.78, "#08080c");
-  gradient.addColorStop(1, "#030305");
+  gradient.addColorStop(0, "#ffffff");
+  gradient.addColorStop(0.22, "#fafaf9");
+  gradient.addColorStop(0.46, `rgba(240, 240, 235, ${0.8 + hover * 0.1})`);
+  gradient.addColorStop(0.54, `rgba(245, 245, 240, ${0.75 + hover * 0.1})`);
+  gradient.addColorStop(0.78, "#f0f0ee");
+  gradient.addColorStop(1, "#e8e8e5");
 
   const a = spec.curveA;
   const b = spec.curveB;
@@ -84,7 +84,7 @@ function drawFeatherVane(
   ctx.closePath();
   ctx.fill();
 
-  ctx.strokeStyle = `rgba(5,5,7,${0.8 + hover * 0.08})`;
+  ctx.strokeStyle = `rgba(200, 200, 195, ${0.8 + hover * 0.1})`;
   ctx.lineWidth = Math.max(0.8, width * 0.055);
   ctx.beginPath();
   ctx.moveTo(0, length * 0.03);
@@ -95,7 +95,7 @@ function drawFeatherVane(
   for (let bIdx = 0; bIdx < barbCount; bIdx += 1) {
     const by = length * 0.1 + (bIdx / barbCount) * length * 0.82;
     const spread = width * (spec.barbSpread + (bIdx % 4) * 0.025);
-    ctx.strokeStyle = `rgba(16,16,22,${0.18 + hover * 0.06})`;
+    ctx.strokeStyle = `rgba(210, 210, 205, ${0.3 + hover * 0.1})`;
     ctx.lineWidth = 0.5;
     ctx.beginPath();
     ctx.moveTo(0, by);
@@ -139,7 +139,7 @@ export function GalleryLiquidStrip({
       const hoverSpeed = hover * 0.000028;
       const time = t * (idleSpeed + hoverSpeed);
 
-      ctx.fillStyle = "#020203";
+      ctx.fillStyle = "#f8f8f7"; // bone-50 equivalent
       ctx.fillRect(0, 0, w, h);
 
       const feathers = feathersRef.current;
@@ -183,8 +183,8 @@ export function GalleryLiquidStrip({
           my * h,
           h * 0.4
         );
-        sheen.addColorStop(0, `rgba(42,40,50,${0.08 * hover})`);
-        sheen.addColorStop(1, "rgba(2,2,3,0)");
+        sheen.addColorStop(0, `rgba(255, 255, 255, ${0.4 * hover})`);
+        sheen.addColorStop(1, "rgba(248, 248, 247, 0)");
         ctx.fillStyle = sheen;
         ctx.fillRect(0, 0, w, h);
       }
@@ -195,8 +195,8 @@ export function GalleryLiquidStrip({
         mirrored > 0 ? 0 : w,
         0
       );
-      edge.addColorStop(0, "rgba(2,2,3,0)");
-      edge.addColorStop(1, "rgba(2,2,3,0.5)");
+      edge.addColorStop(0, "rgba(248, 248, 247, 0)");
+      edge.addColorStop(1, "rgba(235, 235, 230, 0.6)");
       ctx.fillStyle = edge;
       ctx.fillRect(0, 0, w, h);
     },
@@ -279,8 +279,8 @@ export function GalleryLiquidStrip({
       onPointerLeave={onPointerLeave}
       onPointerMove={onPointerMove}
       className={cn(
-        "group relative min-h-0 overflow-hidden bg-[#020203] transition-opacity duration-700",
-        "hover:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#d4af37]/35",
+        "group relative min-h-0 overflow-hidden bg-bone-50 transition-opacity duration-700",
+        "hover:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-copper-500/35",
         className
       )}
     >

@@ -1,0 +1,11 @@
+{
+  "jsonrpc": "2.0",
+  "method": "tools/call",
+  "params": {
+    "name": "search_components",
+    "arguments": {
+      "query": "Stagger Testimonials"
+    }
+  },
+  "id": 1
+}

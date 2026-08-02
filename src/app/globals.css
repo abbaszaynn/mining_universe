@@ -3,10 +3,23 @@
 @tailwind utilities;
 
 :root {
-  --background: #030712;
-  --foreground: #e2e8f0;
-  --accent: #d4af37;
-  --muted: #64748b;
+  /* Semantic tokens — components reference these, never raw hex. */
+  --background: #f1eee6;
+  --foreground: #121010;
+  --muted: #5c554b;
+  --accent: #b05b29;
+  --accent-hover: #c9743e;
+  --accent-active: #8e461c;
+
+  /* Legacy alias — pages not yet redesigned reference var(--font-display). */
+  --font-display: var(--font-sans);
+
+  /* Motion tokens — canonical eases/durations, reused across CSS + GSAP. */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+  --duration-fast: 160ms;
+  --duration-base: 300ms;
+  --duration-slow: 600ms;
 }
 
 html {
@@ -17,21 +30,142 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+  /* Line-mask reveal: the mask clips, the inner line slides up into view. */
+  .line-mask {
+    display: block;
+    overflow: clip;
+  }
 }
 
-@keyframes co-nav-shimmer {
+@keyframes marquee-scroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* Idle drift for the commodity specimen — kept on an inner wrapper so it never
+   collides with the slide transform the carousel applies to the parent. */
+@keyframes specimen-float {
   0%,
   100% {
-    background-position: 200% 0;
+    transform: translate3d(0, 0, 0) rotate(-1.2deg);
   }
   50% {
-    background-position: -200% 0;
+    transform: translate3d(0, -16px, 0) rotate(1.2deg);
+  }
+}
+
+/* Neon bloom behind the commodity specimen — breathes rather than sits static. */
+@keyframes neon-pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(1.04);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.09);
+  }
+}
+
+@keyframes stone-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(var(--stone-rot, 0deg));
+  }
+  50% {
+    transform: translate3d(0, calc(var(--stone-lift, 14px) * -1), 0)
+      rotate(calc(var(--stone-rot, 0deg) + var(--stone-spin, 6deg)));
+  }
+}
+
+/* Region markers on the Gilgit Baltistan panel. Built imperatively by MapLibre,
+   so they are styled globally rather than through Tailwind classes. */
+.gos-region-marker {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: default;
+}
+
+.gos-region-photo {
+  display: block;
+  width: 84px;
+  height: 64px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  box-shadow: 0 12px 28px -10px rgba(0, 0, 0, 0.75);
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.gos-region-marker:hover .gos-region-photo {
+  transform: scale(1.06);
+}
+
+.gos-region-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Crosshair sits behind the photo, marking the exact coordinate. */
+.gos-region-crosshair {
+  position: absolute;
+  top: -9px;
+  left: 50%;
+  width: 18px;
+  height: 18px;
+  translate: -50% 0;
+  background:
+    linear-gradient(currentColor, currentColor) center / 100% 1px no-repeat,
+    linear-gradient(currentColor, currentColor) center / 1px 100% no-repeat;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.gos-region-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.15;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.gos-region-name {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #faf8f3;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.9);
+}
+
+.gos-region-district {
+  font-size: 0.625rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #e0a87c;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.9);
+}
+
+@media (max-width: 767px) {
+  .gos-region-photo {
+    width: 58px;
+    height: 44px;
+  }
+  .gos-region-district {
+    display: none;
   }
 }
 

@@ -2,13 +2,14 @@
 
 import type { Document } from "@/lib/types";
 import { cn } from "@/lib/utils";
+import { SquareButton } from "@/components/ui/SquareButton";
 
 const TYPE_COLORS: Record<Document["type"], string> = {
-  "Geological Report": "text-emerald-400/90",
-  License: "text-[#d4af37]/90",
-  "Concession Paper": "text-sky-400/90",
-  "Financial Summary": "text-violet-400/90",
-  Map: "text-amber-400/90",
+  "Geological Report": "text-graphite-950",
+  License: "text-graphite-950",
+  "Concession Paper": "text-graphite-950",
+  "Financial Summary": "text-graphite-950",
+  Map: "text-graphite-950",
 };
 
 type DocumentsTableProps = {
@@ -23,35 +24,35 @@ export function DocumentsTable({
   if (documents.length === 0) return null;
 
   return (
-    <div className={cn("overflow-hidden rounded-2xl bg-white/[0.02]", className)}>
-      <div className="hidden border-b border-white/[0.06] px-6 py-4 md:grid md:grid-cols-[minmax(0,1fr)_10rem_7rem] md:items-center md:gap-x-10 lg:grid-cols-[minmax(0,1fr)_11rem_7.5rem] lg:gap-x-14 lg:px-8">
-        <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#64748b]">
+    <div className={cn("overflow-hidden rounded-2xl bg-graphite-950/[0.02]", className)}>
+      <div className="hidden border-b border-graphite-950/[0.06] px-6 py-4 md:grid md:grid-cols-[minmax(0,1fr)_10rem_7rem] md:items-center md:gap-x-10 lg:grid-cols-[minmax(0,1fr)_11rem_7.5rem] lg:gap-x-14 lg:px-8">
+        <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-graphite-600">
           Title
         </span>
-        <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#64748b]">
+        <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-graphite-600">
           Type
         </span>
-        <span className="text-right font-mono text-[10px] uppercase tracking-[0.28em] text-[#64748b]">
+        <span className="text-right font-mono text-[10px] uppercase tracking-[0.28em] text-graphite-600">
           Access
         </span>
       </div>
 
-      <ul className="divide-y divide-white/[0.05]">
+      <ul className="divide-y divide-graphite-950/[0.05]">
         {documents.map((doc, index) => (
           <li
             key={doc.id}
             data-doc-row=""
-            className="group flex flex-col gap-4 px-6 py-5 transition hover:bg-white/[0.03] md:grid md:grid-cols-[minmax(0,1fr)_10rem_7rem] md:items-center md:gap-x-10 md:py-6 lg:grid-cols-[minmax(0,1fr)_11rem_7.5rem] lg:gap-x-14 lg:px-8"
+            className="group flex flex-col gap-4 px-6 py-5 transition hover:bg-graphite-950/[0.03] md:grid md:grid-cols-[minmax(0,1fr)_10rem_7rem] md:items-center md:gap-x-10 md:py-6 lg:grid-cols-[minmax(0,1fr)_11rem_7.5rem] lg:gap-x-14 lg:px-8"
           >
             <div className="flex min-w-0 items-start gap-4 pr-2">
-              <span className="shrink-0 font-mono text-sm text-[#d4af37]/30">
+              <span className="shrink-0 font-mono text-sm text-copper-500/30">
                 {String(index + 1).padStart(2, "0")}
               </span>
               <div className="min-w-0">
-                <p className="font-medium leading-snug text-[#f0f4f7] transition group-hover:text-[#f5e6a8]">
+                <p className="font-medium leading-snug text-graphite-950 transition group-hover:text-copper-600">
                   {doc.title}
                 </p>
-                <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.2em] text-[#475569] md:hidden">
+                <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.2em] text-graphite-500 md:hidden">
                   {doc.type}
                 </p>
               </div>
@@ -65,17 +66,17 @@ export function DocumentsTable({
 
             <div className="shrink-0 md:text-right">
               {doc.url && doc.url !== "#" ? (
-                <a
+                <SquareButton
                   href={doc.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 whitespace-nowrap text-xs font-semibold uppercase tracking-[0.16em] text-[#d4af37] transition hover:gap-3 hover:text-[#f5e6a8]"
+                  tone="accent"
+                  className="!px-3 !py-2 text-[10px] md:!px-4 md:!py-2.5"
                 >
                   Download
-                  <span>↓</span>
-                </a>
+                </SquareButton>
               ) : (
-                <span className="whitespace-nowrap font-mono text-[10px] uppercase tracking-[0.2em] text-[#475569]">
+                <span className="whitespace-nowrap font-mono text-[10px] uppercase tracking-[0.2em] text-graphite-500">
                   On request
                 </span>
               )}

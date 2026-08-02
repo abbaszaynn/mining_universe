@@ -5,8 +5,7 @@ import { useCallback, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
 import type { GalleryImage } from "@/lib/types";
 import { cn } from "@/lib/utils";
-import { BlogMotionProvider } from "@/components/blog/BlogMotionProvider";
-import { CompanyMediaLightbox } from "@/components/companies/CompanyMediaLightbox";
+import { GalleryMediaLightbox } from "@/components/gallery/GalleryMediaLightbox";
 import { GalleryCynxShowcase } from "@/components/gallery/GalleryCynxShowcase";
 import { GalleryEditorialSection } from "@/components/gallery/GalleryEditorialSection";
 
@@ -102,18 +101,18 @@ export function GalleryExperience({ images }: GalleryExperienceProps) {
   );
 
   return (
-    <BlogMotionProvider>
+    <>
       <div
         ref={rootRef}
-        className="relative min-h-[100dvh] overflow-x-hidden bg-[#030712] text-[#e2e8f0]"
+        className="relative min-h-[100dvh] overflow-x-hidden bg-bone-50 text-graphite-950"
         data-gos-page-root
       >
         <div
-          className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(212,175,55,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(212,175,55,0.02)_1px,transparent_1px)] bg-[size:72px_72px] [mask-image:radial-gradient(ellipse_at_top,black,transparent_75%)]"
+          className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(233,122,60,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(233,122,60,0.03)_1px,transparent_1px)] bg-[size:72px_72px] [mask-image:radial-gradient(ellipse_at_top,black,transparent_75%)]"
           aria-hidden
         />
 
-        <section className="relative overflow-hidden border-b border-white/[0.06]">
+        <section className="relative overflow-hidden border-b border-graphite-950/[0.06]">
           <div className="absolute inset-0">
             <Image
               src="/images/cover_photo.png"
@@ -123,32 +122,31 @@ export function GalleryExperience({ images }: GalleryExperienceProps) {
               priority
               sizes="100vw"
             />
-            <div className="absolute inset-0 bg-[#030712]/72" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#030712] via-[#030712]/35 to-[#030712]/85" />
+            <div className="absolute inset-0 bg-bone-50/60" />
+            <div className="absolute inset-0 bg-gradient-to-t from-bone-50 via-bone-50/40 to-bone-50/85" />
           </div>
 
           <div
             data-gal-hero
             className="relative z-10 mx-auto flex min-h-[44vh] max-w-6xl flex-col items-center justify-center px-6 py-24 text-center md:min-h-[48vh] md:px-10 md:py-32"
           >
-            <p className="font-mono text-xs uppercase tracking-[0.35em] text-[#d4af37]/90">
+            <p className="font-mono text-xs uppercase tracking-[0.35em] text-copper-500">
               Multimedia archive
             </p>
-            <h1 className="mt-4 max-w-4xl font-[family-name:var(--font-display)] text-4xl font-semibold uppercase tracking-wide text-[#f0f4f7] md:text-6xl">
-              The Game of Stones
+            <h1 className="mt-4 max-w-4xl font-[family-name:var(--font-display)] text-4xl font-semibold uppercase tracking-wide text-graphite-950 md:text-6xl">
+              Durr & Zircon Mines Consortium
             </h1>
-            <p className="mt-6 max-w-2xl text-base font-light leading-relaxed text-[#cbd5e1] md:text-lg">
-              Specimens, landscapes, and field photography from every licensed
-              operator across Gilgit Baltistan.
+            <p className="mt-6 max-w-2xl text-base font-light leading-relaxed text-graphite-600 md:text-lg">
+              Specimens, landscapes, and field photography from our unified operations across Gilgit Baltistan.
             </p>
-            <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.28em] text-[#64748b]">
+            <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.28em] text-graphite-500">
               {allImages.length} images · {minerals.length} mineral types ·{" "}
-              {grouped.length} operators
+              {grouped.length} divisions
             </p>
           </div>
         </section>
 
-        <div className="sticky top-[4.5rem] z-20 border-b border-white/[0.06] bg-[#030712]/90 backdrop-blur-xl md:top-[5rem]">
+        <div className="sticky top-[4.5rem] z-20 border-b border-graphite-950/[0.06] bg-bone-50/90 backdrop-blur-xl md:top-[5rem]">
           <div className="mx-auto flex max-w-7xl gap-2 overflow-x-auto px-6 py-4 md:px-10 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             <button
               type="button"
@@ -156,8 +154,8 @@ export function GalleryExperience({ images }: GalleryExperienceProps) {
               className={cn(
                 "shrink-0 rounded-full border px-4 py-2 font-mono text-[10px] uppercase tracking-[0.18em] transition",
                 activeFilter === "all"
-                  ? "border-[#d4af37]/50 bg-[#d4af37]/15 text-[#d4af37]"
-                  : "border-white/10 bg-white/[0.03] text-[#94a3b8] hover:border-[#d4af37]/30 hover:text-[#e2e8f0]"
+                  ? "border-copper-500/50 bg-copper-500/15 text-copper-500"
+                  : "border-graphite-950/10 bg-graphite-950/[0.03] text-graphite-500 hover:border-copper-500/30 hover:text-graphite-950"
               )}
             >
               All specimens
@@ -170,8 +168,8 @@ export function GalleryExperience({ images }: GalleryExperienceProps) {
                 className={cn(
                   "shrink-0 rounded-full border px-4 py-2 font-mono text-[10px] uppercase tracking-[0.18em] transition",
                   activeFilter === mineral
-                    ? "border-[#d4af37]/50 bg-[#d4af37]/15 text-[#d4af37]"
-                    : "border-white/10 bg-white/[0.03] text-[#94a3b8] hover:border-[#d4af37]/30 hover:text-[#e2e8f0]"
+                    ? "border-copper-500/50 bg-copper-500/15 text-copper-500"
+                    : "border-graphite-950/10 bg-graphite-950/[0.03] text-graphite-500 hover:border-copper-500/30 hover:text-graphite-950"
                 )}
               >
                 {mineral}
@@ -180,7 +178,33 @@ export function GalleryExperience({ images }: GalleryExperienceProps) {
           </div>
         </div>
 
-        <main className="relative z-10 mx-auto max-w-7xl px-4 pb-24 pt-10 sm:px-6 md:px-10 md:pb-32 md:pt-14">
+        <div className="group my-4 overflow-hidden border-y border-copper-600/30 bg-copper-500 py-8 shadow-sm md:my-8 md:py-10">
+          <div
+            className="flex w-max whitespace-nowrap group-hover:[animation-play-state:paused]"
+            style={{ animation: "marquee-scroll 60s linear infinite" }}
+          >
+            {[0, 1].map((rep) => (
+              <span key={rep} className="flex shrink-0 items-center">
+                {Array.from({ length: 3 }).map((_, i) => (
+                  <span
+                    key={i}
+                    className="mx-16 font-sans text-base font-light tracking-widest text-bone-50 md:text-xl"
+                  >
+                    For latest images of samples from the field visits, fill the form in the investor desk.{" "}
+                    <a
+                      href="/investor-desk"
+                      className="ml-3 font-semibold text-white underline decoration-white/40 underline-offset-4 transition hover:decoration-white"
+                    >
+                      Speak with us ↗
+                    </a>
+                  </span>
+                ))}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <main className="relative z-10 mx-auto max-w-7xl px-4 pb-24 pt-8 sm:px-6 md:px-10 md:pb-32 md:pt-12">
           <div data-gal-showcase>
             <GalleryCynxShowcase
               key={activeFilter}
@@ -191,12 +215,12 @@ export function GalleryExperience({ images }: GalleryExperienceProps) {
 
           {grouped.length > 0 && (
             <div className="mt-20 md:mt-28">
-              <div className="mb-10 border-b border-white/[0.06] pb-6 md:mb-14">
-                <p className="font-mono text-[10px] uppercase tracking-[0.32em] text-[#64748b]">
-                  By operator
+              <div className="mb-10 border-b border-graphite-950/[0.06] pb-6 md:mb-14">
+                <p className="font-mono text-[10px] uppercase tracking-[0.32em] text-graphite-500">
+                  By division
                 </p>
-                <h2 className="mt-2 font-[family-name:var(--font-display)] text-xl font-semibold uppercase tracking-[0.1em] text-[#f0f4f7] md:text-2xl">
-                  Company archives
+                <h2 className="mt-2 font-[family-name:var(--font-display)] text-xl font-semibold uppercase tracking-[0.1em] text-graphite-950 md:text-2xl">
+                  Division archives
                 </h2>
               </div>
 
@@ -215,13 +239,13 @@ export function GalleryExperience({ images }: GalleryExperienceProps) {
         </main>
 
         {lightboxIndex !== null && (
-          <CompanyMediaLightbox
+          <GalleryMediaLightbox
             images={filteredImages}
             initialIndex={lightboxIndex}
             onClose={() => setLightboxIndex(null)}
           />
         )}
       </div>
-    </BlogMotionProvider>
+    </>
   );
 }

@@ -7,7 +7,7 @@ export default function SiteLayout({
 }) {
   return (
     <>
-      <SiteHeader variant="solid" />
+      <SiteHeader />
       {children}
     </>
   );
