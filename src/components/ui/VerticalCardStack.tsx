@@ -106,7 +106,7 @@ function StackCard({
       style={{ x, y, rotate, scale, opacity, zIndex }}
       className={cn(
         "absolute overflow-hidden rounded-2xl bg-bone-200 shadow-[0_24px_60px_-18px_rgba(0,0,0,0.45)]",
-        "h-56 w-44 sm:h-72 sm:w-56 lg:h-[22rem] lg:w-[17rem]"
+        "h-48 w-36 sm:h-60 sm:w-44 lg:h-[18rem] lg:w-[14rem]"
       )}
     >
       <Image
