@@ -11,7 +11,7 @@ const config: Config = {
       screens: {
         // Scroll-pinned sections need vertical room as well as width — below
         // this the pinned content overflows its own viewport box and clips.
-        pin: { raw: "(min-width: 768px) and (min-height: 760px)" },
+        pin: { raw: "(min-width: 768px) and (min-height: 600px)" },
       },
       fontFamily: {
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],
