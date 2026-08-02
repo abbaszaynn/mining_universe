@@ -5,26 +5,7 @@ import { gsap } from "@/lib/gsap";
 import { GridLines } from "@/components/ui/GridLines";
 import { SquareButton } from "@/components/ui/SquareButton";
 import { SplitReveal } from "@/components/ui/SplitReveal";
-import MarqueeAlongSvgPath from "@/components/ui/marquee-along-svg-path";
-
-/**
- * Vertical S-curve path for the stone marquee.
- * Runs top-to-bottom within a 400×1200 viewBox, weaving gently left-right
- * so the images stay within the right column but feel organic.
- */
-const VERTICAL_PATH =
-  "M 200 -100 C 100 100, 340 250, 200 450 C 60 650, 340 800, 200 1000 C 80 1180, 320 1300, 200 1400";
-
-/** Mineral specimen images from the public folder. */
-const STONES = [
-  { src: "/images/durr-quartz-3.jpg", alt: "Durr quartz specimen" },
-  { src: "/images/copper-generic-2.jpg", alt: "Copper ore specimen" },
-  { src: "/images/nephrite-2.jpg", alt: "Nephrite jade specimen" },
-  { src: "/images/mo-2.jpg", alt: "Molybdenum specimen" },
-  { src: "/images/quartz-4.jpg", alt: "Quartz crystal specimen" },
-  { src: "/images/ruby-bagicha.jpg", alt: "Ruby from Bagicha mine" },
-  { src: "/images/lithium-bagicha.jpg", alt: "Lithium ore specimen" },
-];
+import { SpiralAnimation } from "@/components/ui/spiral-animation";
 
 export function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -92,44 +73,25 @@ export function HeroSection() {
         </div>
       </div>
 
-      {/* Vertical stone marquee — travels along an S-curve down the right
-          column, spanning both the bone plate and the copper band. Hidden on
-          small screens where the column would overlap the copy. */}
-      <div
-        className="absolute inset-y-0 right-0 z-10 hidden w-[34%] md:block lg:w-[30%]"
-        aria-hidden
-      >
-        <MarqueeAlongSvgPath
-          path={VERTICAL_PATH}
-          viewBox="0 0 400 1200"
-          preserveAspectRatio="xMidYMid slice"
-          baseVelocity={3}
-          direction="normal"
-          slowdownOnHover
-          slowDownFactor={0.25}
-          draggable
-          dragSensitivity={0.15}
-          grabCursor
-          repeat={2}
-          responsive
-          className="h-full w-full pointer-events-auto"
-        >
-          {STONES.map((stone, i) => (
-            <div
-              key={i}
-              className="w-[5.5rem] h-[7.5rem] rounded-xl overflow-hidden shadow-xl ring-1 ring-black/5 hover:scale-110 transition-transform duration-300 ease-out"
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={stone.src}
-                alt={stone.alt}
-                className="w-full h-full object-cover"
-                draggable={false}
-              />
-            </div>
-          ))}
-        </MarqueeAlongSvgPath>
-      </div>
+      {/* Particle spiral — the canvas spans the whole hero so the field can
+          drift across both plates, while the spiral itself is centred over the
+          right-hand column where the copy never reaches. */}
+      <SpiralAnimation
+        className="pointer-events-none absolute inset-0 z-10"
+        color="rgba(28,25,22,0.8)"
+        centerX={0.74}
+        centerY={0.5}
+        scale={1.15}
+        // Mid-cycle the field expands across the full width, which would put
+        // dark specks behind the headline. Fading it out to the left keeps the
+        // spread while leaving the copy column clean.
+        style={{
+          maskImage:
+            "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.18) 34%, rgba(0,0,0,0.7) 52%, #000 68%)",
+          WebkitMaskImage:
+            "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.18) 34%, rgba(0,0,0,0.7) 52%, #000 68%)",
+        }}
+      />
     </section>
   );
 }

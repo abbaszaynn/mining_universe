@@ -34,6 +34,10 @@ const SERVICES = [
   },
 ];
 
+/** Must mirror the `pin` screen in tailwind.config.ts — the scroll driver and
+ *  the CSS pinning have to switch on at exactly the same breakpoint. */
+const PIN_QUERY = "(min-width: 768px) and (min-height: 760px)";
+
 const SLIDES: StackSlide[] = SERVICES.map((s) => ({
   image: s.image,
   title: s.title,
@@ -55,13 +59,13 @@ export function WhatWeDoSection() {
     const section = sectionRef.current;
     if (!section) return;
 
-    const desktop = window.matchMedia("(min-width: 768px)");
+    const pinned = window.matchMedia(PIN_QUERY);
     let lastStep = -1;
 
     const update = () => {
-      // Below md the section is a normal block and the steps are tapped, not
-      // scrubbed — a pinned four-screen section is punishing on a phone.
-      if (!desktop.matches) return;
+      // Outside the pinned range the section is a normal block and the steps
+      // are tapped rather than scrubbed.
+      if (!pinned.matches) return;
 
       const rect = section.getBoundingClientRect();
       const travel = rect.height - window.innerHeight;
@@ -80,12 +84,12 @@ export function WhatWeDoSection() {
     update();
     window.addEventListener("scroll", update, { passive: true });
     window.addEventListener("resize", update);
-    desktop.addEventListener("change", update);
+    pinned.addEventListener("change", update);
 
     return () => {
       window.removeEventListener("scroll", update);
       window.removeEventListener("resize", update);
-      desktop.removeEventListener("change", update);
+      pinned.removeEventListener("change", update);
     };
   }, [cardProgress, last]);
 
@@ -93,7 +97,7 @@ export function WhatWeDoSection() {
    *  scrubbing and the click affordance never fight each other. */
   const goToStep = (i: number) => {
     const section = sectionRef.current;
-    if (!section || !window.matchMedia("(min-width: 768px)").matches) {
+    if (!section || !window.matchMedia(PIN_QUERY).matches) {
       setActive(i);
       animate(cardProgress, i, { type: "spring", stiffness: 200, damping: 30 });
       return;
@@ -112,40 +116,46 @@ export function WhatWeDoSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-bone-100 md:h-[360vh]"
+      className="relative bg-bone-100 pin:h-[360vh]"
     >
-      <div className="relative overflow-hidden md:sticky md:top-0 md:h-[100dvh]">
+      <div className="relative overflow-hidden pin:sticky pin:top-0 pin:h-[100dvh]">
         <GridLines />
 
-        <div className="relative mx-auto flex h-full max-w-[105rem] flex-col justify-center px-5 py-24 md:px-10 md:py-0">
-          <h2 className="text-display-xl tracking-[-0.035em] text-graphite-950">
+        {/* Anchored to the top, not centred: the content is taller than the
+            pinned viewport, and centring pushed the heading up out of the
+            clipped box. Top padding clears the fixed header. */}
+        <div className="relative mx-auto flex h-full max-w-[105rem] flex-col justify-start px-5 py-24 md:px-10 pin:pb-8 pin:pt-[clamp(6.5rem,13vh,9rem)]">
+          {/* Raised above the card stack — the cards fan well outside their
+              own box and would otherwise paint over the heading, since they
+              come later in DOM order. */}
+          <h2 className="relative z-20 text-display-lg tracking-[-0.035em] text-graphite-950">
             What We Do
           </h2>
 
-          <div className="mt-10 grid gap-16 border-t border-graphite-950/12 pt-10 lg:grid-cols-2 lg:gap-16">
+          <div className="mt-6 grid gap-8 border-t border-graphite-950/12 pt-6 lg:grid-cols-2 lg:gap-12">
             {/* Card stack */}
             <div>
-              <p className="flex items-center gap-2.5 text-xs uppercase tracking-[0.08em] text-graphite-500">
+              <p className="relative z-20 flex items-center gap-2.5 text-xs uppercase tracking-[0.08em] text-graphite-500">
                 <span className="h-2 w-2 rounded-full bg-graphite-950" aria-hidden />
                 Our approach
               </p>
               <VerticalCardStack
                 slides={SLIDES}
                 progress={cardProgress}
-                className="mt-8 h-[18rem] w-full sm:h-[22rem] lg:h-[30rem]"
+                className="relative z-0 mt-6 h-[clamp(12rem,32vh,26rem)] w-full"
               />
             </div>
 
             {/* Steps */}
             <div>
-              <p className="hidden max-w-[52ch] text-base leading-[1.5] text-graphite-400 md:block md:text-lg">
+              <p className="hidden max-w-[56ch] text-base leading-[1.45] text-graphite-400 md:block">
                 Game of Stones explores, extracts and commercially manages
                 high-value gemstones and minerals across Gilgit Baltistan —
                 bridging traditional mining with modern technology, from licence
                 through to last-mile export.
               </p>
 
-              <ol className="mt-10 border-t border-graphite-950/12">
+              <ol className="mt-6 border-t border-graphite-950/12">
                 {SERVICES.map((service, i) => {
                   const isActive = active === i;
                   return (
@@ -154,7 +164,7 @@ export function WhatWeDoSection() {
                         type="button"
                         onClick={() => goToStep(i)}
                         aria-current={isActive}
-                        className="flex w-full items-start gap-4 py-5 text-left"
+                        className="flex w-full items-start gap-4 py-3.5 text-left"
                       >
                         <span
                           className={cn(
@@ -170,7 +180,7 @@ export function WhatWeDoSection() {
                         <span className="flex-1">
                           <span
                             className={cn(
-                              "block text-xl leading-tight tracking-[-0.02em] transition-colors duration-base ease-out md:text-[1.75rem]",
+                              "block text-lg leading-tight tracking-[-0.02em] transition-colors duration-base ease-out md:text-[1.5rem]",
                               isActive ? "text-graphite-950" : "text-graphite-300"
                             )}
                           >
@@ -185,7 +195,7 @@ export function WhatWeDoSection() {
                             )}
                           >
                             <span className="overflow-hidden">
-                              <span className="block pt-2.5 text-sm leading-[1.5] text-graphite-500 md:text-base">
+                              <span className="block max-w-[52ch] pt-2 text-sm leading-[1.45] text-graphite-500">
                                 {service.body}
                               </span>
                             </span>
