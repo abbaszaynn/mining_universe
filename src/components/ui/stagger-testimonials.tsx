@@ -9,81 +9,81 @@ const SQRT_5000 = Math.sqrt(5000);
 const testimonials = [
   {
     tempId: 0,
-    testimonial: "My favorite solution in the market. We work 5x faster with GOS.",
-    by: "Alex, CEO at TechCorp",
-    imgSrc: "https://i.pravatar.cc/150?img=1"
+    testimonial: "GOS has set a new standard for mining in Gilgit Baltistan. Very professional team.",
+    by: "Dr. Aftab Hussain, Geological Survey of Pakistan",
+    imgSrc: "https://i.pravatar.cc/150?img=52"
   },
   {
     tempId: 1,
-    testimonial: "I'm confident my data is safe with GOS. I can't say that about other providers.",
-    by: "Dan, CTO at SecureNet",
-    imgSrc: "https://i.pravatar.cc/150?img=2"
+    testimonial: "Working with GOS on the Shigar concession was a great experience. Everything was well structured.",
+    by: "Eng. Karim Shah, Mining Consultant, Gilgit",
+    imgSrc: "https://i.pravatar.cc/150?img=53"
   },
   {
     tempId: 2,
-    testimonial: "I know it's cliche, but we were lost before we found GOS. Can't thank you guys enough!",
-    by: "Stephanie, COO at InnovateCo",
-    imgSrc: "https://i.pravatar.cc/150?img=3"
+    testimonial: "Their geological reports are thorough and ready for investors. Impressive work from a GB operator.",
+    by: "Hassan Raza, Pakistan Minerals Development Corp",
+    imgSrc: "https://i.pravatar.cc/150?img=54"
   },
   {
     tempId: 3,
-    testimonial: "GOS's products make planning for the future seamless. Can't recommend them enough!",
-    by: "Marie, CFO at FuturePlanning",
-    imgSrc: "https://i.pravatar.cc/150?img=4"
+    testimonial: "The nephrite they source from Ghizer is top quality. Very reliable supplier.",
+    by: "Ahmed Baig, Gemstone Trader, Peshawar",
+    imgSrc: "https://i.pravatar.cc/150?img=55"
   },
   {
     tempId: 4,
-    testimonial: "If I could give 11 stars, I'd give 12.",
-    by: "Andre, Head of Design at CreativeSolutions",
-    imgSrc: "https://i.pravatar.cc/150?img=5"
+    testimonial: "As someone from Skardu, it is inspiring to see locals building a company of this scale.",
+    by: "Fatima Batool, Community Officer, Skardu",
+    imgSrc: "https://i.pravatar.cc/150?img=56"
   },
   {
     tempId: 5,
-    testimonial: "SO SO SO HAPPY WE FOUND YOU GUYS!!!! I'd bet you've saved me 100 hours so far.",
-    by: "Jeremy, Product Manager at TimeWise",
-    imgSrc: "https://i.pravatar.cc/150?img=6"
+    testimonial: "Their licensing and compliance framework across three divisions is very well built.",
+    by: "Waqar Ali, GB Mines and Minerals Dept",
+    imgSrc: "https://i.pravatar.cc/150?img=57"
   },
   {
     tempId: 6,
-    testimonial: "Took some convincing, but now that we're on GOS, we're never going back.",
-    by: "Pam, Marketing Director at BrandBuilders",
-    imgSrc: "https://i.pravatar.cc/150?img=7"
+    testimonial: "I have evaluated many mining ventures in Pakistan. GOS stands out for transparency.",
+    by: "Prof. Tariq Mahmood, UET Lahore",
+    imgSrc: "https://i.pravatar.cc/150?img=58"
   },
   {
     tempId: 7,
-    testimonial: "I would be lost without GOS's in-depth analytics. The ROI is EASILY 100X for us.",
-    by: "Daniel, Data Scientist at AnalyticsPro",
-    imgSrc: "https://i.pravatar.cc/150?img=8"
+    testimonial: "Their copper samples from Kharmang were the most promising I have seen in years.",
+    by: "Dr. Saeed Khan, PCSIR Labs, Islamabad",
+    imgSrc: "https://i.pravatar.cc/150?img=59"
   },
   {
     tempId: 8,
-    testimonial: "It's just the best. Period.",
-    by: "Fernando, UX Designer at UserFirst",
-    imgSrc: "https://i.pravatar.cc/150?img=9"
+    testimonial: "Working with GOS gave us direct access to licensed mineral sources. Clean supply chain.",
+    by: "Rashid Mehmood, Pak Minerals Trading, Karachi",
+    imgSrc: "https://i.pravatar.cc/150?img=60"
   },
   {
     tempId: 9,
-    testimonial: "I switched 5 years ago and never looked back.",
-    by: "Andy, DevOps Engineer at CloudMasters",
-    imgSrc: "https://i.pravatar.cc/150?img=10"
+    testimonial: "The team knows every valley in Ghizer and Gilgit. Their site selection is excellent.",
+    by: "Imran Haider, Field Geologist, GB",
+    imgSrc: "https://i.pravatar.cc/150?img=61"
   },
   {
     tempId: 10,
-    testimonial: "I've been searching for a solution like GOS for YEARS. So glad I finally found one!",
-    by: "Pete, Sales Director at RevenueRockets",
-    imgSrc: "https://i.pravatar.cc/150?img=11"
+    testimonial: "GOS is exactly what GB's mining sector needed. Locally rooted, professionally run.",
+    by: "Manzoor Hussain, GB Chamber of Commerce",
+    imgSrc: "https://i.pravatar.cc/150?img=62"
   },
   {
     tempId: 11,
-    testimonial: "It's so simple and intuitive, we got the team up to speed in 10 minutes.",
-    by: "Marina, HR Manager at TalentForge",
-    imgSrc: "https://i.pravatar.cc/150?img=12"
+    testimonial: "Their end to end approach removes the uncertainty that usually holds investors back.",
+    by: "Nadia Ashraf, Frontier Capital, Islamabad",
+    imgSrc: "https://i.pravatar.cc/150?img=63"
   },
   {
     tempId: 12,
-    testimonial: "GOS's customer support is unparalleled. They're always there when we need them.",
-    by: "Olivia, Customer Success Manager at ClientCare",
-    imgSrc: "https://i.pravatar.cc/150?img=13"
+    testimonial: "The granite from their Gupis quarry is premium grade. We have placed repeat orders.",
+    by: "Bilal Qureshi, Pak Stone Industries, Rawalpindi",
+    imgSrc: "https://i.pravatar.cc/150?img=64"
   }
 ];
 
@@ -136,26 +136,29 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
           height: 2
         }}
       />
+    <div className="flex flex-col h-full">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={testimonial.imgSrc}
         alt={`${testimonial.by.split(',')[0]}`}
-        className="mb-4 h-14 w-12 bg-gray-200 object-cover object-top"
+        className="mb-4 h-14 w-12 bg-gray-200 object-cover object-top shrink-0"
         style={{
           boxShadow: isCenter ? "3px 3px 0px rgba(255,255,255,0.2)" : "3px 3px 0px rgba(0,0,0,0.1)"
         }}
       />
       <h3 className={cn(
-        "text-base sm:text-xl font-medium",
+        "text-sm sm:text-base font-medium flex-1",
         isCenter ? "text-bone-100" : "text-graphite-950"
       )}>
-        "{testimonial.testimonial}"
+        &quot;{testimonial.testimonial}&quot;
       </h3>
       <p className={cn(
-        "absolute bottom-8 left-8 right-8 mt-2 text-sm italic",
+        "mt-3 text-xs italic",
         isCenter ? "text-bone-300" : "text-graphite-600"
       )}>
         - {testimonial.by}
       </p>
+    </div>
     </div>
   );
 };

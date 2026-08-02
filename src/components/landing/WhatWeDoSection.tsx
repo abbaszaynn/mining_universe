@@ -122,7 +122,7 @@ export function WhatWeDoSection() {
             What We Do
           </h2>
 
-          <div className="mt-10 grid gap-12 border-t border-graphite-950/12 pt-10 lg:grid-cols-2 lg:gap-16">
+          <div className="mt-10 grid gap-16 border-t border-graphite-950/12 pt-10 lg:grid-cols-2 lg:gap-16">
             {/* Card stack */}
             <div>
               <p className="flex items-center gap-2.5 text-xs uppercase tracking-[0.08em] text-graphite-500">
@@ -132,13 +132,13 @@ export function WhatWeDoSection() {
               <VerticalCardStack
                 slides={SLIDES}
                 progress={cardProgress}
-                className="mt-8 h-[22rem] w-full sm:h-[26rem] lg:h-[30rem]"
+                className="mt-8 h-[18rem] w-full sm:h-[22rem] lg:h-[30rem]"
               />
             </div>
 
             {/* Steps */}
             <div>
-              <p className="max-w-[52ch] text-base leading-[1.5] text-graphite-400 md:text-lg">
+              <p className="hidden max-w-[52ch] text-base leading-[1.5] text-graphite-400 md:block md:text-lg">
                 Game of Stones explores, extracts and commercially manages
                 high-value gemstones and minerals across Gilgit Baltistan —
                 bridging traditional mining with modern technology, from licence

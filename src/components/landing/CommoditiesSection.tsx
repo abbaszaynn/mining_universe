@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useCallback, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { GridLines } from "@/components/ui/GridLines";
@@ -87,22 +86,23 @@ export function CommoditiesSection() {
 
       {/* Stage */}
       <div className="relative flex min-h-[100dvh] flex-col">
-        <div className="relative z-20 mx-auto w-full max-w-[105rem] px-5 pt-16 md:px-10 md:pt-20">
-          <h2 className="text-[clamp(3rem,5.5vw,6rem)] leading-[0.95] font-medium tracking-[-0.035em] text-graphite-700">
+        <div className="relative z-20 mx-auto w-full max-w-[105rem] px-5 pt-8 md:px-10 md:pt-20">
+          <h2 className="text-[clamp(2.5rem,5.5vw,6rem)] leading-[0.95] font-medium tracking-[-0.035em] text-graphite-700">
             Our Commodities
           </h2>
         </div>
 
-        {/* Specimen — centred in the stage */}
-        <div className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center">
+        {/* Specimen — on mobile flows in the layout; on desktop absolutely centred */}
+        {/* Desktop: absolute overlay */}
+        <div className="pointer-events-none absolute inset-0 z-10 hidden items-center justify-center md:flex">
           <div
-            className="pointer-events-auto relative aspect-square w-[82%] max-w-[40rem] md:w-[50%]"
+            className="pointer-events-auto relative aspect-square w-[50%] max-w-[40rem]"
             onPointerMove={trackPointer}
             onPointerLeave={hideCrosshair}
           >
             <AnimatePresence initial={false} custom={direction} mode="popLayout">
               <motion.div
-                key={active.src}
+                key={active.src + "-desktop"}
                 custom={direction}
                 variants={variants}
                 initial="enter"
@@ -115,16 +115,10 @@ export function CommoditiesSection() {
                 }}
                 className="absolute inset-0"
               >
-                {/* Idle float lives on an inner wrapper so it never fights
-                    the slide transform applied to the parent. */}
                 <div
                   className="relative h-full w-full"
                   style={{ animation: "specimen-float 9s ease-in-out infinite" }}
                 >
-                  {/* Neon bloom — a blurred, brightened copy of the same cutout
-                      sits behind the specimen, so the glow traces its exact
-                      silhouette instead of being a generic circle. Same URL, so
-                      the browser serves it from cache rather than re-fetching. */}
                   <div
                     className="absolute inset-0 scale-[1.04]"
                     style={{
@@ -137,16 +131,15 @@ export function CommoditiesSection() {
                       src={active.src}
                       alt=""
                       fill
-                      sizes="(max-width: 768px) 82vw, 50vw"
+                      sizes="50vw"
                       className="object-contain"
                     />
                   </div>
-
                   <Image
                     src={active.src}
                     alt={active.name}
                     fill
-                    sizes="(max-width: 768px) 82vw, 50vw"
+                    sizes="50vw"
                     priority={index === 0}
                     className="relative object-contain drop-shadow-[0_30px_45px_rgba(0,0,0,0.5)]"
                   />
@@ -154,12 +147,10 @@ export function CommoditiesSection() {
               </motion.div>
             </AnimatePresence>
 
-            {/* Cursor crosshair, clipped to the specimen's own alpha so the
-                beams only ignite where there is rock — outside the silhouette
-                the mask hides them entirely. Hidden on coarse pointers. */}
+            {/* Cursor crosshair */}
             <div
               ref={crosshairRef}
-              className="pointer-events-none absolute inset-0 z-10 opacity-0 transition-opacity duration-300 ease-out max-md:hidden"
+              className="pointer-events-none absolute inset-0 z-10 opacity-0 transition-opacity duration-300 ease-out"
               style={{
                 maskImage: `url("${optimised(active.src)}")`,
                 WebkitMaskImage: `url("${optimised(active.src)}")`,
@@ -183,6 +174,58 @@ export function CommoditiesSection() {
                 style={{ boxShadow: "0 0 10px 1.5px rgba(255,255,255,0.95), 0 0 26px 5px rgba(160,220,255,0.7)" }}
               />
             </div>
+          </div>
+        </div>
+
+        {/* Mobile: flows in layout between heading and caption */}
+        <div className="relative z-10 flex flex-1 items-center justify-center px-5 py-8 md:hidden">
+          <div className="relative aspect-square w-[65%] max-w-[20rem]">
+            <AnimatePresence initial={false} custom={direction} mode="popLayout">
+              <motion.div
+                key={active.src + "-mobile"}
+                custom={direction}
+                variants={variants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{
+                  x: { type: "spring", stiffness: 220, damping: 30 },
+                  opacity: { duration: 0.45 },
+                  scale: { duration: 0.55, ease: [0.23, 1, 0.32, 1] },
+                }}
+                className="absolute inset-0"
+              >
+                <div
+                  className="relative h-full w-full"
+                  style={{ animation: "specimen-float 9s ease-in-out infinite" }}
+                >
+                  <div
+                    className="absolute inset-0 scale-[1.04]"
+                    style={{
+                      filter: "blur(20px) brightness(1.75) saturate(1.5)",
+                      animation: "neon-pulse 5.5s ease-in-out infinite",
+                    }}
+                    aria-hidden
+                  >
+                    <Image
+                      src={active.src}
+                      alt=""
+                      fill
+                      sizes="65vw"
+                      className="object-contain"
+                    />
+                  </div>
+                  <Image
+                    src={active.src}
+                    alt={active.name}
+                    fill
+                    sizes="65vw"
+                    priority={index === 0}
+                    className="relative object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.5)]"
+                  />
+                </div>
+              </motion.div>
+            </AnimatePresence>
           </div>
         </div>
 
