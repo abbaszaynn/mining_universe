@@ -11,25 +11,25 @@ const SERVICES = [
   {
     title: "Exploration & Licensing",
     body: "We hold government-granted exploration licences and manage every renewal, NOC and regulatory filing in-house — so a concession you review today is one you can act on tomorrow.",
-    image: "/blogs/shigar_geology.png",
+    image: "/blogs/b1.jpeg",
     badge: "Survey",
   },
   {
     title: "Extraction & Processing",
     body: "Traditional mining discipline paired with modern survey, automation and processing methods — raising recovery rates while keeping our footprint on the valley floor as small as possible.",
-    image: "/blogs/gb_copper_mining.png",
+    image: "/blogs/b2.jpeg",
     badge: "Extraction",
   },
   {
     title: "Unified Management",
     body: "Durr Mines and Zircon Mines operate as one consolidated group, letting us pool equipment, geology teams and logistics across eight concessions instead of three separate balance sheets.",
-    image: "/blogs/gb_silica_iron_mining.png",
+    image: "/blogs/b3.jpeg",
     badge: "Scale",
   },
   {
     title: "Export & Global Trade",
     body: "From pit to port. We handle grading, documentation and export clearance for buyers, distributors and jewellery manufacturers across Asia, the Gulf, Europe and North America.",
-    image: "/blogs/gb_gemstone_mining.png",
+    image: "/blogs/b4.jpeg",
     badge: "Export",
   },
 ];
