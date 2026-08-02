@@ -22,7 +22,7 @@ type StackConfig = {
  *  here rather than across X, and position is owned by scroll rather than drag. */
 function getStackConfig(width: number): StackConfig {
   if (width < 640) {
-    return { yMultiplier: 74, xMultiplier: 12, rotationMultiplier: 4.5, scaleReduction: 0.1 };
+    return { yMultiplier: 30, xMultiplier: 8, rotationMultiplier: 3.5, scaleReduction: 0.1 };
   }
   if (width < 1024) {
     return { yMultiplier: 104, xMultiplier: 18, rotationMultiplier: 5.5, scaleReduction: 0.11 };
