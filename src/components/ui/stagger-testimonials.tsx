@@ -9,80 +9,80 @@ const SQRT_5000 = Math.sqrt(5000);
 const testimonials = [
   {
     tempId: 0,
-    testimonial: "Game of Stones has brought a level of professionalism to mining in GB that we haven't seen before. Their documentation and compliance set a new standard.",
-    by: "Dr. Aftab Hussain, Geologist at Geological Survey of Pakistan",
+    testimonial: "GOS has set a new standard for mining in Gilgit Baltistan. Very professional team.",
+    by: "Dr. Aftab Hussain, Geological Survey of Pakistan",
     imgSrc: "https://i.pravatar.cc/150?img=52"
   },
   {
     tempId: 1,
-    testimonial: "Working with GOS on the Shigar copper concession showed me how structured, transparent mineral exploration should be done in this region.",
+    testimonial: "Working with GOS on the Shigar concession was a great experience. Everything was well structured.",
     by: "Eng. Karim Shah, Mining Consultant, Gilgit",
     imgSrc: "https://i.pravatar.cc/150?img=53"
   },
   {
     tempId: 2,
-    testimonial: "Their geological reports are thorough and investor-ready. It's rare to see this quality of documentation from a Gilgit-Baltistan based operator.",
-    by: "Hassan Raza, Investment Analyst at Pakistan Minerals Development Corp",
+    testimonial: "Their geological reports are thorough and ready for investors. Impressive work from a GB operator.",
+    by: "Hassan Raza, Pakistan Minerals Development Corp",
     imgSrc: "https://i.pravatar.cc/150?img=54"
   },
   {
     tempId: 3,
-    testimonial: "GOS is bridging the gap between untapped mineral reserves and real market access. The nephrite they source from Ghizer is exceptional quality.",
+    testimonial: "The nephrite they source from Ghizer is top quality. Very reliable supplier.",
     by: "Ahmed Baig, Gemstone Trader, Peshawar",
     imgSrc: "https://i.pravatar.cc/150?img=55"
   },
   {
     tempId: 4,
-    testimonial: "As someone from Skardu, it's inspiring to see locals building a mining company of this scale. They know the land and they respect it.",
-    by: "Fatima Batool, Community Development Officer, Skardu",
+    testimonial: "As someone from Skardu, it is inspiring to see locals building a company of this scale.",
+    by: "Fatima Batool, Community Officer, Skardu",
     imgSrc: "https://i.pravatar.cc/150?img=56"
   },
   {
     tempId: 5,
-    testimonial: "The regulatory compliance and licensing framework GOS has built across three divisions is impressive. This is how responsible mining starts.",
-    by: "Waqar Ali, Director at GB Mines & Minerals Dept",
+    testimonial: "Their licensing and compliance framework across three divisions is very well built.",
+    by: "Waqar Ali, GB Mines and Minerals Dept",
     imgSrc: "https://i.pravatar.cc/150?img=57"
   },
   {
     tempId: 6,
-    testimonial: "I've evaluated mining ventures across Pakistan. GOS stands out for their transparent approach to geological data and concession management.",
-    by: "Prof. Tariq Mahmood, Mining Engineering, UET Lahore",
+    testimonial: "I have evaluated many mining ventures in Pakistan. GOS stands out for transparency.",
+    by: "Prof. Tariq Mahmood, UET Lahore",
     imgSrc: "https://i.pravatar.cc/150?img=58"
   },
   {
     tempId: 7,
-    testimonial: "Their copper and polymetallic ore samples from Kharmang were the most promising specimens I've analysed from the Karakoram belt in years.",
-    by: "Dr. Saeed Khan, Metallurgist at PCSIR Labs, Islamabad",
+    testimonial: "Their copper samples from Kharmang were the most promising I have seen in years.",
+    by: "Dr. Saeed Khan, PCSIR Labs, Islamabad",
     imgSrc: "https://i.pravatar.cc/150?img=59"
   },
   {
     tempId: 8,
-    testimonial: "Partnering with Game of Stones gave us direct access to verified, licensed mineral sources. No middlemen, no ambiguity — just clean supply.",
-    by: "Rashid Mehmood, Export Manager at Pak Minerals Trading, Karachi",
+    testimonial: "Working with GOS gave us direct access to licensed mineral sources. Clean supply chain.",
+    by: "Rashid Mehmood, Pak Minerals Trading, Karachi",
     imgSrc: "https://i.pravatar.cc/150?img=60"
   },
   {
     tempId: 9,
-    testimonial: "The team's knowledge of the terrain in Ghizer and Gilgit is unmatched. They grew up walking these valleys — and it shows in their site selection.",
-    by: "Imran Haider, Field Geologist, Gilgit-Baltistan",
+    testimonial: "The team knows every valley in Ghizer and Gilgit. Their site selection is excellent.",
+    by: "Imran Haider, Field Geologist, GB",
     imgSrc: "https://i.pravatar.cc/150?img=61"
   },
   {
     tempId: 10,
-    testimonial: "GOS is exactly what Gilgit-Baltistan's mining sector needed — a professionally run, locally rooted operator with international ambitions.",
-    by: "Manzoor Hussain, Secretary at GB Chamber of Commerce",
+    testimonial: "GOS is exactly what GB's mining sector needed. Locally rooted, professionally run.",
+    by: "Manzoor Hussain, GB Chamber of Commerce",
     imgSrc: "https://i.pravatar.cc/150?img=62"
   },
   {
     tempId: 11,
-    testimonial: "From exploration to export readiness, their end-to-end approach removes the uncertainty that usually holds investors back from this region.",
-    by: "Nadia Ashraf, Portfolio Manager at Frontier Capital, Islamabad",
+    testimonial: "Their end to end approach removes the uncertainty that usually holds investors back.",
+    by: "Nadia Ashraf, Frontier Capital, Islamabad",
     imgSrc: "https://i.pravatar.cc/150?img=63"
   },
   {
     tempId: 12,
-    testimonial: "The granite and marble from their Gupis quarry in Ghizer is premium grade. We've already placed repeat orders for architectural projects.",
-    by: "Bilal Qureshi, Director at Pak Stone Industries, Rawalpindi",
+    testimonial: "The granite from their Gupis quarry is premium grade. We have placed repeat orders.",
+    by: "Bilal Qureshi, Pak Stone Industries, Rawalpindi",
     imgSrc: "https://i.pravatar.cc/150?img=64"
   }
 ];
@@ -136,26 +136,28 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
           height: 2
         }}
       />
+    <div className="flex flex-col h-full">
       <img
         src={testimonial.imgSrc}
         alt={`${testimonial.by.split(',')[0]}`}
-        className="mb-4 h-14 w-12 bg-gray-200 object-cover object-top"
+        className="mb-4 h-14 w-12 bg-gray-200 object-cover object-top shrink-0"
         style={{
           boxShadow: isCenter ? "3px 3px 0px rgba(255,255,255,0.2)" : "3px 3px 0px rgba(0,0,0,0.1)"
         }}
       />
       <h3 className={cn(
-        "text-base sm:text-xl font-medium",
+        "text-sm sm:text-base font-medium flex-1",
         isCenter ? "text-bone-100" : "text-graphite-950"
       )}>
         "{testimonial.testimonial}"
       </h3>
       <p className={cn(
-        "absolute bottom-8 left-8 right-8 mt-2 text-sm italic",
+        "mt-3 text-xs italic",
         isCenter ? "text-bone-300" : "text-graphite-600"
       )}>
         - {testimonial.by}
       </p>
+    </div>
     </div>
   );
 };
