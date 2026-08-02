@@ -70,6 +70,7 @@ export function AboutExperience() {
           {/* Our Vision */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl order-last lg:order-first">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img 
                 src="/images/about/vision.jpeg" 
                 alt="Our Vision" 
@@ -100,6 +101,7 @@ export function AboutExperience() {
               </SquareButton>
             </div>
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img 
                 src="/images/about/our%20story.jpeg" 
                 alt="Our Story" 
@@ -111,6 +113,7 @@ export function AboutExperience() {
           {/* The Future With Us */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl order-last lg:order-first">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img 
                 src="/images/about/the%20future.jpeg" 
                 alt="The Future With Us" 

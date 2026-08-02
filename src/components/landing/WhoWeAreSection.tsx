@@ -25,8 +25,6 @@ const DIRECTORS = [
   { name: "Kumail Abbas", role: "Project Director", photo: "/images/directors/kumail.jpg" },
 ];
 
-/** How long each director holds the spotlight while nobody is hovering. */
-const CYCLE_MS = 1800;
 
 export function WhoWeAreSection() {
   const sectionRef = useRef<HTMLElement>(null);

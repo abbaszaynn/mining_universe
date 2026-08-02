@@ -137,6 +137,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
         }}
       />
     <div className="flex flex-col h-full">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={testimonial.imgSrc}
         alt={`${testimonial.by.split(',')[0]}`}
@@ -149,7 +150,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
         "text-sm sm:text-base font-medium flex-1",
         isCenter ? "text-bone-100" : "text-graphite-950"
       )}>
-        "{testimonial.testimonial}"
+        &quot;{testimonial.testimonial}&quot;
       </h3>
       <p className={cn(
         "mt-3 text-xs italic",

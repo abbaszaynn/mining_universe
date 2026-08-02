@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { StaggerTestimonials } from "@/components/ui/stagger-testimonials";
 import { SquareButton } from "@/components/ui/SquareButton";
 

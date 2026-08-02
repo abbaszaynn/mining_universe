@@ -92,6 +92,81 @@ interface MarqueeAlongSvgPathProps {
   responsive?: boolean
 }
 
+const MarqueeItem = ({
+  itemIndex,
+  itemsLength,
+  baseOffset,
+  easing,
+  calculateZIndex,
+  cssVariableInterpolation,
+  child,
+  itemRefs,
+  itemKey,
+  draggable,
+  grabCursor,
+  path,
+  enableRollingZIndex,
+  repeatIndex,
+  isHovered,
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+}: any) => {
+  const itemOffset = useTransform(baseOffset, (v: number) => {
+    const position = (itemIndex * 100) / itemsLength
+    const wrappedValue = wrap(0, 100, v + position)
+    return `${easing ? easing(wrappedValue / 100) * 100 : wrappedValue}%`
+  })
+
+  const currentOffsetDistance = useMotionValue(0)
+
+  const zIndex = useTransform(currentOffsetDistance, (value: number) =>
+    calculateZIndex(value)
+  )
+
+  useEffect(() => {
+    const unsubscribe = itemOffset.on("change", (value: string) => {
+      const match = value.match(/^([\d.]+)%$/)
+      if (match && match[1]) {
+        currentOffsetDistance.set(parseFloat(match[1]))
+      }
+    })
+    return unsubscribe
+  }, [itemOffset, currentOffsetDistance])
+
+  const cssVariables = Object.fromEntries(
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (cssVariableInterpolation || []).map(({ property, from, to }: any) => [
+      property,
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      useTransform(currentOffsetDistance, [0, 100], [from, to]),
+    ])
+  )
+
+  return (
+    <motion.div
+      ref={(el) => {
+        if (el) itemRefs.current.set(itemKey, el)
+      }}
+      className={cn(
+        "absolute top-0 left-0",
+        draggable && grabCursor && "cursor-grab"
+      )}
+      style={{
+        offsetPath: `path('${path}')`,
+        offsetDistance: itemOffset,
+        zIndex: enableRollingZIndex ? zIndex : undefined,
+        willChange: "offset-distance",
+        backfaceVisibility: "hidden",
+        ...cssVariables,
+      }}
+      aria-hidden={repeatIndex > 0}
+      onMouseEnter={() => (isHovered.current = true)}
+      onMouseLeave={() => (isHovered.current = false)}
+    >
+      {child}
+    </motion.div>
+  )
+}
+
 const MarqueeAlongSvgPath = ({
   children,
   className,
@@ -113,7 +188,6 @@ const MarqueeAlongSvgPath = ({
   easing,
   slowdownOnHover = false,
   slowDownFactor = 0.3,
-  slowDownSpringConfig = { damping: 50, stiffness: 400 },
 
   // Scroll defaults
   useScrollVelocity = false,
@@ -124,9 +198,7 @@ const MarqueeAlongSvgPath = ({
   // Items repetition
   repeat = 3,
 
-  // Drag defaults
   draggable = false,
-  dragSensitivity = 0.2,
   dragVelocityDecay = 0.96,
   dragAwareDirection = false,
   grabCursor = false,
@@ -247,133 +319,83 @@ const MarqueeAlongSvgPath = ({
 
   // Motion values for animation
   const hoverFactorValue = useMotionValue(1)
-  const defaultVelocity = useMotionValue(1)
-  const smoothHoverFactor = useSpring(hoverFactorValue, slowDownSpringConfig)
 
-  // Transform scroll velocity into a factor that affects marquee speed
-  const velocityFactor = useTransform(
-    useScrollVelocity ? smoothVelocity : defaultVelocity,
-    [0, 1000],
-    [0, 5],
-    { clamp: false }
-  )
+  // Animation loop
+  useAnimationFrame((t, delta) => {
+    // 1. Determine base speed based on direction
+    const defaultSpeed = baseVelocity * (direction === "normal" ? 1 : -1)
 
-  // Animation frame handler
-  useAnimationFrame((_, delta) => {
-    if (isDragging.current && draggable) {
-      baseOffset.set(baseOffset.get() + dragVelocity.current)
+    // 2. Adjust speed based on hover
+    if (slowdownOnHover) {
+      const targetHoverFactor = isHovered.current && !isDragging.current ? slowDownFactor : 1
+      // Smoothly animate to the target hover factor
+      hoverFactorValue.set(
+        hoverFactorValue.get() + (targetHoverFactor - hoverFactorValue.get()) * 0.1
+      )
+    }
 
-      // Add decay to dragVelocity
-      dragVelocity.current *= 0.9
-
-      // Stop completely if velocity is very small
-      if (Math.abs(dragVelocity.current) < 0.01) {
-        dragVelocity.current = 0
+    // 3. Adjust speed based on scroll
+    let scrollSpeed = 0
+    if (useScrollVelocity) {
+      const currentVelocity = smoothVelocity.get()
+      if (scrollAwareDirection && currentVelocity !== 0) {
+        directionFactor.current = currentVelocity > 0 ? 1 : -1
       }
-
-      return
+      scrollSpeed = currentVelocity * 0.05 // Tune this multiplier as needed
     }
 
-    // Update hover factor
-    if (isHovered.current) {
-      hoverFactorValue.set(slowdownOnHover ? slowDownFactor : 1)
-    } else {
-      hoverFactorValue.set(1)
-    }
-
-    // Calculate regular movement
-    let moveBy =
-      directionFactor.current *
-      baseVelocity *
-      (delta / 1000) *
-      smoothHoverFactor.get()
-
-    // Adjust movement based on scroll velocity if scrollAwareDirection is enabled
-    if (scrollAwareDirection && !isDragging.current) {
-      if (velocityFactor.get() < 0) {
-        directionFactor.current = -1
-      } else if (velocityFactor.get() > 0) {
-        directionFactor.current = 1
-      }
-    }
-
-    moveBy += directionFactor.current * moveBy * velocityFactor.get()
-
+    // 4. Adjust speed based on drag
+    let currentDragVelocity = 0
     if (draggable) {
-      moveBy += dragVelocity.current
-
-      // Update direction based on drag direction if dragAwareDirection is true
-      if (dragAwareDirection && Math.abs(dragVelocity.current) > 0.1) {
-        directionFactor.current = Math.sign(dragVelocity.current)
-      }
-
-      // Gradually decay drag velocity back to zero
-      if (!isDragging.current && Math.abs(dragVelocity.current) > 0.01) {
-        dragVelocity.current *= dragVelocityDecay
-      } else if (!isDragging.current) {
+      if (isDragging.current) {
+        // While dragging, animation is paused (velocity = 0)
         dragVelocity.current = 0
+      } else {
+        // Apply decay to drag velocity for momentum effect
+        dragVelocity.current *= dragVelocityDecay
+        currentDragVelocity = dragVelocity.current
+
+        if (dragAwareDirection && Math.abs(currentDragVelocity) > 0.1) {
+          directionFactor.current = currentDragVelocity > 0 ? 1 : -1
+        }
       }
     }
 
-    baseOffset.set(baseOffset.get() + moveBy)
+    // Calculate final velocity
+    // When dragging, pause normal animation. When releasing, add momentum.
+    let finalVelocity = 0
+    if (!isDragging.current) {
+      finalVelocity =
+        defaultSpeed * hoverFactorValue.get() + scrollSpeed + currentDragVelocity
+
+      // If we are aware of direction changes (from scroll or drag),
+      // we might want to ensure the base velocity respects it.
+      if (scrollAwareDirection || dragAwareDirection) {
+        // Override the sign of defaultSpeed if directionFactor changed it
+        finalVelocity =
+          Math.abs(defaultSpeed * hoverFactorValue.get()) * directionFactor.current +
+          scrollSpeed +
+          currentDragVelocity
+      }
+    } else {
+      // While dragging, we only move via the drag event itself (handled in onPan),
+      // but we need to keep the loop running without adding automatic velocity.
+      finalVelocity = 0
+    }
+
+    // Convert velocity to offset delta.
+    // 1000 is a scaling factor to make baseVelocity values reasonable.
+    const deltaOffset = (finalVelocity * delta) / 1000
+
+    // Update the base offset
+    baseOffset.set(baseOffset.get() + deltaOffset)
   })
 
-  // Pointer event handlers for dragging
-  const lastPointerPosition = useRef({ x: 0, y: 0 })
-
-  const handlePointerDown = (e: React.PointerEvent) => {
-    if (!draggable) return
-    ;(e.currentTarget as HTMLElement).setPointerCapture(e.pointerId)
-
-    if (grabCursor) {
-      ;(e.currentTarget as HTMLElement).style.cursor = "grabbing"
-    }
-
-    isDragging.current = true
-    lastPointerPosition.current = { x: e.clientX, y: e.clientY }
-
-    // Pause automatic animation by setting velocity to 0
-    dragVelocity.current = 0
-  }
-
-  const handlePointerMove = (e: React.PointerEvent) => {
-    if (!draggable || !isDragging.current) return
-
-    const currentPosition = { x: e.clientX, y: e.clientY }
-
-    // Calculate movement delta - simplified for path movement
-    const deltaX = currentPosition.x - lastPointerPosition.current.x
-    const deltaY = currentPosition.y - lastPointerPosition.current.y
-
-    // For path following, we use a simple magnitude of movement
-    const delta = Math.sqrt(deltaX * deltaX + deltaY * deltaY)
-    const projectedDelta = deltaX > 0 ? delta : -delta
-
-    // Update drag velocity based on the projected movement
-    dragVelocity.current = projectedDelta * dragSensitivity
-
-    // Update last position
-    lastPointerPosition.current = currentPosition
-  }
-
-  const handlePointerUp = (e: React.PointerEvent) => {
-    if (!draggable) return
-    ;(e.currentTarget as HTMLElement).releasePointerCapture(e.pointerId)
-    isDragging.current = false
-
-    if (grabCursor) {
-      ;(e.currentTarget as HTMLElement).style.cursor = "grab"
-    }
-  }
 
   return (
     <div
       ref={container}
-      onPointerDown={handlePointerDown}
-      onPointerMove={handlePointerMove}
-      onPointerUp={handlePointerUp}
-      onPointerCancel={handlePointerUp}
-      className={cn("relative", className)}
+      className={cn("relative w-full h-full overflow-hidden", className)}
     >
       <div
         ref={marqueeContainerRef}
@@ -397,67 +419,26 @@ const MarqueeAlongSvgPath = ({
           />
         </svg>
 
-        {items.map(({ child, repeatIndex, itemIndex, key }) => {
-        // Create a unique offset transform for each item
-        const itemOffset = useTransform(baseOffset, (v) => {
-          const position = (itemIndex * 100) / items.length
-          const wrappedValue = wrap(0, 100, v + position)
-          return `${easing ? easing(wrappedValue / 100) * 100 : wrappedValue}%`
-        })
-
-        // Create a motion value for the current offset distance
-        const currentOffsetDistance = useMotionValue(0)
-
-        // Update z-index when offset distance changes
-        const zIndex = useTransform(currentOffsetDistance, (value) =>
-          calculateZIndex(value)
-        )
-
-        // Update current offset distance value when animation runs
-        useEffect(() => {
-          const unsubscribe = itemOffset.on("change", (value: string) => {
-            // Parse percentage string to get numerical value
-            const match = value.match(/^([\d.]+)%$/)
-            if (match && match[1]) {
-              currentOffsetDistance.set(parseFloat(match[1]))
-            }
-          })
-          return unsubscribe
-        }, [itemOffset, currentOffsetDistance])
-
-        const cssVariables = Object.fromEntries(
-          (cssVariableInterpolation || []).map(({ property, from, to }) => [
-            property,
-            useTransform(currentOffsetDistance, [0, 100], [from, to]),
-          ])
-        )
-
-        return (
-          <motion.div
+        {items.map(({ child, repeatIndex, itemIndex, key }) => (
+          <MarqueeItem
             key={key}
-            ref={(el) => {
-              if (el) itemRefs.current.set(key, el)
-            }}
-            className={cn(
-              "absolute top-0 left-0",
-              draggable && grabCursor && "cursor-grab"
-            )}
-            style={{
-              offsetPath: `path('${path}')`,
-              offsetDistance: itemOffset,
-              zIndex: enableRollingZIndex ? zIndex : undefined,
-              willChange: "offset-distance",
-              backfaceVisibility: "hidden",
-              ...cssVariables,
-            }}
-            aria-hidden={repeatIndex > 0}
-            onMouseEnter={() => (isHovered.current = true)}
-            onMouseLeave={() => (isHovered.current = false)}
-          >
-            {child}
-          </motion.div>
-        )
-      })}
+            itemKey={key}
+            child={child}
+            repeatIndex={repeatIndex}
+            itemIndex={itemIndex}
+            itemsLength={items.length}
+            baseOffset={baseOffset}
+            easing={easing}
+            calculateZIndex={calculateZIndex}
+            cssVariableInterpolation={cssVariableInterpolation}
+            itemRefs={itemRefs}
+            draggable={draggable}
+            grabCursor={grabCursor}
+            path={path}
+            enableRollingZIndex={enableRollingZIndex}
+            isHovered={isHovered}
+          />
+        ))}
       </div>
     </div>
   )

@@ -12,13 +12,8 @@ import { RegionsMapSection } from "./RegionsMapSection";
 import { InsightsSection } from "./InsightsSection";
 import { VideoSection } from "./VideoSection";
 import { SiteFooter } from "@/components/layout/SiteFooter";
-import type { Company, NewsArticle } from "@/lib/types";
 
-export function LandingPage(_props: {
-  latestArticles: NewsArticle[];
-  companyNames: Record<string, string>;
-  companies: Pick<Company, "id" | "name" | "logoUrl" | "status">[];
-}) {
+export function LandingPage() {
   return (
     <div data-gos-page-root className="relative bg-bone-100 text-graphite-950">
       <SiteHeader />
