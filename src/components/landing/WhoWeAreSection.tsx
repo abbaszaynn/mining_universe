@@ -18,11 +18,11 @@ const DIRECTORS = [
   { name: "Tabish Hassan", role: "CEO", photo: "/images/directors/Tabish Hassan.jpeg" },
   { name: "Zain Abbas", role: "Director", photo: "/images/directors/Zain Abbas.jpeg" },
   { name: "Daniyal Ali", role: "Director", photo: "/images/directors/Daniyal Ali.jpeg" },
-  { name: "Zubair Abbas", role: "Director", photo: "/images/directors/Zubair Abbas.jpeg" },
-  { name: "Minhas Hussain", role: "Director", photo: "/images/directors/Minhas Hussain.jpeg" },
   { name: "Sabi ul Hasaan", role: "Director", photo: "/images/directors/Sabi ul Hasaan (1).jpeg" },
-  { name: "Syed Moaiz Ali", role: "Director", photo: "/images/directors/moaiz.jpeg" },
-  { name: "Kumail Abbas", role: "Project director", photo: "/images/directors/kumail.jpg" },
+  { name: "Zubair Abbas", role: "Legal Advisor", photo: "/images/directors/Zubair Abbas.jpeg" },
+  { name: "Minhas Hussain", role: "Finance Manager", photo: "/images/directors/Minhas Hussain.jpeg" },
+  { name: "Syed Moaiz Ali", role: "Executive Director", photo: "/images/directors/moaiz.jpeg" },
+  { name: "Kumail Abbas", role: "Project Director", photo: "/images/directors/kumail.jpg" },
 ];
 
 /** How long each director holds the spotlight while nobody is hovering. */
