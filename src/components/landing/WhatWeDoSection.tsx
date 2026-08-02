@@ -36,7 +36,7 @@ const SERVICES = [
 
 /** Must mirror the `pin` screen in tailwind.config.ts — the scroll driver and
  *  the CSS pinning have to switch on at exactly the same breakpoint. */
-const PIN_QUERY = "(min-height: 600px)";
+const PIN_QUERY = "(min-width: 768px) and (min-height: 600px)";
 
 const SLIDES: StackSlide[] = SERVICES.map((s) => ({
   image: s.image,
