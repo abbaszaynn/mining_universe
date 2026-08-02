@@ -9,81 +9,81 @@ const SQRT_5000 = Math.sqrt(5000);
 const testimonials = [
   {
     tempId: 0,
-    testimonial: "My favorite solution in the market. We work 5x faster with GOS.",
-    by: "Alex, CEO at TechCorp",
-    imgSrc: "https://i.pravatar.cc/150?img=1"
+    testimonial: "Game of Stones has brought a level of professionalism to mining in GB that we haven't seen before. Their documentation and compliance set a new standard.",
+    by: "Dr. Aftab Hussain, Geologist at Geological Survey of Pakistan",
+    imgSrc: "https://i.pravatar.cc/150?img=52"
   },
   {
     tempId: 1,
-    testimonial: "I'm confident my data is safe with GOS. I can't say that about other providers.",
-    by: "Dan, CTO at SecureNet",
-    imgSrc: "https://i.pravatar.cc/150?img=2"
+    testimonial: "Working with GOS on the Shigar copper concession showed me how structured, transparent mineral exploration should be done in this region.",
+    by: "Eng. Karim Shah, Mining Consultant, Gilgit",
+    imgSrc: "https://i.pravatar.cc/150?img=53"
   },
   {
     tempId: 2,
-    testimonial: "I know it's cliche, but we were lost before we found GOS. Can't thank you guys enough!",
-    by: "Stephanie, COO at InnovateCo",
-    imgSrc: "https://i.pravatar.cc/150?img=3"
+    testimonial: "Their geological reports are thorough and investor-ready. It's rare to see this quality of documentation from a Gilgit-Baltistan based operator.",
+    by: "Hassan Raza, Investment Analyst at Pakistan Minerals Development Corp",
+    imgSrc: "https://i.pravatar.cc/150?img=54"
   },
   {
     tempId: 3,
-    testimonial: "GOS's products make planning for the future seamless. Can't recommend them enough!",
-    by: "Marie, CFO at FuturePlanning",
-    imgSrc: "https://i.pravatar.cc/150?img=4"
+    testimonial: "GOS is bridging the gap between untapped mineral reserves and real market access. The nephrite they source from Ghizer is exceptional quality.",
+    by: "Ahmed Baig, Gemstone Trader, Peshawar",
+    imgSrc: "https://i.pravatar.cc/150?img=55"
   },
   {
     tempId: 4,
-    testimonial: "If I could give 11 stars, I'd give 12.",
-    by: "Andre, Head of Design at CreativeSolutions",
-    imgSrc: "https://i.pravatar.cc/150?img=5"
+    testimonial: "As someone from Skardu, it's inspiring to see locals building a mining company of this scale. They know the land and they respect it.",
+    by: "Fatima Batool, Community Development Officer, Skardu",
+    imgSrc: "https://i.pravatar.cc/150?img=56"
   },
   {
     tempId: 5,
-    testimonial: "SO SO SO HAPPY WE FOUND YOU GUYS!!!! I'd bet you've saved me 100 hours so far.",
-    by: "Jeremy, Product Manager at TimeWise",
-    imgSrc: "https://i.pravatar.cc/150?img=6"
+    testimonial: "The regulatory compliance and licensing framework GOS has built across three divisions is impressive. This is how responsible mining starts.",
+    by: "Waqar Ali, Director at GB Mines & Minerals Dept",
+    imgSrc: "https://i.pravatar.cc/150?img=57"
   },
   {
     tempId: 6,
-    testimonial: "Took some convincing, but now that we're on GOS, we're never going back.",
-    by: "Pam, Marketing Director at BrandBuilders",
-    imgSrc: "https://i.pravatar.cc/150?img=7"
+    testimonial: "I've evaluated mining ventures across Pakistan. GOS stands out for their transparent approach to geological data and concession management.",
+    by: "Prof. Tariq Mahmood, Mining Engineering, UET Lahore",
+    imgSrc: "https://i.pravatar.cc/150?img=58"
   },
   {
     tempId: 7,
-    testimonial: "I would be lost without GOS's in-depth analytics. The ROI is EASILY 100X for us.",
-    by: "Daniel, Data Scientist at AnalyticsPro",
-    imgSrc: "https://i.pravatar.cc/150?img=8"
+    testimonial: "Their copper and polymetallic ore samples from Kharmang were the most promising specimens I've analysed from the Karakoram belt in years.",
+    by: "Dr. Saeed Khan, Metallurgist at PCSIR Labs, Islamabad",
+    imgSrc: "https://i.pravatar.cc/150?img=59"
   },
   {
     tempId: 8,
-    testimonial: "It's just the best. Period.",
-    by: "Fernando, UX Designer at UserFirst",
-    imgSrc: "https://i.pravatar.cc/150?img=9"
+    testimonial: "Partnering with Game of Stones gave us direct access to verified, licensed mineral sources. No middlemen, no ambiguity — just clean supply.",
+    by: "Rashid Mehmood, Export Manager at Pak Minerals Trading, Karachi",
+    imgSrc: "https://i.pravatar.cc/150?img=60"
   },
   {
     tempId: 9,
-    testimonial: "I switched 5 years ago and never looked back.",
-    by: "Andy, DevOps Engineer at CloudMasters",
-    imgSrc: "https://i.pravatar.cc/150?img=10"
+    testimonial: "The team's knowledge of the terrain in Ghizer and Gilgit is unmatched. They grew up walking these valleys — and it shows in their site selection.",
+    by: "Imran Haider, Field Geologist, Gilgit-Baltistan",
+    imgSrc: "https://i.pravatar.cc/150?img=61"
   },
   {
     tempId: 10,
-    testimonial: "I've been searching for a solution like GOS for YEARS. So glad I finally found one!",
-    by: "Pete, Sales Director at RevenueRockets",
-    imgSrc: "https://i.pravatar.cc/150?img=11"
+    testimonial: "GOS is exactly what Gilgit-Baltistan's mining sector needed — a professionally run, locally rooted operator with international ambitions.",
+    by: "Manzoor Hussain, Secretary at GB Chamber of Commerce",
+    imgSrc: "https://i.pravatar.cc/150?img=62"
   },
   {
     tempId: 11,
-    testimonial: "It's so simple and intuitive, we got the team up to speed in 10 minutes.",
-    by: "Marina, HR Manager at TalentForge",
-    imgSrc: "https://i.pravatar.cc/150?img=12"
+    testimonial: "From exploration to export readiness, their end-to-end approach removes the uncertainty that usually holds investors back from this region.",
+    by: "Nadia Ashraf, Portfolio Manager at Frontier Capital, Islamabad",
+    imgSrc: "https://i.pravatar.cc/150?img=63"
   },
   {
     tempId: 12,
-    testimonial: "GOS's customer support is unparalleled. They're always there when we need them.",
-    by: "Olivia, Customer Success Manager at ClientCare",
-    imgSrc: "https://i.pravatar.cc/150?img=13"
+    testimonial: "The granite and marble from their Gupis quarry in Ghizer is premium grade. We've already placed repeat orders for architectural projects.",
+    by: "Bilal Qureshi, Director at Pak Stone Industries, Rawalpindi",
+    imgSrc: "https://i.pravatar.cc/150?img=64"
   }
 ];
 

@@ -11,12 +11,12 @@ export function VideoSection() {
         {/* Background YouTube Video */}
         <div className="absolute inset-0 z-0 overflow-hidden opacity-60">
           <iframe
-            className="pointer-events-none absolute left-1/2 top-1/2 h-[300vw] w-[300vw] -translate-x-1/2 -translate-y-1/2 md:h-[150vw] md:w-[150vw]"
-            src="https://www.youtube.com/embed/hxyM449uJrs?autoplay=1&mute=1&loop=1&playlist=hxyM449uJrs&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&fs=0&iv_load_policy=3"
+            className="pointer-events-none absolute left-1/2 top-1/2 h-[400vw] w-[400vw] -translate-x-1/2 -translate-y-1/2 md:h-[200vw] md:w-[200vw] lg:h-[150vw] lg:w-[150vw]"
+            src="https://www.youtube.com/embed/hxyM449uJrs?autoplay=1&mute=1&loop=1&playlist=hxyM449uJrs&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&fs=0&iv_load_policy=3&cc_load_policy=0&start=1"
             title="Background Video"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
+            style={{ border: 0 }}
           />
         </div>
 

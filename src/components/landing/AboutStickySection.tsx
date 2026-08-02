@@ -136,7 +136,7 @@ export function AboutStickySection() {
 
         <div
           ref={leftRef}
-          className="pointer-events-none absolute -left-16 bottom-0 w-[38%] md:left-4 md:w-[22%] origin-bottom-left"
+          className="pointer-events-none absolute bottom-0 left-1/2 w-[50%] -translate-x-1/2 origin-bottom md:left-4 md:w-[22%] md:translate-x-0 md:origin-bottom-left"
           aria-hidden
         >
           <div className="relative aspect-[4/5] w-full drop-shadow-2xl">
