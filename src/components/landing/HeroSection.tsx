@@ -78,7 +78,7 @@ export function HeroSection() {
           right-hand column where the copy never reaches. */}
       <SpiralAnimation
         className="pointer-events-none absolute inset-0 z-10"
-        color="rgba(28,25,22,0.8)"
+        color="rgba(28,25,22,1)"
         centerX={0.74}
         centerY={0.5}
         scale={1.15}
@@ -87,9 +87,9 @@ export function HeroSection() {
         // spread while leaving the copy column clean.
         style={{
           maskImage:
-            "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.18) 34%, rgba(0,0,0,0.7) 52%, #000 68%)",
+            "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.4) 34%, rgba(0,0,0,0.85) 52%, #000 68%)",
           WebkitMaskImage:
-            "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.18) 34%, rgba(0,0,0,0.7) 52%, #000 68%)",
+            "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.4) 34%, rgba(0,0,0,0.85) 52%, #000 68%)",
         }}
       />
     </section>

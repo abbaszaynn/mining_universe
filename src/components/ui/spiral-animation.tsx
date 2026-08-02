@@ -162,7 +162,7 @@ export function SpiralAnimation({
       const y = (VIEW_ZOOM * py) / depth;
       const r = (400 * sizeFactor) / depth;
       ctx.beginPath();
-      ctx.arc(x, y, Math.max(r * 0.06, 0.35), 0, Math.PI * 2);
+      ctx.arc(x, y, Math.max(r * 0.12, 0.8), 0, Math.PI * 2);
       ctx.fill();
     };
 
