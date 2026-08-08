@@ -22,7 +22,7 @@ const SERVICES = [
   },
   {
     title: "Unified Management",
-    body: "Durr Mines and Zircon Mines operate as one consolidated group, letting us pool equipment, geology teams and logistics across eight concessions instead of three separate balance sheets.",
+    body: "Durr Mines and Zircon Mines are now one registered entity, letting us pool equipment, geology teams and logistics across eight concessions instead of running separate balance sheets.",
     image: "/blogs/b3.jpeg",
     badge: "Scale",
   },
@@ -149,7 +149,7 @@ export function WhatWeDoSection() {
             {/* Steps */}
             <div>
               <p className="hidden max-w-[56ch] text-base leading-[1.45] text-graphite-400 md:block">
-                Game of Stones explores, extracts and commercially manages
+                Durr & Zircon Consortium explores, extracts and commercially manages
                 high-value gemstones and minerals across Gilgit Baltistan —
                 bridging traditional mining with modern technology, from licence
                 through to last-mile export.

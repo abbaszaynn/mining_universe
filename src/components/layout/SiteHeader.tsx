@@ -10,6 +10,7 @@ import { SquareButton } from "@/components/ui/SquareButton";
 const NAV_ITEMS = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
+  { href: "/services", label: "Services" },
   { href: "/map", label: "Map" },
   { href: "/gallery", label: "Gallery" },
   { href: "/news", label: "Press" },
@@ -37,7 +38,7 @@ export function SiteHeader() {
         <div className="mx-auto flex max-w-[105rem] items-center justify-between gap-4 px-5 py-5 md:px-10 md:py-6">
           <Link
             href="/"
-            aria-label="Game of Stones home"
+            aria-label="Durr & Zircon Consortium home"
             className="text-xl font-semibold tracking-[-0.06em] text-graphite-950 transition-colors duration-base ease-out hover:text-copper-500 md:text-2xl"
           >
             GOS

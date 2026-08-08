@@ -3,6 +3,7 @@ import { Figtree } from "next/font/google";
 import { AppProviders } from "@/components/providers/AppProviders";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { createPageMetadata, organizationJsonLd } from "@/lib/seo";
+import { SITE } from "@/lib/site";
 import "./globals.css";
 
 /** One family across the whole site — body and display both draw from Figtree,
@@ -15,9 +16,8 @@ const figtree = Figtree({
 });
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Game of Stones",
-  description:
-    "Game of Stones connects global investors with licensed mining operators across Gilgit Baltistan — copper, gold, lithium, nephrite, antimony, and polymetallic assets under full regulatory compliance.",
+  title: SITE.name,
+  description: SITE.description,
   path: "/",
 });
 

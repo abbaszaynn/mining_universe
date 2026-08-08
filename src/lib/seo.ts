@@ -29,10 +29,11 @@ export function createPageMetadata({
   const url = absoluteUrl(path);
   const imageUrl = ogImage.startsWith("http") ? ogImage : absoluteUrl(ogImage);
 
+  // Short suffix so page titles stay inside Google's ~60-character display.
   const fullTitle =
     path === "" || path === "/"
       ? SITE.title
-      : `${title} | ${SITE.name}`;
+      : `${title} | ${SITE.shortName}`;
 
   return {
     title: fullTitle,
@@ -100,7 +101,9 @@ export function organizationJsonLd() {
         "@type": "Organization",
         "@id": `${url}/#organization`,
         name: SITE.legalName,
-        alternateName: SITE.name,
+        // Feeds entity resolution: tells Google the brand flourish and the two
+        // predecessor companies all refer to this same registered entity.
+        alternateName: [SITE.brandName, ...SITE.formerNames],
         url,
         logo: absoluteUrl("/icon.svg"),
         description: SITE.description,

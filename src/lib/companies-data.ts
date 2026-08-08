@@ -1,7 +1,13 @@
 import type { Company } from '@/lib/types';
 import { galleryImages } from '@/lib/gallery-images-data';
 
-export const companies: Company[] = [
+/**
+ * Source records, one per originally-registered company. Durr and Zircon are
+ * kept separate here and merged below — hand-splicing their records would mean
+ * retyping surveyed polygon coordinates, and a single wrong digit would move a
+ * concession boundary.
+ */
+const rawCompanies: Company[] = [
   {
     id: 'durr-zircon',
     name: 'Durr & Zircon Mines Consortium',
@@ -339,3 +345,41 @@ export const companies: Company[] = [
     ]
   },
 ];
+
+/**
+ * Durr Mines and Minerals and Zircon Mines are now a single registered entity:
+ * Durr & Zircon Consortium. Their four concessions each combine into the eight
+ * the consortium holds. Earth Lux remains a separate third company.
+ *
+ * Merging here rather than in the records above keeps every polygon byte-identical
+ * to the surveyed source, and makes the change trivially reversible.
+ */
+const MERGE_INTO = 'durr-zircon';
+const MERGE_FROM = 'zircon-mines';
+
+export const companies: Company[] = (() => {
+  const target = rawCompanies.find((c) => c.id === MERGE_INTO);
+  const source = rawCompanies.find((c) => c.id === MERGE_FROM);
+  if (!target || !source) return rawCompanies;
+
+  const merged: Company = {
+    ...target,
+    leadership: [
+      ...target.leadership,
+      ...source.leadership.filter(
+        (l) => !target.leadership.some((t) => t.name === l.name)
+      ),
+    ],
+    projects: [...target.projects, ...source.projects],
+    locations: [...target.locations, ...source.locations],
+    images: [...target.images, ...source.images],
+    videos: [...target.videos, ...source.videos],
+    documents: [...target.documents, ...source.documents],
+    deposits: [...target.deposits, ...source.deposits],
+  };
+
+  return [
+    merged,
+    ...rawCompanies.filter((c) => c.id !== MERGE_INTO && c.id !== MERGE_FROM),
+  ];
+})();

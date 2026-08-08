@@ -3,7 +3,7 @@ import { createPageMetadata } from "@/lib/seo";
 
 export const metadata = createPageMetadata({
   title: "Page Not Found",
-  description: "The page you requested could not be found on Game of Stones.",
+  description: "The page you requested could not be found on Durr & Zircon Consortium.",
   path: "/404",
   noIndex: true,
 });
@@ -18,7 +18,7 @@ export default function NotFound() {
         Page not found
       </h1>
       <p className="mt-4 max-w-md text-[#94a3b8]">
-        This route is not part of the Game of Stones site. Return to the homepage
+        This route is not part of the Durr & Zircon Consortium site. Return to the homepage
         or explore our mining operators.
       </p>
       <Link

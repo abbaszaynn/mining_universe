@@ -31,6 +31,14 @@ const nextConfig = {
       },
     ];
   },
+  async redirects() {
+    return [
+      // /companies was live and crawlable before the rename. Without a 301 it
+      // 404s, throwing away any indexing and inbound links it had earned.
+      { source: "/companies", destination: "/about", permanent: true },
+      { source: "/companies/:slug", destination: "/about", permanent: true },
+    ];
+  },
   webpack: (config, { dev }) => {
     if (dev) {
       config.output.chunkLoadTimeout = 120000;

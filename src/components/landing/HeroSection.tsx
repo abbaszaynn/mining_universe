@@ -60,7 +60,7 @@ export function HeroSection() {
         <div className="relative z-20 mx-auto max-w-[105rem] px-5 py-14 md:px-10 md:py-28">
           <div className="max-w-[34rem]">
             <p className="text-xl leading-[1.35] text-bone-50 md:text-2xl">
-              Game of Stones operates three licensed mining companies across
+              Durr & Zircon Consortium operates three licensed mining companies across
               Gilgit Baltistan — extracting copper, gold, lithium, nephrite and
               polymetallic ore under full regulatory compliance.
             </p>

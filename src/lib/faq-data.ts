@@ -5,9 +5,9 @@ export type FaqItem = {
 
 export const GOS_FAQ_ITEMS: FaqItem[] = [
   {
-    question: "What is Game of Stones (GOS)?",
+    question: "What is Durr & Zircon Consortium (GOS)?",
     answer:
-      "Game of Stones is an investor-facing platform representing three licensed mining operators across Gilgit Baltistan — Skardu, Gilgit, and Ghizer. We connect global capital with copper, marble, gold, lithium, nephrite, serpentine, antimony, and polymetallic assets, backed by geological reports, government permits, and a team that stands behind every conversation and site visit.",
+      "Durr & Zircon Consortium is an investor-facing platform representing three licensed mining operators across Gilgit Baltistan — Skardu, Gilgit, and Ghizer. We connect global capital with copper, marble, gold, lithium, nephrite, serpentine, antimony, and polymetallic assets, backed by geological reports, government permits, and a team that stands behind every conversation and site visit.",
   },
   {
     question: "Which minerals and mine sites are in the portfolio?",

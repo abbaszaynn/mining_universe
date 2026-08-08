@@ -134,7 +134,7 @@ export function RegionsMapSection() {
 
       <div className="relative mx-auto max-w-[105rem] px-5 md:px-10">
         <div className="relative mt-14 h-[38rem] w-full md:h-[46rem]">
-          <div ref={mapNodeRef} className="h-full w-full bg-graphite-300" aria-label="Map of Game of Stones operating regions across Gilgit Baltistan" />
+          <div ref={mapNodeRef} className="h-full w-full bg-graphite-300" aria-label="Map of Durr & Zircon Consortium operating regions across Gilgit Baltistan" />
         </div>
       </div>
 

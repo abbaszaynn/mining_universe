@@ -2,7 +2,10 @@
 
 export const STATIC_ROUTES = [
   { path: "/", changeFrequency: "weekly" as const, priority: 1 },
-  { path: "/companies", changeFrequency: "weekly" as const, priority: 0.9 },
+  // Was /companies — that route no longer exists and returned 404 to every
+  // crawler that followed the sitemap. Keep this list in step with src/app.
+  { path: "/about", changeFrequency: "weekly" as const, priority: 0.9 },
+  { path: "/services", changeFrequency: "weekly" as const, priority: 0.95 },
   { path: "/map", changeFrequency: "monthly" as const, priority: 0.85 },
   { path: "/gallery", changeFrequency: "weekly" as const, priority: 0.85 },
   { path: "/news", changeFrequency: "weekly" as const, priority: 0.8 },

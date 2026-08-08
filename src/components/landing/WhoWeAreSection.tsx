@@ -118,7 +118,7 @@ export function WhoWeAreSection() {
             className="mt-6 text-display-lg tracking-[-0.03em] text-graphite-950"
           />
           <p className="mt-6 max-w-[46ch] text-base leading-[1.5] text-graphite-500 md:text-lg">
-            Game of Stones is led by a group of directors from Gilgit Baltistan,
+            Durr & Zircon Consortium is led by a group of directors from Gilgit Baltistan,
             holding legal rights to this land and its mines granted by the
             Government of Gilgit Baltistan.
           </p>
