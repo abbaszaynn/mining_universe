@@ -11,6 +11,7 @@ const NAV_ITEMS = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/services", label: "Services" },
+  { href: "/concessions", label: "Concessions" },
   { href: "/map", label: "Map" },
   { href: "/gallery", label: "Gallery" },
   { href: "/news", label: "Press" },

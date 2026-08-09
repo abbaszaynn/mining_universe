@@ -1,6 +1,9 @@
 import type { MetadataRoute } from "next";
 import { getSiteUrl } from "@/lib/site";
 import { NEWS_ROUTES, STATIC_ROUTES } from "@/lib/sitemap-routes";
+// Imported only here, not in sitemap-routes.ts — this pulls in companies-data,
+// which sitemap-routes.ts is kept free of by design.
+import { concessions } from "@/lib/concessions";
 
 export const dynamic = "force-static";
 export const revalidate = 86400;
@@ -21,5 +24,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticEntries, ...articleEntries];
+  const concessionEntries: MetadataRoute.Sitemap = [
+    {
+      url: `${base}/concessions`,
+      changeFrequency: "weekly",
+      priority: 0.95,
+    },
+    ...concessions.map((c) => ({
+      url: `${base}/concessions/${c.slug}`,
+      changeFrequency: "monthly" as const,
+      priority: 0.85,
+    })),
+  ];
+
+  return [...staticEntries, ...concessionEntries, ...articleEntries];
 }

@@ -123,9 +123,13 @@ top, question-shaped H2s, and schema.
 
 - [ ] **`/services`** — what we do, commercially framed. Primary: *mining
       services Gilgit Baltistan* + trade-term body copy. `Service` schema.
-- [ ] **`/concessions`** index + **8 × `/concessions/[slug]`** — the moat.
-      Coordinates, area, minerals, licence status, access, photos, documents.
-      `Place` + `Dataset` schema. Cluster D.
+- [x] **`/concessions`** index + **10 × `/concessions/[slug]`** — the moat.
+      District, minerals, area, licence status, operator, photo. `Place` +
+      `FAQPage` schema. Cluster D. Built from `deposits` (never `locations`),
+      so exact coordinates cannot appear on these pages — client decision:
+      shared with verified counterparties only, on request. ⚠️ the existing
+      `/map` page still ships full polygon coordinates to the client — see
+      note below.
 - [ ] **`/commodities/[slug]`** × 7 — buyer-intent pages. Specs, grades,
       Incoterms, MOQ, payment terms. `Product` schema. Cluster A.
 - [ ] **`/faq`** — `FAQPage` schema. Highest-leverage single AEO artifact.
