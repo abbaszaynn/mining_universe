@@ -66,6 +66,10 @@ export function ContactForm({
         setStatus("success");
         form.reset();
         onSuccess?.();
+        window.gtag?.("event", "generate_lead", {
+          form_name: "contact",
+          company: companyName || "unspecified",
+        });
       } else {
         throw new Error(result.message || "Unable to send message.");
       }

@@ -68,6 +68,10 @@ export function InvestorDeskForm({
         setStatus("success");
         form.reset();
         setSelectedCompany("");
+        window.gtag?.("event", "generate_lead", {
+          form_name: "investor_desk",
+          company: selectedCompany || "unspecified",
+        });
       } else {
         throw new Error(result.message || "Unable to send inquiry.");
       }
