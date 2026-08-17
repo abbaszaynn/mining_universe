@@ -21,7 +21,7 @@ export function InsightsSection() {
       {/* Footer Link */}
       <div className="relative z-20 mx-auto max-w-[105rem] px-5 pt-12 md:px-10 md:pt-16">
         <SquareButton
-          href="/insights"
+          href="/news"
           tone="accent"
         >
           See all insights

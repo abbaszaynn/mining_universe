@@ -14,6 +14,38 @@ installed this session for future audits: `seo-geo-aeo` and the `claude-seo`
 suite (`.claude/skills/seo*`) — run `/seo audit gbmines.com` or `/seo-geo-aeo`
 next time for a repeatable structured pass.
 
+### Update, same day: root cause of the 404 indexing block found + fixed
+
+Client confirmed Google Search Console **is** connected (correction to the
+"not connected" line below, written earlier the same session before this was
+known) and shared the indexing report: **4 indexed / 27 not indexed**, with a
+new-as-of-today reason — **"Not found (404)"** — flagging some pages.
+
+Checked every URL actually in `sitemap.xml`: all 26 return `200`. So the 404s
+Google is tripping on aren't sitemap entries — they're **links Google found
+by crawling the site and then couldn't resolve**. Found three, all pointing
+to `/insights` and `/press`, neither of which has ever existed as a route
+(the real content lives at `/news`):
+
+1. The homepage's own "See all insights" button (`InsightsSection.tsx`) —
+   this is the highest-priority page in the sitemap linking straight to a
+   dead page.
+2. `SiteFooter.tsx` → "Insights" link (site-wide, every page).
+3. `SiteFooter.tsx` → "Press & Media" link (site-wide, every page).
+
+**Fixed this session** — all three now point to `/news`. Also fixed while in
+that file: the footer's decorative "GAME OF STONES" wordmark and the loading
+screen's "Game of Stones" title were both marked up as `<h1>`, on top of
+the real per-page `<h1>`, on literally every page (`SiteFooter.tsx` +
+`GosLoaderScreen.tsx`). Verified in a local build: homepage now renders
+exactly one `<h1>`. Two duplicate-heading sources, not one — the earlier
+finding below undersold it.
+
+**Next action once this deploys:** in GSC, use *Validate Fix* on the "Not
+found (404)" issue, and use URL Inspection → Request Indexing on the
+homepage, `/concessions`, and `/about` directly rather than waiting for the
+next natural crawl.
+
 | Check | Result |
 |---|---|
 | SSR content visible to crawlers | ✅ confirmed via DOM inspection: title, meta description, canonical, OG/Twitter tags, Organization JSON-LD all render correctly |
@@ -202,15 +234,19 @@ top, question-shaped H2s, and schema.
 - [x] 301 redirect `/companies` → `/about`
 - [x] `llms.txt` for AI crawlers — generated from `companies-data`, advertised
       in `robots.txt`. Live at `/llms.txt`.
-- [ ] 🔑 **Google Search Console verify + submit sitemap** ← still do this
-      first, confirmed still not connected
-- [ ] 🔑 Bing Webmaster Tools (feeds ChatGPT search) — confirmed not connected
+- [x] 🔑 **Google Search Console verify + submit sitemap** — confirmed
+      connected same day this was flagged as missing; see the §0 update.
+      Currently 4 indexed / 27 not indexed — recheck after the 404 fix
+      below deploys and propagates.
+- [ ] 🔑 Bing Webmaster Tools (feeds ChatGPT search) — still not confirmed
 - [ ] 🔑 **GA4 (or Plausible/Fathom if privacy is a priority) + conversion
       events** on the enquiry/contact forms. New item this audit — without
       this, none of the above work is measurable, and there's no way to know
       which keyword clusters are actually pulling investor/buyer leads.
-- [ ] Fix homepage duplicate `<h1>` — the "GAME OF STONES" logo mark should be
-      a `<div>`/`<span>` with `aria-label`, not an `<h1>`. One H1 per page.
+- [x] Fix duplicate `<h1>` — two separate sources, both site-wide: the
+      footer's "GAME OF STONES" wordmark and the loading screen's "Game of
+      Stones" title. Both changed to `<p>`. Verified one `<h1>` per page
+      locally.
 - [ ] Add missing `alt` text to the 9 flagged homepage images (2× gold
       commodity render, `shigar_geology.png`, `hilal_abad_geology.png`,
       `ruby-bagicha.jpg`, `lead-jutial-1.jpg`, `nephrite-gupis-1.jpg`,
@@ -283,18 +319,21 @@ is live (US firms actively sourcing). Each placement is an authority link.
 
 ## 6. This week, in order
 
-The single highest-leverage sequence right now, given everything above:
+Updated same day, after the GSC screenshots and the 404 fix:
 
-1. 🔑 Verify Google Search Console, submit the sitemap, request indexing on
-   the homepage + `/concessions` + `/about`.
-2. 🔑 Set up GA4 (or equivalent) with a conversion event on the investor
-   enquiry form. Do this alongside #1 — you want a baseline before anything
-   else changes.
-3. Delete/compress the 7 oversized images in §3. Fifteen-minute job, real
+1. **Deploy the `/insights` + `/press` link fix and duplicate-`<h1>` fix**
+   (done in this session, not yet deployed as of this edit). This is what's
+   actually blocking indexing right now — highest leverage item on the list.
+2. 🔑 Once deployed: in GSC, *Validate Fix* on the "Not found (404)" issue,
+   then URL Inspection → Request Indexing on `/`, `/concessions`, `/about`.
+   Don't wait for the natural recrawl.
+3. 🔑 Set up GA4 (or equivalent) with a conversion event on the investor
+   enquiry form. You want a baseline while indexing is still ramping.
+4. Delete/compress the 7 oversized images in §3. Fifteen-minute job, real
    downside risk if skipped (build cost, LCP) with zero upside to leaving it.
-4. Fix the duplicate H1 + missing alt text. Also fast, also free.
-5. Write real body copy for the 10 concession pages — this is the actual
+5. Add the missing `alt` text (§3) — fast, also free.
+6. Write real body copy for the 10 concession pages — this is the actual
    content debt behind "half the things are done." The architecture is
    built; the words aren't.
-6. 🔑 Check/pursue the `.gog.pk` title-holder listing — likely the fastest
+7. 🔑 Check/pursue the `.gog.pk` title-holder listing — likely the fastest
    real backlink available.

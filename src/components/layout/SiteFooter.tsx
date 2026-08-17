@@ -29,12 +29,24 @@ export function SiteFooter() {
               </div>
               
               <div className="flex flex-col gap-4 text-lg">
-                <Link href="/insights" className="transition-colors hover:text-bone-100/70">Insights</Link>
-                <Link href="/press" className="transition-colors hover:text-bone-100/70">Press & Media</Link>
+                <Link href="/news" className="transition-colors hover:text-bone-100/70">Insights</Link>
+                <Link href="/news" className="transition-colors hover:text-bone-100/70">Press & Media</Link>
                 <Link href="/documents" className="transition-colors hover:text-bone-100/70">Corporate Documents</Link>
                 <Link href="/contact" className="transition-colors hover:text-bone-100/70">Contact Us</Link>
               </div>
             </div>
+          </div>
+
+          <div className="pb-4 text-sm text-bone-50/70 uppercase">
+            WEBSITE BY:{" "}
+            <a 
+              href="https://abbaszayn.vercel.app" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="font-medium transition-colors hover:text-bone-50 hover:underline underline-offset-4"
+            >
+              ZAIN ABBAS
+            </a>
           </div>
 
           {/* Bottom Row: Contact & Legal */}
@@ -70,7 +82,7 @@ export function SiteFooter() {
               </div>
               <p>&copy; {new Date().getFullYear()} Game of Stones. All rights reserved.</p>
               <p className="max-w-xs">
-                Website by GBMINES. Operations comply with all local and international mining regulations.
+                Operations comply with all local and international mining regulations.
               </p>
             </div>
           </div>
@@ -79,12 +91,13 @@ export function SiteFooter() {
 
       {/* Bottom Section - Grey with single-line Huge Text */}
       <div className="relative flex items-center justify-center overflow-hidden bg-[#e6e8e6] px-5 py-8 md:px-10 md:py-12">
-        <h1 
+        <p
+          aria-hidden="true"
           className="whitespace-nowrap text-[11vw] font-bold leading-[0.8] tracking-[-0.05em] text-[#d4d6d4] uppercase"
           style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}
         >
           GAME OF STONES
-        </h1>
+        </p>
       </div>
     </footer>
   );

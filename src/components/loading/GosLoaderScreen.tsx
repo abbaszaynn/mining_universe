@@ -18,7 +18,7 @@ export function GosLoaderScreen({
   const shellRef = useRef<HTMLDivElement>(null);
   const lineRef = useRef<HTMLDivElement>(null);
   const theRef = useRef<HTMLParagraphElement>(null);
-  const titleRef = useRef<HTMLHeadingElement>(null);
+  const titleRef = useRef<HTMLParagraphElement>(null);
   const tagRef = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
@@ -149,12 +149,12 @@ export function GosLoaderScreen({
         >
           The
         </p>
-        <h1
+        <p
           ref={titleRef}
           className="mt-3 text-[clamp(2rem,6vw,3.5rem)] font-medium leading-[0.9] tracking-[-0.04em] text-graphite-950"
         >
           Game of Stones
-        </h1>
+        </p>
         {mode === "initial" && (
           <p
             ref={tagRef}
