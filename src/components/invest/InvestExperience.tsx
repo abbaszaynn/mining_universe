@@ -123,7 +123,15 @@ export function InvestExperience() {
               <Link href="/concessions" className="text-copper-600 underline underline-offset-4">
                 concession
               </Link>
-              , then bring specific questions to the investor desk.
+              , then bring specific questions to the investor desk. If
+              you&apos;re earlier in the process, our{" "}
+              <Link
+                href="/guides/mining-licence-gilgit-baltistan"
+                className="text-copper-600 underline underline-offset-4"
+              >
+                guide to how mineral titles actually work
+              </Link>{" "}
+              in Gilgit Baltistan is worth reading first.
             </p>
           </div>
         </div>
