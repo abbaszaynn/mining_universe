@@ -7,6 +7,29 @@ Everything else is buildable in this repo.
 
 ---
 
+## 0.5 Second pass, same day — analytics, voice, further image cuts
+
+- [x] **GA4 live** — client created the property (`gbmines`, stream ID
+      `15451875685`, measurement ID `G-K6L3FJSZ9F`) and it's wired into
+      `layout.tsx`, production-only. `generate_lead` fires on both the
+      investor desk form and the general contact form on confirmed
+      submission. This is the baseline the plan was missing — no more
+      shipping changes and guessing whether they moved anything.
+- [x] **Bing Webmaster Tools** — client did this directly (two commits,
+      `BingSiteAuth.xml` + the `msvalidate.01` meta tag in `seo.ts`). No
+      action needed here.
+- [x] **Voice pass** — every em-dash in user-facing homepage copy and in
+      the concession narratives written earlier today was rewritten as a
+      plain sentence, comma, colon, or semicolon depending on what the
+      clause was doing. Same claims, reads like a person wrote it instead
+      of leaning on one punctuation mark for every aside. Code comments
+      were left alone, not user-facing.
+- [x] **Images, round 2** — 34MB was still real weight. `cover_photo.png`
+      (no alpha, used as the OG image) went PNG → JPEG, 5.4MB → 0.37MB.
+      The other 7 oversized files all have alpha and no social-share use,
+      so WebP was safe: ~85% smaller each. `public/images`: 34MB → 12MB.
+      Remaining files are all sub-1MB photos, not worth chasing further.
+
 ## 0. Where we actually stand
 
 Audited live on 2026-08-17 (previous audit: 2026-08-08). Two skill packs
