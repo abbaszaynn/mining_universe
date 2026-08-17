@@ -119,7 +119,7 @@ const FAQS = [
   },
   {
     q: "What minerals does Durr & Zircon Consortium supply?",
-    a: "Copper, antimony, lead and quartz concentrates, placer gold, nephrite jade, granite and dimension stone, with lithium indications at Bagicha. All are extracted from the eight concessions we hold under licence across Gilgit Baltistan.",
+    a: "Copper, antimony, lead and quartz concentrates, placer gold, nephrite jade, granite and dimension stone, with lithium indications at Bagicha. All are extracted from the ten concessions we hold under licence across Gilgit Baltistan.",
   },
   {
     q: "Do you carry out exploration for other mine owners?",
@@ -151,7 +151,7 @@ const FAQS = [
   },
   {
     q: "How many concessions do you hold and where?",
-    a: "Durr & Zircon Consortium holds eight licensed concessions across seven districts of Gilgit Baltistan: Shigar, Kharmang, Skardu, Gilgit, Ghizer, Hunza and Roundu. Earth Lux Mines & Minerals, our third company, holds Jutial Nala and Gupis and is offered for acquisition.",
+    a: "Durr & Zircon Consortium holds ten licensed concessions across seven districts of Gilgit Baltistan: Shigar, Kharmang, Skardu, Gilgit, Ghizer, Hunza and Roundu. Earth Lux Mines & Minerals, our third company, holds Jutial Nala and Gupis and is offered for acquisition.",
   },
 ];
 

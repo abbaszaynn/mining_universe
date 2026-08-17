@@ -7,7 +7,7 @@ export interface MineLocation {
 export interface Document {
   id: string;
   title: string;
-  type: 'Geological Report' | 'License' | 'Concession Paper' | 'Financial Summary' | 'Map';
+  type: 'Geological Report' | 'License' | 'Concession Paper' | 'Financial Summary' | 'Map' | 'Investor Report';
   url: string;
   companyId?: string;
   companyName?: string;

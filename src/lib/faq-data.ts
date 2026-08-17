@@ -12,7 +12,7 @@ export const GOS_FAQ_ITEMS: FaqItem[] = [
   {
     question: "Which minerals and mine sites are in the portfolio?",
     answer:
-      "The portfolio spans eight licensed concessions on our mine registry, including copper at Gultari, marble at Bagicha, placer gold in Skardu, and additional polymetallic holdings across the region. Each operator maintains active leases under Pakistan's regulatory framework. Browse the full breakdown on the Concessions page, our company history on About, or fly to coordinates on the interactive 3D mine map.",
+      "The portfolio spans ten licensed concessions on our mine registry, including copper at Gultari, marble at Bagicha, placer gold in Skardu, and additional polymetallic holdings across the region. Each operator maintains active leases under Pakistan's regulatory framework. Browse the full breakdown on the Concessions page, our company history on About, or fly to coordinates on the interactive 3D mine map.",
   },
   {
     question: "How do international investors begin due diligence?",

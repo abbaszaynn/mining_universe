@@ -23,7 +23,7 @@ export default function FaqPage() {
           </h1>
           {/* Direct-answer block, kept short, first thing on the page. */}
           <p className="mt-8 max-w-[62ch] text-lg leading-[1.5] text-graphite-500 md:text-xl">
-            Durr & Zircon Consortium holds eight licensed mining concessions
+            Durr & Zircon Consortium holds ten licensed mining concessions
             across seven districts of Gilgit Baltistan. Foreign investors can
             partner through joint venture, farm-in, equity, or in some cases
             outright acquisition, subject to Pakistan&apos;s mining concession

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { GridLines } from "@/components/ui/GridLines";
 import { Pill } from "@/components/ui/Pill";
+import { SquareButton } from "@/components/ui/SquareButton";
 import { MARKETS } from "@/lib/markets";
 import { firstSentence } from "@/lib/utils";
 
@@ -38,6 +39,11 @@ export function MarketsIndex() {
                 </p>
               </Link>
             ))}
+          </div>
+          <div className="mt-12">
+            <SquareButton href="/reports/gb-mineral-corridor-report-2026.pdf" tone="accent" target="_blank">
+              Download the GB Mineral Corridor Report
+            </SquareButton>
           </div>
         </div>
       </section>

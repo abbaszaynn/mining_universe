@@ -10,6 +10,7 @@ const TYPE_COLORS: Record<Document["type"], string> = {
   "Concession Paper": "text-graphite-950",
   "Financial Summary": "text-graphite-950",
   Map: "text-graphite-950",
+  "Investor Report": "text-copper-600",
 };
 
 type DocumentsTableProps = {

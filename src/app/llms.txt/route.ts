@@ -46,7 +46,7 @@ registered company. "Game of Stones" is a brand name for the same organisation.
   (PVT) LTD
 - Also operates Earth Lux Mines & Minerals (PVT) LTD, a third registered
   company currently offered for outright acquisition
-- Concessions: eight licensed blocks across seven districts of Gilgit Baltistan
+- Concessions: ten licensed blocks across seven districts of Gilgit Baltistan
   (Shigar, Kharmang, Skardu, Gilgit, Ghizer, Hunza, Roundu)
 - Minerals: copper, antimony, lead, molybdenum, placer gold, silver, nephrite
   jade, ruby, quartz and silica, granite and marble, with lithium indications

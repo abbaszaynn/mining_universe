@@ -63,7 +63,7 @@ export function InvestExperience() {
             incorporated entity, so international investors participate
             through a joint venture, a farm-in agreement, or by
             incorporating a Pakistani subsidiary. Durr &amp; Zircon
-            Consortium already holds eight licensed concessions across seven
+            Consortium already holds ten licensed concessions across seven
             districts of Gilgit Baltistan, structured, permitted, and open
             to partners on any of the routes below.
           </p>
@@ -73,6 +73,9 @@ export function InvestExperience() {
             </SquareButton>
             <SquareButton href="/concessions" tone="light">
               Browse concessions
+            </SquareButton>
+            <SquareButton href="/reports/gb-mineral-corridor-report-2026.pdf" tone="light" target="_blank">
+              Download the GB Mineral Corridor Report
             </SquareButton>
           </div>
         </div>

@@ -4,6 +4,7 @@ import { galleryImages } from '@/lib/gallery-images-data';
 import { companies as companiesData } from '@/lib/companies-data';
 
 const allDocuments: Document[] = [
+  { id: 'doc-gb-mineral-corridor-report', companyId: 'durr-zircon', title: 'GB Mineral Corridor Report 2026', type: 'Investor Report', url: '/reports/gb-mineral-corridor-report-2026.pdf' },
   { id: 'doc-zircon-geological-report', companyId: 'durr-zircon', title: 'Geological Report', type: 'Geological Report', url: 'https://mega.nz/file/9VJmDCxJ#ME379aCjr7LpYjspREoOOivos9fIIdJ3nSboo9G_uYw' },
   { id: 'doc-1', companyId: 'durr-zircon', title: 'Copper Ore at Skardu,  Tehsil Gultari', type: 'Geological Report', url: 'https://mega.nz/file/gIZRxJZY#iumoVJkKeejUdux1fQz-Y31o0lAMDcMhJ3X-KnDNyL0' },
   { id: 'doc-7', companyId: 'durr-zircon', title: 'Marble Ore at Bagicha', type: 'Geological Report', url: 'https://mega.nz/file/4UhxmTKY#AzFv7Jc3IE11OhBKdGSbaRYKM85UhmtwrOKc96f9vcI' },

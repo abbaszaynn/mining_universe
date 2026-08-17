@@ -28,7 +28,7 @@ export const SITE = {
   brandName: "Game of Stones",
   title: "Durr & Zircon Consortium | Mining & Minerals, Gilgit Baltistan",
   description:
-    "SECP-registered mining consortium holding eight licensed concessions across seven districts of Gilgit Baltistan. Mineral supply and export, joint ventures, equity and outright mine sale, plus contract exploration for mine owners.",
+    "SECP-registered mining consortium holding ten licensed concessions across seven districts of Gilgit Baltistan. Mineral supply and export, joint ventures, equity and outright mine sale, plus contract exploration for mine owners.",
   tagline: "Mines in the North",
   locale: "en_US",
   region: "Gilgit Baltistan, Pakistan",
