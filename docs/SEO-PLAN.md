@@ -9,28 +9,37 @@ Everything else is buildable in this repo.
 
 ## 0. Where we actually stand
 
-Audited live on 2026-08-08.
+Audited live on 2026-08-17 (previous audit: 2026-08-08). Two skill packs
+installed this session for future audits: `seo-geo-aeo` and the `claude-seo`
+suite (`.claude/skills/seo*`) — run `/seo audit gbmines.com` or `/seo-geo-aeo`
+next time for a repeatable structured pass.
 
 | Check | Result |
 |---|---|
-| SSR content visible to crawlers | ✅ H1 and body copy present in raw HTML |
-| Canonical / title / description | ✅ correct |
-| robots.txt + sitemap.xml | ✅ served, valid |
-| JSON-LD | ✅ Organization, AdministrativeArea, WebSite |
-| `/companies` in sitemap | ❌ **404** — fixed, now `/about` |
-| `/companies` redirect | ❌ none — fixed, 301 → `/about` |
-| Homepage TTFB | ⚠️ 1.4–2.3s warm, 22s cold |
-| Indexed pages | 14 URLs total — too thin to rank for anything |
+| SSR content visible to crawlers | ✅ confirmed via DOM inspection: title, meta description, canonical, OG/Twitter tags, Organization JSON-LD all render correctly |
+| robots.txt + sitemap.xml | ✅ served, valid — 26 URLs, AI crawlers (GPTBot, ClaudeBot, PerplexityBot) explicitly allowed |
+| `llms.txt` | ✅ live, generated from concessions data |
+| FAQ schema | ⚠️ implemented (`faqJsonLd`) but only wired into `/investor-desk` — not homepage, `/about`, or concessions |
+| Named leadership | ⚠️ 8 directors named with titles on homepage "Who We Are" — but photos are explicitly placeholders (per code comment), not on `/about`, no bios/credentials, no LinkedIn `sameAs`, no `Person` schema |
+| H1 structure | ❌ homepage has **two** `<h1>` tags ("Licensed minerals, mined at source." + the "GAME OF STONES" logo mark) — should be one |
+| Image alt text | ❌ 9 of 39 homepage `<img>` tags missing `alt` (both gold commodity renders, 2 geology diagrams, 4 concession photos, 1 gemstone photo) |
+| Oversized source images | ❌ **worse than last audit**: `right-side.png` now 75 MB (was 71 MB, still unused/undeleted), `left-side.png` 20 MB, `right-side-new.png` 11 MB, plus previously-unflagged `commodities/lead.png` 18 MB, `gold.png` 15 MB, `nephrite.png` 14.5 MB, `copper.png` 6.5 MB |
+| Google Search Console | ❌ confirmed not connected — no `google-site-verification` meta tag renders in production |
+| Bing Webmaster Tools | ❌ confirmed not connected |
+| Analytics (GA4/GTM) | ❌ **not in the plan before, and not implemented** — zero `gtag`/`dataLayer` on the live site. There is currently no way to measure whether any of this work is moving the needle. |
+| Indexed pages | Google search for `site:gbmines.com`, the bare domain, and the brand name all return **zero** gbmines.com results. Strong signal the site isn't meaningfully indexed yet — confirm directly in GSC once connected, that's the authoritative source. |
+| Concession page depth | ❌ still thin — spot-checked `/concessions/shigar-copper-deposit`: ~70 words of unique body copy. These are the Tier-1 Cluster D pages the whole strategy leans on; they're built (schema, routing, sitemap) but not written. |
 
-**Diagnosis.** The tags are not the problem. Three things are:
+**Diagnosis — unchanged from last audit, still the root cause:**
 
 1. **New domain, zero authority.** Dominant factor. Only fixed by time + links.
 2. **Wrong target.** `minesandmineralsgb.gog.pk` is a government domain with an
    exact-name match. We will never win "mines and minerals gilgit baltistan"
    and should stop implicitly competing for it — it is an *informational*
    query anyway. The searcher wants policy, not a counterparty.
-3. **No transactional surface.** Nothing on the site targets how a buyer or an
-   investor actually searches.
+3. **No transactional surface.** Most pages that would target how a buyer or
+   investor actually searches (`/commodities`, `/invest`, `/faq`) still don't
+   exist — see §2.
 
 **The gap we own.** Government publishes policy. Journalists publish analysis.
 *Nobody publishes operator-level ground truth* — coordinates, licence numbers,
@@ -38,9 +47,35 @@ area, access routes, assay indications, community agreements. That data exists
 nowhere else. It is simultaneously the SEO moat (uncopyable) and the AEO play
 (AI engines cite primary sources with attributed statistics).
 
+### ⚠️ Correction to a prior assumption: there IS a private competitor
+
+Found this session: **[Highland Miners](https://www.highlandminers.com/)** —
+a Gilgit-Baltistan geological exploration and mining consultancy, explicitly
+targeting the same investor audience. They currently out-execute us on SEO
+fundamentals we're missing:
+
+- Active blog ("field notes, project updates, geological insights")
+- Dedicated "Investors" section with an Investment Guide + Minerals Database
+- 7-section nav with clear service subcategories
+- Heavy, repeated geographic anchoring ("Gilgit-Baltistan") in body copy
+
+They're a services/consultancy play, not a licence-holder/operator like us —
+so we're not competing head-on for every query, but we overlap hard on
+investor-intent and informational Cluster C terms. Worth a periodic check on
+their published content for gap analysis (their blog cadence is exactly the
+"news cadence" item in §2 Tier 3 that we haven't shipped yet).
+
+Also confirmed as a citation opportunity, not a competitor: the government
+portal `portal.minesandmineralsgb.gog.pk/allcompaniesdata` publishes a **List
+of Title Holders**. If Durr & Zircon / its predecessor entities are on that
+list, that's a free, high-trust .gog.pk backlink — check and, if missing,
+pursue getting listed. 🔑
+
 ---
 
 ## 1. Keyword architecture
+
+*(unchanged since last audit — still a good hypothesis, not yet volume-verified)*
 
 > **Honesty note:** these are *intent-mapped*, not volume-verified — no paid
 > keyword tool is connected. Search Console will return real impression data
@@ -104,7 +139,8 @@ plainly — that alone can win the query.
 molybdenum` · `Kharmang polymetallic` · `Ishkoman copper` · `Bagicha marble
 lithium` · `Jutial Nala Gilgit` · `Gupis granite Ghizer`
 
-These are cheap wins — we hold the only primary data.
+These are cheap wins — we hold the only primary data. **Currently blocked on
+content depth, not architecture** — see §0 concession page finding above.
 
 ### Cluster E — Buyer-country pages
 
@@ -123,28 +159,40 @@ top, question-shaped H2s, and schema.
 
 - [ ] **`/services`** — what we do, commercially framed. Primary: *mining
       services Gilgit Baltistan* + trade-term body copy. `Service` schema.
-- [x] **`/concessions`** index + **10 × `/concessions/[slug]`** — the moat.
-      District, minerals, area, licence status, operator, photo. `Place` +
-      `FAQPage` schema. Cluster D. Built from `deposits` (never `locations`),
-      so exact coordinates cannot appear on these pages — client decision:
-      shared with verified counterparties only, on request. ⚠️ the existing
-      `/map` page still ships full polygon coordinates to the client — see
-      note below.
+      Confirmed not yet on schema (checked live — no `Service` JSON-LD renders).
+- [x] **`/concessions`** index + **10 × `/concessions/[slug]`** — routes,
+      sitemap entries, and layout are built. **Not actually done** — reopening
+      this: pages are ~70 words each, too thin to rank for the Cluster D terms
+      they exist for. Needs 300–500 words per page (geology narrative, access
+      route, nearby infrastructure, historical/assay context) before this can
+      be checked off for real.
 - [ ] **`/commodities/[slug]`** × 7 — buyer-intent pages. Specs, grades,
-      Incoterms, MOQ, payment terms. `Product` schema. Cluster A.
+      Incoterms, MOQ, payment terms. `Product` schema. Cluster A. Confirmed:
+      route doesn't exist yet.
 - [ ] **`/faq`** — `FAQPage` schema. Highest-leverage single AEO artifact.
+      Confirmed: no dedicated route. FAQ content + schema already exist
+      (`lib/faq-data.ts`, `faqJsonLd()`) but are scoped to `/investor-desk`
+      only — reuse that data, don't rebuild it.
 
 ### Tier 2
 
 - [ ] **`/invest`** pillar — JV / farm-in framing. Cluster B.
 - [ ] **`/guides/mining-licence-gilgit-baltistan`** — link magnet. Cluster C.
 - [ ] **`/markets/[country]`** × 4 — China, USA, Saudi, Thailand. Cluster E.
+- [ ] **Leadership on `/about`** — move the 8 named directors from the
+      homepage "Who We Are" section onto `/about` (or link both), add real
+      bios/credentials, LinkedIn `sameAs` URLs, and `Person` schema nested
+      under the `Organization`. Replace placeholder director photos with real
+      headshots — placeholders currently ship to production per the component
+      comment. This is the E-E-A-T fix; matters more for an investment-facing
+      site than most.
 
 ### Tier 3
 
 - [ ] **GB Mineral Corridor Report 2026** (PDF) — data asset for journalists.
 - [ ] News cadence — 2 posts/month minimum. AI citation strongly favours
-      content refreshed inside 6 months.
+      content refreshed inside 6 months. (Highland Miners already does this —
+      see §0.)
 
 ---
 
@@ -152,14 +200,42 @@ top, question-shaped H2s, and schema.
 
 - [x] Sitemap 404 removed (`/companies` → `/about`)
 - [x] 301 redirect `/companies` → `/about`
-- [ ] 🔑 **Google Search Console verify + submit sitemap** ← do this first
-- [ ] 🔑 Bing Webmaster Tools (feeds ChatGPT search)
 - [x] `llms.txt` for AI crawlers — generated from `companies-data`, advertised
       in `robots.txt`. Live at `/llms.txt`.
-- [ ] `FAQPage`, `Article`, `BreadcrumbList`, `Service`, `Product` schema
+- [ ] 🔑 **Google Search Console verify + submit sitemap** ← still do this
+      first, confirmed still not connected
+- [ ] 🔑 Bing Webmaster Tools (feeds ChatGPT search) — confirmed not connected
+- [ ] 🔑 **GA4 (or Plausible/Fathom if privacy is a priority) + conversion
+      events** on the enquiry/contact forms. New item this audit — without
+      this, none of the above work is measurable, and there's no way to know
+      which keyword clusters are actually pulling investor/buyer leads.
+- [ ] Fix homepage duplicate `<h1>` — the "GAME OF STONES" logo mark should be
+      a `<div>`/`<span>` with `aria-label`, not an `<h1>`. One H1 per page.
+- [ ] Add missing `alt` text to the 9 flagged homepage images (2× gold
+      commodity render, `shigar_geology.png`, `hilal_abad_geology.png`,
+      `ruby-bagicha.jpg`, `lead-jutial-1.jpg`, `nephrite-gupis-1.jpg`,
+      `gb_gemstone_mining.png`, `lead-gultari-1.jpg`) — sweep the rest of the
+      site for the same issue, this was a homepage-only spot check.
+- [ ] `FAQPage` (expand beyond `/investor-desk`), `Article`, `BreadcrumbList`,
+      `Service`, `Product`, `Person` schema
 - [ ] TTFB: target < 800ms. Investigate ISR/static export for marketing pages.
-- [ ] Downsize `left-side.png` (19 MB) and `right-side-new.png` (11 MB)
-- [ ] Delete unused `right-side.png` (71 MB), `natural-stones.jpg`
+      Not re-measured this session — re-check once GSC/analytics are live so
+      it's tied to real Core Web Vitals data instead of a manual curl.
+- [ ] **Delete or compress source images — this regressed since last audit,
+      treat as urgent:**
+  - `right-side.png` — 75 MB, unused, still not deleted (flagged last audit
+    at 71 MB)
+  - `left-side.png` — 20 MB
+  - `right-side-new.png` — 11 MB
+  - `commodities/lead.png` — 18 MB
+  - `commodities/gold.png` — 15 MB
+  - `commodities/nephrite.png` — 14.5 MB
+  - `commodities/copper.png` — 6.5 MB
+
+  Even behind `next/image`, these originals get re-processed on every build —
+  real risk to build time, function memory, and LCP on any path that touches
+  them directly. Re-export commodity source art at a sane max dimension
+  (~2400px) before it goes in `public/`.
 - [ ] Per-page OG images
 
 Confirmed already allowed in robots.txt: GPTBot, ClaudeBot, PerplexityBot
@@ -171,6 +247,10 @@ Confirmed already allowed in robots.txt: GPTBot, ClaudeBot, PerplexityBot
 
 This is where year-one leads actually come from, and it builds the authority
 that makes section 2 work.
+
+- [ ] Confirm/pursue listing on `portal.minesandmineralsgb.gog.pk/allcompaniesdata`
+      (List of Title Holders) — new item this audit, free .gog.pk citation if
+      the entity is already licensed (it is).
 
 **B2B marketplaces** (where Chinese buyers genuinely search): Alibaba,
 Made-in-China, TradeKey, go4WorldBusiness, TradeWheel, B2BMineral.
@@ -191,9 +271,30 @@ is live (US firms actively sourcing). Each placement is an authority link.
 
 ## 5. Expectations
 
-- **Weeks 0–4:** indexing begins. Little or no traffic. Normal.
+- **Weeks 0–4:** indexing begins. Little or no traffic. Normal. *(We are
+  effectively still at week 0 on this — GSC isn't connected yet, so the clock
+  hasn't formally started.)*
 - **Weeks 4–12:** long-tail (Cluster D) starts ranking — least competitive.
+  Blocked until concession pages have real content (§2).
 - **Months 3–6:** Cluster A/B begin to move *if* off-site work is happening.
 - **Organic will not be the first channel.** Directories and direct outreach
   will out-produce search in year one. SEO is the compounding asset, not the
   fast one. Plan cash flow accordingly.
+
+## 6. This week, in order
+
+The single highest-leverage sequence right now, given everything above:
+
+1. 🔑 Verify Google Search Console, submit the sitemap, request indexing on
+   the homepage + `/concessions` + `/about`.
+2. 🔑 Set up GA4 (or equivalent) with a conversion event on the investor
+   enquiry form. Do this alongside #1 — you want a baseline before anything
+   else changes.
+3. Delete/compress the 7 oversized images in §3. Fifteen-minute job, real
+   downside risk if skipped (build cost, LCP) with zero upside to leaving it.
+4. Fix the duplicate H1 + missing alt text. Also fast, also free.
+5. Write real body copy for the 10 concession pages — this is the actual
+   content debt behind "half the things are done." The architecture is
+   built; the words aren't.
+6. 🔑 Check/pursue the `.gog.pk` title-holder listing — likely the fastest
+   real backlink available.
