@@ -13,7 +13,7 @@ const FEATURES = [
   },
   {
     title: "Government clearance handled",
-    body: "NOCs, security permissions and regulatory liaison with the authorities — all managed, so you can focus on the opportunity.",
+    body: "NOCs, security permissions and regulatory liaison with the authorities are fully managed. You focus on the opportunity.",
   },
 ];
 

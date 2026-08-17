@@ -10,13 +10,13 @@ import { Pill } from "@/components/ui/Pill";
 const STATEMENTS = [
   [
     "For decades the mineral wealth of the",
-    "Karakoram was treated as rumour —",
+    "Karakoram was treated as rumour;",
     "significant, but unmapped. That",
     "ambiguity is gone.",
   ],
   [
     "Gilgit Baltistan holds one of Asia's",
-    "richest untapped mineral corridors —",
+    "richest untapped mineral corridors:",
     "copper, gold, lithium, nephrite and",
     "rare earth indications.",
   ],
@@ -140,7 +140,7 @@ export function AboutStickySection() {
           aria-hidden
         >
           <div className="relative aspect-[4/5] w-full drop-shadow-2xl">
-            <Image src="/images/left-side.png" alt="Energy extraction symbol" fill sizes="30vw" className="object-contain" />
+            <Image src="/images/left-side.webp" alt="Energy extraction symbol" fill sizes="30vw" className="object-contain" />
           </div>
         </div>
 
@@ -150,7 +150,7 @@ export function AboutStickySection() {
           aria-hidden
         >
           <div className="relative aspect-square w-full drop-shadow-[0_35px_35px_rgba(0,0,0,0.25)]">
-            <Image src="/images/right-side-new.png" alt="Natural stones isolated" fill sizes="45vw" className="object-contain" />
+            <Image src="/images/right-side-new.webp" alt="Natural stones isolated" fill sizes="45vw" className="object-contain" />
           </div>
         </div>
 

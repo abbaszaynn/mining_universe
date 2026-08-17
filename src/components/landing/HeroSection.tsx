@@ -61,7 +61,7 @@ export function HeroSection() {
           <div className="max-w-[34rem]">
             <p className="text-xl leading-[1.35] text-bone-50 md:text-2xl">
               Durr & Zircon Consortium operates three licensed mining companies across
-              Gilgit Baltistan — extracting copper, gold, lithium, nephrite and
+              Gilgit Baltistan, extracting copper, gold, lithium, nephrite and
               polymetallic ore under full regulatory compliance.
             </p>
             <div className="mt-10">

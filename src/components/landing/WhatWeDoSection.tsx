@@ -10,13 +10,13 @@ import { cn } from "@/lib/utils";
 const SERVICES = [
   {
     title: "Exploration & Licensing",
-    body: "We hold government-granted exploration licences and manage every renewal, NOC and regulatory filing in-house — so a concession you review today is one you can act on tomorrow.",
+    body: "We hold government-granted exploration licences and manage every renewal, NOC and regulatory filing in-house, so a concession you review today is one you can act on tomorrow.",
     image: "/blogs/b1.jpeg",
     badge: "Survey",
   },
   {
     title: "Extraction & Processing",
-    body: "Traditional mining discipline paired with modern survey, automation and processing methods — raising recovery rates while keeping our footprint on the valley floor as small as possible.",
+    body: "Traditional mining discipline paired with modern survey, automation and processing methods, raising recovery rates while keeping our footprint on the valley floor as small as possible.",
     image: "/blogs/b2.jpeg",
     badge: "Extraction",
   },
@@ -150,7 +150,7 @@ export function WhatWeDoSection() {
             <div>
               <p className="hidden max-w-[56ch] text-base leading-[1.45] text-graphite-400 md:block">
                 Durr & Zircon Consortium explores, extracts and commercially manages
-                high-value gemstones and minerals across Gilgit Baltistan —
+                high-value gemstones and minerals across Gilgit Baltistan,
                 bridging traditional mining with modern technology, from licence
                 through to last-mile export.
               </p>

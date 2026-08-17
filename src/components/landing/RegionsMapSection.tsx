@@ -127,7 +127,7 @@ export function RegionsMapSection() {
           />
           <p className="max-w-[40ch] text-base leading-[1.5] text-graphite-700">
             Our concessions run from Ghizer in the west to Kharmang on the
-            eastern rim — every block surveyed, permitted and reachable.
+            eastern rim, every block surveyed, permitted and reachable.
           </p>
         </div>
       </div>

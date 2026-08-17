@@ -186,7 +186,7 @@ export function GlobeLoopSection() {
             </h2>
             <div className="pointer-events-auto">
               <p className="max-w-[38ch] text-lg leading-[1.4] text-bone-100/90 md:text-xl">
-                Eight licensed concessions across Skardu, Gilgit and Ghizer —
+                Eight licensed concessions across Skardu, Gilgit and Ghizer,
                 each with surveyed boundaries, government permits and
                 coordinates you can verify before you travel.
               </p>

@@ -15,27 +15,27 @@ const optimised = (src: string) =>
 const COMMODITIES = [
   {
     name: "Gold",
-    src: "/images/commodities/gold.png",
-    body: "A rare, universally traded store of value. Demand spans central banks, technology manufacturers and jewellery markets worldwide — and our Kharmang and Shigar structures carry gold as a strong indication alongside copper.",
+    src: "/images/commodities/gold.webp",
+    body: "A rare, universally traded store of value. Demand spans central banks, technology manufacturers and jewellery markets worldwide. Our Kharmang and Shigar structures carry gold as a strong indication alongside copper.",
   },
   {
     name: "Copper",
-    src: "/images/commodities/copper.png",
+    src: "/images/commodities/copper.webp",
     body: "A highly conductive metal essential to electrical wiring, renewable energy infrastructure, construction and electronics. Demand is growing rapidly due to its critical role in EV batteries and solar energy systems.",
   },
   {
     name: "Nephrite Jade",
-    src: "/images/commodities/nephrite.png",
+    src: "/images/commodities/nephrite.webp",
     body: "Dense, fine-grained jade lifted from the Ghizer valleys. Prized across East Asian markets for carving and ornamental work, and among the most culturally valued stones we bring out of the ground.",
   },
   {
     name: "Lead",
-    src: "/images/commodities/lead.png",
+    src: "/images/commodities/lead.webp",
     body: "Extracted at Gultari and Jutial Nala alongside silver and mineralised copper veins. Still central to battery manufacture, radiation shielding and industrial alloys.",
   },
   {
     name: "Granite",
-    src: "/images/commodities/granite.png",
+    src: "/images/commodities/granite.webp",
     body: "Dimension stone quarried at Gupis in Ghizer, alongside premium marble. Cut for construction, architectural cladding and monumental work across domestic and export markets.",
   },
 ];
