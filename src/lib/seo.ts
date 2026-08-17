@@ -82,13 +82,14 @@ export function createPageMetadata({
       images: [imageUrl],
       ...(SITE.twitterHandle ? { site: SITE.twitterHandle } : {}),
     },
-    ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
-      ? {
-          verification: {
-            google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
-          },
-        }
-      : {}),
+    verification: {
+      ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+        ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }
+        : {}),
+      other: {
+        "msvalidate.01": "8F561EC85D8BAAF60781535BFBB7D6DF",
+      },
+    },
   };
 }
 
