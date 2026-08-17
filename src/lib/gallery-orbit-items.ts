@@ -32,7 +32,7 @@ export const ORBIT_GALLERY_ITEMS: OrbitMediaItem[] = [
   {
     id: "cover",
     kind: "image",
-    src: "/images/cover_photo.png",
+    src: "/images/cover_photo.jpg",
     title: "The Game of Stones",
   },
   ...ORBIT_SPECIMEN_IDS.map(specimenToOrbitItem).filter(

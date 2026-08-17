@@ -115,7 +115,7 @@ export function GalleryExperience({ images }: GalleryExperienceProps) {
         <section className="relative overflow-hidden border-b border-graphite-950/[0.06]">
           <div className="absolute inset-0">
             <Image
-              src="/images/cover_photo.png"
+              src="/images/cover_photo.jpg"
               alt=""
               fill
               className="object-cover"

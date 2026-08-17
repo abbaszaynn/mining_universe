@@ -25,7 +25,7 @@ export function VideoSection() {
           <div className="mb-8 overflow-hidden rounded-full border-4 border-bone-100/20">
             {/* Small random image placeholder as requested */}
             <Image
-              src="/images/commodities/gold.png" // Random image from project
+              src="/images/commodities/gold.webp" // Random image from project
               alt="Highlight"
               width={80}
               height={80}

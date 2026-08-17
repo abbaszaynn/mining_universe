@@ -74,6 +74,6 @@ export const SITE = {
     "Gultari antimony",
     "Kharmang polymetallic",
   ],
-  defaultOgImage: "/images/cover_photo.png",
+  defaultOgImage: "/images/cover_photo.jpg",
   twitterHandle: undefined as string | undefined,
 } as const;
