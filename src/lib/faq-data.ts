@@ -7,12 +7,12 @@ export const GOS_FAQ_ITEMS: FaqItem[] = [
   {
     question: "What is Durr & Zircon Consortium (GOS)?",
     answer:
-      "Durr & Zircon Consortium is an investor-facing platform representing three licensed mining operators across Gilgit Baltistan — Skardu, Gilgit, and Ghizer. We connect global capital with copper, marble, gold, lithium, nephrite, serpentine, antimony, and polymetallic assets, backed by geological reports, government permits, and a team that stands behind every conversation and site visit.",
+      "Durr & Zircon Consortium is an investor-facing platform representing three licensed mining operators across Gilgit Baltistan, in Skardu, Gilgit, and Ghizer. We connect global capital with copper, marble, gold, lithium, nephrite, serpentine, antimony, and polymetallic assets, backed by geological reports, government permits, and a team that stands behind every conversation and site visit.",
   },
   {
     question: "Which minerals and mine sites are in the portfolio?",
     answer:
-      "The portfolio spans eight licensed concessions on our mine registry, including copper at Gultari, marble at Bagicha, placer gold in Skardu, and additional polymetallic holdings across the region. Each operator maintains active leases under Pakistan's regulatory framework. Browse company profiles on the Companies page or fly to coordinates on the interactive 3D mine map.",
+      "The portfolio spans eight licensed concessions on our mine registry, including copper at Gultari, marble at Bagicha, placer gold in Skardu, and additional polymetallic holdings across the region. Each operator maintains active leases under Pakistan's regulatory framework. Browse the full breakdown on the Concessions page, our company history on About, or fly to coordinates on the interactive 3D mine map.",
   },
   {
     question: "How do international investors begin due diligence?",
@@ -22,12 +22,12 @@ export const GOS_FAQ_ITEMS: FaqItem[] = [
   {
     question: "Does GOS manage permits and security for field visits?",
     answer:
-      "Yes. We coordinate NOCs, security permissions, and liaison with local authorities so you can focus on the opportunity. Guided trips across Skardu, Gilgit, and Ghizer are arranged with your safety as the priority — from arrival through departure.",
+      "Yes. We coordinate NOCs, security permissions, and liaison with local authorities so you can focus on the opportunity. Guided trips across Skardu, Gilgit, and Ghizer are arranged with your safety as the priority, from arrival through departure.",
   },
   {
     question: "What documentation is available for review?",
     answer:
-      "Investors can access company histories, leadership profiles, and project details on the Companies page. Geological reports, permits, and supporting files are listed under Documents. Our News section publishes regional geology, commodity outlooks, and operational updates to support informed decision-making.",
+      "Investors can access company history and leadership on the About page, and full concession-by-concession detail, including licence status, on the Concessions page. Geological reports, permits, and supporting files are listed under Documents. Our News section publishes regional geology, commodity outlooks, and operational updates to support informed decision-making.",
   },
   {
     question: "Are these operations fully licensed and operational?",

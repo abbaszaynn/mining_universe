@@ -16,7 +16,7 @@ const SERVICES = [
     id: "mineral-supply",
     title: "Mineral Supply & Export",
     lead:
-      "We supply copper, antimony, lead and quartz concentrates, placer gold, nephrite jade and dimension stone direct from our own concessions — no intermediary layer between the pit and your purchase order.",
+      "We supply copper, antimony, lead and quartz concentrates, placer gold, nephrite jade and dimension stone direct from our own concessions, with no intermediary layer between the pit and your purchase order.",
     points: [
       "Quoted FOB Karachi or CIF to your discharge port",
       "Payment against irrevocable L/C at sight, or SBLC for repeat contracts",
@@ -44,7 +44,7 @@ const SERVICES = [
     points: [
       "Earn-in against defined exploration spend, or straight equity participation",
       "Consortium structures across our three registered operating companies",
-      "Local incorporation guidance — mineral titles require a Pakistani entity",
+      "Local incorporation guidance, since mineral titles require a Pakistani entity",
       "Data room access under NDA for qualified counterparties",
     ],
   },
@@ -52,7 +52,7 @@ const SERVICES = [
     id: "acquisition",
     title: "Outright Sale & 100% Acquisition",
     lead:
-      "Partnership is not the only route. Selected concessions are available for outright purchase, including Earth Lux Mines & Minerals — our third registered company — which is offered for complete acquisition. Full positions on other blocks are open to negotiation.",
+      "Partnership is not the only route. Selected concessions are available for outright purchase, including Earth Lux Mines & Minerals, our third registered company, which is offered for complete acquisition. Full positions on other blocks are open to negotiation.",
     points: [
       "Earth Lux Mines & Minerals offered for 100% acquisition",
       "Full equity positions on other concessions open to discussion",
@@ -65,7 +65,7 @@ const SERVICES = [
     id: "exploration-for-owners",
     title: "Exploration & Survey for Mine Owners",
     lead:
-      "If you already hold a licence in Gilgit Baltistan but lack the team to work it, we will explore and survey it for you. Our in-house geologists carry out the fieldwork, produce the report and deliver samples from your own ground — on contract, at agreed rates.",
+      "If you already hold a licence in Gilgit Baltistan but lack the team to work it, we will explore and survey it for you. Our in-house geologists carry out the fieldwork, produce the report and deliver samples from your own ground, on contract, at agreed rates.",
     points: [
       "Field exploration and geological mapping of your concession",
       "Topographic and boundary survey with published coordinates",
@@ -102,7 +102,7 @@ const SERVICES = [
     id: "compliance",
     title: "Regulatory & Community Compliance",
     lead:
-      "We operate under formal agreement with both the provincial authority and the communities whose valleys we work in — the two approvals that most often stall mining projects in this region.",
+      "We operate under formal agreement with both the provincial authority and the communities whose valleys we work in. Those are the two approvals that most often stall mining projects in this region.",
     points: [
       "Royalty and departmental reporting kept current",
       "Written community agreements covering access and local employment",
@@ -123,7 +123,7 @@ const FAQS = [
   },
   {
     q: "Do you carry out exploration for other mine owners?",
-    a: "Yes. If you hold a licence but not a technical team, our geologists will explore and survey your concession on contract — field mapping, boundary survey, a formal geological report and sealed samples from your own ground, at agreed rates.",
+    a: "Yes. If you hold a licence but not a technical team, our geologists will explore and survey your concession on contract: field mapping, boundary survey, a formal geological report and sealed samples from your own ground, at agreed rates.",
   },
   {
     q: "How can an investor participate in your mines?",
@@ -135,7 +135,7 @@ const FAQS = [
   },
   {
     q: "Do you work with Pakistani investors?",
-    a: "Yes. We actively welcome domestic partners — Pakistani industrial groups, corporate investors and private buyers — on the same terms as international counterparties. Local participation also simplifies mineral title, which must sit with a Pakistani entity.",
+    a: "Yes. We actively welcome domestic partners, including Pakistani industrial groups, corporate investors and private buyers, on the same terms as international counterparties. Local participation also simplifies mineral title, which must sit with a Pakistani entity.",
   },
   {
     q: "Have you completed exploration work for other clients before?",
@@ -151,7 +151,7 @@ const FAQS = [
   },
   {
     q: "How many concessions do you hold and where?",
-    a: "Durr & Zircon Consortium holds eight licensed concessions across seven districts of Gilgit Baltistan — Shigar, Kharmang, Skardu, Gilgit, Ghizer, Hunza and Roundu. Earth Lux Mines & Minerals, our third company, holds Jutial Nala and Gupis and is offered for acquisition.",
+    a: "Durr & Zircon Consortium holds eight licensed concessions across seven districts of Gilgit Baltistan: Shigar, Kharmang, Skardu, Gilgit, Ghizer, Hunza and Roundu. Earth Lux Mines & Minerals, our third company, holds Jutial Nala and Gupis and is offered for acquisition.",
   },
 ];
 
@@ -160,7 +160,7 @@ export function ServicesExperience() {
     {
       "@context": "https://schema.org",
       "@type": "ItemList",
-      name: "Mining and mineral services — Durr & Zircon Consortium",
+      name: "Mining and mineral services, Durr & Zircon Consortium",
       itemListElement: SERVICES.map((s, i) => ({
         "@type": "ListItem",
         position: i + 1,
@@ -308,7 +308,7 @@ export function ServicesExperience() {
             </h2>
             <p className="mt-6 max-w-[52ch] text-base leading-[1.5] text-graphite-300 md:text-lg">
               Whether you are sourcing a monthly tonnage or evaluating an
-              exploration asset, the first step is the same — licences,
+              exploration asset, the first step is the same: licences,
               geological reports and coordinates, so you can verify before you
               travel.
             </p>

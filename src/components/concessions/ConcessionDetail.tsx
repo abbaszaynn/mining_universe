@@ -171,7 +171,7 @@ export function ConcessionDetail({ concession: c }: { concession: Concession }) 
                 <p className="text-sm leading-[1.5] text-graphite-500">
                   Boundary coordinates and the geological report for this
                   concession are shared directly with verified investors and
-                  buyers on request — by email, or once an enquiry is
+                  buyers on request, by email, or once an enquiry is
                   confirmed through the investor desk.
                 </p>
               </div>
@@ -207,7 +207,7 @@ export function ConcessionDetail({ concession: c }: { concession: Concession }) 
 
         <FaqSection
           items={faqItems}
-          title={`${c.name} — investor FAQ`}
+          title={`${c.name}: investor FAQ`}
           subtitle={`Direct answers for investors and buyers evaluating ${c.name}, ${c.district}.`}
           id="faq"
         />

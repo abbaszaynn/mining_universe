@@ -32,6 +32,7 @@ export function SiteFooter() {
                 <Link href="/news" className="transition-colors hover:text-bone-100/70">Insights</Link>
                 <Link href="/news" className="transition-colors hover:text-bone-100/70">Press & Media</Link>
                 <Link href="/documents" className="transition-colors hover:text-bone-100/70">Corporate Documents</Link>
+                <Link href="/faq" className="transition-colors hover:text-bone-100/70">FAQ</Link>
                 <Link href="/contact" className="transition-colors hover:text-bone-100/70">Contact Us</Link>
               </div>
             </div>
