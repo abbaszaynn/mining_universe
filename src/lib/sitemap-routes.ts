@@ -46,4 +46,12 @@ export const NEWS_ROUTES = [
     id: "geological-importance-hilal-abad",
     publishDate: "2026-04-12T10:00:00Z",
   },
+  {
+    id: "pakistan-us-critical-minerals-partnership",
+    publishDate: "2026-08-10T10:00:00Z",
+  },
+  {
+    id: "saudi-reko-diq-gilgit-baltistan-copper-gold",
+    publishDate: "2026-08-14T10:00:00Z",
+  },
 ];

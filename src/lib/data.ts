@@ -823,6 +823,24 @@ export const news: NewsArticle[] = [
     imageUrl: '/blogs/b6.jpeg',
     publishDate: '2026-04-12T10:00:00Z',
     companyId: 'durr-zircon',
+  },
+  {
+    id: 'pakistan-us-critical-minerals-partnership',
+    title: 'What the $500 Million Pakistan-US Minerals Deal Means for Gilgit Baltistan',
+    excerpt: 'US Strategic Metals and Pakistan signed a framework in September 2025 covering exploration through refining. The first shipment, in October 2025, was antimony, copper concentrate and rare earths, the same commodities held under licence across our own concessions.',
+    content: 'In September 2025, Pakistan and US Strategic Metals signed two memoranda of understanding covering the full mineral value chain, from exploration through refining, backing a $500 million partnership framework. The first shipment moved in October 2025: antimony, copper concentrate, and rare earth elements including neodymium and praseodymium. The US side has been explicit about why: reducing dependence on a small number of existing suppliers for materials it considers critical to national security, clean energy, and advanced manufacturing.\n\nWhat makes this relevant to Gilgit Baltistan specifically is the commodity list. Antimony, copper, and gold, three of the minerals this partnership is built to develop and refine domestically rather than export as raw ore, are exactly what several of our own licensed concessions carry. Gultari and the Gojal tehsil of Hunza hold our antimony, Shigar and Kharmang carry copper alongside a gold indication, and Skardu holds a licensed placer gold operation. None of that is coincidence: the same geology that put Gilgit-Baltistan on the map for these minerals is what drew a $500 million US partnership to Pakistan in the first place.\n\nFor a US investor, that partnership is a live, government-backed precedent rather than a speculative pitch. It also raises the practical question of where the next tranche of that supply actually comes from. Licensed, surveyed concessions with published area and licence status, rather than unlicensed artisanal extraction, are the more straightforward answer, and it is the model our concessions are built on. More detail on how a US company would actually structure a position is on our United States market page.',
+    imageUrl: '/images/commodities/copper.webp',
+    publishDate: '2026-08-10T10:00:00Z',
+    companyId: 'durr-zircon',
+  },
+  {
+    id: 'saudi-reko-diq-gilgit-baltistan-copper-gold',
+    title: 'Saudi Arabia\'s Reko Diq Stake and What It Signals for Northern Pakistan\'s Copper-Gold Belt',
+    excerpt: 'Saudi Arabia is pursuing a 15% stake in Pakistan\'s Reko Diq copper-gold project, backed by a reported $540 million commitment. Our Shigar and Kharmang concessions carry the same commodity pairing, at a much earlier stage.',
+    content: 'Saudi Arabia\'s own mining sector had a record 2025: exploitation licences up 220 percent domestically and investment reaching $11.7 billion. That appetite has extended into Pakistan directly. The Kingdom has pursued a 15 percent stake in Reko Diq, Pakistan\'s copper-gold project in Balochistan, backed by a reported $540 million commitment, and the Saudi Fund for Development has signalled it may put over $100 million more into Pakistani mining infrastructure. Broader estimates put combined Saudi and UAE investment interest in Pakistan as high as $50 billion over five years, with mining one part of that.\n\nReko Diq is a copper-gold deposit at a scale most projects never reach: an estimated 5.9 billion tonnes of ore and a projected mining life of at least 40 years. Our own Shigar concession carries the same commodity pairing, copper ore with gold as a strong secondary indication, in the same Karakoram (Shyok) Suture structural belt that regional surveys have logged anomalous gold, platinum, silver, and copper values along. Kharmang, in the same district, adds copper, iron, and silver in a documented antimony corridor. Neither is Reko Diq in scale. Both sit in the same commodity category that just drew a nine-figure Saudi commitment.\n\nWhat that tells a Saudi investor is less about any single deal and more about risk appetite: Saudi capital is already comfortable underwriting Pakistani copper-gold mining risk at scale. An earlier-stage, licensed concession in the same commodity pairing is a different point on the same curve, not a different asset class. More on how that would actually be structured is on our Saudi Arabia market page.',
+    imageUrl: '/images/commodities/gold.webp',
+    publishDate: '2026-08-14T10:00:00Z',
+    companyId: 'durr-zircon',
   }
 ];
 
