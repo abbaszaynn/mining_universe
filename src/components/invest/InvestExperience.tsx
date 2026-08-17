@@ -118,12 +118,16 @@ export function InvestExperience() {
               Explore what we hold by{" "}
               <Link href="/commodities" className="text-copper-600 underline underline-offset-4">
                 commodity
-              </Link>{" "}
-              or by{" "}
+              </Link>
+              , by{" "}
               <Link href="/concessions" className="text-copper-600 underline underline-offset-4">
                 concession
               </Link>
-              , then bring specific questions to the investor desk. If
+              , or see the{" "}
+              <Link href="/markets" className="text-copper-600 underline underline-offset-4">
+                case for your market
+              </Link>{" "}
+              specifically, then bring questions to the investor desk. If
               you&apos;re earlier in the process, our{" "}
               <Link
                 href="/guides/mining-licence-gilgit-baltistan"

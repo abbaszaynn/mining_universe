@@ -2,6 +2,7 @@ import Link from "next/link";
 import { GridLines } from "@/components/ui/GridLines";
 import { Pill } from "@/components/ui/Pill";
 import { MARKETS } from "@/lib/markets";
+import { firstSentence } from "@/lib/utils";
 
 export function MarketsIndex() {
   return (
@@ -33,7 +34,7 @@ export function MarketsIndex() {
               >
                 <h2 className="text-lg text-graphite-950">{m.name}</h2>
                 <p className="mt-2 text-sm leading-[1.5] text-graphite-500">
-                  {m.intro.split(". ")[0]}.
+                  {firstSentence(m.intro)}
                 </p>
               </Link>
             ))}

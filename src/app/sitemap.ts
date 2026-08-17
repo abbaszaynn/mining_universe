@@ -5,6 +5,7 @@ import { NEWS_ROUTES, STATIC_ROUTES } from "@/lib/sitemap-routes";
 // which sitemap-routes.ts is kept free of by design.
 import { concessions } from "@/lib/concessions";
 import { COMMODITIES } from "@/lib/commodities";
+import { MARKETS } from "@/lib/markets";
 
 export const dynamic = "force-static";
 export const revalidate = 86400;
@@ -51,5 +52,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
   ];
 
-  return [...staticEntries, ...concessionEntries, ...commodityEntries, ...articleEntries];
+  const marketEntries: MetadataRoute.Sitemap = [
+    {
+      url: `${base}/markets`,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    ...MARKETS.map((m) => ({
+      url: `${base}/markets/${m.slug}`,
+      changeFrequency: "monthly" as const,
+      priority: 0.75,
+    })),
+  ];
+
+  return [
+    ...staticEntries,
+    ...concessionEntries,
+    ...commodityEntries,
+    ...marketEntries,
+    ...articleEntries,
+  ];
 }

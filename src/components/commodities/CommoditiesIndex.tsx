@@ -3,6 +3,7 @@ import Link from "next/link";
 import { GridLines } from "@/components/ui/GridLines";
 import { Pill } from "@/components/ui/Pill";
 import { COMMODITIES } from "@/lib/commodities";
+import { firstSentence } from "@/lib/utils";
 
 export function CommoditiesIndex() {
   return (
@@ -45,7 +46,7 @@ export function CommoditiesIndex() {
                 <div className="p-5">
                   <h2 className="text-lg text-graphite-950">{c.name}</h2>
                   <p className="mt-2 text-sm leading-[1.5] text-graphite-500">
-                    {c.intro.split(". ")[0]}.
+                    {firstSentence(c.intro)}
                   </p>
                 </div>
               </Link>
