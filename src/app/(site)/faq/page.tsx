@@ -26,7 +26,7 @@ export default function FaqPage() {
             Durr & Zircon Consortium holds eight licensed mining concessions
             across seven districts of Gilgit Baltistan. Foreign investors can
             partner through joint venture, farm-in, equity, or in some cases
-            outright acquisition, subject to Pakistan's mining concession
+            outright acquisition, subject to Pakistan&apos;s mining concession
             rules. The answers below cover how due diligence, documentation,
             and site visits actually work, with more detail available per
             concession and through the investor desk.
