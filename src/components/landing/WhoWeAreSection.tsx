@@ -7,23 +7,7 @@ import { GridLines } from "@/components/ui/GridLines";
 import { Pill } from "@/components/ui/Pill";
 import { SplitReveal } from "@/components/ui/SplitReveal";
 import { cn } from "@/lib/utils";
-
-/**
- * Directors taken from the registered leadership across the three operating
- * companies. `photo` values are placeholders drawn from our own field imagery
- * so the colour/greyscale interaction is visible — swap in real headshots and
- * nothing else needs to change.
- */
-const DIRECTORS = [
-  { name: "Tabish Hassan", role: "CEO", photo: "/images/directors/Tabish Hassan.jpeg" },
-  { name: "Zain Abbas", role: "Director", photo: "/images/directors/Zain Abbas.jpeg" },
-  { name: "Daniyal Ali", role: "Director", photo: "/images/directors/Daniyal Ali.jpeg" },
-  { name: "Sabi ul Hasaan", role: "Director", photo: "/images/directors/Sabi ul Hasaan (1).jpeg" },
-  { name: "Zubair Abbas", role: "Legal Advisor", photo: "/images/directors/Zubair Abbas.jpeg" },
-  { name: "Minhas Hussain", role: "Finance Manager", photo: "/images/directors/Minhas Hussain.jpeg" },
-  { name: "Syed Moaiz Ali", role: "Executive Director", photo: "/images/directors/moaiz.jpeg" },
-  { name: "Kumail Abbas", role: "Project Director", photo: "/images/directors/kumail.jpg" },
-];
+import { DIRECTORS } from "@/lib/directors";
 
 
 export function WhoWeAreSection() {

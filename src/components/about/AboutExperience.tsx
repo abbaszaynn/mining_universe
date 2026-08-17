@@ -1,10 +1,25 @@
 "use client";
 
+import Image from "next/image";
 import { useLayoutEffect, useRef } from "react";
 import { gsap } from "@/lib/gsap";
 import { GridLines } from "@/components/ui/GridLines";
 import { SplitReveal } from "@/components/ui/SplitReveal";
 import { SquareButton } from "@/components/ui/SquareButton";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { DIRECTORS } from "@/lib/directors";
+import { absoluteUrl } from "@/lib/seo";
+
+const leadershipSchema = {
+  "@context": "https://schema.org",
+  "@graph": DIRECTORS.map((d) => ({
+    "@type": "Person",
+    name: d.name,
+    jobTitle: d.role,
+    description: d.bio,
+    worksFor: { "@id": `${absoluteUrl("/")}#organization` },
+  })),
+};
 
 export function AboutExperience() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -38,6 +53,7 @@ export function AboutExperience() {
 
   return (
     <div data-gos-page-root className="relative bg-bone-100 text-graphite-950 min-h-[100dvh]">
+      <JsonLd data={leadershipSchema} />
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-bone-100 text-graphite-950 pt-32 pb-20 md:pt-48 md:pb-32">
         <GridLines tone="light" />
@@ -130,6 +146,45 @@ export function AboutExperience() {
             </div>
           </div>
 
+        </div>
+      </section>
+
+      {/* Leadership */}
+      <section className="relative py-24 md:py-32 bg-bone-50">
+        <GridLines />
+        <div className="relative z-10 mx-auto max-w-[105rem] px-5 md:px-10">
+          <h2 className="text-3xl md:text-5xl font-medium tracking-tight mb-4">
+            Leadership
+          </h2>
+          <p className="max-w-2xl text-lg text-graphite-500 leading-relaxed mb-14">
+            Directors from the registered leadership of Durr Mines and
+            Minerals, Zircon Mines, and Earth Lux Mines and Minerals, now
+            unified under Durr &amp; Zircon Consortium.
+          </p>
+          <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4">
+            {DIRECTORS.map((person) => (
+              <div key={person.name} className="flex flex-col">
+                <div className="relative aspect-square w-full overflow-hidden rounded-md">
+                  <Image
+                    src={person.photo}
+                    alt={person.name}
+                    fill
+                    sizes="(max-width: 640px) 44vw, (max-width: 1024px) 28vw, 22vw"
+                    className="object-cover"
+                  />
+                </div>
+                <p className="mt-3 font-[family-name:var(--font-display)] text-base font-medium tracking-tight text-graphite-950">
+                  {person.name}
+                </p>
+                <p className="text-xs font-medium uppercase tracking-widest text-copper-600">
+                  {person.role}
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-graphite-500">
+                  {person.bio}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
