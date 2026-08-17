@@ -276,10 +276,28 @@ top, question-shaped H2s, and schema.
 
 ### Tier 3
 
-- [ ] **GB Mineral Corridor Report 2026** (PDF) — data asset for journalists.
-- [ ] News cadence — 2 posts/month minimum. AI citation strongly favours
-      content refreshed inside 6 months. (Highland Miners already does this —
-      see §0.)
+- [x] **GB Mineral Corridor Report 2026** (PDF) — live at
+      `/reports/gb-mineral-corridor-report-2026.pdf`, linked from `/documents`
+      (as a new "Investor Report" document type), `/invest`, and `/markets`.
+      5 pages: investment case (the same sourced 2025 deals used on
+      `/markets`), the full 10-concession registry as a table, commodity/
+      demand summary, and the four partnership routes. Built with reportlab.
+      Sent to the client directly for review.
+- [x] News cadence — 2 new articles added this session, both dated August
+      2026 and sourced (the $500M US partnership, the Saudi Reko Diq stake),
+      not the generic-filler pattern the 6 older articles use. "2 posts/month
+      minimum" from here is an ongoing commitment, not a one-time task — see
+      the flag left in §6 about the older articles.
+
+**While building the report's concession table**, cross-checked it against
+the live site and found the "eight licensed concessions" claim (used in 10
+places: `site.ts`'s default meta description, `llms.txt`, `/faq`, `/invest`,
+`GlobeLoopSection`, both `faq-data.ts` and two `ServicesExperience.tsx` FAQ
+answers) was stale — the actual registry has always had ten, confirmed
+repeatedly this session including via the live `sitemap.xml` fetch on day
+one. Fixed all ten instances. Two other instances checked and left alone:
+they correctly scope "eight" to just the Durr+Zircon two-company merger
+(4+4), not the full ten-concession portfolio.
 
 ---
 
@@ -386,12 +404,11 @@ is live (US firms actively sourcing). Each placement is an authority link.
 
 ## 6. This week, in order
 
-Updated after this session's fourth pass: Tier 2 is now done (`/invest`,
-the licence guide, leadership + `Person` schema on `/about`). Tier 1 and
-Tier 2 in §2 are both complete. 47 routes now generate cleanly.
+Updated after this session's fifth pass: Tier 1, Tier 2, and Tier 3 are all
+now done. 54 routes generate cleanly.
 
 1. **Deploy everything shipped this session.** Confirmed with a full
-   `next build` after every round: compiles clean, all 47 routes generate.
+   `next build` after every round: compiles clean, all 54 routes generate.
    Not yet deployed as of this edit; client has been pushing to `main`
    directly between rounds, so check `git log` before assuming what's live.
 2. 🔑 Once deployed: in GSC, *Validate Fix* on the "Not found (404)" issue,
@@ -403,16 +420,21 @@ Tier 2 in §2 are both complete. 47 routes now generate cleanly.
    surveys, reported deals, or the department's own published rules, and
    hedged deliberately, but this is investor-facing content about a real
    licensed asset, real reported deals, and a real legal process. Worth a
-   human read before anyone treats it as final.
+   human read before anyone treats it as final. The report PDF was sent to
+   the client directly for the same reason.
 4. 🔑 Real director headshots for the `/about` Leadership section — the
    last open piece of the E-E-A-T fix, and it needs the client, not more
    code. LinkedIn `sameAs` and the `.gog.pk` title-holder check are both
    closed per client direction (2026-08-17): not the site's focus, and not
    worth competing with a government department for.
-5. **Tier 1 and Tier 2 are both fully done** — `/services`, `/concessions`,
-   `/commodities`, `/faq`, `/invest`, the licence guide, `/markets`
-   (revised to 6 countries per client), and Leadership on `/about`. From
-   here, Tier 3 is content ops (report PDF, news cadence), not code.
-6. Off-site work (§4) is now the actual long pole. Everything buildable in
+5. **The 6 original news articles read as generic filler** (unsourced
+   claims, no dates, no specifics) — flagged twice now (§3 Tier 3, this
+   item) so it doesn't get lost. Worth the same rewrite treatment the
+   concession pages got, whenever there's appetite for it. Not done this
+   session since it wasn't the ask.
+6. **News cadence is now a standing commitment, not a checklist item** — 2
+   posts/month minimum, sourced and dated like the two added this session,
+   not generic filler. Whoever picks this up next should keep doing it.
+7. Off-site work (§4) is now the actual long pole. Everything buildable in
    this repo is done; authority and backlinks are what actually moves
    ranking from here.
