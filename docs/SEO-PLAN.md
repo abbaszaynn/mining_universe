@@ -212,9 +212,12 @@ top, question-shaped H2s, and schema.
 
 ### Tier 1 — ship first
 
-- [ ] **`/services`** — what we do, commercially framed. Primary: *mining
-      services Gilgit Baltistan* + trade-term body copy. `Service` schema.
-      Confirmed not yet on schema (checked live — no `Service` JSON-LD renders).
+- [x] **`/services`** — correction to the line below: this was already done
+      before this audit started. `Service` schema (as an `ItemList`) and its
+      own `FAQPage` schema were both already live; the earlier "not yet on
+      schema" note was wrong, based on a homepage-only DOM check that never
+      actually looked at `/services`. Swept its copy for em-dashes and fixed
+      one stale internal reference while in there.
 - [x] **`/concessions`** index + **10 × `/concessions/[slug]`** — content
       debt closed this session. Added `src/lib/concession-context.ts`: a
       hand-written narrative (2 paragraphs, regionally-sourced geology — see
@@ -226,13 +229,16 @@ top, question-shaped H2s, and schema.
       component — the old inline single-question schema was replaced, not
       duplicated). Verified all 10 slugs render, one `FAQPage` block each,
       `tsc --noEmit` clean.
-- [ ] **`/commodities/[slug]`** × 7 — buyer-intent pages. Specs, grades,
-      Incoterms, MOQ, payment terms. `Product` schema. Cluster A. Confirmed:
-      route doesn't exist yet.
-- [ ] **`/faq`** — `FAQPage` schema. Highest-leverage single AEO artifact.
-      Confirmed: no dedicated route. FAQ content + schema already exist
-      (`lib/faq-data.ts`, `faqJsonLd()`) but are scoped to `/investor-desk`
-      only — reuse that data, don't rebuild it.
+- [x] **`/commodities/[slug]`** × 7 — built: copper, antimony, placer gold,
+      lead, nephrite jade, quartz/silica, granite. Trade-vocabulary copy
+      (FOB Karachi, CIF, L/C at sight, SBLC, assay/SGS), `Product` +
+      `FAQPage` schema, cross-linked to the concessions that actually
+      source each mineral. `/commodities` index too. Registered in
+      `sitemap.ts`, added to header nav. Full `next build` passes, all 7
+      statically generate.
+- [x] **`/faq`** — live, reuses `GOS_FAQ_ITEMS` and `FaqSection` rather than
+      duplicating content. Linked from the footer, registered in
+      `sitemap-routes.ts`.
 
 ### Tier 2
 
@@ -364,21 +370,28 @@ is live (US firms actively sourcing). Each placement is an authority link.
 
 ## 6. This week, in order
 
-Updated same day, after the GSC screenshots, the 404 fix, and the image /
-alt-text cleanup:
+Updated after this session's third pass: `/faq` and `/commodities/[slug]` × 7
+shipped, Tier 1 in §2 is now fully done.
 
-1. **Deploy everything shipped today**: the `/insights` + `/press` link fix,
-   duplicate-`<h1>` fix, image compression (~150MB → 34MB in `public/images`),
-   and alt-text fix. Not yet deployed as of this edit.
+1. **Deploy everything shipped this session** — link/H1 fixes, images, GA4,
+   the concession content, `/faq`, `/commodities`. Confirmed with a full
+   `next build`: compiles clean, all 45 routes generate. Not yet deployed
+   as of this edit; client has been pushing to `main` directly between
+   rounds, so check `git log` before assuming what's live.
 2. 🔑 Once deployed: in GSC, *Validate Fix* on the "Not found (404)" issue,
-   then URL Inspection → Request Indexing on `/`, `/concessions`, `/about`.
-   Don't wait for the natural recrawl.
-3. 🔑 Set up GA4 (or equivalent) with a conversion event on the investor
-   enquiry form. You want a baseline while indexing is still ramping.
-4. ~~Write real body copy for the 10 concession pages~~ — done this
-   session (§2). **Ask the client to fact-check the geological context
-   paragraphs before this deploys** — they're sourced from public surveys
-   and clearly hedged, but this is investor-facing content about a real
-   licensed asset and deserves a human read before it goes live.
-5. 🔑 Check/pursue the `.gog.pk` title-holder listing — likely the fastest
-   real backlink available.
+   then URL Inspection → Request Indexing on `/`, `/concessions`,
+   `/commodities`, and `/faq`. Don't wait for the natural recrawl.
+3. **Fact-check pass needed before the concession and commodity pages are
+   trusted publicly** — both are sourced from public surveys and hedged
+   deliberately, but this is investor-facing content about a real licensed
+   asset, still worth a human read.
+4. 🔑 Check/pursue the `.gog.pk` title-holder listing (§0, ⚠️) — this needs
+   a direct answer, not an SEO assumption either way.
+5. **Next build targets, in priority order**: leadership + `Person` schema
+   on `/about` (E-E-A-T, real headshots needed — current photos are
+   explicitly placeholders per the component comment), then the `/invest`
+   pillar (Cluster B), then `/guides/mining-licence-gilgit-baltistan` (Cluster
+   C, link magnet). See §2 Tier 2.
+6. Off-site work (§4) is now the long pole, not code. Everything buildable
+   in this repo for Tier 1 is done; authority and backlinks are what
+   actually moves ranking from here.
