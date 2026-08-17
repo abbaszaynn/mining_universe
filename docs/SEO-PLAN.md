@@ -298,9 +298,17 @@ Confirmed already allowed in robots.txt: GPTBot, ClaudeBot, PerplexityBot
 This is where year-one leads actually come from, and it builds the authority
 that makes section 2 work.
 
-- [ ] Confirm/pursue listing on `portal.minesandmineralsgb.gog.pk/allcompaniesdata`
-      (List of Title Holders) — new item this audit, free .gog.pk citation if
-      the entity is already licensed (it is).
+- [ ] ⚠️ **Checked `portal.minesandmineralsgb.gog.pk/allcompaniesdata` directly
+      (486 rows, searched the live DOM, not a scrape summary) — none of
+      "Durr", "Zircon", "Earth Lux", nor any of the eight director names in
+      `companies-data.ts` appear anywhere on the government's title-holder
+      list.** This needs a human answer, not an assumption: licences can
+      legitimately be held under a different registered name, a not-yet-
+      publicly-listed grant, or a name variant not tried here — but it could
+      also mean the entity isn't on this specific register at all. Worth
+      confirming directly with the Mines & Minerals Department before
+      pursuing this as a backlink target, since it's a factual claim about
+      licensing, not just an SEO citation.
 
 **B2B marketplaces** (where Chinese buyers genuinely search): Alibaba,
 Made-in-China, TradeKey, go4WorldBusiness, TradeWheel, B2BMineral.
