@@ -242,16 +242,29 @@ top, question-shaped H2s, and schema.
 
 ### Tier 2
 
-- [ ] **`/invest`** pillar — JV / farm-in framing. Cluster B.
-- [ ] **`/guides/mining-licence-gilgit-baltistan`** — link magnet. Cluster C.
+- [x] **`/invest`** pillar — live. Four partnership routes, the
+      foreign-ownership legal fact up front, cross-linked to `/commodities`,
+      `/concessions`, and the guide below. Its own investment-process FAQ,
+      distinct from the operational FAQ already on `/services`.
+- [x] **`/guides/mining-licence-gilgit-baltistan`** — live. The four licence
+      stages under the GB Mining Concession Rules 2016, the January 2025
+      move to online-only applications, fees, and the foreign-ownership
+      question, all sourced from the department's own published rules and
+      recent reporting. Says outright that fees/procedures change and to
+      confirm with the department directly, rather than presenting a
+      snapshot as permanent fact.
 - [ ] **`/markets/[country]`** × 4 — China, USA, Saudi, Thailand. Cluster E.
-- [ ] **Leadership on `/about`** — move the 8 named directors from the
-      homepage "Who We Are" section onto `/about` (or link both), add real
-      bios/credentials, LinkedIn `sameAs` URLs, and `Person` schema nested
-      under the `Organization`. Replace placeholder director photos with real
-      headshots — placeholders currently ship to production per the component
-      comment. This is the E-E-A-T fix; matters more for an investment-facing
-      site than most.
+      Not started.
+- [x] **Leadership on `/about`** — done, with one deliberate scope cut: real
+      headshots and real biographical detail (education, prior roles, years
+      of experience) still need the client, since neither exists as verified
+      data available to this session and fabricating it would be worse than
+      the placeholder photos it would replace. What shipped: director data
+      extracted to `src/lib/directors.ts` as a shared source (previously
+      duplicated only in the homepage component), a Leadership section on
+      `/about` with role-scoped bios, and `Person` schema (`worksFor` the
+      `Organization`) for all 8. LinkedIn `sameAs` still open — needs real
+      profile URLs, another client-side item.
 
 ### Tier 3
 
@@ -370,28 +383,31 @@ is live (US firms actively sourcing). Each placement is an authority link.
 
 ## 6. This week, in order
 
-Updated after this session's third pass: `/faq` and `/commodities/[slug]` × 7
-shipped, Tier 1 in §2 is now fully done.
+Updated after this session's fourth pass: Tier 2 is now done (`/invest`,
+the licence guide, leadership + `Person` schema on `/about`). Tier 1 and
+Tier 2 in §2 are both complete. 47 routes now generate cleanly.
 
-1. **Deploy everything shipped this session** — link/H1 fixes, images, GA4,
-   the concession content, `/faq`, `/commodities`. Confirmed with a full
-   `next build`: compiles clean, all 45 routes generate. Not yet deployed
-   as of this edit; client has been pushing to `main` directly between
-   rounds, so check `git log` before assuming what's live.
+1. **Deploy everything shipped this session.** Confirmed with a full
+   `next build` after every round: compiles clean, all 47 routes generate.
+   Not yet deployed as of this edit; client has been pushing to `main`
+   directly between rounds, so check `git log` before assuming what's live.
 2. 🔑 Once deployed: in GSC, *Validate Fix* on the "Not found (404)" issue,
    then URL Inspection → Request Indexing on `/`, `/concessions`,
-   `/commodities`, and `/faq`. Don't wait for the natural recrawl.
-3. **Fact-check pass needed before the concession and commodity pages are
-   trusted publicly** — both are sourced from public surveys and hedged
-   deliberately, but this is investor-facing content about a real licensed
-   asset, still worth a human read.
-4. 🔑 Check/pursue the `.gog.pk` title-holder listing (§0, ⚠️) — this needs
+   `/commodities`, `/invest`, `/faq`, and the licence guide. Don't wait for
+   the natural recrawl.
+3. **Fact-check pass needed before the concession, commodity, and licence
+   guide pages are trusted publicly** — all are sourced from public surveys
+   or the department's own published rules and hedged deliberately, but
+   this is investor-facing content about a real licensed asset and a real
+   legal process. Worth a human read before anyone treats it as final.
+4. 🔑 Real director headshots and LinkedIn profile URLs for the `/about`
+   Leadership section — the last piece of the E-E-A-T fix, and it needs the
+   client, not more code.
+5. 🔑 Check/pursue the `.gog.pk` title-holder listing (§0, ⚠️) — this needs
    a direct answer, not an SEO assumption either way.
-5. **Next build targets, in priority order**: leadership + `Person` schema
-   on `/about` (E-E-A-T, real headshots needed — current photos are
-   explicitly placeholders per the component comment), then the `/invest`
-   pillar (Cluster B), then `/guides/mining-licence-gilgit-baltistan` (Cluster
-   C, link magnet). See §2 Tier 2.
-6. Off-site work (§4) is now the long pole, not code. Everything buildable
-   in this repo for Tier 1 is done; authority and backlinks are what
-   actually moves ranking from here.
+6. **Next build targets**: `/markets/[country]` × 4 (Cluster E, the only
+   unbuilt Tier 2 item) if there's appetite for more pages, otherwise Tier 3
+   is content ops, not code, from here (report PDF, news cadence).
+7. Off-site work (§4) is now the long pole, not code. Everything buildable
+   in this repo for Tier 1 and Tier 2 is done; authority and backlinks are
+   what actually moves ranking from here.
