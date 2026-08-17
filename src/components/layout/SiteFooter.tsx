@@ -24,6 +24,8 @@ export function SiteFooter() {
               <div className="flex flex-col gap-4 text-lg">
                 <Link href="/" className="transition-colors hover:text-bone-100/70">Home</Link>
                 <Link href="/about" className="transition-colors hover:text-bone-100/70">About</Link>
+                <Link href="/invest" className="transition-colors hover:text-bone-100/70">Invest</Link>
+                <Link href="/commodities" className="transition-colors hover:text-bone-100/70">Commodities</Link>
                 <Link href="/map" className="transition-colors hover:text-bone-100/70">Interactive Map</Link>
                 <Link href="/gallery" className="transition-colors hover:text-bone-100/70">Products Gallery</Link>
               </div>

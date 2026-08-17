@@ -6,6 +6,7 @@ export const STATIC_ROUTES = [
   // crawler that followed the sitemap. Keep this list in step with src/app.
   { path: "/about", changeFrequency: "weekly" as const, priority: 0.9 },
   { path: "/services", changeFrequency: "weekly" as const, priority: 0.95 },
+  { path: "/invest", changeFrequency: "weekly" as const, priority: 0.9 },
   { path: "/map", changeFrequency: "monthly" as const, priority: 0.85 },
   { path: "/gallery", changeFrequency: "weekly" as const, priority: 0.85 },
   { path: "/news", changeFrequency: "weekly" as const, priority: 0.8 },
