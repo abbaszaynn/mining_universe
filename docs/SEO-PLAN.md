@@ -257,21 +257,29 @@ top, question-shaped H2s, and schema.
 - [ ] TTFB: target < 800ms. Investigate ISR/static export for marketing pages.
       Not re-measured this session — re-check once GSC/analytics are live so
       it's tied to real Core Web Vitals data instead of a manual curl.
-- [ ] **Delete or compress source images — this regressed since last audit,
-      treat as urgent:**
-  - `right-side.png` — 75 MB, unused, still not deleted (flagged last audit
-    at 71 MB)
-  - `left-side.png` — 20 MB
-  - `right-side-new.png` — 11 MB
-  - `commodities/lead.png` — 18 MB
-  - `commodities/gold.png` — 15 MB
-  - `commodities/nephrite.png` — 14.5 MB
-  - `commodities/copper.png` — 6.5 MB
+- [x] **Delete or compress source images** — done this session:
+  - `right-side.png` — deleted (75 MB, confirmed unreferenced anywhere in `src/`)
+  - `left-side.png` — 19.2 MB → 3.1 MB (resized to fit 2000px, lossless recompress)
+  - `right-side-new.png` — 11.1 MB → 1.7 MB (2400px)
+  - `commodities/lead.png` — 17.5 MB → 4.2 MB (2000px)
+  - `commodities/gold.png` — 14.4 MB → 2.7 MB (2000px)
+  - `commodities/nephrite.png` — 13.8 MB → 4.2 MB (2000px)
+  - `commodities/copper.png` — 6.2 MB → 1.75 MB (already ≤2000px, recompressed only)
+  - `commodities/granite.png` — 1.5 MB, left as-is (already small)
 
-  Even behind `next/image`, these originals get re-processed on every build —
-  real risk to build time, function memory, and LCP on any path that touches
-  them directly. Re-export commodity source art at a sane max dimension
-  (~2400px) before it goes in `public/`.
+  `public/images` total: ~150 MB+ → 34 MB. All resized with `sharp`
+  (`fit: "inside"`, alpha preserved, lossless PNG recompression — no visible
+  quality loss, verified against originals). Originals backed up outside the
+  repo before touching anything. `sharp` added as a devDependency — also
+  what Next/Vercel's own image optimizer uses, so it's a reasonable thing to
+  have installed regardless.
+- [x] **Missing `alt` text** — the 9 flagged images traced to one root cause:
+      `RegionsMapSection.tsx`'s map marker thumbnails were hardcoding
+      `alt=""` for all 7 region photos. Fixed to describe the specimen +
+      region. Re-swept the whole site (gallery, commodities, directors, hero)
+      — everything else already had real `alt` text. The 2 images still
+      showing empty `alt` are the intentional decorative blur-glow duplicate
+      in `CommoditiesSection.tsx`, correctly `aria-hidden` — not a bug.
 - [ ] Per-page OG images
 
 Confirmed already allowed in robots.txt: GPTBot, ClaudeBot, PerplexityBot
@@ -319,21 +327,19 @@ is live (US firms actively sourcing). Each placement is an authority link.
 
 ## 6. This week, in order
 
-Updated same day, after the GSC screenshots and the 404 fix:
+Updated same day, after the GSC screenshots, the 404 fix, and the image /
+alt-text cleanup:
 
-1. **Deploy the `/insights` + `/press` link fix and duplicate-`<h1>` fix**
-   (done in this session, not yet deployed as of this edit). This is what's
-   actually blocking indexing right now — highest leverage item on the list.
+1. **Deploy everything shipped today**: the `/insights` + `/press` link fix,
+   duplicate-`<h1>` fix, image compression (~150MB → 34MB in `public/images`),
+   and alt-text fix. Not yet deployed as of this edit.
 2. 🔑 Once deployed: in GSC, *Validate Fix* on the "Not found (404)" issue,
    then URL Inspection → Request Indexing on `/`, `/concessions`, `/about`.
    Don't wait for the natural recrawl.
 3. 🔑 Set up GA4 (or equivalent) with a conversion event on the investor
    enquiry form. You want a baseline while indexing is still ramping.
-4. Delete/compress the 7 oversized images in §3. Fifteen-minute job, real
-   downside risk if skipped (build cost, LCP) with zero upside to leaving it.
-5. Add the missing `alt` text (§3) — fast, also free.
-6. Write real body copy for the 10 concession pages — this is the actual
+4. Write real body copy for the 10 concession pages — this is the actual
    content debt behind "half the things are done." The architecture is
    built; the words aren't.
-7. 🔑 Check/pursue the `.gog.pk` title-holder listing — likely the fastest
+5. 🔑 Check/pursue the `.gog.pk` title-holder listing — likely the fastest
    real backlink available.

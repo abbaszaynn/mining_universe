@@ -93,7 +93,7 @@ export function RegionsMapSection() {
         el.className = "gos-region-marker";
         el.innerHTML = `
           <span class="gos-region-crosshair" aria-hidden="true"></span>
-          <span class="gos-region-photo"><img src="${region.img}" alt="" loading="lazy" /></span>
+          <span class="gos-region-photo"><img src="${region.img}" alt="Mineral specimen from ${region.name}, ${region.district}" loading="lazy" /></span>
           <span class="gos-region-label">
             <span class="gos-region-name">${region.name}</span>
             <span class="gos-region-district">${region.district}</span>
