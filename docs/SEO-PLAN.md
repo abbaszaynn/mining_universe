@@ -253,8 +253,15 @@ top, question-shaped H2s, and schema.
       recent reporting. Says outright that fees/procedures change and to
       confirm with the department directly, rather than presenting a
       snapshot as permanent fact.
-- [ ] **`/markets/[country]`** × 4 — China, USA, Saudi, Thailand. Cluster E.
-      Not started.
+- [x] **`/markets/[country]`** × 6 — live. Client revised the target list to
+      China, USA, Saudi Arabia, UAE, Thailand, and Pakistan (domestic), and
+      specified the audience is large investing companies, not retail
+      buyers, so these lean on investment framing (JV/farm-in/equity/
+      acquisition) rather than the trade-vocabulary pattern on
+      `/commodities`. Every country claim is sourced and dated. See
+      `src/lib/markets.ts` header for the sourcing discipline, particularly
+      around Pakistan's 18% national rate-of-return policy figure, which is
+      stated as policy context, never as a return this company promises.
 - [x] **Leadership on `/about`** — done, with one deliberate scope cut: real
       headshots and real biographical detail (education, prior roles, years
       of experience) still need the client, since neither exists as verified
@@ -263,8 +270,9 @@ top, question-shaped H2s, and schema.
       extracted to `src/lib/directors.ts` as a shared source (previously
       duplicated only in the homepage component), a Leadership section on
       `/about` with role-scoped bios, and `Person` schema (`worksFor` the
-      `Organization`) for all 8. LinkedIn `sameAs` still open — needs real
-      profile URLs, another client-side item.
+      `Organization`) for all 8. LinkedIn `sameAs` deprioritized per client
+      direction (2026-08-17) — not the site's SEO focus. Client will update
+      their own personal profile independently of this plan.
 
 ### Tier 3
 
@@ -340,17 +348,12 @@ Confirmed already allowed in robots.txt: GPTBot, ClaudeBot, PerplexityBot
 This is where year-one leads actually come from, and it builds the authority
 that makes section 2 work.
 
-- [ ] ⚠️ **Checked `portal.minesandmineralsgb.gog.pk/allcompaniesdata` directly
-      (486 rows, searched the live DOM, not a scrape summary) — none of
-      "Durr", "Zircon", "Earth Lux", nor any of the eight director names in
-      `companies-data.ts` appear anywhere on the government's title-holder
-      list.** This needs a human answer, not an assumption: licences can
-      legitimately be held under a different registered name, a not-yet-
-      publicly-listed grant, or a name variant not tried here — but it could
-      also mean the entity isn't on this specific register at all. Worth
-      confirming directly with the Mines & Minerals Department before
-      pursuing this as a backlink target, since it's a factual claim about
-      licensing, not just an SEO citation.
+- [x] ~~Checked `portal.minesandmineralsgb.gog.pk/allcompaniesdata`~~ —
+      client direction (2026-08-17): drop this. We're a private company,
+      not trying to compete with or be listed alongside the government
+      department. Consistent with §0's original point that
+      `minesandmineralsgb.gog.pk` is a query we shouldn't chase in the
+      first place. Closed, not pursued further.
 
 **B2B marketplaces** (where Chinese buyers genuinely search): Alibaba,
 Made-in-China, TradeKey, go4WorldBusiness, TradeWheel, B2BMineral.
@@ -393,21 +396,23 @@ Tier 2 in §2 are both complete. 47 routes now generate cleanly.
    directly between rounds, so check `git log` before assuming what's live.
 2. 🔑 Once deployed: in GSC, *Validate Fix* on the "Not found (404)" issue,
    then URL Inspection → Request Indexing on `/`, `/concessions`,
-   `/commodities`, `/invest`, `/faq`, and the licence guide. Don't wait for
-   the natural recrawl.
-3. **Fact-check pass needed before the concession, commodity, and licence
-   guide pages are trusted publicly** — all are sourced from public surveys
-   or the department's own published rules and hedged deliberately, but
-   this is investor-facing content about a real licensed asset and a real
-   legal process. Worth a human read before anyone treats it as final.
-4. 🔑 Real director headshots and LinkedIn profile URLs for the `/about`
-   Leadership section — the last piece of the E-E-A-T fix, and it needs the
-   client, not more code.
-5. 🔑 Check/pursue the `.gog.pk` title-holder listing (§0, ⚠️) — this needs
-   a direct answer, not an SEO assumption either way.
-6. **Next build targets**: `/markets/[country]` × 4 (Cluster E, the only
-   unbuilt Tier 2 item) if there's appetite for more pages, otherwise Tier 3
-   is content ops, not code, from here (report PDF, news cadence).
-7. Off-site work (§4) is now the long pole, not code. Everything buildable
-   in this repo for Tier 1 and Tier 2 is done; authority and backlinks are
-   what actually moves ranking from here.
+   `/commodities`, `/invest`, `/markets`, `/faq`, and the licence guide.
+   Don't wait for the natural recrawl.
+3. **Fact-check pass needed before the concession, commodity, market, and
+   licence guide pages are trusted publicly** — all are sourced from public
+   surveys, reported deals, or the department's own published rules, and
+   hedged deliberately, but this is investor-facing content about a real
+   licensed asset, real reported deals, and a real legal process. Worth a
+   human read before anyone treats it as final.
+4. 🔑 Real director headshots for the `/about` Leadership section — the
+   last open piece of the E-E-A-T fix, and it needs the client, not more
+   code. LinkedIn `sameAs` and the `.gog.pk` title-holder check are both
+   closed per client direction (2026-08-17): not the site's focus, and not
+   worth competing with a government department for.
+5. **Tier 1 and Tier 2 are both fully done** — `/services`, `/concessions`,
+   `/commodities`, `/faq`, `/invest`, the licence guide, `/markets`
+   (revised to 6 countries per client), and Leadership on `/about`. From
+   here, Tier 3 is content ops (report PDF, news cadence), not code.
+6. Off-site work (§4) is now the actual long pole. Everything buildable in
+   this repo is done; authority and backlinks are what actually moves
+   ranking from here.
