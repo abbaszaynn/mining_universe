@@ -192,12 +192,17 @@ top, question-shaped H2s, and schema.
 - [ ] **`/services`** — what we do, commercially framed. Primary: *mining
       services Gilgit Baltistan* + trade-term body copy. `Service` schema.
       Confirmed not yet on schema (checked live — no `Service` JSON-LD renders).
-- [x] **`/concessions`** index + **10 × `/concessions/[slug]`** — routes,
-      sitemap entries, and layout are built. **Not actually done** — reopening
-      this: pages are ~70 words each, too thin to rank for the Cluster D terms
-      they exist for. Needs 300–500 words per page (geology narrative, access
-      route, nearby infrastructure, historical/assay context) before this can
-      be checked off for real.
+- [x] **`/concessions`** index + **10 × `/concessions/[slug]`** — content
+      debt closed this session. Added `src/lib/concession-context.ts`: a
+      hand-written narrative (2 paragraphs, regionally-sourced geology — see
+      file header for the sourcing discipline used, no invented grades or
+      reserves) plus a 2-question FAQ per concession, wired into
+      `ConcessionDetail.tsx` alongside the existing single coordinates
+      question. Each page now runs ~450–550 words instead of ~70, and each
+      carries its own `FAQPage` JSON-LD (via the existing `FaqSection`
+      component — the old inline single-question schema was replaced, not
+      duplicated). Verified all 10 slugs render, one `FAQPage` block each,
+      `tsc --noEmit` clean.
 - [ ] **`/commodities/[slug]`** × 7 — buyer-intent pages. Specs, grades,
       Incoterms, MOQ, payment terms. `Product` schema. Cluster A. Confirmed:
       route doesn't exist yet.
@@ -252,8 +257,9 @@ top, question-shaped H2s, and schema.
       `ruby-bagicha.jpg`, `lead-jutial-1.jpg`, `nephrite-gupis-1.jpg`,
       `gb_gemstone_mining.png`, `lead-gultari-1.jpg`) — sweep the rest of the
       site for the same issue, this was a homepage-only spot check.
-- [ ] `FAQPage` (expand beyond `/investor-desk`), `Article`, `BreadcrumbList`,
-      `Service`, `Product`, `Person` schema
+- [~] `FAQPage` — now on `/investor-desk` and all 10 concession pages;
+      `/faq`, `/about`, homepage still don't have it. `Article`,
+      `BreadcrumbList`, `Service`, `Product`, `Person` schema still open.
 - [ ] TTFB: target < 800ms. Investigate ISR/static export for marketing pages.
       Not re-measured this session — re-check once GSC/analytics are live so
       it's tied to real Core Web Vitals data instead of a manual curl.
@@ -338,8 +344,10 @@ alt-text cleanup:
    Don't wait for the natural recrawl.
 3. 🔑 Set up GA4 (or equivalent) with a conversion event on the investor
    enquiry form. You want a baseline while indexing is still ramping.
-4. Write real body copy for the 10 concession pages — this is the actual
-   content debt behind "half the things are done." The architecture is
-   built; the words aren't.
+4. ~~Write real body copy for the 10 concession pages~~ — done this
+   session (§2). **Ask the client to fact-check the geological context
+   paragraphs before this deploys** — they're sourced from public surveys
+   and clearly hedged, but this is investor-facing content about a real
+   licensed asset and deserves a human read before it goes live.
 5. 🔑 Check/pursue the `.gog.pk` title-holder listing — likely the fastest
    real backlink available.

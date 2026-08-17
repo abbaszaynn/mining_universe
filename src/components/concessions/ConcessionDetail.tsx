@@ -4,12 +4,16 @@ import { GridLines } from "@/components/ui/GridLines";
 import { Pill } from "@/components/ui/Pill";
 import { SquareButton } from "@/components/ui/SquareButton";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { FaqSection } from "@/components/faq/FaqSection";
 import { absoluteUrl } from "@/lib/seo";
 import type { Concession } from "@/lib/concessions";
 import { concessions } from "@/lib/concessions";
+import { getConcessionContext } from "@/lib/concession-context";
+import type { FaqItem } from "@/lib/faq-data";
 
 export function ConcessionDetail({ concession: c }: { concession: Concession }) {
   const url = absoluteUrl(`/concessions/${c.slug}`);
+  const context = getConcessionContext(c.slug);
 
   const placeSchema = {
     "@context": "https://schema.org",
@@ -31,26 +35,19 @@ export function ConcessionDetail({ concession: c }: { concession: Concession }) 
       : {}),
   };
 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: `Can I get the exact coordinates for ${c.name}?`,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: `Yes. Boundary coordinates and the geological report for ${c.name} are shared directly with verified investors and buyers on request, either by email or once an enquiry is confirmed through the investor desk.`,
-        },
-      },
-    ],
+  // Coordinates question first — it's the one every serious enquirer actually
+  // has — then the hand-written per-concession FAQ (licence stage, data room).
+  const coordinatesFaq: FaqItem = {
+    question: `Can I get the exact coordinates for ${c.name}?`,
+    answer: `Yes. Boundary coordinates and the geological report for ${c.name} are shared directly with verified investors and buyers on request, either by email or once an enquiry is confirmed through the investor desk.`,
   };
+  const faqItems: FaqItem[] = [coordinatesFaq, ...(context?.faqs ?? [])];
 
   const others = concessions.filter((o) => o.slug !== c.slug).slice(0, 3);
 
   return (
     <>
-      <JsonLd data={[placeSchema, faqSchema]} />
+      <JsonLd data={placeSchema} />
 
       <main className="relative bg-bone-50">
         <section className="relative overflow-hidden pb-16 pt-32 md:pb-24 md:pt-40">
@@ -181,6 +178,39 @@ export function ConcessionDetail({ concession: c }: { concession: Concession }) 
             </div>
           </div>
         </section>
+
+        {context && context.narrative.length > 0 && (
+          <section className="relative overflow-hidden bg-bone-50 py-16 md:py-24">
+            <GridLines />
+            <div className="relative z-10 mx-auto max-w-[105rem] px-5 md:px-10">
+              <div className="max-w-[68ch]">
+                <span className="text-xs uppercase tracking-[0.08em] text-graphite-400">
+                  Geological context
+                </span>
+                <h2 className="mt-3 text-display-md tracking-[-0.03em] text-graphite-950">
+                  About {c.name}
+                </h2>
+                <div className="mt-6 space-y-5">
+                  {context.narrative.map((paragraph, i) => (
+                    <p
+                      key={i}
+                      className="text-base leading-[1.6] text-graphite-600 md:text-lg"
+                    >
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+
+        <FaqSection
+          items={faqItems}
+          title={`${c.name} — investor FAQ`}
+          subtitle={`Direct answers for investors and buyers evaluating ${c.name}, ${c.district}.`}
+          id="faq"
+        />
 
         {others.length > 0 && (
           <section className="relative overflow-hidden bg-bone-50 py-16 md:py-24">
