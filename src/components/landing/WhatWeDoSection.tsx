@@ -142,7 +142,7 @@ export function WhatWeDoSection() {
               <VerticalCardStack
                 slides={SLIDES}
                 progress={cardProgress}
-                className="relative z-0 mt-6 h-[20rem] md:h-[clamp(12rem,32vh,26rem)] w-full"
+                className="relative z-0 mt-12 md:mt-24 h-[20rem] md:h-[clamp(12rem,32vh,26rem)] w-full"
               />
             </div>
 
