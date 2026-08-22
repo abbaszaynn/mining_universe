@@ -4,8 +4,61 @@ import { useLayoutEffect, useRef } from "react";
 import { gsap } from "@/lib/gsap";
 import { GridLines } from "@/components/ui/GridLines";
 import { SquareButton } from "@/components/ui/SquareButton";
-import { SplitReveal } from "@/components/ui/SplitReveal";
 import { SpiralAnimation } from "@/components/ui/spiral-animation";
+import { motion } from "framer-motion";
+
+function TypewriterHeading({ delay = 0.2 }: { delay?: number }) {
+  let charIndex = 0;
+  
+  const SEGMENTS = [
+    { text: "Licensed ", className: "text-[2.25rem] sm:text-5xl lg:text-[4rem] font-light text-graphite-600 tracking-normal" },
+    { text: "minerals,", className: "text-[3.5rem] sm:text-[5.5rem] lg:text-[7.5rem] tracking-tight font-semibold", animateColor: true },
+    { text: "\n" },
+    { text: "mined at ", className: "text-[2.25rem] sm:text-5xl lg:text-[4rem] font-light text-graphite-600 tracking-normal" },
+    { text: "source.", className: "text-[3.5rem] sm:text-[5.5rem] lg:text-[7.5rem] tracking-tight font-semibold", animateColor: true },
+  ];
+
+  return (
+    <h1 className="max-w-[20ch] leading-[1.1] md:leading-[1.05] text-graphite-950 font-medium whitespace-pre-wrap">
+      {SEGMENTS.map((segment, sIdx) => {
+        if (segment.text === "\n") {
+          return <br key={sIdx} />;
+        }
+        
+        const chars = segment.text.split("");
+        return (
+          <span key={sIdx} className={segment.className}>
+            {chars.map((char, cIdx) => {
+              const currentIdx = charIndex++;
+              return (
+                <motion.span
+                  key={cIdx}
+                  initial={{ opacity: 0 }}
+                  animate={{ 
+                    opacity: 1, 
+                    ...(segment.animateColor ? { color: ["#111827", "#e97a3c", "#d4af37", "#111827"] } : {})
+                  }}
+                  transition={{ 
+                    opacity: { duration: 0, delay: delay + currentIdx * 0.04 },
+                    ...(segment.animateColor ? { color: { duration: 4, repeat: Infinity, ease: "linear", delay: delay + currentIdx * 0.04 } } : {})
+                  }}
+                >
+                  {char}
+                </motion.span>
+              );
+            })}
+          </span>
+        );
+      })}
+      <motion.span
+        initial={{ opacity: 0 }}
+        animate={{ opacity: [1, 0, 1] }}
+        transition={{ duration: 0.8, repeat: Infinity, delay: delay + charIndex * 0.04 }}
+        className="inline-block w-[0.08em] h-[0.9em] bg-copper-500 ml-2 translate-y-[0.1em]"
+      />
+    </h1>
+  );
+}
 
 export function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -17,8 +70,7 @@ export function HeroSection() {
     if (!section || !band) return;
 
     const ctx = gsap.context(() => {
-      // The accent band grows upward as you scroll into it — the panel "extends"
-      // rather than simply scrolling past.
+      // The accent band grows upward as you scroll into it
       gsap.fromTo(
         band,
         { yPercent: 6 },
@@ -39,52 +91,45 @@ export function HeroSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative overflow-hidden bg-bone-50">
-      {/* Title plate */}
-      <div className="relative pb-8 pt-28 md:pb-14 md:pt-40">
-        <GridLines />
-        <div className="relative z-20 mx-auto max-w-[105rem] px-5 md:px-10">
-          <SplitReveal
-            as="h1"
-            trigger="mount"
-            delay={0.15}
-            lines={["Licensed minerals,", "mined at source."]}
-            className="max-w-[18ch] text-display-xl tracking-[-0.035em] text-graphite-950"
-          />
+    <section ref={sectionRef} className="relative overflow-hidden bg-bone-50 pt-32 pb-16 md:pt-40 md:pb-24">
+      <div className="relative z-20 w-full">
+        {/* Title plate - Upper Position */}
+        <div className="relative pb-10 md:pb-16">
+          <GridLines />
+          <div className="relative z-20 mx-auto max-w-[105rem] px-5 md:px-10">
+            <TypewriterHeading delay={0.2} />
+          </div>
         </div>
-      </div>
 
-      {/* Accent band */}
-      <div ref={bandRef} className="relative bg-copper-500 will-change-transform">
-        <GridLines tone="dark" />
-        <div className="relative z-20 mx-auto max-w-[105rem] px-5 py-14 md:px-10 md:py-28">
-          <div className="max-w-[34rem]">
-            <p className="text-xl leading-[1.35] text-bone-50 md:text-2xl">
-              Durr & Zircon Consortium operates three licensed mining companies across
-              Gilgit Baltistan, extracting copper, gold, lithium, nephrite and
-              polymetallic ore under full regulatory compliance.
-            </p>
-            <div className="mt-10">
-              <SquareButton href="/investor-desk" tone="light">
-                Speak with us
-              </SquareButton>
+        {/* Accent band */}
+        <div ref={bandRef} className="relative bg-copper-500 will-change-transform shadow-md">
+          <GridLines tone="dark" />
+          <div className="relative z-20 mx-auto max-w-[105rem] px-5 py-12 md:px-10 md:py-24">
+            <div className="max-w-[40rem]">
+              <p className="text-[1.35rem] leading-[1.4] text-bone-50 md:text-3xl font-light">
+                Durr & Zircon Consortium operates three licensed mining companies across
+                Gilgit Baltistan, extracting copper, gold, lithium, nephrite and
+                polymetallic ore under full regulatory compliance.
+              </p>
             </div>
           </div>
         </div>
+        
+        {/* Button out of orange box to below white space */}
+        <div className="relative z-20 mx-auto max-w-[105rem] px-5 md:px-10 pt-10 md:pt-16 pb-6">
+          <SquareButton href="/investor-desk" tone="accent">
+            Speak with us
+          </SquareButton>
+        </div>
       </div>
 
-      {/* Particle spiral — the canvas spans the whole hero so the field can
-          drift across both plates, while the spiral itself is centred over the
-          right-hand column where the copy never reaches. */}
+      {/* Particle spiral */}
       <SpiralAnimation
         className="pointer-events-none absolute inset-0 z-10"
         color="rgba(28,25,22,1)"
         centerX={0.74}
         centerY={0.5}
         scale={1.15}
-        // Mid-cycle the field expands across the full width, which would put
-        // dark specks behind the headline. Fading it out to the left keeps the
-        // spread while leaving the copy column clean.
         style={{
           maskImage:
             "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.4) 34%, rgba(0,0,0,0.85) 52%, #000 68%)",
