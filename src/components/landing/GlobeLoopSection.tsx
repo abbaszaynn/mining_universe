@@ -4,21 +4,19 @@ import { useLayoutEffect, useRef } from "react";
 import { gsap, EASES } from "@/lib/gsap";
 import { GridLines } from "@/components/ui/GridLines";
 import { SquareButton } from "@/components/ui/SquareButton";
-import Image from "next/image";
 
 export function GlobeLoopSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const frameRef = useRef<HTMLDivElement>(null);
-  const imageRef = useRef<HTMLImageElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const marqueeRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
     const section = sectionRef.current;
     const frame = frameRef.current;
-    const image = imageRef.current;
     const content = contentRef.current;
-    if (!section || !frame || !image || !content) return;
+    
+    if (!section || !frame || !content) return;
 
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
@@ -26,7 +24,7 @@ export function GlobeLoopSection() {
           trigger: section,
           start: "top top",
           end: "bottom bottom",
-          scrub: 0.3, // Slightly snappier scrub
+          scrub: 0.1, // Very low scrub delay for instantaneous frame scaling
         },
       });
 
@@ -37,13 +35,6 @@ export function GlobeLoopSection() {
         { scale: 1, borderRadius: "0px", ease: "none", duration: 0.6 },
         0
       )
-        // Image zooms in smoothly inside the frame
-        .fromTo(
-          image,
-          { scale: 1 },
-          { scale: 2.2, ease: "power1.inOut", duration: 0.7 },
-          0
-        )
         .fromTo(marqueeRef.current, { opacity: 1 }, { opacity: 0, ease: "none", duration: 0.25 }, 0.08)
         .fromTo(
           content,
@@ -92,14 +83,13 @@ export function GlobeLoopSection() {
             ref={frameRef}
             className="relative h-[62vh] w-full max-w-[105rem] overflow-hidden bg-graphite-950 will-change-transform md:h-[70vh]"
           >
-            <Image
-              ref={imageRef}
-              src="/images/gilgit-map-zoom.jpg"
-              alt="High resolution satellite map of Gilgit Baltistan"
-              fill
-              sizes="100vw"
-              priority
-              className="object-cover will-change-transform"
+            <video
+              src="/Earth Zoom In Realistic Clouds With Alpha Matte.mp4"
+              playsInline
+              muted
+              autoPlay
+              loop
+              className="h-full w-full object-cover"
             />
             <div
               className="pointer-events-none absolute inset-0 bg-gradient-to-t from-graphite-950/90 via-graphite-950/20 to-transparent z-10"

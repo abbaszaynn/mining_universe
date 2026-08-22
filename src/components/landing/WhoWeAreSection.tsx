@@ -113,7 +113,7 @@ export function WhoWeAreSection() {
         </div>
 
         <div
-          className="grid grid-cols-2 gap-3 sm:grid-cols-4 md:gap-4 lg:gap-6 lg:col-span-7"
+          className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:gap-4 lg:gap-6 lg:col-start-7 lg:col-span-6"
           onMouseLeave={() => setHovered(null)}
         >
           {DIRECTORS.map((person, i) => {

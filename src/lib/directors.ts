@@ -53,21 +53,9 @@ export const DIRECTORS: Director[] = [
     photo: "/images/directors/Zubair Abbas.jpeg",
   },
   {
-    name: "Minhas Hussain",
-    role: "Finance Manager",
-    bio: "Manages financial operations and reporting across the consortium's three operating companies.",
-    photo: "/images/directors/Minhas Hussain.jpeg",
-  },
-  {
-    name: "Syed Moaiz Ali",
-    role: "Executive Director",
-    bio: "Executive Director across the consortium's operating companies, working on strategy and operations.",
-    photo: "/images/directors/moaiz.jpeg",
-  },
-  {
     name: "Kumail Abbas",
     role: "Project Director",
     bio: "Oversees field projects and site operations across the consortium's licensed concessions.",
-    photo: "/images/directors/kumail.jpg",
+    photo: "/images/directors/kunail abbas.jpeg",
   },
 ];
