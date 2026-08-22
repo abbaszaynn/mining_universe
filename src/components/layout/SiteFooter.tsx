@@ -82,9 +82,9 @@ export function SiteFooter() {
             {/* Legal / Copyright */}
             <div className="flex flex-col items-start gap-3 text-xs text-bone-50/70 md:items-end md:text-right">
               <div className="flex gap-4 mb-2">
-                <Link href="#" className="transition-colors hover:text-bone-50">Privacy Policy</Link>
-                <Link href="#" className="transition-colors hover:text-bone-50">Terms of Service</Link>
-                <Link href="#" className="transition-colors hover:text-bone-50">Cookies Settings</Link>
+                <Link href="/privacy-policy" className="transition-colors hover:text-bone-50">Privacy Policy</Link>
+                <Link href="/terms-of-service" className="transition-colors hover:text-bone-50">Terms of Service</Link>
+                <Link href="/cookies" className="transition-colors hover:text-bone-50">Cookies Settings</Link>
               </div>
               <p>&copy; {new Date().getFullYear()} GBMINES. All rights reserved.</p>
               <p className="max-w-xs">

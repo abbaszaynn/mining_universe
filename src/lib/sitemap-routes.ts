@@ -19,6 +19,11 @@ export const STATIC_ROUTES = [
   },
   { path: "/contact", changeFrequency: "monthly" as const, priority: 0.75 },
   { path: "/investor-desk", changeFrequency: "monthly" as const, priority: 0.9 },
+  // Legal — indexed for trust/E-E-A-T signal, low priority since they aren't
+  // content anyone is searching for.
+  { path: "/privacy-policy", changeFrequency: "yearly" as const, priority: 0.3 },
+  { path: "/terms-of-service", changeFrequency: "yearly" as const, priority: 0.3 },
+  { path: "/cookies", changeFrequency: "yearly" as const, priority: 0.3 },
 ];
 
 export const NEWS_ROUTES = [
