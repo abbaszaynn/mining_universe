@@ -59,20 +59,22 @@ export function SiteFooter() {
             {/* Contact Details */}
             <div className="flex flex-col gap-8 sm:flex-row sm:gap-16">
               <div>
-                <p className="font-medium">Headquarters</p>
-                <p className="mt-2 text-sm text-bone-50/70">123 Mining Avenue, Suite 400<br />Islamabad, Pakistan 44000</p>
+                <p className="font-medium">Office</p>
+                <p className="mt-2 text-sm text-bone-50/70">Qasimi market in front of Cmh Gilgit</p>
               </div>
               <div>
                 <p className="font-medium">Inquiries</p>
-                <p className="mt-2 text-sm text-bone-50/70">
-                  <a href="mailto:info@gameofstones.com" className="transition-colors hover:text-bone-50">info@gameofstones.com</a><br />
-                  <a href="tel:+923000000000" className="transition-colors hover:text-bone-50">+92 300 000 0000</a>
+                <p className="mt-2 text-sm text-bone-50/70 leading-relaxed">
+                  <a href="mailto:info@gbmines.com" className="transition-colors hover:text-bone-50 block">info@gbmines.com</a>
+                  <a href="mailto:ir@gbmines.com" className="transition-colors hover:text-bone-50 block">ir@gbmines.com</a>
+                  <a href="tel:+923169244827" className="transition-colors hover:text-bone-50 block mt-2">+92 316 9244827</a>
+                  <a href="tel:+923555653738" className="transition-colors hover:text-bone-50 block">+92 355 5653738</a>
                 </p>
               </div>
               <div>
                 <p className="font-medium">Follow Us</p>
                 <p className="mt-2 text-sm text-bone-50/70">
-                  <a href="#" className="transition-colors hover:text-bone-50">LinkedIn</a>
+                  <a href="#" className="transition-colors hover:text-bone-50">LinkedIn: Zain Abbas</a>
                 </p>
               </div>
             </div>
@@ -84,7 +86,7 @@ export function SiteFooter() {
                 <Link href="#" className="transition-colors hover:text-bone-50">Terms of Service</Link>
                 <Link href="#" className="transition-colors hover:text-bone-50">Cookies Settings</Link>
               </div>
-              <p>&copy; {new Date().getFullYear()} Game of Stones. All rights reserved.</p>
+              <p>&copy; {new Date().getFullYear()} GBMINES. All rights reserved.</p>
               <p className="max-w-xs">
                 Operations comply with all local and international mining regulations.
               </p>
@@ -97,10 +99,10 @@ export function SiteFooter() {
       <div className="relative flex items-center justify-center overflow-hidden bg-[#e6e8e6] px-5 py-8 md:px-10 md:py-12">
         <p
           aria-hidden="true"
-          className="whitespace-nowrap text-[11vw] font-bold leading-[0.8] tracking-[-0.05em] text-[#d4d6d4] uppercase"
+          className="whitespace-nowrap text-[15vw] font-bold leading-[0.8] tracking-[-0.05em] text-[#d4d6d4] uppercase"
           style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}
         >
-          GAME OF STONES
+          GBMINES
         </p>
       </div>
     </footer>

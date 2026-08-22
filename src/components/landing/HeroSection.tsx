@@ -9,53 +9,80 @@ import { motion } from "framer-motion";
 
 function TypewriterHeading({ delay = 0.2 }: { delay?: number }) {
   let charIndex = 0;
-  
+
   const SEGMENTS = [
-    { text: "Licensed ", className: "text-[2.25rem] sm:text-5xl lg:text-[4rem] font-light text-graphite-600 tracking-normal" },
-    { text: "minerals,", className: "text-[3.5rem] sm:text-[5.5rem] lg:text-[7.5rem] tracking-tight font-semibold", animateColor: true },
+    { text: "Licensed ", className: "block md:inline-block text-[2rem] sm:text-4xl lg:text-[4.5rem] font-light text-graphite-600 tracking-normal lg:tracking-tight align-baseline" },
+    { text: "Minerals,", className: "block md:inline-block text-[3.5rem] sm:text-[4.5rem] lg:text-[4.5rem] tracking-tight font-semibold align-baseline", animateColor: true },
     { text: "\n" },
-    { text: "mined at ", className: "text-[2.25rem] sm:text-5xl lg:text-[4rem] font-light text-graphite-600 tracking-normal" },
-    { text: "source.", className: "text-[3.5rem] sm:text-[5.5rem] lg:text-[7.5rem] tracking-tight font-semibold", animateColor: true },
+    { text: "Mined at ", className: "block md:inline-block text-[2rem] sm:text-4xl lg:text-[4.5rem] font-light text-graphite-600 tracking-normal lg:tracking-tight align-baseline mt-2 md:mt-0" },
+    { text: "Source.", className: "block md:inline-block text-[3.5rem] sm:text-[4.5rem] lg:text-[4.5rem] tracking-tight font-semibold align-baseline", animateColor: true },
   ];
 
   return (
-    <h1 className="max-w-[20ch] leading-[1.1] md:leading-[1.05] text-graphite-950 font-medium whitespace-pre-wrap">
-      {SEGMENTS.map((segment, sIdx) => {
-        if (segment.text === "\n") {
-          return <br key={sIdx} />;
-        }
-        
-        const chars = segment.text.split("");
-        return (
-          <span key={sIdx} className={segment.className}>
-            {chars.map((char, cIdx) => {
-              const currentIdx = charIndex++;
-              return (
-                <motion.span
-                  key={cIdx}
-                  initial={{ opacity: 0 }}
-                  animate={{ 
-                    opacity: 1, 
-                    ...(segment.animateColor ? { color: ["#111827", "#e97a3c", "#d4af37", "#111827"] } : {})
-                  }}
-                  transition={{ 
-                    opacity: { duration: 0, delay: delay + currentIdx * 0.04 },
-                    ...(segment.animateColor ? { color: { duration: 4, repeat: Infinity, ease: "linear", delay: delay + currentIdx * 0.04 } } : {})
-                  }}
-                >
-                  {char}
-                </motion.span>
-              );
-            })}
-          </span>
-        );
-      })}
-      <motion.span
-        initial={{ opacity: 0 }}
-        animate={{ opacity: [1, 0, 1] }}
-        transition={{ duration: 0.8, repeat: Infinity, delay: delay + charIndex * 0.04 }}
-        className="inline-block w-[0.08em] h-[0.9em] bg-copper-500 ml-2 translate-y-[0.1em]"
-      />
+    <h1 className="leading-[1.1] md:leading-[1.05] text-graphite-950 font-medium whitespace-pre-wrap max-w-full">
+      <span className="md:whitespace-nowrap md:inline-block block">
+        {SEGMENTS.slice(0, 2).map((segment, sIdx) => {
+          const chars = segment.text.split("");
+          return (
+            <span key={sIdx} className={segment.className}>
+              {chars.map((char, cIdx) => {
+                const currentIdx = charIndex++;
+                return (
+                  <motion.span
+                    key={cIdx}
+                    initial={{ opacity: 0 }}
+                    animate={{
+                      opacity: 1,
+                      ...(segment.animateColor ? { color: ["#111827", "#e97a3c", "#d4af37", "#111827"] } : {})
+                    }}
+                    transition={{
+                      opacity: { duration: 0, delay: delay + currentIdx * 0.04 },
+                      ...(segment.animateColor ? { color: { duration: 4, repeat: Infinity, ease: "linear", delay: delay + currentIdx * 0.04 } } : {})
+                    }}
+                  >
+                    {char === " " ? "\u00A0" : char}
+                  </motion.span>
+                );
+              })}
+            </span>
+          );
+        })}
+      </span>
+      <br className="hidden md:block" />
+      <span className="md:whitespace-nowrap md:inline-block block">
+        {SEGMENTS.slice(3, 5).map((segment, sIdx) => {
+          const chars = segment.text.split("");
+          return (
+            <span key={sIdx + 3} className={segment.className}>
+              {chars.map((char, cIdx) => {
+                const currentIdx = charIndex++;
+                return (
+                  <motion.span
+                    key={cIdx}
+                    initial={{ opacity: 0 }}
+                    animate={{
+                      opacity: 1,
+                      ...(segment.animateColor ? { color: ["#111827", "#e97a3c", "#d4af37", "#111827"] } : {})
+                    }}
+                    transition={{
+                      opacity: { duration: 0, delay: delay + currentIdx * 0.04 },
+                      ...(segment.animateColor ? { color: { duration: 4, repeat: Infinity, ease: "linear", delay: delay + currentIdx * 0.04 } } : {})
+                    }}
+                  >
+                    {char === " " ? "\u00A0" : char}
+                  </motion.span>
+                );
+              })}
+            </span>
+          );
+        })}
+        <motion.span
+          initial={{ opacity: 0 }}
+          animate={{ opacity: [1, 0, 1] }}
+          transition={{ duration: 0.8, repeat: Infinity, delay: delay + charIndex * 0.04 }}
+          className="inline-block w-[0.08em] h-[0.9em] bg-copper-500 ml-2 translate-y-[0.1em]"
+        />
+      </span>
     </h1>
   );
 }
@@ -91,7 +118,7 @@ export function HeroSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative overflow-hidden bg-bone-50 pt-32 pb-16 md:pt-40 md:pb-24">
+    <section ref={sectionRef} className="relative overflow-hidden bg-bone-50 pt-32 pb-0 md:pt-40 md:pb-0">
       <div className="relative z-20 w-full">
         {/* Title plate - Upper Position */}
         <div className="relative pb-10 md:pb-16">
@@ -114,18 +141,11 @@ export function HeroSection() {
             </div>
           </div>
         </div>
-        
-        {/* Button out of orange box to below white space */}
-        <div className="relative z-20 mx-auto max-w-[105rem] px-5 md:px-10 pt-10 md:pt-16 pb-6">
-          <SquareButton href="/investor-desk" tone="accent">
-            Speak with us
-          </SquareButton>
-        </div>
       </div>
 
       {/* Particle spiral */}
       <SpiralAnimation
-        className="pointer-events-none absolute inset-0 z-10"
+        className="pointer-events-none absolute inset-0 z-30"
         color="rgba(28,25,22,1)"
         centerX={0.74}
         centerY={0.5}

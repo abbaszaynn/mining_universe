@@ -46,8 +46,8 @@ export function AboutStickySection() {
           start: "top top",
           end: "bottom bottom",
           // Low scrub keeps lines locked to the wheel instead of drifting
-          // behind it, which is what made the previous pass feel loose.
-          scrub: 0.35,
+          // behind it, making it snappy and smooth.
+          scrub: 0.1,
         },
       });
 
@@ -154,10 +154,10 @@ export function AboutStickySection() {
           </div>
         </div>
 
-        <div className="relative flex h-full flex-col items-center justify-center px-5 md:px-10">
+        <div className="relative flex h-full flex-col items-center justify-center pb-32 md:pb-0 px-5 md:px-10">
           <Pill>Gilgit Baltistan is no longer overlooked</Pill>
 
-          <div className="relative mt-10 w-full max-w-[56rem]">
+          <div className="relative mt-8 md:mt-10 w-full max-w-[56rem]">
             {STATEMENTS.map((lines, i) => (
               <div
                 key={i}
@@ -169,7 +169,7 @@ export function AboutStickySection() {
                   <span key={j} className="line-mask" aria-hidden>
                     <span
                       data-line-inner
-                      className="block text-center text-display-md tracking-[-0.025em] text-graphite-950"
+                      className="block text-center text-[1.75rem] leading-tight md:text-display-md tracking-[-0.025em] text-graphite-950"
                     >
                       {line}
                     </span>
