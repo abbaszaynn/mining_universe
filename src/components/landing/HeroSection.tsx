@@ -3,7 +3,6 @@
 import { useLayoutEffect, useRef } from "react";
 import { gsap } from "@/lib/gsap";
 import { GridLines } from "@/components/ui/GridLines";
-import { SquareButton } from "@/components/ui/SquareButton";
 import { SpiralAnimation } from "@/components/ui/spiral-animation";
 import { motion } from "framer-motion";
 
