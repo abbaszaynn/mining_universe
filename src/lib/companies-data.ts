@@ -27,7 +27,7 @@ const rawCompanies: Company[] = [
     ],
     status: 'Operational',
     investorContacts: [
-      { name: 'Zain Abbas', email: 'abbaszayn08@gmail.com', phone: '+92 310 9108714' },
+      { name: 'Daniyal Ali', email: 'info@gbmines.com', phone: '+92 316 9244827' },
     ],
     locations: [
       {
@@ -182,7 +182,7 @@ const rawCompanies: Company[] = [
     ],
     status: 'Exploratory Phase',
     investorContacts: [
-      { name: 'Zain Abbas', email: 'abbaszayn08@gmail.com', phone: '+92 310 9108714' },
+      { name: 'Daniyal Ali', email: 'info@gbmines.com', phone: '+92 316 9244827' },
     ],
     locations: [
       {
@@ -241,7 +241,7 @@ const rawCompanies: Company[] = [
     ],
     status: 'Exploratory Phase',
     investorContacts: [
-      { name: 'Zain Abbas', email: 'mineszircon@gmail.com', phone: '+92 310 9108714' },
+      { name: 'Daniyal Ali', email: 'info@gbmines.com', phone: '+92 316 9244827' },
     ],
     locations: [
       {

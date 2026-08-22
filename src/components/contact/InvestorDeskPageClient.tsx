@@ -152,12 +152,12 @@ export function InvestorDeskPageClient({
           <p className="mt-10 text-center text-sm font-light text-graphite-500">
             Prefer email? Reach us at{" "}
             <a
-              href="mailto:abbaszayn08@gmail.com"
+              href="mailto:info@gbmines.com"
               className="text-copper-600 font-medium transition hover:text-copper-500"
             >
-              abbaszayn08@gmail.com
+              info@gbmines.com
             </a>{" "}
-            or call +92 310 9108714
+            or call +92 316 9244827
           </p>
         </main>
 

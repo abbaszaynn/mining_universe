@@ -32,8 +32,8 @@ export const SITE = {
   tagline: "Mines in the North",
   locale: "en_US",
   region: "Gilgit Baltistan, Pakistan",
-  email: "abbaszayn08@gmail.com",
-  phone: "+92 310 9108714",
+  email: "info@gbmines.com",
+  phone: "+92 316 9244827",
   /** Legal predecessors — kept for entity disambiguation in schema. */
   formerNames: ["Durr Mines and Minerals (PVT) LTD", "Zircon Mines (PVT) LTD"],
   keywords: [

@@ -40,7 +40,7 @@ export function InvestorDeskForm({
     if (!accessKey) {
       setStatus("error");
       setErrorMessage(
-        "Form is not configured yet. Email us directly at abbaszayn08@gmail.com."
+        "Form is not configured yet. Email us directly at info@gbmines.com."
       );
       setLoading(false);
       return;

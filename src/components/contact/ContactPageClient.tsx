@@ -2,16 +2,16 @@
 
 import { useLayoutEffect, useRef } from "react";
 import { gsap } from "@/lib/gsap";
-import { ContactForm } from "@/components/contact/ContactForm";
 
 const CONTACT = {
-  phones: ["+92 310 9108714", "+92 317 9023125"],
-  emails: ["abbaszayn08@gmail.com", "mineszircon@gmail.com"],
-  office:
-    "Office 23, Noor Market, Khomer Yarkot, Gilgit, Gilgit Baltistan",
+  phones: ["+92 316 9244827", "+92 355 5653738"],
+  emails: ["info@gbmines.com", "ir@gbmines.com"],
+  website: "https://gbmines.com/",
+  office: "Qasimi market in front of Cmh Gilgit",
   hours: "Mon to Fri, 9am to 6pm (PKT)",
   support: "Online support available 24/7",
-  lead: { name: "Zain Abbas", title: "Investor relations lead" },
+  lead: { name: "Daniyal Ali", title: "Investor relations lead" },
+  linkedin: "https://www.linkedin.com/in/zain-abbas1",
 };
 
 function PhoneIcon() {
@@ -40,11 +40,22 @@ function PinIcon() {
   );
 }
 
-function ClockIcon() {
+function GlobeIcon() {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
       <circle cx="12" cy="12" r="10" />
-      <polyline points="12 6 12 12 16 14" />
+      <line x1="2" y1="12" x2="22" y2="12" />
+      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+    </svg>
+  );
+}
+
+function LinkedinIcon() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+      <rect x="2" y="9" width="4" height="12" />
+      <circle cx="4" cy="4" r="2" />
     </svg>
   );
 }
@@ -57,16 +68,16 @@ type ContactCardProps = {
 
 function ContactCard({ icon, label, children }: ContactCardProps) {
   return (
-    <div className="group rounded-2xl bg-white/[0.03] p-5 transition hover:bg-white/[0.05] md:p-6">
-      <div className="flex items-start gap-4">
-        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#d4af37]/20 bg-[#d4af37]/10 text-[#d4af37]">
+    <div className="group rounded-2xl border border-graphite-950/[0.05] bg-bone-50/50 p-5 shadow-sm transition hover:border-copper-500/20 hover:bg-white/80 md:p-6 h-full">
+      <div className="flex items-start gap-4 h-full">
+        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-copper-500/20 bg-copper-500/10 text-copper-600">
           {icon}
         </div>
         <div className="min-w-0">
-          <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-[#64748b]">
+          <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-copper-600/80">
             {label}
           </p>
-          <div className="mt-2 space-y-1 text-sm leading-relaxed text-[#e2e8f0]">
+          <div className="mt-2 space-y-1 text-sm leading-relaxed text-graphite-600">
             {children}
           </div>
         </div>
@@ -112,18 +123,6 @@ export function ContactPageClient() {
           ease: "power3.out",
         }
       );
-
-      gsap.fromTo(
-        "[data-contact-form]",
-        { opacity: 0, y: 36 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.9,
-          delay: 0.35,
-          ease: "power3.out",
-        }
-      );
     }, root);
 
     return () => ctx.revert();
@@ -134,100 +133,105 @@ export function ContactPageClient() {
       <div
         ref={rootRef}
         data-gos-page-root
-        className="relative min-h-[100dvh] overflow-x-hidden bg-[#030712] text-[#e2e8f0]"
+        className="relative min-h-[100dvh] overflow-x-hidden bg-bone-50 text-graphite-950"
       >
         <div
-          className="pointer-events-none absolute inset-x-0 top-0 h-[28rem] bg-[radial-gradient(ellipse_at_top,rgba(212,175,55,0.09),transparent_58%)]"
+          className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(233,122,60,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(233,122,60,0.03)_1px,transparent_1px)] bg-[size:72px_72px] [mask-image:radial-gradient(ellipse_at_top,black,transparent_75%)]"
+          aria-hidden
+        />
+        <div
+          className="pointer-events-none absolute inset-x-0 top-0 h-[28rem] bg-[radial-gradient(ellipse_at_top,rgba(233,122,60,0.06),transparent_58%)]"
           aria-hidden
         />
 
-        <main className="relative z-10 mx-auto grid max-w-6xl gap-12 px-6 pb-24 pt-[6.5rem] md:px-10 md:pb-32 md:pt-[7.5rem] lg:grid-cols-2 lg:items-start lg:gap-16 xl:max-w-7xl">
-          <div>
-            <header data-contact-hero>
-              <p className="font-mono text-xs uppercase tracking-[0.35em] text-[#d4af37]/90">
-                Get in touch
-              </p>
-              <h1 className="mt-4 font-[family-name:var(--font-display)] text-4xl font-semibold tracking-tight text-[#f0f4f7] md:text-5xl">
-                Contact us
-              </h1>
-              <p className="mt-6 text-lg font-light leading-relaxed text-[#94a3b8]">
-                Questions on mineral assets, site visits, or partnerships across
-                Gilgit Baltistan? Reach our team directly.
-              </p>
-            </header>
-
-            <div
-              data-contact-card
-              className="mt-10 rounded-2xl border border-[#d4af37]/15 bg-gradient-to-br from-[#d4af37]/[0.07] to-transparent p-6 md:p-7"
-            >
-              <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#d4af37]/80">
-                Relations lead
-              </p>
-              <p className="mt-2 font-[family-name:var(--font-display)] text-xl font-semibold text-[#f0f4f7]">
-                {CONTACT.lead.name}
-              </p>
-              <p className="mt-1 text-sm text-[#94a3b8]">{CONTACT.lead.title}</p>
-            </div>
-
-            <div className="mt-4 grid gap-4 sm:grid-cols-2">
-              <div data-contact-card>
-                <ContactCard icon={<PhoneIcon />} label="Phone">
-                  {CONTACT.phones.map((phone) => (
-                    <a
-                      key={phone}
-                      href={`tel:${phone.replace(/\s/g, "")}`}
-                      className="block transition hover:text-[#d4af37]"
-                    >
-                      {phone}
-                    </a>
-                  ))}
-                  <p className="pt-1 text-xs text-[#64748b]">{CONTACT.hours}</p>
-                </ContactCard>
-              </div>
-
-              <div data-contact-card>
-                <ContactCard icon={<MailIcon />} label="Email">
-                  {CONTACT.emails.map((email) => (
-                    <a
-                      key={email}
-                      href={`mailto:${email}`}
-                      className="block break-all transition hover:text-[#d4af37]"
-                    >
-                      {email}
-                    </a>
-                  ))}
-                  <p className="pt-1 text-xs text-[#64748b]">{CONTACT.support}</p>
-                </ContactCard>
-              </div>
-
-              <div data-contact-card className="sm:col-span-2">
-                <ContactCard icon={<PinIcon />} label="Office">
-                  <p>{CONTACT.office}</p>
-                </ContactCard>
-              </div>
-
-              <div data-contact-card className="sm:col-span-2">
-                <ContactCard icon={<ClockIcon />} label="Availability">
-                  <p>{CONTACT.hours}</p>
-                  <p className="text-[#94a3b8]">{CONTACT.support}</p>
-                </ContactCard>
-              </div>
-            </div>
-          </div>
+        <main className="relative z-10 mx-auto max-w-4xl px-6 pb-24 pt-[6.5rem] md:px-10 md:pb-32 md:pt-[7.5rem]">
+          <header data-contact-hero className="text-center">
+            <p className="font-mono text-xs uppercase tracking-[0.35em] text-copper-500">
+              Get in touch
+            </p>
+            <h1 className="mt-4 font-[family-name:var(--font-display)] text-4xl font-semibold tracking-tight text-graphite-950 md:text-5xl">
+              Contact us
+            </h1>
+            <p className="mt-6 text-lg font-light leading-relaxed text-graphite-600 max-w-2xl mx-auto">
+              Questions on mineral assets, site visits, or partnerships across
+              Gilgit Baltistan? Reach our team directly.
+            </p>
+          </header>
 
           <div
-            data-contact-form
-            className="rounded-2xl border border-white/[0.08] bg-white/[0.03] p-6 sm:p-8 lg:sticky lg:top-28"
+            data-contact-card
+            className="mt-12 rounded-2xl border border-copper-500/15 bg-gradient-to-br from-copper-500/[0.07] to-transparent p-6 md:p-7 text-center max-w-lg mx-auto shadow-sm"
           >
-            <h2 className="font-[family-name:var(--font-display)] text-2xl font-semibold text-[#d4af37]">
-              Send a message
-            </h2>
-            <p className="mt-2 text-sm font-light leading-relaxed text-[#94a3b8]">
-              Have a quick question? Use the form below and we will reply to your
-              email shortly.
+            <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-copper-600/80">
+              Relations lead
             </p>
-            <div className="mt-6">
-              <ContactForm />
+            <p className="mt-2 font-[family-name:var(--font-display)] text-xl font-semibold text-graphite-950">
+              {CONTACT.lead.name}
+            </p>
+            <p className="mt-1 text-sm text-graphite-600">{CONTACT.lead.title}</p>
+          </div>
+
+          <div className="mt-8 grid gap-4 sm:grid-cols-2">
+            <div data-contact-card>
+              <ContactCard icon={<PhoneIcon />} label="Phone & WhatsApp">
+                {CONTACT.phones.map((phone) => (
+                  <a
+                    key={phone}
+                    href={`tel:${phone.replace(/\s/g, "")}`}
+                    className="block transition text-graphite-950 hover:text-copper-600"
+                  >
+                    {phone}
+                  </a>
+                ))}
+                <p className="pt-1 text-xs text-graphite-500">{CONTACT.hours}</p>
+              </ContactCard>
+            </div>
+
+            <div data-contact-card>
+              <ContactCard icon={<MailIcon />} label="Email">
+                {CONTACT.emails.map((email) => (
+                  <a
+                    key={email}
+                    href={`mailto:${email}`}
+                    className="block break-all transition text-graphite-950 hover:text-copper-600"
+                  >
+                    {email}
+                  </a>
+                ))}
+                <p className="pt-1 text-xs text-graphite-500">{CONTACT.support}</p>
+              </ContactCard>
+            </div>
+
+            <div data-contact-card>
+              <ContactCard icon={<PinIcon />} label="Office">
+                <p className="text-graphite-950">{CONTACT.office}</p>
+              </ContactCard>
+            </div>
+            
+            <div data-contact-card>
+              <ContactCard icon={<GlobeIcon />} label="Website">
+                <a
+                  href={CONTACT.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block break-all transition text-graphite-950 hover:text-copper-600"
+                >
+                  {CONTACT.website.replace("https://", "")}
+                </a>
+              </ContactCard>
+            </div>
+
+            <div data-contact-card className="sm:col-span-2 max-w-lg mx-auto w-full">
+              <ContactCard icon={<LinkedinIcon />} label="Follow Us">
+                <a
+                  href={CONTACT.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block break-all transition text-graphite-950 hover:text-copper-600"
+                >
+                  LinkedIn: Zain Abbas
+                </a>
+              </ContactCard>
             </div>
           </div>
         </main>

@@ -14,9 +14,9 @@ export function SiteFooter() {
             
             {/* Logo / Small Type */}
             <div className="flex-1">
-              <h2 className="text-xl font-medium uppercase tracking-wide text-bone-50/90">
-                gbmines
-              </h2>
+              <Link href="/" className="inline-block transition-opacity hover:opacity-80">
+                <img src="/images/gbmines-logo.png" alt="GBMINES Logo" className="h-16 w-auto" />
+              </Link>
             </div>
 
             {/* Nav Links */}

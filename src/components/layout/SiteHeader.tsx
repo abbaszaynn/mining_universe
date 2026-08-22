@@ -41,9 +41,9 @@ export function SiteHeader() {
           <Link
             href="/"
             aria-label="Durr & Zircon Consortium home"
-            className="text-xl font-semibold tracking-[-0.06em] text-graphite-950 transition-colors duration-base ease-out hover:text-copper-500 md:text-2xl"
+            className="transition-opacity duration-base ease-out hover:opacity-80"
           >
-            GOS
+            <img src="/images/gbmines-logo.png" alt="GBMINES Logo" className="h-14 w-auto" />
           </Link>
 
           {/* Centred segmented nav — plain white plate, square corners */}

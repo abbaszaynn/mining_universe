@@ -17,7 +17,7 @@ export const GOS_FAQ_ITEMS: FaqItem[] = [
   {
     question: "How do international investors begin due diligence?",
     answer:
-      "Start through the Investor Desk inquiry form, email abbaszayn08@gmail.com, or call +92 310 9108714 (Mon–Fri, 9am–6pm PKT). We share operator profiles, geological documentation, and arrange guided field visits once your interest and scope are clear. Every engagement is handled with transparency from first contact onward.",
+      "Start through the Investor Desk inquiry form, email info@gbmines.com, or call +92 316 9244827 (Mon–Fri, 9am–6pm PKT). We share operator profiles, geological documentation, and arrange guided field visits once your interest and scope are clear. Every engagement is handled with transparency from first contact onward.",
   },
   {
     question: "Does GOS manage permits and security for field visits?",

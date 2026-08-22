@@ -36,7 +36,7 @@ export function ContactForm({
     if (!accessKey) {
       setStatus("error");
       setErrorMessage(
-        "Contact form is not configured yet. Email us directly at abbaszayn08@gmail.com."
+        "Contact form is not configured yet. Email us directly at info@gbmines.com."
       );
       setLoading(false);
       return;
