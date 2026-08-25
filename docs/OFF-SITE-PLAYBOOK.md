@@ -36,7 +36,7 @@ authoritative version to match listings against:
 | Field | Value |
 |---|---|
 | Legal name | Durr & Zircon Consortium |
-| Address | Qasimi Market, opposite CMH Gilgit, Gilgit, Gilgit Baltistan, Pakistan |
+| Address | Office 5, Qasimi Market, in front of CMH Gilgit, Gilgit Baltistan, Pakistan |
 | Phone | +92 316 9244827 |
 | Email | info@gbmines.com |
 | Website | https://gbmines.com |
@@ -58,12 +58,15 @@ lifted from copy already on the site so nothing contradicts:
 - **Long (~600 chars):** Use the opening of `/about`, plus the four
   partnership routes from `/invest`.
 
-### Fix the dead LinkedIn link
+### ~~Fix the dead LinkedIn link~~ (done)
 
-The footer currently links "LinkedIn: Zain Abbas" to `#`. It should point at
-a real profile or company page, or be removed. Dead links in a site-wide
-footer are the same class of problem that caused the original 404 indexing
-issue.
+The footer now links "LinkedIn" to a real personal profile
+(`linkedin.com/in/zain-abbas1`), which is also emitted as `sameAs` on that
+director's `Person` schema.
+
+Still open: a **LinkedIn company page**, which is a different thing. A
+personal profile cannot serve as the `Organization`'s `sameAs`, so that
+field stays empty until a company page exists. That is item one in §1.
 
 ---
 
@@ -248,14 +251,16 @@ guessing.
 
 ## Suggested first two weeks
 
-1. Lock the NAP and boilerplate (§0). Half a day, blocks everything else.
-2. Fix the dead footer LinkedIn link.
-3. LinkedIn company page plus director profiles (§1). One day.
-4. Crunchbase (§1). One hour.
-5. TDAP and SMEDA registration started (§3). Paperwork, so start early.
-6. Build the journalist list (§4). Half a day, and it is the highest-value
+1. Lock the boilerplate (§0). The NAP itself is now set in `SITE.address`
+   and rendered site-wide; the three description lengths still need writing.
+2. LinkedIn **company** page plus director profiles (§1). One day. The
+   personal profile is already linked; the company page is what unlocks
+   `sameAs` on the `Organization`.
+3. Crunchbase (§1). One hour.
+4. TDAP and SMEDA registration started (§3). Paperwork, so start early.
+5. Build the journalist list (§4). Half a day, and it is the highest-value
    half day in this document.
-7. Send the first five pitches with the Mineral Corridor Report attached.
+6. Send the first five pitches with the Mineral Corridor Report attached.
 
 Everything else can follow. If only one item on this page gets done, make
 it §4.
