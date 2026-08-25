@@ -5,7 +5,7 @@ import { Pill } from "@/components/ui/Pill";
 import { SquareButton } from "@/components/ui/SquareButton";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { FaqSection } from "@/components/faq/FaqSection";
-import { absoluteUrl } from "@/lib/seo";
+import { absoluteUrl, breadcrumbJsonLd } from "@/lib/seo";
 import type { FaqItem } from "@/lib/faq-data";
 import type { Commodity } from "@/lib/commodities";
 import { getCommoditySourceConcessions } from "@/lib/commodities";
@@ -49,9 +49,15 @@ export function CommodityDetail({ commodity: c }: { commodity: Commodity }) {
     },
   ];
 
+  const breadcrumbSchema = breadcrumbJsonLd([
+    { name: "Home", path: "/" },
+    { name: "Commodities", path: "/commodities" },
+    { name: c.name },
+  ]);
+
   return (
     <>
-      <JsonLd data={productSchema} />
+      <JsonLd data={[productSchema, breadcrumbSchema]} />
 
       <main className="relative bg-bone-50">
         <section className="relative overflow-hidden pb-16 pt-32 md:pb-24 md:pt-40">

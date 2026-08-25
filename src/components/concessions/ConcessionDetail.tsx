@@ -5,7 +5,7 @@ import { Pill } from "@/components/ui/Pill";
 import { SquareButton } from "@/components/ui/SquareButton";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { FaqSection } from "@/components/faq/FaqSection";
-import { absoluteUrl } from "@/lib/seo";
+import { absoluteUrl, breadcrumbJsonLd } from "@/lib/seo";
 import type { Concession } from "@/lib/concessions";
 import { concessions } from "@/lib/concessions";
 import { getConcessionContext } from "@/lib/concession-context";
@@ -43,11 +43,17 @@ export function ConcessionDetail({ concession: c }: { concession: Concession }) 
   };
   const faqItems: FaqItem[] = [coordinatesFaq, ...(context?.faqs ?? [])];
 
+  const breadcrumbSchema = breadcrumbJsonLd([
+    { name: "Home", path: "/" },
+    { name: "Concessions", path: "/concessions" },
+    { name: c.name },
+  ]);
+
   const others = concessions.filter((o) => o.slug !== c.slug).slice(0, 3);
 
   return (
     <>
-      <JsonLd data={placeSchema} />
+      <JsonLd data={[placeSchema, breadcrumbSchema]} />
 
       <main className="relative bg-bone-50">
         <section className="relative overflow-hidden pb-16 pt-32 md:pb-24 md:pt-40">

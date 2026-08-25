@@ -135,6 +135,31 @@ export function organizationJsonLd() {
   };
 }
 
+/**
+ * BreadcrumbList for detail pages. Pass the trail without the trailing
+ * current-page URL duplicated: the last item is the page itself and, per
+ * Google's guidance, carries a name but no link.
+ *
+ * Only use this where a real hierarchy exists and the page renders a
+ * matching visible trail. Inventing an intermediate level that has no
+ * index route (e.g. a /guides listing that doesn't exist) would point
+ * crawlers at a 404.
+ */
+export function breadcrumbJsonLd(
+  trail: { name: string; path?: string }[]
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: trail.map((crumb, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: crumb.name,
+      ...(crumb.path ? { item: absoluteUrl(crumb.path) } : {}),
+    })),
+  };
+}
+
 export function faqJsonLd(items: { question: string; answer: string }[]) {
   return {
     "@context": "https://schema.org",

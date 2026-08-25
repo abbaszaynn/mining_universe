@@ -4,7 +4,8 @@ import { GridLines } from "@/components/ui/GridLines";
 import { Pill } from "@/components/ui/Pill";
 import { SquareButton } from "@/components/ui/SquareButton";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { absoluteUrl } from "@/lib/seo";
+import { absoluteUrl, breadcrumbJsonLd } from "@/lib/seo";
+import { FaqSection } from "@/components/faq/FaqSection";
 import type { Market } from "@/lib/markets";
 import { getMarketCommodities } from "@/lib/markets";
 
@@ -28,9 +29,15 @@ export function MarketDetail({ market: m }: { market: Market }) {
     },
   };
 
+  const breadcrumbSchema = breadcrumbJsonLd([
+    { name: "Home", path: "/" },
+    { name: "Markets", path: "/markets" },
+    { name: m.name },
+  ]);
+
   return (
     <>
-      <JsonLd data={pageSchema} />
+      <JsonLd data={[pageSchema, breadcrumbSchema]} />
 
       <main className="relative bg-bone-50">
         <section className="relative overflow-hidden pb-16 pt-32 md:pb-24 md:pt-40">
@@ -113,6 +120,13 @@ export function MarketDetail({ market: m }: { market: Market }) {
             </div>
           </section>
         )}
+
+        <FaqSection
+          items={m.faqs}
+          title={`${m.name}: investor FAQ`}
+          subtitle={`Questions that come up specifically from ${m.name} counterparties.`}
+          id="faq"
+        />
       </main>
     </>
   );
