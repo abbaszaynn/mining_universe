@@ -110,6 +110,13 @@ export function organizationJsonLd() {
         description: SITE.description,
         email: SITE.email,
         telephone: SITE.phone,
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: SITE.address.street,
+          addressLocality: SITE.address.city,
+          addressRegion: SITE.address.region,
+          addressCountry: SITE.address.country,
+        },
         areaServed: {
           "@type": "AdministrativeArea",
           name: SITE.region,

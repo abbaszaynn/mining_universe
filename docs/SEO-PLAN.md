@@ -325,9 +325,17 @@ they correctly scope "eight" to just the Durr+Zircon two-company merger
       `ruby-bagicha.jpg`, `lead-jutial-1.jpg`, `nephrite-gupis-1.jpg`,
       `gb_gemstone_mining.png`, `lead-gultari-1.jpg`) — sweep the rest of the
       site for the same issue, this was a homepage-only spot check.
-- [~] `FAQPage` — now on `/investor-desk` and all 10 concession pages;
-      `/faq`, `/about`, homepage still don't have it. `Article`,
-      `BreadcrumbList`, `Service`, `Product`, `Person` schema still open.
+- [x] **Structured data** — `FAQPage` on `/investor-desk`, `/faq`,
+      `/services`, all 10 concession pages, all 7 commodity pages and all 6
+      market pages. `Product` on commodities, `Place` on concessions,
+      `Person` on the 8 directors, `Article` on news posts, `Service` on
+      `/services`, `Organization` + `WebSite` site-wide (now including a
+      `PostalAddress`), and `BreadcrumbList` on the three detail-page types
+      that render a real visible trail. Homepage and `/about` still have no
+      `FAQPage`, which is fine: neither has a genuine FAQ to mark up, and
+      inventing one to satisfy a checklist is how you get a manual action.
+      Remaining genuine gap: `sameAs` on the `Organization`, which needs
+      real LinkedIn/Crunchbase URLs to point at first.
 - [ ] TTFB: target < 800ms. Investigate ISR/static export for marketing pages.
       Not re-measured this session — re-check once GSC/analytics are live so
       it's tied to real Core Web Vitals data instead of a manual curl.
@@ -365,6 +373,11 @@ Confirmed already allowed in robots.txt: GPTBot, ClaudeBot, PerplexityBot
 
 This is where year-one leads actually come from, and it builds the authority
 that makes section 2 work.
+
+> **See `docs/OFF-SITE-PLAYBOOK.md`** for the execution detail: what to do,
+> in what order, how to actually do it, what to expect from each channel,
+> and what not to waste money on. This section stays as the target list;
+> the playbook is the how.
 
 - [x] ~~Checked `portal.minesandmineralsgb.gog.pk/allcompaniesdata`~~ —
       client direction (2026-08-17): drop this. We're a private company,
@@ -427,14 +440,17 @@ now done. 54 routes generate cleanly.
    code. LinkedIn `sameAs` and the `.gog.pk` title-holder check are both
    closed per client direction (2026-08-17): not the site's focus, and not
    worth competing with a government department for.
-5. **The 6 original news articles read as generic filler** (unsourced
-   claims, no dates, no specifics) — flagged twice now (§3 Tier 3, this
-   item) so it doesn't get lost. Worth the same rewrite treatment the
-   concession pages got, whenever there's appetite for it. Not done this
-   session since it wasn't the ask.
-6. **News cadence is now a standing commitment, not a checklist item** — 2
-   posts/month minimum, sourced and dated like the two added this session,
-   not generic filler. Whoever picks this up next should keep doing it.
-7. Off-site work (§4) is now the actual long pole. Everything buildable in
-   this repo is done; authority and backlinks are what actually moves
-   ranking from here.
+5. [x] ~~The 6 original news articles read as generic filler~~ — done, in
+   two passes. The first replaced the filler with sourced facts (which was
+   the near-duplicate fix); the second rewrote the prose to actually be
+   readable rather than briefing-note flat. All six now open on something
+   concrete and every claim traces to a named source.
+6. **News cadence is a standing commitment, not a checklist item** — 2
+   posts/month minimum, sourced and dated. Also the cheapest way to feed
+   the PR channel: publish a short sourced take when a Pakistan minerals
+   story breaks, then send it to whoever covered it. See the playbook §4.
+7. **Off-site work (§4) is the whole game now.** Everything buildable in
+   this repo is done. `docs/OFF-SITE-PLAYBOOK.md` has the execution detail;
+   the short version is that §4 of it, journalist outreach using the
+   Mineral Corridor Report, is worth more than every directory listing
+   combined, and the report has not been sent to anyone yet.

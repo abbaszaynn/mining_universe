@@ -34,6 +34,19 @@ export const SITE = {
   region: "Gilgit Baltistan, Pakistan",
   email: "info@gbmines.com",
   phone: "+92 316 9244827",
+  /**
+   * Canonical NAP (name / address / phone). Every off-site listing —
+   * directories, marketplaces, trade bodies, Google Business Profile —
+   * should reproduce this exactly, character for character. Inconsistent
+   * address formatting across citations is the most common reason a real
+   * business fails to resolve as a single entity in search.
+   */
+  address: {
+    street: "Qasimi Market, opposite CMH Gilgit",
+    city: "Gilgit",
+    region: "Gilgit Baltistan",
+    country: "PK",
+  },
   /** Legal predecessors — kept for entity disambiguation in schema. */
   formerNames: ["Durr Mines and Minerals (PVT) LTD", "Zircon Mines (PVT) LTD"],
   keywords: [
