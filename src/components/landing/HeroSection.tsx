@@ -162,7 +162,7 @@ export function HeroSection() {
 
       {/* Particle spiral */}
       <SpiralAnimation
-        className="pointer-events-none absolute inset-0 z-30"
+        className="pointer-events-none absolute inset-0 z-10 md:z-30"
         color="rgba(28,25,22,1)"
         centerX={0.74}
         centerY={0.5}
