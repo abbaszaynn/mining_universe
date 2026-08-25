@@ -1,5 +1,7 @@
 import { companies } from "@/lib/companies-data";
 import { concessions } from "@/lib/concessions";
+import { COMMODITIES } from "@/lib/commodities";
+import { MARKETS } from "@/lib/markets";
 import { getSiteUrl, SITE } from "@/lib/site";
 
 /**
@@ -96,17 +98,43 @@ pages — see "Disclosure policy" below.
 
 ${concessions.map((c) => `- [${c.name}](${base}/concessions/${c.slug}) — ${c.district}, held by ${c.companyName}`).join("\n")}
 
+## Commodities
+
+Seven commodities supplied direct from our own concessions, quoted FOB
+Karachi or CIF. Each page covers end-use demand, trade terms, and which
+concessions source that mineral.
+
+${COMMODITIES.map((c) => `- [${c.name}](${base}/commodities/${c.slug})`).join("\n")}
+
+## Markets
+
+Country-specific investment context for large companies evaluating
+Gilgit Baltistan. Each page cites a specific, dated, publicly-reported deal
+or figure relevant to that market — not generic claims.
+
+${MARKETS.map((m) => `- [${m.name}](${base}/markets/${m.slug})`).join("\n")}
+
 ## Pages
 
 - [Home](${base}/): overview of the group and its concessions
 - [Services](${base}/services): supply, JV, acquisition and exploration services
+- [Invest](${base}/invest): the four partnership routes — JV, farm-in, equity, outright acquisition
 - [Concessions](${base}/concessions): index of all ten licensed concessions
+- [Commodities](${base}/commodities): index of all seven commodities supplied
+- [Markets](${base}/markets): index of all six investor-country pages
+- [Mining licence guide](${base}/guides/mining-licence-gilgit-baltistan): how mineral titles are actually granted in Gilgit Baltistan
+- [FAQ](${base}/faq): direct answers on licensing, documentation, and how to start
 - [About](${base}/about): the operating companies and their leadership
 - [Map](${base}/map): interactive map of concession locations
-- [Documents](${base}/documents): incorporation certificates and licences
+- [Documents](${base}/documents): incorporation certificates, licences, and the GB Mineral Corridor Report
 - [Gallery](${base}/gallery): field and specimen photography
 - [News](${base}/news): geology notes and sector commentary
-- [Investor desk](${base}/investor-desk): submit an enquiry
+- [Contact](${base}/contact): general enquiries
+- [Investor desk](${base}/investor-desk): submit an investment or purchase enquiry
+
+## Data assets
+
+- [GB Mineral Corridor Report 2026](${base}/reports/gb-mineral-corridor-report-2026.pdf): PDF summarising the investment case, the full concession registry, commodity demand, and partnership routes. Built for journalists and investors who want the primary-source detail in one document.
 
 ## Disclosure policy
 

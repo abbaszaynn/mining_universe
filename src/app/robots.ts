@@ -10,7 +10,11 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: ["/api/"],
+      // /cdn-cgi/ is Cloudflare's own path prefix (the site is proxied
+      // through it), not an app route — most visibly its email-obfuscation
+      // rewrite of mailto: links, which GSC flagged as a 404 once Google
+      // tried to crawl it directly. Nothing under /cdn-cgi/ is a real page.
+      disallow: ["/api/", "/cdn-cgi/"],
     },
     // Only the XML sitemap belongs here. The Sitemap: directive expects a
     // sitemap format, and llms.txt is markdown prose — listing it made Google
