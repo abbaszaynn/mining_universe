@@ -3,6 +3,7 @@
 import { useLayoutEffect, useRef } from "react";
 import { gsap } from "@/lib/gsap";
 import { GridLines } from "@/components/ui/GridLines";
+import { SquareButton } from "@/components/ui/SquareButton";
 import { SpiralAnimation } from "@/components/ui/spiral-animation";
 import { motion } from "framer-motion";
 
@@ -140,6 +141,23 @@ export function HeroSection() {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Mobile-only primary action. On phones the header carries just the
+          logo and the menu button (see SiteHeader), which keeps it from
+          getting cramped, so the CTA lives here instead: in the clear space
+          under the accent band. Sits outside the z-20 wrapper above so it
+          stacks over the spiral rather than under it.
+
+          pt-14 is deliberate: the band is GSAP-shifted from yPercent 6 to
+          -4, so at the top of the page (where a phone user starts) it hangs
+          ~17px lower than its laid-out position and eats into the gap. The
+          extra top padding keeps the spacing comfortable at rest and it
+          only opens up as you scroll. */}
+      <div className="relative z-40 mx-auto max-w-[105rem] px-5 pb-10 pt-14 md:hidden">
+        <SquareButton href="/investor-desk" tone="accent">
+          Speak with us
+        </SquareButton>
       </div>
 
       {/* Particle spiral */}

@@ -115,10 +115,13 @@ export function SiteHeader() {
           </nav>
 
           <div className="flex shrink-0 items-center gap-3">
+            {/* Hidden on phones so the header stays just logo + menu. The
+                CTA appears in the hero instead on the homepage, and in the
+                mobile menu overlay on every page. */}
             <SquareButton
               href="/investor-desk"
               tone="accent"
-              className="whitespace-nowrap"
+              className="hidden whitespace-nowrap md:inline-flex"
             >
               Speak with us
             </SquareButton>
@@ -189,6 +192,24 @@ export function SiteHeader() {
                   </Link>
                 </motion.div>
               ))}
+
+              {/* The header CTA is hidden on phones, so without this the
+                  only route to the investor desk on a small screen would be
+                  the footer. Keep it as the last thing in the menu. */}
+              <motion.div
+                className="mt-8 shrink-0"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.3,
+                  delay: 0.05 + NAV_ITEMS.length * 0.03,
+                  ease: [0.23, 1, 0.32, 1],
+                }}
+              >
+                <SquareButton href="/investor-desk" tone="light">
+                  Speak with us
+                </SquareButton>
+              </motion.div>
             </nav>
           </motion.div>
         )}
