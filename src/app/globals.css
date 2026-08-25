@@ -179,3 +179,12 @@ body {
     scroll-behavior: auto !important;
   }
 }
+
+/* The cookie banner is pinned to the bottom of the viewport at a very high
+   z-index, which means it sits on top of the full-screen mobile menu and
+   covers its "Speak with us" action. The menu is a deliberate, transient
+   surface, so it wins while it is open; the banner returns on close.
+   `data-menu-open` is set on <body> by SiteHeader. */
+body[data-menu-open="true"] [data-cookie-banner] {
+  display: none;
+}

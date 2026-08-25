@@ -38,8 +38,19 @@ export function SiteHeader() {
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
+    // Flagged on <body> so the cookie banner can hide itself while the
+    // full-screen menu is open. The banner is fixed to the bottom at
+    // z-[9998], which otherwise covers the menu's own CTA on a phone.
+    // Done via a body attribute rather than shared state so the two
+    // components stay independent.
+    if (menuOpen) {
+      document.body.dataset.menuOpen = "true";
+    } else {
+      delete document.body.dataset.menuOpen;
+    }
     return () => {
       document.body.style.overflow = "";
+      delete document.body.dataset.menuOpen;
     };
   }, [menuOpen]);
 
@@ -165,9 +176,20 @@ export function SiteHeader() {
             id="mobile-nav"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+            // pointerEvents goes off the moment the exit starts, not when it
+            // finishes. While fading out this element still covers the whole
+            // viewport, so without this it swallows every click on the page
+            // for the duration of the exit (and indefinitely if the exit
+            // never completes, e.g. when rAF is throttled in a background
+            // or non-compositing tab).
+            exit={{ opacity: 0, pointerEvents: "none" }}
             transition={{ duration: 0.25, ease: [0.23, 1, 0.32, 1] }}
-            className="fixed inset-0 z-40 bg-copper-500 xl:hidden pt-24"
+            // z-[45], not z-40: the hero's mobile CTA is also z-40 and sits
+            // later in the DOM, so at equal z-index it painted straight
+            // through this overlay and looked like a stray button floating
+            // in the menu list. Must stay below the header's z-50 so the
+            // logo and close button remain above the overlay.
+            className="fixed inset-0 z-[45] bg-copper-500 xl:hidden pt-24"
           >
             <nav
               className="flex h-full flex-col px-6 overflow-y-auto pb-10"
