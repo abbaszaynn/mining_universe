@@ -19,6 +19,14 @@ export type Director = {
   role: string;
   bio: string;
   photo: string;
+  /**
+   * Personal LinkedIn profile, where one is confirmed. Emitted as `sameAs`
+   * on that director's `Person` schema, not on the `Organization` — a
+   * personal profile does not represent the company, and claiming it does
+   * would be incorrect schema. Organization `sameAs` needs a real company
+   * page, which is playbook §1.
+   */
+  linkedin?: string;
 };
 
 export const DIRECTORS: Director[] = [
@@ -33,6 +41,7 @@ export const DIRECTORS: Director[] = [
     role: "Director",
     bio: "Director across the consortium's operating companies, working on operations and business development.",
     photo: "/images/directors/Zain Abbas.jpeg",
+    linkedin: "https://www.linkedin.com/in/zain-abbas1/",
   },
   {
     name: "Daniyal Ali",

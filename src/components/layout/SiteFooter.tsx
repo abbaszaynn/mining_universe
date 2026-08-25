@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { GridLines } from "@/components/ui/GridLines";
+import { SITE } from "@/lib/site";
 
 export function SiteFooter() {
   return (
@@ -60,7 +61,14 @@ export function SiteFooter() {
             <div className="flex flex-col gap-8 sm:flex-row sm:gap-16">
               <div>
                 <p className="font-medium">Office</p>
-                <p className="mt-2 text-sm text-bone-50/70">Qasimi market in front of Cmh Gilgit</p>
+                {/* Read from SITE.address, the canonical NAP, so the address
+                    shown here can't drift from the PostalAddress emitted in
+                    the Organization schema or from off-site listings. */}
+                <p className="mt-2 max-w-[22ch] text-sm text-bone-50/70">
+                  {SITE.address.street}
+                  <br />
+                  {SITE.address.region}, Pakistan
+                </p>
               </div>
               <div>
                 <p className="font-medium">Inquiries</p>
@@ -74,7 +82,14 @@ export function SiteFooter() {
               <div>
                 <p className="font-medium">Follow Us</p>
                 <p className="mt-2 text-sm text-bone-50/70">
-                  <a href="#" className="transition-colors hover:text-bone-50">LinkedIn: Zain Abbas</a>
+                  <a
+                    href="https://www.linkedin.com/in/zain-abbas1/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition-colors hover:text-bone-50"
+                  >
+                    LinkedIn
+                  </a>
                 </p>
               </div>
             </div>

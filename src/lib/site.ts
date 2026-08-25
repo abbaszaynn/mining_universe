@@ -42,10 +42,12 @@ export const SITE = {
    * business fails to resolve as a single entity in search.
    */
   address: {
-    street: "Qasimi Market, opposite CMH Gilgit",
+    street: "Office 5, Qasimi Market, in front of CMH Gilgit",
     city: "Gilgit",
     region: "Gilgit Baltistan",
     country: "PK",
+    /** Display form for page copy. Keep in step with the fields above. */
+    full: "Office 5, Qasimi Market, in front of CMH Gilgit, Gilgit Baltistan, Pakistan",
   },
   /** Legal predecessors — kept for entity disambiguation in schema. */
   formerNames: ["Durr Mines and Minerals (PVT) LTD", "Zircon Mines (PVT) LTD"],

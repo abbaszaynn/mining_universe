@@ -18,6 +18,7 @@ const leadershipSchema = {
     jobTitle: d.role,
     description: d.bio,
     worksFor: { "@id": `${absoluteUrl("/")}#organization` },
+    ...(d.linkedin ? { sameAs: [d.linkedin] } : {}),
   })),
 };
 
