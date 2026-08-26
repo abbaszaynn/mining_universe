@@ -101,13 +101,13 @@ export const MARKETS: Market[] = [
     intro:
       "Saudi Arabia's own mining sector had a record 2025, exploitation licences up 220 percent and investment reaching $11.7 billion domestically, and that appetite has extended into Pakistan directly. The Kingdom has pursued a 15 percent stake in Pakistan's Reko Diq copper-gold project (backed by a reported $540 million commitment), and the Saudi Fund for Development has signalled it may put over $100 million more into Pakistani mining infrastructure.",
     context:
-      "Reko Diq is a copper-gold deposit, the same commodity pairing our Shigar and Kharmang concessions carry, at a scale that shows Saudi capital is already comfortable underwriting Pakistani mining risk at nine-figure levels. Broader estimates put combined Saudi and UAE investment interest in Pakistan at up to $50 billion over five years, mining being one part of that.",
+      "Reko Diq is a copper-gold deposit, the same commodity pairing our Shigar and Kharmang concessions carry, at a scale that shows Saudi capital is already comfortable underwriting Pakistani mining risk at nine-figure levels. Broader estimates put combined Saudi and UAE investment interest in Pakistan at up to $50 billion over five years, mining being one part of that. For the wider numbers behind the sector, including how little of Gilgit Baltistan is actually under licence, see our Gilgit Baltistan mining statistics page.",
     commoditySlugs: ["copper-concentrate", "placer-gold"],
     faqs: [
       {
         question: "How do your concessions compare to Reko Diq in scale?",
         answer:
-          "They do not, and it would be dishonest to suggest they do. Reko Diq is one of the largest undeveloped copper-gold deposits in the world, with an estimated 5.9 billion tonnes of ore and a projected 40-year mine life. Our Shigar concession covers roughly 8.87 sq/km. What the two share is the commodity pairing and the geological setting type, which makes ours an early-stage position in the same category, not a comparable asset.",
+          "They do not, and it would be dishonest to suggest they do. Reko Diq is one of the largest undeveloped copper-gold deposits in the world: its updated feasibility study projects 13.1 million tonnes of copper and 17.9 million ounces of gold over a 37-year mine life, with Phase 1 alone carrying an estimated $5.6 billion capital outlay. Our Shigar concession covers roughly 8.87 sq/km. What the two share is the commodity pairing and the geological setting type, which makes ours an early-stage position in the same category, not a comparable asset.",
       },
       {
         question: "Why would a Saudi investor look at an earlier-stage asset?",

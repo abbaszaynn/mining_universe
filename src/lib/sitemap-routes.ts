@@ -17,6 +17,13 @@ export const STATIC_ROUTES = [
     changeFrequency: "monthly" as const,
     priority: 0.75,
   },
+  // Link-magnet asset: built to be cited by journalists and quoted by AI
+  // answer engines, so it carries a higher priority than the other guide.
+  {
+    path: "/guides/gilgit-baltistan-mining-statistics-2026",
+    changeFrequency: "monthly" as const,
+    priority: 0.85,
+  },
   { path: "/contact", changeFrequency: "monthly" as const, priority: 0.75 },
   { path: "/investor-desk", changeFrequency: "monthly" as const, priority: 0.9 },
   // Legal — indexed for trust/E-E-A-T signal, low priority since they aren't

@@ -127,6 +127,17 @@ export function MiningLicenceGuide() {
               for how that works in practice.
             </p>
           </div>
+          <p className="mt-4 text-base leading-[1.6] text-graphite-600 md:text-lg">
+            For the numbers behind the sector, including how much of Gilgit
+            Baltistan is actually under licence, see our{" "}
+            <Link
+              href="/guides/gilgit-baltistan-mining-statistics-2026"
+              className="text-copper-600 underline underline-offset-4"
+            >
+              Gilgit Baltistan mining statistics
+            </Link>{" "}
+            page.
+          </p>
           <div className="mt-10 flex flex-wrap gap-4">
             <SquareButton href="/invest" tone="accent">
               See investment routes

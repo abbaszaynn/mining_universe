@@ -134,6 +134,7 @@ ${MARKETS.map((m) => `- [${m.name}](${base}/markets/${m.slug})`).join("\n")}
 
 ## Data assets
 
+- [Gilgit Baltistan Mining Statistics 2026](${base}/guides/gilgit-baltistan-mining-statistics-2026): sourced statistics on licensed area, mineral profile, sector economics, 2025-26 investment agreements, and the licensing framework. Every figure carries a named source and a year. Suitable for citation.
 - [GB Mineral Corridor Report 2026](${base}/reports/gb-mineral-corridor-report-2026.pdf): PDF summarising the investment case, the full concession registry, commodity demand, and partnership routes. Built for journalists and investors who want the primary-source detail in one document.
 
 ## Disclosure policy
