@@ -3,6 +3,7 @@ import { Figtree } from "next/font/google";
 import { AppProviders } from "@/components/providers/AppProviders";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Analytics } from "@/components/analytics/Analytics";
+import { Analytics as VercelAnalytics } from "@vercel/analytics/next";
 import { CookieConsentBanner } from "@/components/cookies/CookieConsentBanner";
 import { createPageMetadata, organizationJsonLd } from "@/lib/seo";
 import { SITE } from "@/lib/site";
@@ -48,6 +49,7 @@ export default function RootLayout({
       >
         <AppProviders>{children}</AppProviders>
         <Analytics />
+        <VercelAnalytics />
         <CookieConsentBanner />
       </body>
     </html>

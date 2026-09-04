@@ -70,9 +70,9 @@ export const MARKETS: Market[] = [
     metaDescription:
       "Copper, antimony and gold investment opportunities in Gilgit Baltistan, aligned with the $500 million Pakistan-US critical minerals partnership and US supply chain diversification goals.",
     intro:
-      "In September 2025, Pakistan and US Strategic Metals signed a framework covering the full mineral value chain, from exploration through refining, backing a $500 million partnership. The first shipment under that agreement went out in October 2025: antimony, copper concentrate, and rare earth elements including neodymium and praseodymium, materials the US has explicitly flagged as part of reducing dependence on a small number of existing suppliers.",
+      "A $500 million partnership between Pakistan and US Strategic Metals is already moving physical tonnage, not just signatures. Antimony, copper concentrate and rare earth elements have shipped under it, materials the US has been explicit about wanting from a wider set of suppliers, and three of them are minerals we hold under licence ourselves.",
     context:
-      "Copper, antimony, and gold, three of our own commodities, are named directly among the minerals this partnership is built to develop and refine domestically in Pakistan rather than export as raw ore. For a US investor, that's a live, government-backed precedent for exactly this kind of deal, not a speculative pitch.",
+      "Copper, antimony, and gold, three of our own commodities, are named directly among the minerals that partnership is built to develop and refine domestically in Pakistan rather than export as raw ore. For a US investor, that's a live, government-backed precedent for exactly this kind of deal, not a speculative pitch. Full background on the agreement, its timeline and what it shipped is on our news page.",
     commoditySlugs: ["copper-concentrate", "antimony-concentrate", "placer-gold"],
     faqs: [
       {
@@ -99,9 +99,9 @@ export const MARKETS: Market[] = [
     metaDescription:
       "Copper and gold investment opportunities in Gilgit Baltistan, in the same commodity profile as Saudi Arabia's stake pursuit in Pakistan's Reko Diq project.",
     intro:
-      "Saudi Arabia's own mining sector had a record 2025, exploitation licences up 220 percent and investment reaching $11.7 billion domestically, and that appetite has extended into Pakistan directly. The Kingdom has pursued a 15 percent stake in Pakistan's Reko Diq copper-gold project (backed by a reported $540 million commitment), and the Saudi Fund for Development has signalled it may put over $100 million more into Pakistani mining infrastructure.",
+      "Domestic exploitation licences in Saudi Arabia were up 220 percent in 2025, and that same capital has started looking outward. A pursued 15 percent stake in Pakistan's Reko Diq project, reportedly worth $540 million, is the clearest signal: Saudi money is already comfortable underwriting Pakistani copper-gold risk at nine-figure levels, not just watching from a distance.",
     context:
-      "Reko Diq is a copper-gold deposit, the same commodity pairing our Shigar and Kharmang concessions carry, at a scale that shows Saudi capital is already comfortable underwriting Pakistani mining risk at nine-figure levels. Broader estimates put combined Saudi and UAE investment interest in Pakistan at up to $50 billion over five years, mining being one part of that. For the wider numbers behind the sector, including how little of Gilgit Baltistan is actually under licence, see our Gilgit Baltistan mining statistics page.",
+      "Reko Diq is a copper-gold deposit, the same commodity pairing our Shigar and Kharmang concessions carry. Broader estimates put combined Saudi and UAE investment interest in Pakistan at up to $50 billion over five years, mining being one part of that. For the full story behind the Reko Diq stake and what it signals for concessions like ours, see our news page; for the wider sector numbers, including how little of Gilgit Baltistan is actually under licence, see our Gilgit Baltistan mining statistics page.",
     commoditySlugs: ["copper-concentrate", "placer-gold"],
     faqs: [
       {
@@ -136,7 +136,7 @@ export const MARKETS: Market[] = [
       {
         question: "Why granite and marble alongside the metals?",
         answer:
-          "Because it maps onto UAE demand more directly than the base metals do. Our Gupis and Ishkoman concessions in Ghizer district sit in a dolomitic marble and dimension-stone belt that regional surveys trace for over 100 km, and dimension stone feeds construction and architectural cladding, which is a live and continuous requirement across the Emirates rather than a speculative export market.",
+          "Because it maps onto UAE demand more directly than the base metals do. Dimension stone feeds construction and architectural cladding, which is a live and continuous requirement across the Emirates rather than a speculative export market, and our Gupis and Ishkoman concessions in Ghizer district are two of the larger granite and marble positions behind that supply. The geological basis for both is on their respective concession pages.",
       },
       {
         question: "Can a UAE entity hold the licence, or does it need a local partner?",
