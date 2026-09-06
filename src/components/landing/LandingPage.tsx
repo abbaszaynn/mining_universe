@@ -9,6 +9,7 @@ import { WhoWeAreSection } from "./WhoWeAreSection";
 import { WhatWeDoSection } from "./WhatWeDoSection";
 import { CommoditiesSection } from "./CommoditiesSection";
 import { RegionsMapSection } from "./RegionsMapSection";
+import { DirectorsSection } from "./DirectorsSection";
 import { InsightsSection } from "./InsightsSection";
 import { VideoSection } from "./VideoSection";
 import { SiteFooter } from "@/components/layout/SiteFooter";
@@ -26,6 +27,7 @@ export function LandingPage() {
         <WhatWeDoSection />
         <CommoditiesSection />
         <RegionsMapSection />
+        <DirectorsSection />
         <InsightsSection />
         <VideoSection />
       </main>

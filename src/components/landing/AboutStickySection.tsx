@@ -5,27 +5,16 @@ import { useLayoutEffect, useRef } from "react";
 import { gsap } from "@/lib/gsap";
 import { GridLines } from "@/components/ui/GridLines";
 import { Pill } from "@/components/ui/Pill";
+import AnimatedTextCycle from "@/components/ui/animated-text-cycle";
 
-/** Authored line breaks — deterministic, so each line can carry its own mask. */
-const STATEMENTS = [
-  [
-    "For decades the mineral wealth of the",
-    "Karakoram was treated as rumour;",
-    "significant, but unmapped. That",
-    "ambiguity is gone.",
-  ],
-  [
-    "Gilgit Baltistan holds one of Asia's",
-    "richest untapped mineral corridors:",
-    "copper, gold, lithium, nephrite and",
-    "rare earth indications.",
-  ],
-  [
-    "Three registered operators across",
-    "Skardu, Gilgit and Ghizer, with reports,",
-    "permits and site access handled",
-    "end to end.",
-  ],
+/** What actually comes out of the ground across the eight concessions. */
+const MINERALS = [
+  "copper",
+  "gold",
+  "lithium",
+  "nephrite",
+  "antimony",
+  "rare earths",
 ];
 
 export function AboutStickySection() {
@@ -37,54 +26,14 @@ export function AboutStickySection() {
     const section = sectionRef.current;
     if (!section) return;
 
+    // Only the flanking plates are scroll-driven now. The statement text used
+    // to be scrubbed line-by-line across 260vh of scroll, which is what made
+    // this section drag on a phone; the copy is static and the one moving
+    // element runs on its own timer.
     const ctx = gsap.context(() => {
-      const blocks = gsap.utils.toArray<HTMLElement>("[data-statement]");
-
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: section,
-          start: "top top",
-          end: "bottom bottom",
-          // Low scrub keeps lines locked to the wheel instead of drifting
-          // behind it, making it snappy and smooth.
-          scrub: 0.1,
-        },
-      });
-
-      // Each statement gets an equal slot; lines wipe in, hold, then wipe out.
-      const slot = 1 / blocks.length;
-
-      blocks.forEach((block, i) => {
-        const lines = block.querySelectorAll("[data-line-inner]");
-        const start = i * slot;
-
-        gsap.set(lines, { yPercent: i === 0 ? 0 : 110 });
-
-        if (i > 0) {
-          tl.to(
-            lines,
-            { yPercent: 0, duration: slot * 0.42, stagger: slot * 0.05, ease: "power2.out" },
-            start
-          );
-        }
-
-        if (i < blocks.length - 1) {
-          tl.to(
-            lines,
-            {
-              yPercent: -110,
-              duration: slot * 0.42,
-              stagger: slot * 0.05,
-              ease: "power2.in",
-            },
-            start + slot * 0.58
-          );
-        }
-      });
-
       [leftRef.current, rightRef.current].forEach((el, i) => {
         if (!el) return;
-        
+
         // Left image gets dim + scale effect on scroll
         if (i === 0) {
           gsap.fromTo(
@@ -130,7 +79,7 @@ export function AboutStickySection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative h-[260vh] bg-bone-50">
+    <section ref={sectionRef} className="relative h-[150vh] bg-bone-50">
       <div className="sticky top-0 h-[100dvh] overflow-hidden">
         <GridLines />
 
@@ -154,29 +103,32 @@ export function AboutStickySection() {
           </div>
         </div>
 
-        <div className="relative flex h-full flex-col items-center justify-center pb-32 md:pb-0 px-5 md:px-10">
+        <div className="relative flex h-full flex-col items-center justify-center px-5 pb-32 md:px-10 md:pb-0">
           <Pill>Gilgit Baltistan is no longer overlooked</Pill>
 
-          <div className="relative mt-8 md:mt-10 w-full max-w-[56rem]">
-            {STATEMENTS.map((lines, i) => (
-              <div
-                key={i}
-                data-statement
-                className={i === 0 ? "relative" : "absolute inset-0"}
-                aria-label={lines.join(" ")}
-              >
-                {lines.map((line, j) => (
-                  <span key={j} className="line-mask" aria-hidden>
-                    <span
-                      data-line-inner
-                      className="block text-center text-[1.75rem] leading-tight md:text-display-md tracking-[-0.025em] text-graphite-950"
-                    >
-                      {line}
-                    </span>
-                  </span>
-                ))}
-              </div>
-            ))}
+          <div className="relative mt-8 w-full max-w-[56rem] text-center md:mt-10">
+            <p className="text-[1.75rem] leading-tight tracking-[-0.025em] text-graphite-950 md:text-display-md">
+              The Karakoram holds
+            </p>
+
+            {/* The cycling word sits on its own line on purpose: animating its
+                width inside a centred sentence would shunt the rest of the
+                line sideways on every change, which reads as jitter on a
+                narrow screen. Alone, only the word itself moves. */}
+            <p className="mt-1 text-[1.75rem] leading-tight tracking-[-0.025em] md:text-display-md">
+              <AnimatedTextCycle
+                words={MINERALS}
+                interval={2200}
+                className="text-copper-500"
+              />
+            </p>
+
+            <p className="mx-auto mt-8 max-w-[52ch] text-base leading-[1.55] text-graphite-500 md:text-lg">
+              For decades this wealth was treated as rumour; significant, but
+              unmapped. That ambiguity is gone. Three registered operators
+              across Skardu, Gilgit and Ghizer, with reports, permits and site
+              access handled end to end.
+            </p>
           </div>
         </div>
       </div>
