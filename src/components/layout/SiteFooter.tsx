@@ -83,7 +83,7 @@ export function SiteFooter() {
                 <p className="font-medium">Follow Us</p>
                 <p className="mt-2 text-sm text-bone-50/70">
                   <a
-                    href="https://www.linkedin.com/in/zain-abbas1/"
+                    href="https://www.linkedin.com/company/zircon-mines/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="transition-colors hover:text-bone-50"
