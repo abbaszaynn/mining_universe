@@ -2,12 +2,55 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useRef, type ReactNode } from "react";
 import { gsap } from "@/lib/gsap";
 import { formatDate, cn } from "@/lib/utils";
 import type { NewsArticle } from "@/lib/types";
 import { MineralTitle } from "./MineralTitle";
 import { BlogCard } from "./BlogCard";
+
+/**
+ * Article bodies are plain strings in `data.ts`, so they support exactly one
+ * piece of markup: an internal markdown-style link, `[label](/path)`.
+ *
+ * Every article closes by pointing at the concession or commodity page it
+ * discusses. Those pointers used to render as flat text, which meant the
+ * deep pages that most need internal link signal (the concession, commodity
+ * and market pages sitting in "Discovered, currently not indexed") were
+ * getting none of it from the news cluster. Only hrefs starting with "/" are
+ * linked, so no content string can emit an external or `javascript:` href.
+ */
+const INLINE_LINK = /\[([^\]]+)\]\((\/[^)\s]*)\)/g;
+
+function renderParagraph(text: string): ReactNode {
+  const nodes: ReactNode[] = [];
+  let cursor = 0;
+
+  // Fresh regex per call: INLINE_LINK is global, so a shared instance would
+  // carry lastIndex between paragraphs and drop links.
+  const pattern = new RegExp(INLINE_LINK.source, "g");
+  let match: RegExpExecArray | null;
+
+  while ((match = pattern.exec(text)) !== null) {
+    const [full, label, href] = match;
+    const start = match.index;
+    if (start > cursor) nodes.push(text.slice(cursor, start));
+    nodes.push(
+      <Link
+        key={`${href}-${start}`}
+        href={href}
+        className="text-copper-600 underline decoration-copper-500/40 underline-offset-4 transition-colors hover:text-copper-500"
+      >
+        {label}
+      </Link>
+    );
+    cursor = start + full.length;
+  }
+
+  if (!nodes.length) return text;
+  if (cursor < text.length) nodes.push(text.slice(cursor));
+  return nodes;
+}
 
 type BlogArticleExperienceProps = {
   article: NewsArticle;
@@ -274,7 +317,7 @@ export function BlogArticleExperience({
                     {String(index + 1).padStart(2, "0")}
                   </span>
                 )}
-                {paragraph}
+                {renderParagraph(paragraph)}
               </p>
             ))}
           </div>

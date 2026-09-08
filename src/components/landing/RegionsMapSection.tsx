@@ -15,12 +15,12 @@ import type { Map as MapLibreMap, StyleSpecification, Marker } from "maplibre-gl
  * surveyed, so they are marked as locations rather than licensed blocks.
  */
 const REGIONS = [
-  { name: "Askoli", district: "District Shigar", lng: 75.867, lat: 35.661, img: "/blogs/shigar_geology.png", surveyed: true },
-  { name: "Mehdiabad & Hilalabad", district: "District Kharmang", lng: 75.99, lat: 35.1, img: "/blogs/hilal_abad_geology.png", surveyed: true },
+  { name: "Askoli", district: "District Shigar", lng: 75.867, lat: 35.661, img: "/images/quartz-1.jpg", surveyed: true },
+  { name: "Mehdiabad & Hilalabad", district: "District Kharmang", lng: 75.99, lat: 35.1, img: "/images/copper-generic-1.jpg", surveyed: true },
   { name: "Bagicha", district: "District Skardu", lng: 75.372, lat: 35.585, img: "/images/ruby-bagicha.jpg", surveyed: true },
   { name: "Gilgit City", district: "District Gilgit", lng: 74.326, lat: 35.865, img: "/images/lead-jutial-1.jpg", surveyed: true },
   { name: "Ishkoman", district: "District Ghizer", lng: 73.86, lat: 36.42, img: "/images/nephrite-gupis-1.jpg", surveyed: false },
-  { name: "Gojal", district: "District Hunza", lng: 74.86, lat: 36.43, img: "/blogs/gb_gemstone_mining.png", surveyed: false },
+  { name: "Gojal", district: "District Hunza", lng: 74.86, lat: 36.43, img: "/images/durr-quartz-1.jpg", surveyed: false },
   { name: "Gultari", district: "District Roundu", lng: 75.652, lat: 34.715, img: "/images/lead-gultari-1.jpg", surveyed: true },
 ];
 

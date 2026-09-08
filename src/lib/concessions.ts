@@ -35,10 +35,14 @@ const IMAGE_RULES: [RegExp, string][] = [
   [/bagicha/i, "/images/ruby-bagicha.jpg"],
   [/gultari/i, "/images/lead-gultari-1.jpg"],
   [/kharmang/i, "/images/mo-1.jpg"],
-  [/skardu/i, "/blogs/gb_placer_gold.png"],
-  [/hilal ?abad/i, "/blogs/hilal_abad_geology.png"],
-  [/shigar/i, "/blogs/shigar_geology.png"],
-  [/gojal/i, "/blogs/gb_gemstone_mining.png"],
+  // These four previously pointed at /blogs/*.png files that do not exist in
+  // public/ (they were lost at some point, leaving four of the ten concession
+  // pages rendering a broken image). Repointed at real photography already in
+  // the library, matched to each site's actual commodity.
+  [/skardu/i, "/images/commodities/gold.webp"],
+  [/hilal ?abad/i, "/images/mo-2.jpg"],
+  [/shigar/i, "/images/copper-generic-3.jpg"],
+  [/gojal/i, "/images/mo-3.jpg"],
   [/ishkoman/i, "/images/nephrite-gupis-1.jpg"],
   [/jutial/i, "/images/lead-jutial-1.jpg"],
   [/gupis/i, "/images/nephrite-gupis-2.jpg"],

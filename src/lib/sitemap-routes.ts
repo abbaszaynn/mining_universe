@@ -33,6 +33,19 @@ export const STATIC_ROUTES = [
   { path: "/cookies", changeFrequency: "yearly" as const, priority: 0.3 },
 ];
 
+/**
+ * MUST be kept in step with the `news` array in `src/lib/data.ts`.
+ *
+ * This list is deliberately duplicated rather than derived: `sitemap.ts` is
+ * kept free of the `data.ts` import chain (which pulls in companies-data and
+ * every article body) so the sitemap route stays cheap to build. The cost of
+ * that choice is drift, and it has already bitten once: an article shipped to
+ * `data.ts` without a matching entry here renders fine, is reachable, and is
+ * silently absent from sitemap.xml, so Google is never told it exists.
+ *
+ * Adding an article means adding it in BOTH places. The dev-only check in
+ * `src/lib/sitemap-audit.ts` will complain if they fall out of sync.
+ */
 export const NEWS_ROUTES = [
   {
     id: "untapped-potential-copper-mining-gilgit-baltistan",
@@ -65,5 +78,9 @@ export const NEWS_ROUTES = [
   {
     id: "saudi-reko-diq-gilgit-baltistan-copper-gold",
     publishDate: "2026-08-14T10:00:00Z",
+  },
+  {
+    id: "serpentine-nephrite-kharmang-hilal-abad",
+    publishDate: "2026-09-08T09:00:00Z",
   },
 ];

@@ -88,6 +88,35 @@ export const SITE = {
     "Shigar copper",
     "Gultari antimony",
     "Kharmang polymetallic",
+    /**
+     * "Mining company" phrasing (client keyword research, Sept 2026).
+     * Note on expectations: Google has ignored the meta keywords tag since
+     * 2009, so these earn nothing on their own. They are kept here as the
+     * single source of truth for which phrases the *page copy, titles and
+     * headings* are meant to target. The ranking work for these is on-page,
+     * and the SERPs for them are currently owned by directories rather than
+     * operators — see docs/SEO-PLAN.md §1 for that finding.
+     */
+    "private mining companies in Gilgit Baltistan",
+    "mining companies in Gilgit Baltistan",
+    "gold mining companies in Pakistan",
+    "copper mining companies in Gilgit Baltistan",
+    "investor mining opportunities in Gilgit",
+    "mining lease and exploration title holders",
+    // Per-commodity "companies / mines" variants, one per mineral actually
+    // held under licence, in both the national and regional form.
+    "copper mining company Pakistan",
+    "antimony mining company Pakistan",
+    "gold mining company Gilgit Baltistan",
+    "lead and zinc mining company Pakistan",
+    "molybdenum mining Pakistan",
+    "nephrite jade mining company Pakistan",
+    "ruby mining company Pakistan",
+    "quartz and silica mining company Pakistan",
+    "granite and marble mining company Gilgit Baltistan",
+    "lithium exploration company Pakistan",
+    "serpentine mining Pakistan",
+    "silver mining Gilgit Baltistan",
   ],
   defaultOgImage: "/images/cover_photo.jpg",
   twitterHandle: undefined as string | undefined,
