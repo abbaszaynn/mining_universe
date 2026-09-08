@@ -82,9 +82,10 @@ export function ConcessionDetail({ concession: c }: { concession: Concession }) 
               held under licence by {c.companyName}. It carries{" "}
               {c.minerals.join(", ").toLowerCase()}
               {c.area ? `, across ${c.area.replace(/^Area:\s*/i, "")}` : ""}.
-              {c.companyStatus === "Operational"
+              {c.status === "Operational"
                 ? " The site is operational."
                 : " The site is in the exploration phase."}
+              {c.roadAccess ? " The deposit is reachable by road." : ""}
             </p>
 
             <div className="mt-10 flex flex-wrap gap-4">
@@ -135,7 +136,15 @@ export function ConcessionDetail({ concession: c }: { concession: Concession }) 
                   <dt className="text-xs uppercase tracking-[0.08em] text-graphite-400">
                     Status
                   </dt>
-                  <dd className="mt-1.5 text-base text-graphite-950">{c.companyStatus}</dd>
+                  <dd className="mt-1.5 text-base text-graphite-950">{c.status}</dd>
+                </div>
+                <div>
+                  <dt className="text-xs uppercase tracking-[0.08em] text-graphite-400">
+                    Site access
+                  </dt>
+                  <dd className="mt-1.5 text-base text-graphite-950">
+                    {c.roadAccess ? "Road access to deposit" : "Field approach"}
+                  </dd>
                 </div>
                 {c.area && (
                   <div>

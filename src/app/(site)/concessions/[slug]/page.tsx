@@ -19,7 +19,7 @@ export function generateMetadata({ params }: { params: { slug: string } }) {
   }
 
   return createPageMetadata({
-    title: `${c.name} — ${c.district}`,
+    title: `${c.name}, ${c.district}`,
     description: `${c.name}, a licensed ${c.type.toLowerCase()} concession in ${c.district}, Gilgit Baltistan, held by ${c.companyName}. Minerals: ${c.minerals.join(", ")}.`,
     path: `/concessions/${c.slug}`,
   });

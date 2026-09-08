@@ -32,6 +32,6 @@ export const GOS_FAQ_ITEMS: FaqItem[] = [
   {
     question: "Are these operations fully licensed and operational?",
     answer:
-      "Each operator is incorporated under the Securities and Exchange Commission of Pakistan with secured mining leases in strategic locations. Operational status, mine names, and concession boundaries are published on company profiles and the interactive map — so you can verify licenses and coordinates before any site visit.",
+      "Each operator is incorporated under the Securities and Exchange Commission of Pakistan with secured mining leases in strategic locations. Operational status, mine names, and concession boundaries are published on company profiles and the interactive map, so you can verify licenses and coordinates before any site visit.",
   },
 ];

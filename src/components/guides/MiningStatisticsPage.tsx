@@ -178,11 +178,17 @@ export function MiningStatisticsPage() {
           </section>
         ))}
 
+        {/*
+          includeJsonLd={false}: faqSchema for these same items is already in
+          the JsonLd block above. Leaving FaqSection's default on emitted a
+          second FAQPage for the same URL, which is a structured data error.
+        */}
         <FaqSection
           items={STATS_FAQ}
           title="Questions about these figures"
           subtitle="The questions that come up most often about mining data in Gilgit Baltistan."
           id="faq"
+          includeJsonLd={false}
         />
 
         <section className="relative overflow-hidden bg-graphite-950 py-20 md:py-28">

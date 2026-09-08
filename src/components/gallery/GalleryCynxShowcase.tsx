@@ -273,7 +273,7 @@ export function GalleryCynxShowcase({
             <span className="text-graphite-950">
               {String(activeIndex + 1).padStart(2, "0")}
             </span>
-            <span className="mx-2 text-graphite-400">—</span>
+            <span className="mx-2 text-graphite-400">·</span>
             {String(total).padStart(2, "0")}
           </p>
           <button

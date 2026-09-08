@@ -35,6 +35,20 @@ export interface Deposit {
   location?: string;
   type?: string;
   details?: string[];
+  /**
+   * Per-site licence stage. Previously this only existed at company level,
+   * which was wrong: a single company holds both producing and early-stage
+   * ground, and an investor reading a concession page needs the stage of
+   * *that block*, not of the company that happens to hold it.
+   * Falls back to the parent company's status when unset.
+   */
+  status?: "Operational" | "Exploratory Phase";
+  /**
+   * Road-accessible sites are a materially different proposition: in the
+   * Karakoram, helicopter-supported work can consume a budget before any
+   * material moves. Only set where access is genuinely confirmed.
+   */
+  roadAccess?: boolean;
 }
 
 export interface Company {

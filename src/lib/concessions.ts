@@ -16,8 +16,12 @@ export type Concession = {
   area: string | null;
   licenceNote: string | null;
   companyId: string;
+  /** Parent company holding the licence, shown on the concession page. */
   companyName: string;
   companyStatus: "Operational" | "Exploratory Phase";
+  /** Stage of this block specifically, not of the company holding it. */
+  status: "Operational" | "Exploratory Phase";
+  roadAccess: boolean;
   forSale: boolean;
   image: string;
 };
@@ -64,8 +68,15 @@ export const concessions: Concession[] = companies.flatMap((company) =>
   company.deposits.map((deposit) => {
     const details = deposit.details ?? [];
     const area = details.find((d) => AREA_PATTERN.test(d)) ?? null;
-    const licenceNote = details.find((d) => LICENCE_PATTERN.test(d)) ?? null;
-    const minerals = details.filter((d) => d !== area && d !== licenceNote);
+    // Every licence-shaped line, not just the first. Gojal carries both
+    // "Exploration License" and "Application # 2024-3435", and taking only
+    // the first left the application number rendering in the minerals list
+    // as though it were a mineral.
+    const licenceLines = details.filter((d) => LICENCE_PATTERN.test(d));
+    const licenceNote = licenceLines.join(", ") || null;
+    const minerals = details.filter(
+      (d) => d !== area && !licenceLines.includes(d)
+    );
     const location = deposit.location ?? "Gilgit Baltistan";
 
     // The deposit name often repeats its own district ("Gojal Antimony
@@ -90,6 +101,10 @@ export const concessions: Concession[] = companies.flatMap((company) =>
       companyId: company.id,
       companyName: company.name,
       companyStatus: company.status,
+      // Per-site stage wins over the parent company's, since one company
+      // holds both producing and early-stage ground.
+      status: deposit.status ?? company.status,
+      roadAccess: deposit.roadAccess ?? false,
       forSale: FOR_SALE_COMPANY_IDS.has(company.id),
       image: pickImage(deposit.name, location),
     };

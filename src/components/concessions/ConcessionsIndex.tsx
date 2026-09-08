@@ -12,7 +12,7 @@ export function ConcessionsIndex() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: "Licensed mining concessions — Durr & Zircon Consortium",
+    name: "Licensed mining concessions of Durr & Zircon Consortium",
     itemListElement: concessions.map((c, i) => ({
       "@type": "ListItem",
       position: i + 1,
@@ -47,7 +47,7 @@ export function ConcessionsIndex() {
             <p className="mt-4 max-w-[62ch] text-sm leading-[1.5] text-graphite-400">
               Exact GPS coordinates and boundary surveys are shared with
               verified counterparties on enquiry, or once an agreement is in
-              place — not published here.
+              place, not published here.
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
               <SquareButton href="/investor-desk" tone="accent">
@@ -68,43 +68,84 @@ export function ConcessionsIndex() {
                 <Link
                   key={c.slug}
                   href={`/concessions/${c.slug}`}
-                  className="group relative flex flex-col overflow-hidden bg-bone-50 transition-transform duration-base ease-out hover:-translate-y-1"
+                  className="group relative flex flex-col overflow-hidden border border-graphite-950/10 bg-bone-50 transition-all duration-base ease-out hover:-translate-y-1 hover:border-copper-500/40 hover:shadow-[0_18px_48px_rgba(0,0,0,0.10)]"
                 >
-                  <div className="relative aspect-[4/3] w-full overflow-hidden">
+                  {/*
+                    Deliberately shorter than 4/3. The photo used to take the
+                    dominant share of the card and squeezed the licence detail,
+                    which is the part an investor is actually scanning for,
+                    into a cramped strip underneath.
+                  */}
+                  <div className="relative aspect-[16/9] w-full shrink-0 overflow-hidden">
                     <Image
                       src={c.image}
-                      alt={c.name}
+                      alt={`${c.name}, ${c.district}`}
                       fill
                       sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 30vw"
                       className="object-cover transition-transform duration-slow ease-out group-hover:scale-105"
                     />
-                    {c.forSale && (
-                      <span className="absolute right-3 top-3 bg-copper-500 px-2.5 py-1 text-[0.6875rem] font-semibold uppercase tracking-[0.08em] text-bone-50">
-                        For sale
+                    <div
+                      className="absolute inset-0 bg-gradient-to-t from-graphite-950/50 via-graphite-950/5 to-transparent"
+                      aria-hidden
+                    />
+                    <div className="absolute left-3 top-3 flex flex-wrap gap-2">
+                      <span
+                        className={cn(
+                          "px-2.5 py-1 text-[0.6875rem] font-semibold uppercase tracking-[0.08em]",
+                          c.status === "Operational"
+                            ? "bg-bone-50 text-copper-700"
+                            : "bg-graphite-950/75 text-bone-50"
+                        )}
+                      >
+                        {c.status}
                       </span>
-                    )}
+                      {c.forSale && (
+                        <span className="bg-copper-500 px-2.5 py-1 text-[0.6875rem] font-semibold uppercase tracking-[0.08em] text-bone-50">
+                          For sale
+                        </span>
+                      )}
+                    </div>
                   </div>
 
-                  <div className="flex flex-1 flex-col p-5">
-                    <span className="text-xs uppercase tracking-[0.08em] text-graphite-400">
+                  <div className="flex flex-1 flex-col p-6">
+                    <span className="text-[0.6875rem] font-medium uppercase tracking-[0.14em] text-copper-600">
                       {c.district}
                     </span>
-                    <h2 className="mt-1.5 text-lg leading-tight tracking-[-0.01em] text-graphite-950">
+                    <h2 className="mt-2 text-xl leading-[1.15] tracking-[-0.015em] text-graphite-950">
                       {c.name}
                     </h2>
-                    <p className="mt-2 text-sm leading-[1.4] text-graphite-500">
-                      {c.minerals.slice(0, 3).join(" · ")}
+                    <p className="mt-3 text-[0.9375rem] leading-[1.5] text-graphite-600">
+                      {c.minerals.slice(0, 4).join(" · ")}
                     </p>
-                    <span
-                      className={cn(
-                        "mt-4 text-xs uppercase tracking-[0.06em]",
-                        c.companyStatus === "Operational"
-                          ? "text-copper-700"
-                          : "text-graphite-400"
+
+                    <dl className="mt-5 grid grid-cols-2 gap-x-4 gap-y-3 border-t border-graphite-950/10 pt-4">
+                      {c.area && (
+                        <div>
+                          <dt className="text-[0.625rem] font-medium uppercase tracking-[0.12em] text-graphite-400">
+                            Area
+                          </dt>
+                          <dd className="mt-1 text-sm font-medium text-graphite-950">
+                            {c.area.replace(/^Area:\s*/i, "")}
+                          </dd>
+                        </div>
                       )}
-                    >
-                      {c.companyStatus} — {c.companyName}
-                    </span>
+                      <div>
+                        <dt className="text-[0.625rem] font-medium uppercase tracking-[0.12em] text-graphite-400">
+                          Access
+                        </dt>
+                        <dd className="mt-1 text-sm font-medium text-graphite-950">
+                          {c.roadAccess ? "Road access" : "Field approach"}
+                        </dd>
+                      </div>
+                      <div className="col-span-2">
+                        <dt className="text-[0.625rem] font-medium uppercase tracking-[0.12em] text-graphite-400">
+                          Held by
+                        </dt>
+                        <dd className="mt-1 text-sm font-medium text-graphite-950">
+                          {c.companyName}
+                        </dd>
+                      </div>
+                    </dl>
                   </div>
                 </Link>
               ))}

@@ -24,6 +24,13 @@ export const STATIC_ROUTES = [
     changeFrequency: "monthly" as const,
     priority: 0.85,
   },
+  // Answers the list-intent queries ("mining companies in gilgit baltistan",
+  // "title holders") whose SERPs are currently held entirely by directories.
+  {
+    path: "/guides/mining-companies-gilgit-baltistan",
+    changeFrequency: "monthly" as const,
+    priority: 0.85,
+  },
   { path: "/contact", changeFrequency: "monthly" as const, priority: 0.75 },
   { path: "/investor-desk", changeFrequency: "monthly" as const, priority: 0.9 },
   // Legal — indexed for trust/E-E-A-T signal, low priority since they aren't

@@ -157,10 +157,10 @@ const rawCompanies: Company[] = [
       { id: 'doc-topography-gultari', title: 'Topography Map - Gultari', url: 'https://mega.nz/file/9RQlxCIY#wBlkzySRZj_bx0SgmlkTaAndSYVLqGbus18uiX7XD8o', type: 'Map' }
     ],
     deposits: [
-      { name: 'Gemstones & Minerals', location: 'Bagicha, Skardu', type: 'Variety of Minerals', details: ['Rubi Gemstones', 'Snow White Marble', 'Lithium Deposits', 'Quartz', 'Area: 20 Sq/Km, 4,942 Acres'] },
-      { name: 'Polymetallic Ores', location: 'Gultari', type: 'Complex Ores', details: ['Molybdenum', 'Antimony', 'Lead', 'Gem Stones', 'Area: 20 Sq/Km, 4,942 Acres'] },
-      { name: 'Polymetallic Structure', location: 'Kharmang', type: 'Polymetallic Ore', details: ['Copper', 'Iron', 'Silver', 'Complex Polymetallic Structure', 'Area: 9.90 Sq/Km'] },
-      { name: 'Placer Gold', location: 'Skardu', type: 'Placer Gold', details: ['Placer Gold', 'Black Sand', 'Riverbed Length: 26 km'] }
+      { name: 'Gemstones & Minerals', location: 'Bagicha, Skardu', type: 'Copper & Gemstones', status: 'Operational', roadAccess: true, details: ['Copper, vein exposed at surface', 'Snow White Marble', 'Ruby Gemstones', 'Lithium Indications', 'Quartz', 'Area: 20 Sq/Km, 4,942 Acres'] },
+      { name: 'Polymetallic Ores', location: 'Gultari', type: 'Complex Ores', status: 'Exploratory Phase', details: ['Copper', 'Gold', 'Molybdenum', 'Antimony', 'Lead', 'Gem Stones', 'Area: 20 Sq/Km, 4,942 Acres'] },
+      { name: 'Polymetallic Structure', location: 'Kharmang', type: 'Serpentine & Nephrite', status: 'Exploratory Phase', roadAccess: true, details: ['Serpentine', 'Nephrite Jade, initial samples recovered', 'Copper', 'Iron', 'Silver', 'Area: 9.90 Sq/Km'] },
+      { name: 'Placer Gold', location: 'Skardu', type: 'Placer Gold', status: 'Operational', roadAccess: true, details: ['Placer Gold', 'Black Sand', 'Riverbed Length: 26 km'] }
     ]
   },
   {
@@ -218,8 +218,8 @@ const rawCompanies: Company[] = [
       { id: 'doc-report-gupis', title: 'Geological Report - Gupis', url: 'https://mega.nz/file/5Ih2ARZQ#JXvUAfDZsxfiWlTOWGHEP64WQWvArnKuwEseFZX6UBU', type: 'Geological Report' }
     ],
     deposits: [
-      { name: 'Polymetallic Ores', location: 'Jutial Nala, Gilgit', type: 'Polymetallic Ore', details: ['Silver', 'Minralized Copper Veins', 'Lead Deposits', 'Area: 9.97 Sq/Km, 2,471 Acres'] },
-      { name: 'Construction & Precious Stones', location: 'Gupis, Ghizer', type: 'Mixed Deposits', details: ['Granite', 'Premium Marble', 'Copper Indications', 'Area: 10 Sq/Km, 2,471 Acres'] }
+      { name: 'Polymetallic Ores', location: 'Jutial Nala, Gilgit', type: 'Copper & Lead', status: 'Operational', details: ['Mineralised Copper Veins', 'Lead Deposits', 'Silver', 'Area: 9.97 Sq/Km, 2,471 Acres'] },
+      { name: 'Construction & Precious Stones', location: 'Gupis, Ghizer', type: 'Copper & Dimension Stone', status: 'Exploratory Phase', details: ['Copper', 'Granite', 'Premium Marble', 'Area: 10 Sq/Km, 2,471 Acres'] }
     ]
   },
   {
@@ -338,10 +338,13 @@ const rawCompanies: Company[] = [
       { id: 'doc-zircon-incorporation', title: 'Incorporation Letter', url: 'https://mega.nz/file/NEZRzaoS#2IhACOBZZ9bDi5ty3sPWzxtyIBLuh650iu3cIfhcS9w', type: 'License' }
     ],
     deposits: [
-      { name: 'Hilal Abad Polymetallic Complex', location: 'Hilal Abad', type: 'Polymetallic Structure', details: ['Copper', 'Iron', 'Silver', 'Gold', 'Polymetallic Ore Structure', 'Area: 9.97 Sq/Km'] },
-      { name: 'Shigar Copper Deposit', location: 'Shigar', type: 'Copper Ore', details: ['Copper Ore', 'Strong Geological Position', 'High Copper Potential', 'Gold with Copper as a strong indication', 'Area: 8.87 Sq/Km'] },
-      { name: 'Gojal Antimony Deposit', location: 'Gojal, Hunza', type: 'Antimony', details: ['Antimony', 'Exploration License', 'Application # 2024-3435'] },
-      { name: 'Ishkoman Granite Deposit', location: 'Ishkoman, Ghizar', type: 'Granite', details: ['Granite', 'Reconnaissance License', 'Application # 2024-3122'] }
+      // Location strings are deliberately unchanged: the URL slug is derived
+      // from them, and these pages are already indexed. Askoli is named in the
+      // Shigar narrative instead of in `location`.
+      { name: 'Hilal Abad Polymetallic Complex', location: 'Hilal Abad', type: 'Premium Nephrite Jade', status: 'Operational', roadAccess: true, details: ['Premium Nephrite Jade', 'Serpentine', 'Copper', 'Area: 9.97 Sq/Km'] },
+      { name: 'Shigar Copper Deposit', location: 'Shigar', type: 'Polymetallic & Gemstones', status: 'Exploratory Phase', details: ['Gold', 'Lead', 'Lithium', 'Copper', 'Gem Stones', 'Area: 8.87 Sq/Km'] },
+      { name: 'Gojal Antimony Deposit', location: 'Gojal, Hunza', type: 'Antimony', status: 'Exploratory Phase', details: ['Antimony', 'Molybdenum indications', 'Exploration License', 'Application # 2024-3435'] },
+      { name: 'Ishkoman Granite Deposit', location: 'Ishkoman, Ghizar', type: 'Antimony & Granite', status: 'Exploratory Phase', details: ['Antimony', 'Granite', 'Reconnaissance License', 'Application # 2024-3122'] }
     ]
   },
 ];
