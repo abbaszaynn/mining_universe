@@ -4,11 +4,20 @@ import { GridLines } from "@/components/ui/GridLines";
 import { Pill } from "@/components/ui/Pill";
 import { SquareButton } from "@/components/ui/SquareButton";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { concessions } from "@/lib/concessions";
+import { concessions, GB_DISTRICTS } from "@/lib/concessions";
 import { absoluteUrl } from "@/lib/seo";
-import { cn } from "@/lib/utils";
+import { cn, spellOutCount, spellOutCountCapitalised } from "@/lib/utils";
 
 export function ConcessionsIndex() {
+  // Derived rather than written into the headline: the hardcoded version
+  // said "two companies" and stayed wrong once licences were attributed to
+  // their real holders (Durr, Zircon and Earth Lux are three entities).
+  // District count comes from GB_DISTRICTS, not from the per-block `district`
+  // strings: those are locations and each block has a distinct one, so
+  // counting them gives ten rather than seven. See the note on GB_DISTRICTS.
+  const districtCount = GB_DISTRICTS.length;
+  const holderCount = new Set(concessions.map((c) => c.licenceHolder)).size;
+
   const schema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
@@ -35,14 +44,18 @@ export function ConcessionsIndex() {
           <div className="relative z-10 mx-auto max-w-[105rem] px-5 md:px-10">
             <Pill>Our concessions</Pill>
             <h1 className="mt-8 max-w-[22ch] text-display-lg tracking-[-0.035em] text-graphite-950">
-              Ten licensed concessions, seven districts, two companies.
+              {spellOutCountCapitalised(concessions.length)} licensed
+              concessions, {spellOutCount(districtCount)} districts,{" "}
+              {spellOutCount(holderCount)} companies.
             </h1>
             <p className="mt-8 max-w-[62ch] text-lg leading-[1.5] text-graphite-500 md:text-xl">
-              Durr & Zircon Consortium holds eight licensed concessions across
-              Gultari, Bagicha, Kharmang, Skardu, Hilal Abad, Shigar, Gojal and
-              Ishkoman. Earth Lux Mines & Minerals (PVT) LTD, our third
-              company, holds two further concessions at Jutial Nala and
-              Gupis, and is currently offered for outright acquisition.
+              Durr Mines and Minerals (PVT) LTD holds Bagicha, Gultari,
+              Mahdi Abad Kharmang and the Skardu placer gold licence. Zircon
+              Mines (PVT) LTD holds Hilal Abad, Shigar, Gojal and Ishkoman.
+              Together they trade as Durr &amp; Zircon Consortium. Earth Lux
+              Mines &amp; Minerals (PVT) LTD, our third company, holds Jutial
+              Nala and Gupis, and is currently offered for outright
+              acquisition.
             </p>
             <p className="mt-4 max-w-[62ch] text-sm leading-[1.5] text-graphite-400">
               Exact GPS coordinates and boundary surveys are shared with
@@ -142,7 +155,7 @@ export function ConcessionsIndex() {
                           Held by
                         </dt>
                         <dd className="mt-1 text-sm font-medium text-graphite-950">
-                          {c.companyName}
+                          {c.licenceHolder}
                         </dd>
                       </div>
                     </dl>

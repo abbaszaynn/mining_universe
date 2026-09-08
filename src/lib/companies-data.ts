@@ -157,10 +157,10 @@ const rawCompanies: Company[] = [
       { id: 'doc-topography-gultari', title: 'Topography Map - Gultari', url: 'https://mega.nz/file/9RQlxCIY#wBlkzySRZj_bx0SgmlkTaAndSYVLqGbus18uiX7XD8o', type: 'Map' }
     ],
     deposits: [
-      { name: 'Gemstones & Minerals', location: 'Bagicha, Skardu', type: 'Copper & Gemstones', status: 'Operational', roadAccess: true, details: ['Copper, vein exposed at surface', 'Snow White Marble', 'Ruby Gemstones', 'Lithium Indications', 'Quartz', 'Area: 20 Sq/Km, 4,942 Acres'] },
-      { name: 'Polymetallic Ores', location: 'Gultari', type: 'Complex Ores', status: 'Exploratory Phase', details: ['Copper', 'Gold', 'Molybdenum', 'Antimony', 'Lead', 'Gem Stones', 'Area: 20 Sq/Km, 4,942 Acres'] },
-      { name: 'Polymetallic Structure', location: 'Kharmang', type: 'Serpentine & Nephrite', status: 'Exploratory Phase', roadAccess: true, details: ['Serpentine', 'Nephrite Jade, initial samples recovered', 'Copper', 'Iron', 'Silver', 'Area: 9.90 Sq/Km'] },
-      { name: 'Placer Gold', location: 'Skardu', type: 'Placer Gold', status: 'Operational', roadAccess: true, details: ['Placer Gold', 'Black Sand', 'Riverbed Length: 26 km'] }
+      { name: 'Gemstones & Minerals', location: 'Bagicha, Skardu', licenceHolder: 'Durr Mines and Minerals (PVT) LTD', type: 'Copper & Gemstones', status: 'Operational', roadAccess: true, details: ['Copper, vein exposed at surface', 'Snow White Marble', 'Ruby Gemstones', 'Lithium Indications', 'Quartz', 'Area: 20 Sq/Km, 4,942 Acres'] },
+      { name: 'Polymetallic Ores', location: 'Gultari', licenceHolder: 'Durr Mines and Minerals (PVT) LTD', type: 'Complex Ores', status: 'Exploratory Phase', details: ['Copper', 'Gold', 'Molybdenum', 'Antimony', 'Lead', 'Gem Stones', 'Area: 20 Sq/Km, 4,942 Acres'] },
+      { name: 'Polymetallic Structure', location: 'Kharmang', licenceHolder: 'Durr Mines and Minerals (PVT) LTD', type: 'Serpentine & Nephrite', status: 'Exploratory Phase', roadAccess: true, details: ['Serpentine', 'Nephrite Jade, initial samples recovered', 'Copper', 'Iron', 'Silver', 'Area: 9.90 Sq/Km'] },
+      { name: 'Placer Gold', location: 'Skardu', licenceHolder: 'Durr Mines and Minerals (PVT) LTD', type: 'Placer Gold', status: 'Operational', roadAccess: true, details: ['Placer Gold', 'Black Sand', 'Riverbed Length: 26 km'] }
     ]
   },
   {
@@ -218,8 +218,8 @@ const rawCompanies: Company[] = [
       { id: 'doc-report-gupis', title: 'Geological Report - Gupis', url: 'https://mega.nz/file/5Ih2ARZQ#JXvUAfDZsxfiWlTOWGHEP64WQWvArnKuwEseFZX6UBU', type: 'Geological Report' }
     ],
     deposits: [
-      { name: 'Polymetallic Ores', location: 'Jutial Nala, Gilgit', type: 'Copper & Lead', status: 'Operational', details: ['Mineralised Copper Veins', 'Lead Deposits', 'Silver', 'Area: 9.97 Sq/Km, 2,471 Acres'] },
-      { name: 'Construction & Precious Stones', location: 'Gupis, Ghizer', type: 'Copper & Dimension Stone', status: 'Exploratory Phase', details: ['Copper', 'Granite', 'Premium Marble', 'Area: 10 Sq/Km, 2,471 Acres'] }
+      { name: 'Polymetallic Ores', location: 'Jutial Nala, Gilgit', licenceHolder: 'Earth Lux Mines & Minerals (PVT) LTD', type: 'Copper & Lead', status: 'Operational', details: ['Mineralised Copper Veins', 'Lead Deposits', 'Silver', 'Area: 9.97 Sq/Km, 2,471 Acres'] },
+      { name: 'Construction & Precious Stones', location: 'Gupis, Ghizer', licenceHolder: 'Earth Lux Mines & Minerals (PVT) LTD', type: 'Copper & Dimension Stone', status: 'Exploratory Phase', details: ['Copper', 'Granite', 'Premium Marble', 'Area: 10 Sq/Km, 2,471 Acres'] }
     ]
   },
   {
@@ -341,10 +341,10 @@ const rawCompanies: Company[] = [
       // Location strings are deliberately unchanged: the URL slug is derived
       // from them, and these pages are already indexed. Askoli is named in the
       // Shigar narrative instead of in `location`.
-      { name: 'Hilal Abad Polymetallic Complex', location: 'Hilal Abad', type: 'Premium Nephrite Jade', status: 'Operational', roadAccess: true, details: ['Premium Nephrite Jade', 'Serpentine', 'Copper', 'Area: 9.97 Sq/Km'] },
-      { name: 'Shigar Copper Deposit', location: 'Shigar', type: 'Polymetallic & Gemstones', status: 'Exploratory Phase', details: ['Gold', 'Lead', 'Lithium', 'Copper', 'Gem Stones', 'Area: 8.87 Sq/Km'] },
-      { name: 'Gojal Antimony Deposit', location: 'Gojal, Hunza', type: 'Antimony', status: 'Exploratory Phase', details: ['Antimony', 'Molybdenum indications', 'Exploration License', 'Application # 2024-3435'] },
-      { name: 'Ishkoman Granite Deposit', location: 'Ishkoman, Ghizar', type: 'Antimony & Granite', status: 'Exploratory Phase', details: ['Antimony', 'Granite', 'Reconnaissance License', 'Application # 2024-3122'] }
+      { name: 'Hilal Abad Polymetallic Complex', location: 'Hilal Abad', licenceHolder: 'Zircon Mines (PVT) LTD', type: 'Premium Nephrite Jade', status: 'Operational', roadAccess: true, details: ['Premium Nephrite Jade', 'Serpentine', 'Copper', 'Area: 9.97 Sq/Km'] },
+      { name: 'Shigar Copper Deposit', location: 'Shigar', licenceHolder: 'Zircon Mines (PVT) LTD', type: 'Polymetallic & Gemstones', status: 'Exploratory Phase', details: ['Gold', 'Lead', 'Lithium', 'Copper', 'Gem Stones', 'Area: 8.87 Sq/Km'] },
+      { name: 'Gojal Antimony Deposit', location: 'Gojal, Hunza', licenceHolder: 'Zircon Mines (PVT) LTD', type: 'Antimony', status: 'Exploratory Phase', details: ['Antimony', 'Molybdenum indications', 'Exploration License', 'Application # 2024-3435'] },
+      { name: 'Ishkoman Granite Deposit', location: 'Ishkoman, Ghizar', licenceHolder: 'Zircon Mines (PVT) LTD', type: 'Antimony & Granite', status: 'Exploratory Phase', details: ['Antimony', 'Granite', 'Reconnaissance License', 'Application # 2024-3122'] }
     ]
   },
 ];

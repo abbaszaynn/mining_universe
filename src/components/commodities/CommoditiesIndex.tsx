@@ -3,7 +3,7 @@ import Link from "next/link";
 import { GridLines } from "@/components/ui/GridLines";
 import { Pill } from "@/components/ui/Pill";
 import { COMMODITIES } from "@/lib/commodities";
-import { firstSentence } from "@/lib/utils";
+import { firstSentence, spellOutCountCapitalised } from "@/lib/utils";
 
 export function CommoditiesIndex() {
   return (
@@ -13,11 +13,12 @@ export function CommoditiesIndex() {
         <div className="relative z-10 mx-auto max-w-[105rem] px-5 md:px-10">
           <Pill>Our commodities</Pill>
           <h1 className="mt-6 max-w-[22ch] text-display-lg tracking-[-0.035em] text-graphite-950">
-            Seven commodities, supplied direct from our own concessions.
+            {spellOutCountCapitalised(COMMODITIES.length)} commodities,
+            supplied direct from our own concessions.
           </h1>
           <p className="mt-8 max-w-[62ch] text-lg leading-[1.5] text-graphite-500 md:text-xl">
-            Copper, antimony, placer gold, lead, nephrite jade, quartz and
-            granite, quoted FOB Karachi or CIF, with no intermediary layer
+            {COMMODITIES.map((c) => c.name).join(", ")}, quoted FOB Karachi
+            or CIF, with no intermediary layer
             between the pit and your purchase order. Assay reports and
             trade documentation are shared with verified buyers on request.
           </p>
@@ -27,25 +28,25 @@ export function CommoditiesIndex() {
       <section className="relative overflow-hidden bg-bone-100 py-16 md:py-24">
         <GridLines />
         <div className="relative z-10 mx-auto max-w-[105rem] px-5 md:px-10">
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {COMMODITIES.map((c) => (
               <Link
                 key={c.slug}
                 href={`/commodities/${c.slug}`}
-                className="group flex flex-col overflow-hidden bg-bone-50 transition-transform duration-base ease-out hover:-translate-y-1"
+                className="group flex flex-col overflow-hidden rounded-2xl bg-white border border-graphite-950/5 shadow-sm transition-all duration-base ease-out hover:-translate-y-1 hover:shadow-md"
               >
-                <div className="relative aspect-[4/3] w-full overflow-hidden">
+                <div className="relative aspect-[3/2] w-full overflow-hidden bg-bone-50">
                   <Image
                     src={c.image}
                     alt={c.name}
                     fill
-                    sizes="(max-width: 1024px) 45vw, 30vw"
+                    sizes="(max-width: 1024px) 45vw, 25vw"
                     className="object-cover transition-transform duration-slow ease-out group-hover:scale-105"
                   />
                 </div>
-                <div className="p-5">
-                  <h2 className="text-lg text-graphite-950">{c.name}</h2>
-                  <p className="mt-2 text-sm leading-[1.5] text-graphite-500">
+                <div className="flex flex-col p-6">
+                  <h2 className="text-xl font-medium text-graphite-950">{c.name}</h2>
+                  <p className="mt-3 text-sm leading-[1.6] text-graphite-500 line-clamp-3">
                     {firstSentence(c.intro)}
                   </p>
                 </div>

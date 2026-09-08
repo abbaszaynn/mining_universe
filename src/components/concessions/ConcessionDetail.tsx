@@ -29,7 +29,7 @@ export function ConcessionDetail({ concession: c }: { concession: Concession }) 
             "@type": "Offer",
             businessFunction: "http://purl.org/goodrelations/v1#Sell",
             availability: "https://schema.org/InStock",
-            seller: { "@type": "Organization", name: c.companyName },
+            seller: { "@type": "Organization", name: c.licenceHolder },
           },
         }
       : {}),
@@ -79,7 +79,7 @@ export function ConcessionDetail({ concession: c }: { concession: Concession }) 
             {/* Direct-answer block — kept short, first thing on the page. */}
             <p className="mt-8 max-w-[62ch] text-lg leading-[1.5] text-graphite-500 md:text-xl">
               {c.name} is a {c.type.toLowerCase()} concession in {c.district},
-              held under licence by {c.companyName}. It carries{" "}
+              held under licence by {c.licenceHolder}. It carries{" "}
               {c.minerals.join(", ").toLowerCase()}
               {c.area ? `, across ${c.area.replace(/^Area:\s*/i, "")}` : ""}.
               {c.status === "Operational"
@@ -118,7 +118,7 @@ export function ConcessionDetail({ concession: c }: { concession: Concession }) 
                   <dt className="text-xs uppercase tracking-[0.08em] text-graphite-400">
                     Operator
                   </dt>
-                  <dd className="mt-1.5 text-base text-graphite-950">{c.companyName}</dd>
+                  <dd className="mt-1.5 text-base text-graphite-950">{c.licenceHolder}</dd>
                 </div>
                 <div>
                   <dt className="text-xs uppercase tracking-[0.08em] text-graphite-400">

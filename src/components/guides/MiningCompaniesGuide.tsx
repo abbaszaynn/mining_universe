@@ -83,7 +83,10 @@ export function MiningCompaniesGuide() {
   const operational = concessions.filter((c) => c.status === "Operational");
   const byCompany = concessions.reduce<Record<string, typeof concessions>>(
     (acc, c) => {
-      (acc[c.companyName] ??= []).push(c);
+      // Grouped by the entity named on each licence, not the parent group
+      // record, so Durr and Zircon appear as the separate registered
+      // companies they are rather than collapsing into the consortium.
+      (acc[c.licenceHolder] ??= []).push(c);
       return acc;
     },
     {}

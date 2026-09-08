@@ -49,6 +49,17 @@ export interface Deposit {
    * material moves. Only set where access is genuinely confirmed.
    */
   roadAccess?: boolean;
+  /**
+   * The registered entity that actually holds this licence.
+   *
+   * Needed because Durr Mines and Zircon Mines are merged into one company
+   * record ("Durr & Zircon Consortium") for entity-signal reasons, which
+   * collapses the per-licence attribution: without this, every one of their
+   * eight blocks reports the consortium as its holder, and a reader cannot
+   * tell that Hilal Abad is a Zircon Mines licence. Falls back to the parent
+   * company name when unset.
+   */
+  licenceHolder?: string;
 }
 
 export interface Company {

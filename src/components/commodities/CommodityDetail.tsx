@@ -55,9 +55,42 @@ export function CommodityDetail({ commodity: c }: { commodity: Commodity }) {
     { name: c.name },
   ]);
 
+  /**
+   * The "which blocks carry this" table as structured data. The query behind
+   * that section is list-shaped ("who supplies copper in Pakistan"), and an
+   * ItemList is how that answer gets read as a list rather than as prose.
+   * Omitted entirely when there is nothing to list, since an empty ItemList
+   * is worse than none.
+   */
+  const sourceListSchema =
+    sources.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          name: `Licensed concessions supplying ${c.name} in Gilgit Baltistan, Pakistan`,
+          numberOfItems: sources.length,
+          itemListElement: sources.map((s, i) => ({
+            "@type": "ListItem",
+            position: i + 1,
+            item: {
+              "@type": "Place",
+              name: s.name,
+              address: {
+                "@type": "PostalAddress",
+                addressRegion: s.district,
+                addressCountry: "PK",
+              },
+              url: absoluteUrl(`/concessions/${s.slug}`),
+            },
+          })),
+        }
+      : null;
+
   return (
     <>
-      <JsonLd data={[productSchema, breadcrumbSchema]} />
+      <JsonLd
+        data={[productSchema, breadcrumbSchema, ...(sourceListSchema ? [sourceListSchema] : [])]}
+      />
 
       <main className="relative bg-bone-50">
         <section className="relative overflow-hidden pb-16 pt-32 md:pb-24 md:pt-40">
@@ -131,32 +164,67 @@ export function CommodityDetail({ commodity: c }: { commodity: Commodity }) {
             <GridLines />
             <div className="relative z-10 mx-auto max-w-[105rem] px-5 md:px-10">
               <h2 className="text-display-md tracking-[-0.03em] text-graphite-950">
-                Sourced from
+                Which licensed blocks {c.name.toLowerCase()} comes from
               </h2>
-              <div className="mt-10 grid gap-6 sm:grid-cols-3">
-                {sources.map((s) => (
-                  <Link
-                    key={s.slug}
-                    href={`/concessions/${s.slug}`}
-                    className="group flex flex-col overflow-hidden bg-bone-100 transition-transform duration-base ease-out hover:-translate-y-1"
-                  >
-                    <div className="relative aspect-[4/3] w-full overflow-hidden">
-                      <Image
-                        src={s.image}
-                        alt={s.name}
-                        fill
-                        sizes="30vw"
-                        className="object-cover transition-transform duration-slow ease-out group-hover:scale-105"
-                      />
-                    </div>
-                    <div className="p-5">
-                      <span className="text-xs uppercase tracking-[0.08em] text-graphite-400">
-                        {s.district}
-                      </span>
-                      <h3 className="mt-1.5 text-base text-graphite-950">{s.name}</h3>
-                    </div>
-                  </Link>
-                ))}
+              <p className="mt-6 max-w-[62ch] text-base leading-[1.6] text-graphite-600 md:text-lg">
+                {sources.length === 1
+                  ? "One licensed block on our registry carries it."
+                  : `${sources.length} licensed blocks on our registry carry it.`}{" "}
+                Each is held by a locally incorporated company, with the licence
+                stage and area shown. This is the full list from our own
+                registry, not a regional survey.
+              </p>
+
+              {/*
+                Table rather than the previous photo cards. Two reasons: the
+                query behind this section ("who supplies copper in Pakistan")
+                is list-shaped, and a labelled table is what an answer engine
+                can actually lift. The cards showed only district and name,
+                which left out the three things a buyer asks next.
+              */}
+              <div className="mt-10 overflow-x-auto">
+                <table className="w-full min-w-[44rem] border-collapse text-left">
+                  <thead>
+                    <tr className="border-b border-graphite-950/15">
+                      {["Concession", "District", "Area", "Stage", "Held by"].map((h) => (
+                        <th
+                          key={h}
+                          scope="col"
+                          className="pb-3 pr-4 text-[0.625rem] font-medium uppercase tracking-[0.12em] text-graphite-400"
+                        >
+                          {h}
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {sources.map((s) => (
+                      <tr key={s.slug} className="border-b border-graphite-950/10">
+                        <td className="py-4 pr-4 align-top">
+                          <Link
+                            href={`/concessions/${s.slug}`}
+                            className="text-base text-copper-600 underline decoration-copper-500/40 underline-offset-4 transition-colors hover:text-copper-500"
+                          >
+                            {s.name}
+                          </Link>
+                        </td>
+                        <td className="py-4 pr-4 align-top text-sm text-graphite-700">
+                          {s.district}
+                        </td>
+                        <td className="py-4 pr-4 align-top text-sm text-graphite-700">
+                          {s.area ? s.area.replace(/^Area:\s*/i, "") : "Not published"}
+                        </td>
+                        <td className="py-4 pr-4 align-top text-sm text-graphite-700">
+                          {s.status}
+                          {s.roadAccess ? ", road access" : ""}
+                        </td>
+                        <td className="py-4 pr-4 align-top text-sm text-graphite-700">
+                          {s.licenceHolder}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
             </div>
           </section>

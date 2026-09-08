@@ -16,8 +16,10 @@ export type Concession = {
   area: string | null;
   licenceNote: string | null;
   companyId: string;
-  /** Parent company holding the licence, shown on the concession page. */
+  /** Parent group record. For Durr/Zircon blocks this is the consortium. */
   companyName: string;
+  /** The registered entity named on this specific licence. */
+  licenceHolder: string;
   companyStatus: "Operational" | "Exploratory Phase";
   /** Stage of this block specifically, not of the company holding it. */
   status: "Operational" | "Exploratory Phase";
@@ -100,6 +102,10 @@ export const concessions: Concession[] = companies.flatMap((company) =>
       licenceNote,
       companyId: company.id,
       companyName: company.name,
+      // The entity actually named on this licence. Durr and Zircon are merged
+      // into one company record, so without this every one of their eight
+      // blocks would report the consortium rather than the real holder.
+      licenceHolder: deposit.licenceHolder ?? company.name,
       companyStatus: company.status,
       // Per-site stage wins over the parent company's, since one company
       // holds both producing and early-stage ground.
@@ -110,6 +116,30 @@ export const concessions: Concession[] = companies.flatMap((company) =>
     };
   })
 );
+
+/**
+ * The districts our concessions actually sit in, hand-maintained.
+ *
+ * Not derived from `Concession.district`, because that field is really a
+ * location: it holds "Gultari" (which is in Roundu district) and "Hilal Abad"
+ * (Kharmang), and each of the ten blocks carries a distinct string, so
+ * counting unique values gives ten "districts" rather than seven. It also
+ * spells Ghizer two ways, "Ghizar" for Ishkoman and "Ghizer" for Gupis.
+ *
+ * Both quirks are deliberately left in place: every concession URL slug is
+ * built from that string and those pages are indexed, so normalising it would
+ * move live URLs to fix something cosmetic. Anything that needs a real
+ * district count or list should use this instead.
+ */
+export const GB_DISTRICTS = [
+  "Shigar",
+  "Kharmang",
+  "Skardu",
+  "Gilgit",
+  "Ghizer",
+  "Hunza",
+  "Roundu",
+] as const;
 
 export function getConcession(slug: string) {
   return concessions.find((c) => c.slug === slug);

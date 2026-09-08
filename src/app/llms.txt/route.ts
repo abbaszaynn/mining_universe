@@ -1,5 +1,5 @@
 import { companies } from "@/lib/companies-data";
-import { concessions } from "@/lib/concessions";
+import { concessions, GB_DISTRICTS } from "@/lib/concessions";
 import { COMMODITIES } from "@/lib/commodities";
 import { MARKETS } from "@/lib/markets";
 import { getSiteUrl, SITE } from "@/lib/site";
@@ -22,6 +22,19 @@ export function GET() {
   const operationalNames = concessions
     .filter((c) => c.status === "Operational")
     .map((c) => `${c.name} (${c.district})`);
+
+  /**
+   * Curated, not derived. `Concession.district` is really a location: it holds
+   * "Gultari" (which sits in Roundu district) and "Hilal Abad" (Kharmang), so
+   * deriving from it yields nine "districts" including two locations. It also
+   * spells Ghizer both ways, "Ghizar" for Ishkoman and "Ghizer" for Gupis.
+   *
+   * Both are left alone on purpose: the URL slug of every concession is built
+   * from that string, and those pages are indexed (Ishkoman currently ranks
+   * first for its own name), so normalising the spelling would move live URLs
+   * to fix a cosmetic inconsistency. This list stays hand-maintained instead.
+   */
+  const districts = GB_DISTRICTS;
 
   /**
    * Inverse index: mineral -> the sites that carry it. The concession list
@@ -111,8 +124,8 @@ registered company. "Game of Stones" is a brand name for the same organisation.
   (PVT) LTD
 - Also operates Earth Lux Mines & Minerals (PVT) LTD, a third registered
   company currently offered for outright acquisition
-- Concessions: ten licensed blocks across seven districts of Gilgit Baltistan
-  (Shigar, Kharmang, Skardu, Gilgit, Ghizer, Hunza, Roundu)
+- Concessions: ${concessions.length} licensed blocks across ${districts.length} districts of Gilgit Baltistan
+  (${districts.join(", ")})
 - Minerals: copper, premium nephrite jade, serpentine, antimony, lead,
   molybdenum, placer gold, silver, ruby, quartz and silica, granite and
   marble, with lithium indications
@@ -168,11 +181,11 @@ One page per licensed concession, each with district, minerals, area,
 licence status and operating company. Coordinates are not published on these
 pages. See "Disclosure policy" below.
 
-${concessions.map((c) => `- [${c.name}](${base}/concessions/${c.slug}), ${c.district}, held by ${c.companyName}`).join("\n")}
+${concessions.map((c) => `- [${c.name}](${base}/concessions/${c.slug}), ${c.district}, held by ${c.licenceHolder}, ${c.status}${c.roadAccess ? ", road access" : ""}`).join("\n")}
 
 ## Commodities
 
-Seven commodities supplied direct from our own concessions, quoted FOB
+${COMMODITIES.length} commodities supplied direct from our own concessions, quoted FOB
 Karachi or CIF. Each page covers end-use demand, trade terms, and which
 concessions source that mineral.
 
@@ -192,7 +205,7 @@ ${MARKETS.map((m) => `- [${m.name}](${base}/markets/${m.slug})`).join("\n")}
 - [Services](${base}/services): supply, JV, acquisition and exploration services
 - [Invest](${base}/invest): the four partnership routes: JV, farm-in, equity, outright acquisition
 - [Concessions](${base}/concessions): index of all ten licensed concessions
-- [Commodities](${base}/commodities): index of all seven commodities supplied
+- [Commodities](${base}/commodities): index of all ${COMMODITIES.length} commodities supplied
 - [Markets](${base}/markets): index of all six investor-country pages
 - [Mining licence guide](${base}/guides/mining-licence-gilgit-baltistan): how mineral titles are actually granted in Gilgit Baltistan
 - [Mining companies in Gilgit Baltistan](${base}/guides/mining-companies-gilgit-baltistan): how private operators here are licensed, how to verify a mining lease or exploration title holder against the government register, and the full ten-block registry by holding company
