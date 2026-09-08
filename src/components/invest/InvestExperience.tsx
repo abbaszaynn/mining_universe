@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { GridLines } from "@/components/ui/GridLines";
 import { Pill } from "@/components/ui/Pill";
 import { SquareButton } from "@/components/ui/SquareButton";
@@ -103,11 +104,12 @@ export function InvestExperience() {
       <section className="relative overflow-hidden bg-bone-50 py-16 md:py-24">
         <GridLines />
         <div className="relative z-10 mx-auto max-w-[105rem] px-5 md:px-10">
-          <div className="max-w-[68ch]">
-            <h2 className="text-display-md tracking-[-0.03em] text-graphite-950">
-              Why Gilgit Baltistan
-            </h2>
-            <p className="mt-6 text-base leading-[1.6] text-graphite-600 md:text-lg">
+          <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+            <div className="max-w-[68ch]">
+              <h2 className="text-display-md tracking-[-0.03em] text-graphite-950">
+                Why Gilgit Baltistan
+              </h2>
+              <p className="mt-6 text-base leading-[1.6] text-graphite-600 md:text-lg">
               Gilgit Baltistan covers over 43,000 sq km of mining area, most
               of it still unexplored, with the government offering a
               lighter tax burden in a mine&apos;s early years and cheaper
@@ -140,6 +142,16 @@ export function InvestExperience() {
               </Link>{" "}
               in Gilgit Baltistan is worth reading first.
             </p>
+          </div>
+          <div className="relative h-[300px] w-full overflow-hidden sm:h-[400px] lg:h-[600px]">
+            <Image 
+              src="/images/invest/why-gb.webp" 
+              alt="Mountainous terrain of Gilgit Baltistan showcasing natural resources and mining potential" 
+              fill 
+              className="object-cover" 
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
+          </div>
           </div>
         </div>
       </section>
