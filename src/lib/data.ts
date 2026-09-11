@@ -23,7 +23,10 @@ const allDocuments: Document[] = [
     companyId: 'earth-lux-mines',
     title: 'Incorporation Letter',
     type: 'License',
-    url: 'https://mega.nz/file/NAY3GaQZ#igzi5X3SNFZkZAGjLZ-a5rWd-qcfVyL65Ks1zcPeyQQ',
+    // Self-hosted, view-only: see the access:'view' note on the Document
+    // type. Mega link retired per client direction (2026-09-11).
+    url: '/documents/earth-lux-incorporation-letter.pdf',
+    access: 'view',
     contentText: `SECURITIES AND EXCHANGE COMMISSION OF PAKISTAN
  Company Registration Office
  CERTIFICATE OF INCORPORATION

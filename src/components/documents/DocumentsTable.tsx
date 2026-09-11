@@ -74,7 +74,7 @@ export function DocumentsTable({
                   tone="accent"
                   className="!px-3 !py-2 text-[10px] md:!px-4 md:!py-2.5"
                 >
-                  Download
+                  {doc.access === "view" ? "View" : "Download"}
                 </SquareButton>
               ) : (
                 <span className="whitespace-nowrap font-mono text-[10px] uppercase tracking-[0.2em] text-graphite-500">

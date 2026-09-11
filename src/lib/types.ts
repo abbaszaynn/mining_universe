@@ -12,6 +12,17 @@ export interface Document {
   companyId?: string;
   companyName?: string;
   contentText?: string;
+  /**
+   * 'download' (the default): a Download button, for documents meant to be
+   * handed out (the corridor report).
+   * 'view': opens the file in a new tab with no download affordance,
+   * for documents that should be readable but not distributed, like the
+   * incorporation letters. This is a UI convention, not real DRM: nothing
+   * stops a determined viewer from saving a PDF once their browser has
+   * rendered it. It communicates "look, don't take" rather than enforcing it.
+   * Unset or `'#'` url still means 'On request' regardless of this field.
+   */
+  access?: 'download' | 'view';
 }
 
 export interface Video {

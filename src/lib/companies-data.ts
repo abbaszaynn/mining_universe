@@ -155,7 +155,10 @@ const rawCompanies: Company[] = [
     documents: [
       // On-request only, see the note in data.ts above allDocuments.
       { id: 'doc-topography-bagicha', title: 'Topography Map - Bagicha', url: '#', type: 'Map' },
-      { id: 'doc-topography-gultari', title: 'Topography Map - Gultari', url: '#', type: 'Map' }
+      { id: 'doc-topography-gultari', title: 'Topography Map - Gultari', url: '#', type: 'Map' },
+      // Self-hosted, view-only: see the access:'view' note on the Document
+      // type. Previously missing from the vault entirely.
+      { id: 'doc-durr-incorporation', title: 'Incorporation Letter', url: '/documents/durr-mines-incorporation-letter.pdf', type: 'License', access: 'view' }
     ],
     deposits: [
       { name: 'Gemstones & Minerals', location: 'Bagicha, Skardu', licenceHolder: 'Durr Mines and Minerals (PVT) LTD', type: 'Copper & Gemstones', status: 'Operational', roadAccess: true, details: ['Copper, vein exposed at surface', 'Snow White Marble', 'Ruby Gemstones', 'Lithium Indications', 'Quartz', 'Area: 20 Sq/Km, 4,942 Acres'] },
@@ -337,7 +340,8 @@ const rawCompanies: Company[] = [
     videos: [],
     virtualTourUrl: '#',
     documents: [
-      { id: 'doc-zircon-incorporation', title: 'Incorporation Letter', url: 'https://mega.nz/file/NEZRzaoS#2IhACOBZZ9bDi5ty3sPWzxtyIBLuh650iu3cIfhcS9w', type: 'License' }
+      // Self-hosted, view-only. Mega link retired per client direction (2026-09-11).
+      { id: 'doc-zircon-incorporation', title: 'Incorporation Letter', url: '/documents/zircon-mines-incorporation-letter.pdf', type: 'License', access: 'view' }
     ],
     deposits: [
       // Location strings are deliberately unchanged: the URL slug is derived
