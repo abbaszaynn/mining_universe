@@ -9,6 +9,14 @@ Source of truth for every figure below is the live repo as of 2026-09-11:
   src/lib/site.ts (contact details)
 plus live research done this session (PMIF26 outcome, CSIS skepticism on the
 $8T figure). No em-dashes anywhere in body text -- checked at the end.
+
+Do NOT put department application/filing numbers in this table (e.g. an
+"App. #2024-XXXX" style reference). Those are the confidential reference
+numbers for our own submitted applications and are not for publication;
+the client flagged this explicitly on 2026-09-11 after an earlier version
+of this report shipped with two of them in the Gojal Antimony and Ishkoman
+Granite rows. Use the licensed area in sq/km instead, matching
+companies-data.ts.
 """
 from reportlab.lib.pagesizes import LETTER
 from reportlab.lib.units import inch
@@ -226,10 +234,10 @@ concessions_rows = [
      cell("Copper, gold, molybdenum, antimony, lead"), cell("20 sq/km"),
      cell("Exploratory"), cell("")],
     [cell("Gojal Antimony"), cell("Hunza"),
-     cell("Antimony, molybdenum indications"), cell("App. #2024-3435"),
+     cell("Antimony, molybdenum indications"), cell("10 sq/km"),
      cell("Exploratory"), cell("")],
     [cell("Ishkoman Granite"), cell("Ghizer"),
-     cell("Antimony, granite"), cell("App. #2024-3122"),
+     cell("Antimony, granite"), cell("10 sq/km"),
      cell("Exploratory"), cell("")],
     [cell("Gupis"), cell("Ghizer"),
      cell("Copper, granite, marble"), cell("10 sq/km"),

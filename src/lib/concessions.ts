@@ -70,10 +70,10 @@ export const concessions: Concession[] = companies.flatMap((company) =>
   company.deposits.map((deposit) => {
     const details = deposit.details ?? [];
     const area = details.find((d) => AREA_PATTERN.test(d)) ?? null;
-    // Every licence-shaped line, not just the first. Gojal carries both
-    // "Exploration License" and "Application # 2024-3435", and taking only
-    // the first left the application number rendering in the minerals list
-    // as though it were a mineral.
+    // Every licence-shaped line, not just the first. Some deposits carry
+    // both a stage word ("Exploration License") and other licence-pattern
+    // text, and taking only the first left later lines rendering in the
+    // minerals list as though they were a mineral.
     const licenceLines = details.filter((d) => LICENCE_PATTERN.test(d));
     const licenceNote = licenceLines.join(", ") || null;
     const minerals = details.filter(

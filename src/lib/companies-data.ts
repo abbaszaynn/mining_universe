@@ -343,8 +343,11 @@ const rawCompanies: Company[] = [
       // Shigar narrative instead of in `location`.
       { name: 'Hilal Abad Polymetallic Complex', location: 'Hilal Abad', licenceHolder: 'Zircon Mines (PVT) LTD', type: 'Premium Nephrite Jade', status: 'Operational', roadAccess: true, details: ['Premium Nephrite Jade', 'Serpentine', 'Copper', 'Area: 9.97 Sq/Km'] },
       { name: 'Shigar Copper Deposit', location: 'Shigar', licenceHolder: 'Zircon Mines (PVT) LTD', type: 'Polymetallic & Gemstones', status: 'Exploratory Phase', details: ['Gold', 'Lead', 'Lithium', 'Copper', 'Gem Stones', 'Area: 8.87 Sq/Km'] },
-      { name: 'Gojal Antimony Deposit', location: 'Gojal, Hunza', licenceHolder: 'Zircon Mines (PVT) LTD', type: 'Antimony', status: 'Exploratory Phase', details: ['Antimony', 'Molybdenum indications', 'Exploration License', 'Application # 2024-3435'] },
-      { name: 'Ishkoman Granite Deposit', location: 'Ishkoman, Ghizar', licenceHolder: 'Zircon Mines (PVT) LTD', type: 'Antimony & Granite', status: 'Exploratory Phase', details: ['Antimony', 'Granite', 'Reconnaissance License', 'Application # 2024-3122'] }
+      // Application numbers deliberately not published: these are the
+      // department filing references for our own submitted applications,
+      // confidential between us and the Mines and Minerals Department.
+      { name: 'Gojal Antimony Deposit', location: 'Gojal, Hunza', licenceHolder: 'Zircon Mines (PVT) LTD', type: 'Antimony', status: 'Exploratory Phase', details: ['Antimony', 'Molybdenum indications', 'Exploration License', 'Area: 10 sq/km'] },
+      { name: 'Ishkoman Granite Deposit', location: 'Ishkoman, Ghizar', licenceHolder: 'Zircon Mines (PVT) LTD', type: 'Antimony & Granite', status: 'Exploratory Phase', details: ['Antimony', 'Granite', 'Reconnaissance License', 'Area: 10 sq/km'] }
     ]
   },
 ];

@@ -14,7 +14,21 @@ export default function robots(): MetadataRoute.Robots {
       // through it), not an app route — most visibly its email-obfuscation
       // rewrite of mailto: links, which GSC flagged as a 404 once Google
       // tried to crawl it directly. Nothing under /cdn-cgi/ is a real page.
-      disallow: ["/api/", "/cdn-cgi/"],
+      //
+      // The .mp4 is GlobeLoopSection's homepage background clip: muted,
+      // autoplay, looped, no title/controls/captions, purely decorative.
+      // GSC's Video indexing report flagged it as "Video isn't on a watch
+      // page" — Googlebot-Video found the bare <video src> and tried to
+      // index it as standalone content, which it isn't. Disallowing the
+      // file stops that crawl attempt rather than trying to make a hero
+      // background loop pass as a real video page, which it shouldn't.
+      // Give any future purely-decorative background video the same
+      // treatment rather than adding it to the video indexing queue.
+      disallow: [
+        "/api/",
+        "/cdn-cgi/",
+        "/Earth%20Zoom%20In%20Realistic%20Clouds%20With%20Alpha%20Matte.mp4",
+      ],
     },
     // Only the XML sitemap belongs here. The Sitemap: directive expects a
     // sitemap format, and llms.txt is markdown prose — listing it made Google
