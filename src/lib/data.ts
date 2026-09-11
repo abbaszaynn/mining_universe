@@ -3,11 +3,20 @@ import type { Company, NewsArticle, Document, GalleryImage } from '@/lib/types';
 import { galleryImages } from '@/lib/gallery-images-data';
 import { companies as companiesData } from '@/lib/companies-data';
 
+/**
+ * Client direction (2026-09-11): only the Incorporation Letters and the GB
+ * Mineral Corridor Report stay publicly downloadable from /documents.
+ * Everything else (geological reports, topography maps, the mining licence)
+ * is confidential and should read "On request" instead. DocumentsTable
+ * already implements that switch: url `'#'` (or unset) renders "On request",
+ * any other url renders a Download button. So the fix here is data-only, not
+ * a template change: set every non-exempt document's url to `'#'`.
+ */
 const allDocuments: Document[] = [
   { id: 'doc-gb-mineral-corridor-report', companyId: 'durr-zircon', title: 'GB Mineral Corridor Report 2026', type: 'Investor Report', url: '/reports/gb-mineral-corridor-report-2026.pdf' },
-  { id: 'doc-zircon-geological-report', companyId: 'durr-zircon', title: 'Geological Report', type: 'Geological Report', url: 'https://mega.nz/file/9VJmDCxJ#ME379aCjr7LpYjspREoOOivos9fIIdJ3nSboo9G_uYw' },
-  { id: 'doc-1', companyId: 'durr-zircon', title: 'Copper Ore at Skardu,  Tehsil Gultari', type: 'Geological Report', url: 'https://mega.nz/file/gIZRxJZY#iumoVJkKeejUdux1fQz-Y31o0lAMDcMhJ3X-KnDNyL0' },
-  { id: 'doc-7', companyId: 'durr-zircon', title: 'Marble Ore at Bagicha', type: 'Geological Report', url: 'https://mega.nz/file/4UhxmTKY#AzFv7Jc3IE11OhBKdGSbaRYKM85UhmtwrOKc96f9vcI' },
+  { id: 'doc-zircon-geological-report', companyId: 'durr-zircon', title: 'Geological Report', type: 'Geological Report', url: '#' },
+  { id: 'doc-1', companyId: 'durr-zircon', title: 'Copper Ore at Skardu,  Tehsil Gultari', type: 'Geological Report', url: '#' },
+  { id: 'doc-7', companyId: 'durr-zircon', title: 'Marble Ore at Bagicha', type: 'Geological Report', url: '#' },
   { id: 'doc-2', companyId: 'durr-zircon', title: 'MINING LICENSE', type: 'License', url: '#' },
   {
     id: 'doc-8',
@@ -33,7 +42,7 @@ const allDocuments: Document[] = [
     companyId: 'earth-lux-mines',
     title: 'Geological Report - Gupis, Ghizer',
     type: 'Geological Report',
-    url: 'https://mega.nz/file/BQhDEIJL#JXvUAfDZsxfiWlTOWGHEP64WQWvArnKuwEseFZX6UBU',
+    url: '#',
     contentText: `Geological Field Report of Copper Ore at Gupis, 
 Tehsil Yasin, District Ghizer, Gilgit-Baltistan, Pakistan 
 Earth Lux Mines & Minerals (Pvt) Ltd. 

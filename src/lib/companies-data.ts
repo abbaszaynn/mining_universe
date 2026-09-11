@@ -153,8 +153,9 @@ const rawCompanies: Company[] = [
     videos: [],
     virtualTourUrl: '#',
     documents: [
-      { id: 'doc-topography-bagicha', title: 'Topography Map - Bagicha', url: 'https://mega.nz/file/MEJFnChR#1WB-2XkqCyYkhoX55zoMsaiKZr6C5yKkBOiwSr4l27Q', type: 'Map' },
-      { id: 'doc-topography-gultari', title: 'Topography Map - Gultari', url: 'https://mega.nz/file/9RQlxCIY#wBlkzySRZj_bx0SgmlkTaAndSYVLqGbus18uiX7XD8o', type: 'Map' }
+      // On-request only, see the note in data.ts above allDocuments.
+      { id: 'doc-topography-bagicha', title: 'Topography Map - Bagicha', url: '#', type: 'Map' },
+      { id: 'doc-topography-gultari', title: 'Topography Map - Gultari', url: '#', type: 'Map' }
     ],
     deposits: [
       { name: 'Gemstones & Minerals', location: 'Bagicha, Skardu', licenceHolder: 'Durr Mines and Minerals (PVT) LTD', type: 'Copper & Gemstones', status: 'Operational', roadAccess: true, details: ['Copper, vein exposed at surface', 'Snow White Marble', 'Ruby Gemstones', 'Lithium Indications', 'Quartz', 'Area: 20 Sq/Km, 4,942 Acres'] },
@@ -213,9 +214,10 @@ const rawCompanies: Company[] = [
     videos: [],
     virtualTourUrl: '#',
     documents: [
-      { id: 'doc-topography-jutial', title: 'Topography Map - Jutial Nala', url: 'https://mega.nz/file/NV4E3I5Q#u9raTiI-ojj2qn_UcrO64xpQQfZgfqdfHwDfBYrnbkw', type: 'Map' },
-      { id: 'doc-report-jutial', title: 'Geological Report - Jutial Nala', url: 'https://mega.nz/file/BJ5UiKRB#KYKyTV9pBWtJw5ilFDGHewz16jPwYTmoEA6_ortHuaA', type: 'Geological Report' },
-      { id: 'doc-report-gupis', title: 'Geological Report - Gupis', url: 'https://mega.nz/file/5Ih2ARZQ#JXvUAfDZsxfiWlTOWGHEP64WQWvArnKuwEseFZX6UBU', type: 'Geological Report' }
+      // On-request only, see the note in data.ts above allDocuments.
+      { id: 'doc-topography-jutial', title: 'Topography Map - Jutial Nala', url: '#', type: 'Map' },
+      { id: 'doc-report-jutial', title: 'Geological Report - Jutial Nala', url: '#', type: 'Geological Report' },
+      { id: 'doc-report-gupis', title: 'Geological Report - Gupis', url: '#', type: 'Geological Report' }
     ],
     deposits: [
       { name: 'Polymetallic Ores', location: 'Jutial Nala, Gilgit', licenceHolder: 'Earth Lux Mines & Minerals (PVT) LTD', type: 'Copper & Lead', status: 'Operational', details: ['Mineralised Copper Veins', 'Lead Deposits', 'Silver', 'Area: 9.97 Sq/Km, 2,471 Acres'] },
