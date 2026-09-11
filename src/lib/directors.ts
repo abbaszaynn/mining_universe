@@ -27,6 +27,17 @@ export type Director = {
   bio: string;
   /** First-person positioning statement, shown on the leadership carousel. */
   statement?: string;
+  /**
+   * One-line motto for the compact /about leadership grid card. `bio` reads
+   * fine as a schema.org Person description but is nearly identical across
+   * directors who share a role ("Director across the consortium's operating
+   * companies..." repeated three times), which looked generic and
+   * interchangeable on a card too small for the full `statement` paragraph.
+   * Each motto below is drawn from that director's own `statement`, not
+   * invented fresh, so it stays consistent with the no-fabricated-credentials
+   * rule above rather than adding a new unverified claim.
+   */
+  motto: string;
   photo: string;
   /**
    * Personal LinkedIn profile, where one is confirmed. Emitted as `sameAs`
@@ -43,6 +54,7 @@ export const DIRECTORS: Director[] = [
     name: "Tabish Hassan",
     role: "CEO",
     bio: "Leads Durr & Zircon Consortium across all three operating companies, including strategy, licensing, and investor relations.",
+    motto: "Proved what these mountains actually hold.",
     statement:
       "These mountains have been talked about for generations, but nobody ever went up and proved what was inside them. We did. Now that the Government of Gilgit Baltistan and Pakistan have opened this sector properly, our work is to turn what we found into something that leaves this whole region better off.",
     photo: "/images/directors/Tabish Hassan.jpeg",
@@ -51,6 +63,7 @@ export const DIRECTORS: Director[] = [
     name: "Zain Abbas",
     role: "Director",
     bio: "Director across the consortium's operating companies, working on operations and business development.",
+    motto: "Young, local, and licensed. That's new here.",
     statement:
       "We are young, we are from this land, and we hold these licences legally. That combination simply did not exist here before. Any serious investor, anywhere in the world, can now come to Gilgit Baltistan, stand on the ground themselves, and build something alongside us.",
     photo: "/images/directors/Zain Abbas.jpeg",
@@ -60,6 +73,7 @@ export const DIRECTORS: Director[] = [
     name: "Daniyal Ali",
     role: "Director",
     bio: "Director across the consortium's operating companies, working on operations and business development.",
+    motto: "Every valley's people share in what it yields.",
     statement:
       "Every valley we work in belongs to the people who live in it, and they sit at the table with us. If this land is going to become wealthy, the families who own it have to become wealthy with it. That is not just something we say, it is written into our community agreements.",
     photo: "/images/directors/Daniyal Ali.jpeg",
@@ -68,6 +82,7 @@ export const DIRECTORS: Director[] = [
     name: "Sabi ul Hasaan",
     role: "Director",
     bio: "Director across the consortium's operating companies, working on operations and business development.",
+    motto: "Walked these seams ourselves, at altitude.",
     statement:
       "We have walked these seams ourselves, at altitude and in the cold, long before anyone else was interested in them. That is why we can speak about the potential of these mines with confidence instead of guesswork.",
     photo: "/images/directors/Sabi ul Hasaan (1).jpeg",
@@ -76,6 +91,7 @@ export const DIRECTORS: Director[] = [
     name: "Zubair Abbas",
     role: "Legal Advisor",
     bio: "Advises on regulatory compliance, licensing, and contractual matters across the consortium's mining leases and exploration licences.",
+    motto: "Clean paperwork is the real way in.",
     statement:
       "Foreign capital rarely struggles here for lack of minerals; it struggles for lack of clean paperwork. Our licences, incorporation records and community agreements are complete and open to inspection, and we walk every investor through the legal route into Pakistan step by step.",
     photo: "/images/directors/Zubair Abbas.jpeg",
@@ -84,6 +100,7 @@ export const DIRECTORS: Director[] = [
     name: "Kumail Abbas",
     role: "Project Director",
     bio: "Oversees field projects and site operations across the consortium's licensed concessions.",
+    motto: "On the sites, not behind a desk.",
     statement:
       "I spend my time on the sites, not behind a desk. We are a young team that grew up beneath these mountains, and getting to be the generation that finally opens them up, properly and on record, genuinely feels like a blessing.",
     photo: "/images/directors/kunail abbas.jpeg",

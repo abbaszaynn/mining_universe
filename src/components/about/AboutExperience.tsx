@@ -162,15 +162,24 @@ export function AboutExperience() {
             Minerals, Zircon Mines, and Earth Lux Mines and Minerals, now
             unified under Durr &amp; Zircon Consortium.
           </p>
-          <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4">
+          {/*
+            grid-cols-[repeat(auto-fill,minmax(9.5rem,1fr))] rather than a
+            fixed column count: at 4 columns on desktop each photo stretched
+            to fill roughly a quarter of a 105rem-wide section, which read as
+            oversized for a headshot. Auto-fill with a ~152px floor caps each
+            card at a reasonable size regardless of viewport or how many
+            directors are ever added, instead of letting a wide screen
+            balloon them.
+          */}
+          <div className="grid grid-cols-[repeat(auto-fill,minmax(9.5rem,1fr))] gap-x-6 gap-y-10">
             {DIRECTORS.map((person) => (
-              <div key={person.name} className="flex flex-col">
+              <div key={person.name} className="flex max-w-[11rem] flex-col">
                 <div className="relative aspect-square w-full overflow-hidden rounded-md">
                   <Image
                     src={person.photo}
                     alt={person.name}
                     fill
-                    sizes="(max-width: 640px) 44vw, (max-width: 1024px) 28vw, 22vw"
+                    sizes="152px"
                     className="object-cover"
                   />
                 </div>
@@ -181,7 +190,7 @@ export function AboutExperience() {
                   {person.role}
                 </p>
                 <p className="mt-2 text-sm leading-relaxed text-graphite-500">
-                  {person.bio}
+                  {person.motto}
                 </p>
               </div>
             ))}
