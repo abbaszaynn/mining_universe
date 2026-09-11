@@ -121,12 +121,50 @@ export function organizationJsonLd() {
           "@type": "AdministrativeArea",
           name: SITE.region,
         },
+        // What the entity is an authority on. Answer engines use this when
+        // deciding which organisation a topical question maps to, so it
+        // names the actual minerals and places rather than generic sector
+        // words. Rare earths are deliberately absent: the group holds none.
         knowsAbout: [
-          "Mining investment",
+          "Mining investment in Pakistan",
+          "Mining in Gilgit Baltistan",
+          "Mining licences in Gilgit Baltistan",
           "Copper mining",
           "Gold mining",
+          "Placer gold mining",
+          "Nephrite jade",
+          "Serpentine",
+          "Antimony",
+          "Lead and silver",
+          "Molybdenum",
+          "Granite and marble",
           "Mineral exploration",
-          "Gilgit Baltistan",
+        ],
+        /**
+         * The three registered companies that actually hold the licences.
+         * Without this the entity reads as one company, while every
+         * concession page names Durr, Zircon or Earth Lux as the holder.
+         * Zircon Mines carries the LinkedIn company page as `sameAs`; that
+         * page is named for Zircon Mines today, which is exactly why it sits
+         * here rather than on the consortium itself.
+         */
+        subOrganization: [
+          {
+            "@type": "Organization",
+            name: "Durr Mines and Minerals (PVT) LTD",
+            parentOrganization: { "@id": `${url}/#organization` },
+          },
+          {
+            "@type": "Organization",
+            name: "Zircon Mines (PVT) LTD",
+            parentOrganization: { "@id": `${url}/#organization` },
+            sameAs: ["https://www.linkedin.com/company/zircon-mines/"],
+          },
+          {
+            "@type": "Organization",
+            name: "Earth Lux Mines & Minerals (PVT) LTD",
+            parentOrganization: { "@id": `${url}/#organization` },
+          },
         ],
       },
       {

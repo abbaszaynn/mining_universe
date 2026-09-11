@@ -2,7 +2,8 @@ import { notFound } from "next/navigation";
 import { getNewsById, getCompanies, getNews } from "@/lib/data";
 import { BlogArticleExperience } from "@/components/blog/BlogArticleExperience";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { articleJsonLd, createPageMetadata } from "@/lib/seo";
+import { articleJsonLd, createPageMetadata, faqJsonLd } from "@/lib/seo";
+import { articleFaqItems } from "@/lib/article-blocks";
 
 type PageProps = {
   params: { id: string };
@@ -38,6 +39,11 @@ export default async function NewsDetailPage({ params }: PageProps) {
     notFound();
   }
 
+  // Q&A articles (question headings, see lib/article-blocks) also get FAQPage
+  // schema: it is how answer engines pick up the question and answer pairs.
+  // One stray question is not a FAQ, so it takes two or more.
+  const faqItems = articleFaqItems(article.content);
+
   const companyName = article.companyId
     ? companies.find((c) => c.id === article.companyId)?.name
     : undefined;
@@ -52,7 +58,13 @@ export default async function NewsDetailPage({ params }: PageProps) {
 
   return (
     <>
-      <JsonLd data={articleJsonLd(article)} />
+      <JsonLd
+        data={
+          faqItems.length >= 2
+            ? [articleJsonLd(article), faqJsonLd(faqItems)]
+            : articleJsonLd(article)
+        }
+      />
       <BlogArticleExperience
         article={article}
         companyName={companyName}

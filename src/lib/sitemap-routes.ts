@@ -55,30 +55,6 @@ export const STATIC_ROUTES = [
  */
 export const NEWS_ROUTES = [
   {
-    id: "untapped-potential-copper-mining-gilgit-baltistan",
-    publishDate: "2026-01-20T12:00:00Z",
-  },
-  {
-    id: "sustainable-gemstone-mining-northern-pakistan",
-    publishDate: "2026-01-27T09:00:00Z",
-  },
-  {
-    id: "strategic-importance-silica-quartz-iron-ore",
-    publishDate: "2026-02-03T14:00:00Z",
-  },
-  {
-    id: "resurgence-placer-gold-panning-gilgit-baltistan",
-    publishDate: "2026-02-10T10:00:00Z",
-  },
-  {
-    id: "geology-shigar-copper-gold",
-    publishDate: "2026-04-10T10:00:00Z",
-  },
-  {
-    id: "geological-importance-hilal-abad",
-    publishDate: "2026-04-12T10:00:00Z",
-  },
-  {
     id: "pakistan-us-critical-minerals-partnership",
     publishDate: "2026-08-10T10:00:00Z",
   },
@@ -89,5 +65,21 @@ export const NEWS_ROUTES = [
   {
     id: "serpentine-nephrite-kharmang-hilal-abad",
     publishDate: "2026-09-08T09:00:00Z",
+  },
+  {
+    id: "placer-gold-mining-pakistan-gilgit-baltistan",
+    publishDate: "2026-09-09T10:00:00Z",
+  },
+  {
+    id: "rare-earth-metals-mining-pakistan-gilgit-baltistan",
+    publishDate: "2026-09-09T12:00:00Z",
+  },
+  {
+    id: "best-mining-investment-opportunity-gilgit-baltistan-pakistan",
+    publishDate: "2026-09-10T08:00:00Z",
+  },
+  {
+    id: "mines-of-gilgit-baltistan-pakistan-minerals-guide",
+    publishDate: "2026-09-10T09:00:00Z",
   },
 ];

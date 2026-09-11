@@ -6,6 +6,7 @@ import { useLayoutEffect, useRef, type ReactNode } from "react";
 import { gsap } from "@/lib/gsap";
 import { formatDate, cn } from "@/lib/utils";
 import type { NewsArticle } from "@/lib/types";
+import { parseArticle } from "@/lib/article-blocks";
 import { MineralTitle } from "./MineralTitle";
 import { BlogCard } from "./BlogCard";
 
@@ -68,7 +69,53 @@ export function BlogArticleExperience({
   const rootRef = useRef<HTMLDivElement>(null);
   const progressRef = useRef<HTMLDivElement>(null);
   const heroImageRef = useRef<HTMLDivElement>(null);
-  const paragraphs = article.content.split("\n\n").filter(Boolean);
+  // Blocks rather than a flat paragraph list, so question headings (see
+  // lib/article-blocks) render as real headings instead of numbered prose.
+  const blocks = parseArticle(article.content);
+  const questionCount = blocks.filter((b) => b.kind === "question").length;
+  // Q&A articles drop the numbered labels and the alternating rule, which read
+  // as noise when every other block is already a heading.
+  const isQa = questionCount > 0;
+  let paragraphIndex = -1;
+  const renderedBlocks = blocks.map((block, index) => {
+    if (block.kind === "question") {
+      return (
+        <h2
+          key={index}
+          data-blog-paragraph
+          data-blog-animate
+          className="relative pt-6 font-[family-name:var(--font-display)] text-2xl font-semibold leading-snug tracking-[-0.015em] text-graphite-950 md:text-[1.75rem]"
+        >
+          {block.text}
+        </h2>
+      );
+    }
+    paragraphIndex += 1;
+    const p = paragraphIndex;
+    return (
+      <p
+        key={index}
+        data-blog-paragraph
+        data-blog-animate
+        className={cn(
+          "relative text-base leading-[1.85] text-graphite-950 md:text-lg md:leading-[1.9]",
+          p === 0 &&
+            "first-letter:float-left first-letter:mr-3 first-letter:mt-1 first-letter:font-[family-name:var(--font-display)] first-letter:text-5xl first-letter:font-semibold first-letter:text-copper-500 md:first-letter:text-6xl",
+          !isQa && p % 2 === 1 && "border-l border-copper-500/20 pl-6 md:pl-8"
+        )}
+      >
+        {!isQa && p > 0 && (
+          <span
+            className="mb-3 block font-mono text-[10px] uppercase tracking-[0.35em] text-copper-500/70"
+            aria-hidden
+          >
+            {String(p + 1).padStart(2, "0")}
+          </span>
+        )}
+        {renderParagraph(block.text)}
+      </p>
+    );
+  });
 
   useLayoutEffect(() => {
     const root = rootRef.current;
@@ -245,7 +292,7 @@ export function BlogArticleExperience({
               </time>
               <span className="hidden h-1 w-1 rounded-full bg-copper-500/50 sm:inline-block" />
               <span className="hidden font-mono text-xs uppercase tracking-[0.2em] text-graphite-600 sm:inline">
-                {paragraphs.length} sections
+                {isQa ? `${questionCount} questions answered` : `${blocks.length} sections`}
               </span>
             </div>
 
@@ -296,30 +343,7 @@ export function BlogArticleExperience({
               aria-hidden
             />
 
-            {paragraphs.map((paragraph, index) => (
-              <p
-                key={index}
-                data-blog-paragraph
-                data-blog-animate
-                className={cn(
-                  "relative text-base leading-[1.85] text-graphite-950 md:text-lg md:leading-[1.9]",
-                  index === 0 &&
-                    "first-letter:float-left first-letter:mr-3 first-letter:mt-1 first-letter:font-[family-name:var(--font-display)] first-letter:text-5xl first-letter:font-semibold first-letter:text-copper-500 md:first-letter:text-6xl",
-                  index % 2 === 1 &&
-                    "border-l border-copper-500/20 pl-6 md:pl-8"
-                )}
-              >
-                {index > 0 && (
-                  <span
-                    className="mb-3 block font-mono text-[10px] uppercase tracking-[0.35em] text-copper-500/70"
-                    aria-hidden
-                  >
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                )}
-                {renderParagraph(paragraph)}
-              </p>
-            ))}
+            {renderedBlocks}
           </div>
 
           {relatedArticles.length > 0 && (

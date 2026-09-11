@@ -65,7 +65,7 @@ export const COMMODITIES: Commodity[] = [
     intro:
       "We supply antimony from concessions held under licence in Gultari and the Gojal tehsil of Hunza, quoted FOB Karachi or CIF. Payment against irrevocable L/C at sight, or SBLC for repeat contracts, and assay reports are shared with verified buyers ahead of any commitment.",
     demand:
-      "Antimony demand has firmed globally on its role in flame retardants, battery chemistries and semiconductor manufacture, and it sits on most Western critical-minerals watch lists. Gilgit Baltistan's antimony occurrences, including grades reported elsewhere in the Kharmang-Gultari corridor, are still early-stage relative to that demand curve.",
+      "Antimony sits on most Western critical-minerals watch lists now, driven by flame retardants, battery chemistries and semiconductor manufacture. Gilgit Baltistan's antimony occurrences, including grades reported elsewhere in the Kharmang-Gultari corridor, are still early-stage relative to that demand curve.",
     sourcedFrom: [
       "gultari-polymetallic-ores",
       "gojal-hunza-antimony-deposit",
@@ -119,7 +119,7 @@ export const COMMODITIES: Commodity[] = [
     intro:
       "Premium-grade nephrite jade is the primary target at our Hilal Abad block in Kharmang district, which is in operation and reachable by road, with serpentine and initial nephrite samples also recovered at our neighbouring Mahdi Abad block. We additionally lift nephrite from the Ghizer valleys. Everything is available as raw boulder or dressed stone direct from the licence holder rather than through an intermediary trader, quoted FOB Karachi or CIF, with sample material available ahead of any bulk commitment.",
     demand:
-      "Nephrite is prized across East Asian markets for carving and ornamental work, and it is among the most culturally valued stones we bring out of the ground. Samples from Hilal Abad have been examined and approved by specialists with more than twenty years working specifically in nephrite, and sample approval has also come back from China, which is the principal market for the stone. Buyers in this category typically want to inspect physical material before committing, which we accommodate directly.",
+      "Nephrite is prized across East Asian markets for carving and ornamental work, and it is among the most culturally valued stones we bring out of the ground. The Hilal Abad samples have cleared expert review and buyer approval in China itself, the detail is on the concession page. Buyers in this category typically want to inspect physical material before committing, which we accommodate directly.",
     sourcedFrom: [
       "hilal-abad-polymetallic-complex",
       "kharmang-polymetallic-structure",
