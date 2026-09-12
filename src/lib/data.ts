@@ -966,6 +966,33 @@ export const news: NewsArticle[] = [
     imageUrl: '/images/nephrite-hilal-abad-sample-1.jpg',
     publishDate: '2026-09-12T10:00:00Z',
     companyId: 'zircon-mines',
+  },
+  {
+    id: 'gold-mining-gilgit-baltistan-sonewal-to-elaman-group',
+    title: 'Gold Mining in Gilgit Baltistan: The Sonewal Panners, an Unregulated Rush, and a $20 Million Kazakh Bet',
+    excerpt: 'Families have panned Gilgit Baltistan\'s rivers for gold for generations. Regulators are now warning about the machine-driven rush that followed them, and a Kazakh investor just committed $20 million on the strength of preliminary studies alone. Here is where a licensed, producing operation actually fits into that picture.',
+    content: [
+      "Ask how long gold mining has gone on in Gilgit Baltistan and the honest answer is longer than any licence, ours included, has existed. What has changed recently is everything around that old practice: a genuine regulatory scramble, and a fresh nine-figure bet from Kazakhstan on ground nobody has fully proven yet. This is the fuller picture, not just our own piece of it.",
+      "## Who were the original gold panners here?",
+      "Families known as Sonewal in Shina and Mowaan in Brushaski have worked the riverbanks of Gilgit Baltistan for generations, moving from river to river the way nomadic herders move between pastures, timed to the winter months when water levels drop and more sediment is exposed. Reporting in Dawn in 2016 put the number at roughly 3,000 people earning a living this way, washing sand by hand with no modern equipment and selling what they recover directly to jewellers in Gilgit city. Some accounts trace the practice back further still, into local legend involving Alexander the Great and stories of gold-rich ground guarded by giant burrowing creatures, the kind of tale that tends to attach itself to a place people have genuinely found gold for a very long time.",
+      "## Which rivers are actually involved?",
+      "The Indus and the Gilgit river carry the bulk of the documented activity, with the Shyok also named in the record. Our own licensed stretch runs along the Skardu road, and the district-by-district detail of where the wider trade has concentrated is on our [placer gold explainer](/news/placer-gold-mining-pakistan-gilgit-baltistan).",
+      "## Has hand panning given way to machines?",
+      "In large part, yes, and that is precisely what has regulators worried. Recent reporting on Diamer district alone counted more than 300 excavators working the Indus riverbed there. That is a different scale of activity entirely from a family with a pan, and it is the shift that turned this from a quiet cultural practice into a live regulatory question.",
+      "## What exactly are regulators worried about?",
+      "Dawn reported in August 2026 that Gilgit Baltistan's Environmental Protection Agency has flagged extensive, largely unregulated placer extraction as a genuine risk: oil and other material leaking from generators and machinery into rivers and streams, riverbank erosion threatening settlements and farmland, and river-flow alterations from makeshift protection walls built around extraction sites. WAPDA's Diamer-Bhasha Dam project formally raised concern about extraction between Basri and Raikot near Chilas, inside the dam's own reservoir area. GBEPA's own director, Khadim Hussain, was quoted saying the agency lacks the staff to monitor activity and enforce the law across the region. One operator was fined Rs 1 million and suspended in Nasirabad, Hunza, for violations. That is not us describing a problem to make our own position look better by comparison. That is the regulator's own account of the current state of the sector.",
+      "## Where does a licensed operation sit against that backdrop?",
+      "On the right side of the paperwork, which in an unregulated sector is not a small thing. Our placer gold concession in Skardu is held under a formal mining lease, not informal riverbank extraction, and it appears as a named, licensed block on the government's own registry rather than as one of the activities GBEPA describes struggling to monitor. We are not going to claim environmental credentials we have not had independently verified. What we can say plainly is that operating under licence, with the compliance obligations that come with it, is a different category from the extraction this reporting describes, and that difference is exactly what a serious investor or buyer should be checking for before engaging with any operator in this sector.",
+      "## Is real capital actually moving into this sector right now?",
+      "Yes, and recently. Kazakhstan's Elaman Group, led by founder and managing partner Azamat Utegenov, told Pakistan's Board of Investment in February 2026 that it plans to invest $20 million into placer gold in Gilgit Baltistan, with further phases to follow, after completing what the company itself described as preliminary studies. Read that carefully: a serious international investor is committing eight figures on the strength of preliminary work, not a producing asset. Our own placer licence is past that stage. It is operational now, not under study.",
+      "## What does 'operational now' actually mean for this concession?",
+      "A running placer operation on a licensed stretch of riverbed, reachable by road rather than requiring the kind of remote access that adds cost to everything from fuel to equipment transport. Area, licence status and how it fits alongside our other nine concessions are on the [Skardu placer gold concession page](/concessions/skardu-placer-gold), and the commercial terms for buying the gold itself are on our [placer gold commodity page](/commodities/placer-gold).",
+      "## How do I buy from this operation or discuss investing in it?",
+      "Through the [investor desk](/investor-desk). Tell us whether you are after material, a stake in the operation, or simply want the documentation that shows this is a licensed lease rather than one of the extraction sites currently under regulatory scrutiny, and we will take it from there.",
+    ].join('\n\n'),
+    imageUrl: '/images/commodities/placer-gold-new.webp',
+    publishDate: '2026-09-13T09:00:00Z',
+    companyId: 'durr-zircon',
   }
 ];
 

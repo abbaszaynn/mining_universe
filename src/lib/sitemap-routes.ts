@@ -86,4 +86,8 @@ export const NEWS_ROUTES = [
     id: "nephrite-jade-hilal-abad-gilgit-baltistan",
     publishDate: "2026-09-12T10:00:00Z",
   },
+  {
+    id: "gold-mining-gilgit-baltistan-sonewal-to-elaman-group",
+    publishDate: "2026-09-13T09:00:00Z",
+  },
 ];

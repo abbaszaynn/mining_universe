@@ -234,6 +234,7 @@ and every figure carries a named source in the text.
 - [Placer gold mining in Pakistan and Gilgit Baltistan](${base}/news/placer-gold-mining-pakistan-gilgit-baltistan): where placer gold occurs, how it is mined today, and the 26 km placer licence on the Skardu road
 - [Rare earth metals in Pakistan and Gilgit Baltistan](${base}/news/rare-earth-metals-mining-pakistan-gilgit-baltistan): where rare earths have actually been documented in Pakistan, what remains unproven, and the critical minerals the north does hold
 - [Nephrite jade at Hilal Abad](${base}/news/nephrite-jade-hilal-abad-gilgit-baltistan): white, apple-green and deep green nephrite recovered at the Hilal Abad concession, illustrated with the operator's own field photography (not stock images), how it compares to Pakistan's established nephrite belt further south, and how to arrange a physical sample
+- [Gold mining in Gilgit Baltistan](${base}/news/gold-mining-gilgit-baltistan-sonewal-to-elaman-group): the Sonewal/Mowaan traditional gold panners, the shift to machine-driven extraction, GBEPA's August 2026 regulatory concerns, Kazakhstan's Elaman Group committing $20 million on preliminary studies alone, and how a licensed, producing placer concession differs from unregulated extraction
 
 ## Disclosure policy
 
