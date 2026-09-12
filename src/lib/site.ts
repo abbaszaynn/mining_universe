@@ -137,6 +137,16 @@ export const SITE = {
     "rare earth metals Pakistan",
     "rare earth elements Gilgit Baltistan",
     "critical minerals Gilgit Baltistan",
+    // Buyer-country phrasing, Sept 2026. Each maps to a /markets page.
+    // Australia and South Korea added this round: grounded in each
+    // country's own sourced 2026 policy/demand signal (Australia's
+    // critical minerals capital programme, Korea's antimony import
+    // diversification target and gemstone market), not guessed.
+    "critical minerals investment Pakistan Australia",
+    "ASX critical minerals overseas investment",
+    "antimony supplier South Korea",
+    "nephrite jade Korea market",
+    "Pakistan mining investment for Korean companies",
   ],
   defaultOgImage: "/images/cover_photo.jpg",
   twitterHandle: undefined as string | undefined,

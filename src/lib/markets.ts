@@ -208,6 +208,64 @@ export const MARKETS: Market[] = [
       },
     ],
   },
+  {
+    slug: "australia",
+    name: "Australia",
+    metaTitle: "Pakistan Critical Minerals Investment for Australian Investors",
+    metaDescription:
+      "Copper and antimony investment opportunities in Gilgit Baltistan for Australian critical minerals investors, alongside Australia's own A$1.2 billion Critical Minerals Strategic Reserve and the pattern of ASX-listed juniors operating overseas.",
+    intro:
+      "Australia is not a market we are pitching a raw material sale to. It is a market that already runs the exact playbook we are offering a stake in: government-backed critical minerals investment, and listed juniors that raise capital domestically to operate projects abroad. The Australian government has committed A$1.2 billion to a Critical Minerals Strategic Reserve and a further A$4 billion Critical Minerals Facility, alongside a Critical Minerals Production Tax Incentive, and the February 2026 edition of the Australian Critical Minerals Prospectus lists 78 investment-ready projects across 60 companies domestically.",
+    context:
+      "That is capital and a policy apparatus built for exactly this asset class, currently pointed almost entirely at Australian ground. Our copper and antimony concessions in Gilgit Baltistan sit in the same commodity category ASX critical minerals developers are chasing for 2026, battery and electrification-linked metals, at an earlier stage and a different jurisdiction. One curiosity worth naming rather than glossing over: Australia holds its own significant nephrite deposit at Cowell, South Australia, so nephrite is not the opening we would lead with here. Copper and antimony are.",
+    commoditySlugs: ["copper-concentrate", "antimony-concentrate"],
+    faqs: [
+      {
+        question: "Why would an Australian investor look at Pakistan when Australia has its own critical minerals reserves?",
+        answer:
+          "Portfolio diversification, not substitution. Australian critical minerals capital is currently concentrated in Australian ground, which is also a concentration risk: one jurisdiction, one regulatory regime, one set of domestic cost pressures. A licensed, earlier-stage copper and antimony position in a different jurisdiction is a different point on the same risk curve, not a competing claim on the same thesis.",
+      },
+      {
+        question: "Do Australian mining investors already operate assets overseas?",
+        answer:
+          "Routinely. ASX-listed juniors and mid-tiers hold and operate projects across Africa, the Americas and Asia as a matter of course; raising capital on the ASX while operating abroad is a well-worn structure, not a novel one. What is less common is a foreign licence holder ready to structure a joint venture or farm-in on day one, rather than starting from an application.",
+      },
+      {
+        question: "What does a joint venture or farm-in with your group actually look like?",
+        answer:
+          "We hold the licence, the local incorporation, and the field team already. A farm-in structures your capital against defined exploration spend in exchange for an earned stake; a joint venture combines what we hold with your capital and technical resources directly. Either route skips the application stage entirely, since the titles are already granted. Detail on all four routes, including outright acquisition, is on our investment page.",
+      },
+    ],
+  },
+  {
+    slug: "south-korea",
+    name: "South Korea",
+    metaTitle: "Antimony, Copper & Nephrite Supply for South Korean Buyers",
+    metaDescription:
+      "Antimony, copper and nephrite jade from licensed concessions in Gilgit Baltistan, Pakistan, aligned with South Korea's critical minerals import diversification strategy and its growing gemstone market.",
+    intro:
+      "South Korea's Ministry of Trade, Industry and Energy set an explicit target in its critical minerals strategy: cut dependence on critical minerals from any single dominant supplier from around 80 percent to roughly 50 percent by 2030, with antimony named among the ten minerals treated as strategically vital for semiconductor and battery production. Korea Zinc alone smelts roughly 3,500 tonnes of antimony ingot a year domestically, feedstock that has to come from somewhere outside Korea's own ground.",
+    context:
+      "That is a concrete, government-dated reason to be talking to an antimony licence holder rather than a general pitch about Pakistan's mineral wealth. Separately, and on a different commodity entirely, South Korea's own gemstone market is real and growing: estimated at $1.1 billion in 2026, projected to reach $2.1 billion by 2036. Our nephrite jade from Hilal Abad, recovered in white, apple-green and deep green, sits inside that second market independently of the antimony story. The two buyers in this country are unlikely to be the same desk, and we would expect to run those conversations separately rather than as one pitch.",
+    commoditySlugs: ["antimony-concentrate", "copper-concentrate", "nephrite-jade"],
+    faqs: [
+      {
+        question: "Is there a specific, sourced reason South Korea would want antimony from Pakistan?",
+        answer:
+          "Yes: South Korea's own critical minerals strategy states a target of cutting import concentration from a dominant supplier to around 50 percent by 2030, with antimony named as one of ten minerals treated as strategically vital. That is a stated diversification goal, not our own inference, and a new, licensed, non-incumbent antimony source is a direct answer to it.",
+      },
+      {
+        question: "Who in South Korea actually processes antimony, and could that be a buyer?",
+        answer:
+          "Korea Zinc is the named domestic example: it smelts antimony ingot at scale within Korea, some of which it has shipped onward internationally. We are not claiming a relationship with any named company here, only pointing at the kind of counterparty this supply chain actually has, so an enquiry can be directed at the right desk rather than a general trading contact.",
+      },
+      {
+        question: "Is the nephrite opportunity connected to the antimony one?",
+        answer:
+          "No, and we would not present them as one pitch. Antimony speaks to industrial and defence-linked supply chain policy; nephrite speaks to Korea's separate, sizeable gemstone and jewellery market. Physical nephrite samples from our Hilal Abad concession are available for inspection ahead of any commitment, the same as for any other buyer.",
+      },
+    ],
+  },
 ];
 
 export function getMarket(slug: string) {

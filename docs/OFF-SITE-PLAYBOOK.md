@@ -154,6 +154,42 @@ not worth pursuing. Leaving it noted here so nobody reopens it by accident.
 
 ---
 
+## 3.5. Country-specific channels: Australia and South Korea
+
+Added Sept 2026, when the `/markets/australia` and `/markets/south-korea`
+pages were built. Real GSC data at the time showed zero organic impressions
+from either country in the trailing 90 days, same as China and Saudi Arabia
+despite those pages already existing, so treat a new market page as
+necessary but not sufficient: it makes the site eligible to be found by
+someone from that country, it does not manufacture the search volume. The
+channels below are where an actual counterparty in each country would
+plausibly be looking, found and sourced this round rather than guessed.
+
+### South Korea
+
+| Channel | Why |
+|---|---|
+| **Buykorea.org** (KOTRA's own B2B marketplace) | KOTRA (Korea Trade-Investment Promotion Agency) runs this specifically to match international sellers with Korean buyers, and accepts listings/inquiries directly. This is the Korean equivalent of the Alibaba/TradeKey marketplace strategy in §2, and the single most concrete channel found for this market. List antimony and nephrite jade separately, same discipline as §2. |
+| **Korea Zinc** | Named, real: smelts roughly 3,500 tonnes of antimony ingot annually inside Korea, some shipped onward internationally per public reporting. A concrete research target for who actually buys raw antimony feedstock in this market, not a claim of any existing relationship. Worth having someone research their procurement contact before any outreach. |
+
+### Australia
+
+Austrade's Critical Minerals Prospectus and its investor-facing programmes
+are inbound-only: they promote investment *into* Australian projects, not
+Australian capital going out, so they are not a listing target for us.
+Do not submit anything there.
+
+What Australia does offer is a large population of ASX-listed junior and
+mid-tier miners that routinely raise domestic capital to operate projects
+overseas (Africa, the Americas, Asia already), which is the actual audience
+the new market page is written for. The concrete next step here is PR
+adjacent to §4 rather than a directory: Australian mining trade press
+(Australian Mining, Mining.com.au, Stockhead's resources desk) and investor
+conferences where overseas critical minerals projects get pitched (Mines
+and Money, Precious Metals Investment Symposium) are the places this
+audience actually looks, not a static listing site. Fold into the
+journalist list in §4 rather than treating separately.
+
 ## 4. PR and journalist outreach (highest leverage, real effort)
 
 **Why this is the item that matters.** Everything above is a listing. This is

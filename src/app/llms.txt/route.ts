@@ -206,7 +206,7 @@ ${MARKETS.map((m) => `- [${m.name}](${base}/markets/${m.slug})`).join("\n")}
 - [Invest](${base}/invest): the four partnership routes: JV, farm-in, equity, outright acquisition
 - [Concessions](${base}/concessions): index of all ten licensed concessions
 - [Commodities](${base}/commodities): index of all ${COMMODITIES.length} commodities supplied
-- [Markets](${base}/markets): index of all six investor-country pages
+- [Markets](${base}/markets): index of all ${MARKETS.length} investor-country pages
 - [Mining licence guide](${base}/guides/mining-licence-gilgit-baltistan): how mineral titles are actually granted in Gilgit Baltistan
 - [Mining companies in Gilgit Baltistan](${base}/guides/mining-companies-gilgit-baltistan): how private operators here are licensed, how to verify a mining lease or exploration title holder against the government register, and the full ten-block registry by holding company
 - [FAQ](${base}/faq): direct answers on licensing, documentation, and how to start
