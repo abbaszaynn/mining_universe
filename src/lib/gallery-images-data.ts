@@ -338,5 +338,23 @@ export const galleryImages: GalleryImage[] = [
     companyName: 'Earth Lux Mines',
     mineral: 'Lead',
     properties: 'Galena, Lead'
+  },
+  {
+    id: 'gal-nephrite-hilal-abad-1',
+    url: '/images/nephrite-hilal-abad-sample-1.jpg',
+    title: 'Nephrite Jade - Hilal Abad',
+    description: 'Rough nephrite jade recovered at our Hilal Abad concession, Kharmang. Apple-green tone with white surface patches, photographed on site.',
+    companyName: 'Zircon Mines',
+    mineral: 'Nephrite Jade',
+    properties: 'Nephrite'
+  },
+  {
+    id: 'gal-nephrite-hilal-abad-2',
+    url: '/images/nephrite-hilal-abad-sample-2.jpg',
+    title: 'Nephrite Jade - Hilal Abad, Second Angle',
+    description: 'A second angle of rough nephrite jade from Hilal Abad, Kharmang, showing the stone\'s waxy surface and colour variation.',
+    companyName: 'Zircon Mines',
+    mineral: 'Nephrite Jade',
+    properties: 'Nephrite'
   }
 ];

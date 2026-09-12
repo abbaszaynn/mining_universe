@@ -939,6 +939,33 @@ export const news: NewsArticle[] = [
     imageUrl: '/images/mo-1.jpg',
     publishDate: '2026-09-09T12:00:00Z',
     companyId: 'durr-zircon',
+  },
+  {
+    id: 'nephrite-jade-hilal-abad-gilgit-baltistan',
+    title: 'Nephrite Jade at Hilal Abad: White, Apple-Green and Deep Green, and What Buyers Are Asking Us',
+    excerpt: 'Photographs of the actual rough nephrite coming out of our Hilal Abad concession, and answers to what buyers and investors ask us most: which colours we have, how it compares to Pakistan\'s known nephrite belt further south, and how to see a physical sample.',
+    content: [
+      "The photographs on this page are not stock images. They are rough nephrite jade pulled from our Hilal Abad concession in Kharmang, photographed on site the way our field team actually handles it. We are publishing them because the question we get asked most about this stone is some version of \"can I actually see one\", and the honest answer is yes, and here is what one looks like before anyone has done anything to it.",
+      "## What colours of nephrite have you found at Hilal Abad?",
+      "Three, so far. The pieces photographed here are apple-green, with paler patches running through the surface where the stone thins out toward translucent. Alongside that we have recovered a deeper, more saturated green, and separately a white nephrite. All three are field-identified by our own team. None of this is a laboratory assay, and we are not going to describe it as one. What we can say plainly is that we have handled all three colours ourselves, at the site, more than once.",
+      "## Is Gilgit Baltistan actually a known source of nephrite jade?",
+      "Not historically, no, and it is worth being straightforward about that rather than overselling it. Pakistan's established nephrite trade runs through Bajaur, Mohmand and Chitral in Khyber Pakhtunkhwa, where rough stone has been worked and exported for decades. Gilgit Baltistan does not have that track record. What it has, at Hilal Abad specifically, is a licensed concession where premium-grade nephrite has become the primary target following our own exploration, in ground that was originally filed for copper and iron. That makes this a genuinely new source rather than an extension of an existing one, which is a different story and a different opportunity than buying into an already-established supply chain.",
+      "## Why does nephrite turn up at a site that was originally filed for copper and iron?",
+      "Geology, not luck. Hilal Abad sits in ultramafic ground, the kind of olivine-rich rock that reacts with water to form serpentinite, and nephrite jade characteristically forms close to serpentinite, typically along the contact zones where it meets other rock. We have written the full geological explanation, including why the same reaction is something NASA instruments have gone looking for on Mars, in a separate piece on [serpentine at Kharmang](/news/serpentine-nephrite-kharmang-hilal-abad). The short version is that once serpentine turned up in our field work, nephrite became a reasonable thing to look for rather than a hopeful one, and that is exactly what happened.",
+      "## What determines how valuable a piece of nephrite is?",
+      "Colour, translucency and toughness, in roughly that order for most buyers. Nephrite is denser and tougher than jadeite, which is part of why it has held a market independent of it for centuries. In Pakistan's established nephrite trade further south, rough stone has traded in the broad range of $16 to $100 per kilogram depending on quality, with finished pieces priced well above that. We are citing that range as context for how the wider Pakistani nephrite trade prices rough material, not as a quote for Hilal Abad stone specifically, and any buyer should expect final pricing to depend on the individual parcel, not a blanket figure.",
+      "## Has anyone independent looked at these samples?",
+      "Yes, and we would be cautious of any operator who said otherwise. The vetting process, who carried it out and where buyer review happened, is laid out in full on the [nephrite jade commodity page](/commodities/nephrite-jade) rather than summarised twice here. What matters for this page is simpler: the rough stone photographed above is the same material that went through that process, not a separate showcase piece.",
+      "## Can I get a physical sample before committing to anything?",
+      "That is the point of publishing these photographs rather than a rendering or a stock photo. Physical samples from Hilal Abad are available for inspection, and for serious buyers and investors we would expect nothing less than wanting to hold a piece before any commercial conversation goes further. Reach out through the [investor desk](/investor-desk) and we will arrange it.",
+      "## Is Hilal Abad actually producing, or is this still exploration?",
+      "It is operational now, one of four producing blocks across our ten-concession registry. Getting equipment and people to it is a truck journey rather than a helicopter charter, and several of our earlier-stage blocks in the same district do not have that. Licence status, area and the rest of the mineral profile are on the [Hilal Abad concession page](/concessions/hilal-abad-polymetallic-complex).",
+      "## Where can I see more photographs of the actual stone?",
+      "Our [gallery](/gallery) carries specimen photography from across the registry, nephrite from Hilal Abad included, and it is updated as our own field photography comes in rather than sourced from stock libraries.",
+    ].join('\n\n'),
+    imageUrl: '/images/nephrite-hilal-abad-sample-1.jpg',
+    publishDate: '2026-09-12T10:00:00Z',
+    companyId: 'zircon-mines',
   }
 ];
 

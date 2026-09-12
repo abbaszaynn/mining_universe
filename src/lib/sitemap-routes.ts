@@ -82,4 +82,8 @@ export const NEWS_ROUTES = [
     id: "mines-of-gilgit-baltistan-pakistan-minerals-guide",
     publishDate: "2026-09-10T09:00:00Z",
   },
+  {
+    id: "nephrite-jade-hilal-abad-gilgit-baltistan",
+    publishDate: "2026-09-12T10:00:00Z",
+  },
 ];
