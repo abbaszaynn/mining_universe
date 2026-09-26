@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { buildMailtoFallback, FORM_INBOX } from "@/lib/form-fallback";
 import { cn } from "@/lib/utils";
 
 type ContactFormProps = {
@@ -21,6 +22,7 @@ export function ContactForm({
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const [fallbackHref, setFallbackHref] = useState("");
 
   const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
   const defaultSubject = companyName
@@ -32,17 +34,22 @@ export function ContactForm({
     setLoading(true);
     setStatus("idle");
     setErrorMessage("");
+    setFallbackHref("");
+
+    const form = event.currentTarget;
+    // Same fallback as the investor desk form: see lib/form-fallback.
+    const fallback = buildMailtoFallback(defaultSubject, new FormData(form));
 
     if (!accessKey) {
       setStatus("error");
       setErrorMessage(
-        "Contact form is not configured yet. Email us directly at info@gbmines.com."
+        "Our online form is temporarily unavailable. Your message is ready to send by email instead."
       );
+      setFallbackHref(fallback);
       setLoading(false);
       return;
     }
 
-    const form = event.currentTarget;
     const formData = new FormData(form);
     formData.append("access_key", accessKey);
     formData.append("from_name", "GOS Contact");
@@ -76,10 +83,11 @@ export function ContactForm({
     } catch (error) {
       setStatus("error");
       setErrorMessage(
-        error instanceof Error
-          ? error.message
-          : "Something went wrong. Please try again."
+        `${
+          error instanceof Error ? error.message : "Something went wrong."
+        } Your message is ready to send by email instead.`
       );
+      setFallbackHref(fallback);
     } finally {
       setLoading(false);
     }
@@ -191,7 +199,17 @@ export function ContactForm({
         </div>
 
         {status === "error" && (
-          <p className="text-sm text-red-300">{errorMessage}</p>
+          <div className="text-sm text-red-300">
+            <p>{errorMessage}</p>
+            {fallbackHref && (
+              <a
+                href={fallbackHref}
+                className="mt-2 inline-block font-medium text-[#d4af37] underline underline-offset-4"
+              >
+                Send by email to {FORM_INBOX}
+              </a>
+            )}
+          </div>
         )}
       </form>
     );
@@ -265,9 +283,17 @@ export function ContactForm({
       </div>
 
       {status === "error" && (
-        <p className="rounded-lg border border-red-500/20 bg-red-500/10 px-3 py-2.5 text-sm text-red-300">
-          {errorMessage}
-        </p>
+        <div className="rounded-lg border border-red-500/20 bg-red-500/10 px-3 py-2.5 text-sm text-red-300">
+          <p>{errorMessage}</p>
+          {fallbackHref && (
+            <a
+              href={fallbackHref}
+              className="mt-2 inline-block font-medium text-[#d4af37] underline underline-offset-4"
+            >
+              Send by email to {FORM_INBOX}
+            </a>
+          )}
+        </div>
       )}
 
       <button

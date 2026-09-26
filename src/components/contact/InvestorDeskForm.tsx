@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { getInvestorDeskCompanies, type InvestorDeskCompany } from "@/lib/investor-desk-data";
+import { buildMailtoFallback, FORM_INBOX } from "@/lib/form-fallback";
 import { cn } from "@/lib/utils";
 import { SquareButton } from "@/components/ui/SquareButton";
 
@@ -18,6 +19,7 @@ export function InvestorDeskForm({
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const [fallbackHref, setFallbackHref] = useState("");
   const [selectedCompany, setSelectedCompany] = useState("");
 
   const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
@@ -36,17 +38,27 @@ export function InvestorDeskForm({
     setLoading(true);
     setStatus("idle");
     setErrorMessage("");
+    setFallbackHref("");
+
+    const form = event.currentTarget;
+    // Built from the raw form before any plumbing fields are appended, so
+    // every failure path below can hand the visitor their own details back
+    // as a ready-to-send email instead of losing the enquiry.
+    const fallback = buildMailtoFallback(
+      "Investor desk inquiry",
+      new FormData(form)
+    );
 
     if (!accessKey) {
       setStatus("error");
       setErrorMessage(
-        "Form is not configured yet. Email us directly at info@gbmines.com."
+        "Our online form is temporarily unavailable. Your details are ready to send by email instead, one click below."
       );
+      setFallbackHref(fallback);
       setLoading(false);
       return;
     }
 
-    const form = event.currentTarget;
     const formData = new FormData(form);
     formData.append("access_key", accessKey);
     formData.append("from_name", "GOS Investor Desk");
@@ -78,10 +90,11 @@ export function InvestorDeskForm({
     } catch (error) {
       setStatus("error");
       setErrorMessage(
-        error instanceof Error
-          ? error.message
-          : "Something went wrong. Please try again."
+        `${
+          error instanceof Error ? error.message : "Something went wrong."
+        } Your details are ready to send by email instead, one click below.`
       );
+      setFallbackHref(fallback);
     } finally {
       setLoading(false);
     }
@@ -312,9 +325,17 @@ export function InvestorDeskForm({
         </div>
 
         {status === "error" && (
-          <p className="rounded-lg border border-red-500/20 bg-red-500/10 px-4 py-3 text-sm text-red-600">
-            {errorMessage}
-          </p>
+          <div className="rounded-lg border border-red-500/20 bg-red-500/10 px-4 py-3 text-sm text-red-600">
+            <p>{errorMessage}</p>
+            {fallbackHref && (
+              <a
+                href={fallbackHref}
+                className="mt-3 inline-block font-medium text-copper-600 underline underline-offset-4"
+              >
+                Send my inquiry by email to {FORM_INBOX}
+              </a>
+            )}
+          </div>
         )}
 
         <SquareButton
