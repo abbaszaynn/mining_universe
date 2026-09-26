@@ -90,4 +90,8 @@ export const NEWS_ROUTES = [
     id: "gold-mining-gilgit-baltistan-sonewal-to-elaman-group",
     publishDate: "2026-09-13T09:00:00Z",
   },
+  {
+    id: "how-to-invest-in-mining-sector-pakistan",
+    publishDate: "2026-09-26T09:00:00Z",
+  },
 ];

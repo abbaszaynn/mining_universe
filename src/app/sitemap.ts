@@ -26,14 +26,27 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
+  /**
+   * Real dates of the last substantive rewrite, not "now". Every concession
+   * page was rewritten on 2026-09-11 (post-exploration minerals, per-block
+   * status, licence holder) and every commodity page on 2026-09-12 (titles,
+   * sourcing). Without lastmod Google had no signal these pages changed at
+   * all. Update these when the content genuinely changes again: a lastmod
+   * that moves on every build teaches Google to ignore it.
+   */
+  const REGISTRY_UPDATED = new Date("2026-09-11T00:00:00Z");
+  const COMMODITIES_UPDATED = new Date("2026-09-12T00:00:00Z");
+
   const concessionEntries: MetadataRoute.Sitemap = [
     {
       url: `${base}/concessions`,
+      lastModified: REGISTRY_UPDATED,
       changeFrequency: "weekly",
       priority: 0.95,
     },
     ...concessions.map((c) => ({
       url: `${base}/concessions/${c.slug}`,
+      lastModified: REGISTRY_UPDATED,
       changeFrequency: "monthly" as const,
       priority: 0.85,
     })),
@@ -42,11 +55,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const commodityEntries: MetadataRoute.Sitemap = [
     {
       url: `${base}/commodities`,
+      lastModified: COMMODITIES_UPDATED,
       changeFrequency: "weekly",
       priority: 0.9,
     },
     ...COMMODITIES.map((c) => ({
       url: `${base}/commodities/${c.slug}`,
+      lastModified: COMMODITIES_UPDATED,
       changeFrequency: "monthly" as const,
       priority: 0.85,
     })),

@@ -993,6 +993,47 @@ export const news: NewsArticle[] = [
     imageUrl: '/images/commodities/placer-gold-new.webp',
     publishDate: '2026-09-13T09:00:00Z',
     companyId: 'durr-zircon',
+  },
+  /*
+   * Process guide, deliberately distinct from
+   * best-mining-investment-opportunity-gilgit-baltistan-pakistan (which is
+   * "why Gilgit Baltistan"). The legal statements are taken from the text of
+   * the Foreign Private Investment (Promotion and Protection) Act, 1976 as
+   * published by Pakistan's Board of Investment (sections 2, 5, 6, 8, 9),
+   * read directly rather than via a search summary.
+   */
+  {
+    id: 'how-to-invest-in-mining-sector-pakistan',
+    title: 'How Investors Can Invest in Pakistan\'s Mining Sector: Legal Routes, Geology, Returns and Risks',
+    excerpt: 'The practical side of investing in mining in Pakistan: the company structure you need, what the law says about taking profits home, what the geology of Gilgit Baltistan does and does not prove, how returns work in each route, and the risks worth pricing in.',
+    content: [
+      "Most of what we get asked on calls from abroad is not whether Pakistan has minerals. It is how the money actually moves: what company you need, whether profits can leave the country, and what exactly you are buying. This is the process as we walk investors through it, including the parts that slow deals down. The wider case for Gilgit Baltistan is in our [investment opportunity piece](/news/best-mining-investment-opportunity-gilgit-baltistan-pakistan); this one is about the mechanics.",
+      "## What are the ways to invest in mining in Pakistan?",
+      "Broadly five, and they differ mainly in how, and how soon, you earn. Buying material is the simplest: you pay for concentrate, gold or stone per shipment and make your margin on resale or processing, with no stake in the ground. An offtake agreement is the same idea over time, a committed monthly tonnage at agreed terms. A joint venture puts your capital beside an existing title and field team, and you share production profit according to the agreement. A farm-in earns you a stake by funding a defined exploration programme, so your return arrives later and depends on what that work proves. Equity or an outright acquisition buys you into the company itself, with returns through dividends or the value of the business. Each route is set out on our [investment page](/invest).",
+      "## Can a foreign company fully own a mining business in Pakistan?",
+      "Yes, through a Pakistani company. Mining is not on Pakistan's short list of sectors closed to foreign investors, which covers arms and ammunition, high explosives, radioactive substances and currency printing, and a Pakistani company can be wholly foreign owned. What Gilgit Baltistan's concession rules require is that the title holder is registered in Pakistan, not that its owners are Pakistani. So the realistic options are partnering with a company that already holds a licence, or setting up a subsidiary of your own. Partnering is usually faster, because a fresh application starts from nothing.",
+      "## How do I set up a Pakistani company as a foreign investor?",
+      "Online, through the Securities and Exchange Commission of Pakistan. Directors and shareholders each register on SECP's LEAP portal, foreign nationals using a passport, and the company is incorporated there. The step foreign investors most often underestimate is security clearance. Where a company has foreign shareholders or directors, their details are passed through the Board of Investment to the Ministry of Interior for clearance. It is routine, but it is not instant, so start it early rather than when you are ready to sign.",
+      "## Can I take my profits out of Pakistan?",
+      "Yes, and it is written into law rather than left to discretion. Section 6 of the Foreign Private Investment (Promotion and Protection) Act, 1976 lets a foreign investor in an approved undertaking repatriate the original investment, the profits earned on it, and any gain from reinvested profits or capital appreciation, in the currency of the country the investment came from. The Act's definition of foreign private investment expressly includes the development and extraction of mineral resources. Two honest qualifications: the protection attaches to investment approved by the Federal Government, and remittances run through Pakistan's foreign exchange rules and the State Bank, so paperwork and timing are real considerations even though the right itself is clear.",
+      "## What legal protections do foreign mining investors have?",
+      "Three worth knowing, all in the same 1976 Act. Section 5 says foreign investment cannot be taken over except under due process with adequate compensation, paid in the investor's own currency. Section 8 says a foreign investor cannot be taxed more heavily on income than a Pakistani citizen in the same position, and that any double taxation treaty with your home country applies. Section 9 gives equal treatment under import and export rules. None of that replaces a well-drafted contract, but it is the floor you are building on.",
+      "## What is the geology of Gilgit Baltistan, in plain terms?",
+      "Some of the most geologically violent ground on the planet, which is exactly why it is mineralised. Gilgit Baltistan sits where the Indian plate drove into Eurasia. Two great fault zones cross it, the Main Mantle Thrust to the south and the Main Karakoram Thrust to the north, and between them lies the Kohistan Island Arc, the remains of a chain of volcanic islands crushed between the two plates. That is the kind of setting where geologists expect copper, gold, lead and molybdenum, and the region does host them: porphyry copper systems have been traced through the Kohistan arc, and the [full mineral picture by district](/news/mines-of-gilgit-baltistan-pakistan-minerals-guide) follows the same fault lines. Every one of our ten blocks sits inside this collision belt.",
+      "## What does the geology not prove?",
+      "Tonnage. Favourable geology tells you where to look, not how much is there. By the Center for Strategic and International Studies' count this spring, well over nine tenths of the country's prospective ground has never been properly explored, and Gilgit Baltistan is no exception. Our own registry reflects that plainly: four of our ten blocks are producing and six are at exploration or reconnaissance stage, where identifications come from our own field work and the laboratory detail sits in the data room. Anyone showing you a confident reserve figure for early-stage ground here should be able to tell you who calculated it and how.",
+      "## What returns can mining investors in Pakistan expect?",
+      "It depends almost entirely on the route and the stage, and we will not quote a number for our own ground before you have seen the data. For context, Pakistan's National Minerals Harmonisation Framework, unveiled in 2025, is built around an investor return target of roughly 18 percent. That is a national policy aim, not a promise from us or anyone else. In practice, buying material pays back fastest with the least geological risk; a joint venture on a producing block sits in the middle; a farm-in on an exploration block carries the most risk and the most upside, because you are paying to find out whether the ground is as good as its geology suggests.",
+      "## What are the real risks of investing in Pakistani mining?",
+      "Name them upfront, because the deals that hold up are the ones where they were priced in. Geological risk: early-stage ground can disappoint. Price risk: copper, gold and antimony move with world markets. Policy risk: the 2025 framework still depends on each province adopting it. Remittance timing, as above. And security, which varies sharply by region. Gilgit Baltistan's picture is calmer than Balochistan's, where most of the headline projects sit, but you should make your own assessment; we arrange the NOCs and security permissions for any site visit.",
+      "## How do I check a mining company before investing?",
+      "Verify the licence against the government's register of title holders, take your own split samples to an independent laboratory, ask to see the signed community agreements, and visit the site. Our [due diligence checklist for Gilgit Baltistan operators](/guides/mining-companies-gilgit-baltistan) sets out each step. Hold us to it too.",
+      "## How do I start investing with Durr & Zircon?",
+      "Tell us which route you are considering through the [investor desk](/investor-desk), and which block or commodity interests you; the full registry, with stage, area and licence holder for every block, is on the [concessions page](/concessions). Once an NDA is signed, the licences, lab results and field reports for that block are opened to you, and we organise the site visit with the permits in hand. If you are investing from a particular country, the context for your market is on our [market pages](/markets).",
+    ].join('\n\n'),
+    imageUrl: '/blogs/b6.jpeg',
+    publishDate: '2026-09-26T09:00:00Z',
+    companyId: 'durr-zircon',
   }
 ];
 

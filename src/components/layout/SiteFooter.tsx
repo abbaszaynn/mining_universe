@@ -1,6 +1,48 @@
 import Link from "next/link";
 import { GridLines } from "@/components/ui/GridLines";
 import { SITE } from "@/lib/site";
+import { concessions } from "@/lib/concessions";
+import { COMMODITIES } from "@/lib/commodities";
+import { MARKETS } from "@/lib/markets";
+
+/**
+ * Site-wide directory of every deep page, generated from the registry data.
+ *
+ * Added Sept 2026 after a GSC audit: 7 of 10 concession pages and 5 of 8
+ * market pages had zero impressions in 28 days, and the homepage (by far
+ * the site's strongest page) linked directly to none of them. Every deep
+ * page was reachable only through an index page. Putting the directory in
+ * the footer gives every page, homepage included, a direct crawl path and
+ * descriptive anchor text to each one, and because it maps over the data
+ * arrays it cannot fall out of date when a block, commodity or market is
+ * added.
+ */
+const DIRECTORY = [
+  {
+    heading: "Concessions",
+    links: concessions.map((c) => ({
+      href: `/concessions/${c.slug}`,
+      label: c.district,
+      detail: c.type,
+    })),
+  },
+  {
+    heading: "Commodities",
+    links: COMMODITIES.map((c) => ({
+      href: `/commodities/${c.slug}`,
+      label: c.name,
+      detail: "",
+    })),
+  },
+  {
+    heading: "Investor markets",
+    links: MARKETS.map((m) => ({
+      href: `/markets/${m.slug}`,
+      label: m.name,
+      detail: "",
+    })),
+  },
+];
 
 export function SiteFooter() {
   return (
@@ -41,6 +83,38 @@ export function SiteFooter() {
               </div>
             </div>
           </div>
+
+          {/* Directory: see DIRECTORY above for why this exists. */}
+          <nav
+            aria-label="Site directory"
+            className="mb-16 grid gap-10 border-t border-bone-50/20 pt-12 sm:grid-cols-2 lg:grid-cols-3 md:mb-20"
+          >
+            {DIRECTORY.map((group) => (
+              <div key={group.heading}>
+                <p className="text-xs font-medium uppercase tracking-[0.14em] text-bone-50">
+                  {group.heading}
+                </p>
+                <ul className="mt-4 flex flex-col gap-2 text-sm text-bone-50/70">
+                  {group.links.map((link) => (
+                    <li key={link.href}>
+                      <Link
+                        href={link.href}
+                        className="transition-colors hover:text-bone-50"
+                      >
+                        {link.label}
+                        {link.detail && (
+                          <span className="text-bone-50/45">
+                            {" "}
+                            {link.detail}
+                          </span>
+                        )}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </nav>
 
           <div className="pb-4 text-sm text-bone-50/70 uppercase">
             WEBSITE BY:{" "}
