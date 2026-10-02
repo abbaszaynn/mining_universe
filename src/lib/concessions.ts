@@ -46,12 +46,12 @@ const IMAGE_RULES: [RegExp, string][] = [
   // pages rendering a broken image). Repointed at real photography already in
   // the library, matched to each site's actual commodity.
   [/skardu/i, "/images/commodities/gold.webp"],
-  [/hilal ?abad/i, "/images/mo-2.jpg"],
+  [/hilal ?abad/i, "/images/gallery/hilal-abad-nephrite/hilal-abad-nephrite-22.jpg"],
   [/shigar/i, "/images/copper-generic-3.jpg"],
   [/gojal/i, "/images/mo-3.jpg"],
-  [/ishkoman/i, "/images/nephrite-gupis-1.jpg"],
+  [/ishkoman/i, "/images/commodities/granite.webp"],
   [/jutial/i, "/images/lead-jutial-1.jpg"],
-  [/gupis/i, "/images/nephrite-gupis-2.jpg"],
+  [/gupis/i, "/images/copper-generic-2.jpg"],
 ];
 
 function pickImage(name: string, location: string) {

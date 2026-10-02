@@ -34,3 +34,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Raw phone photos dropped in for the gallery. Originals can carry GPS
+# coordinates of the sites; only the resized, metadata-stripped copies in
+# public/images/gallery/ are published.
+/public/images/nephrite_zircon/
+/public/images/Askoli-Shigar/

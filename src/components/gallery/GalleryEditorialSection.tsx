@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useMemo, useRef } from "react";
 import { gsap } from "@/lib/gsap";
 import type { GalleryImage } from "@/lib/types";
 import { cn } from "@/lib/utils";
@@ -14,20 +14,27 @@ type GalleryEditorialSectionProps = {
   index: number;
 };
 
-/** Editorial row sizes — varied widths, shared baseline like portfolio grids */
-const SIZE_PATTERN = [
-  { height: "100%", width: "clamp(9rem,14vw,11.5rem)" },
-  { height: "88%", width: "clamp(10rem,16vw,13rem)" },
-  { height: "72%", width: "clamp(12rem,20vw,16rem)" },
-  { height: "94%", width: "clamp(8rem,12vw,10rem)" },
-  { height: "82%", width: "clamp(11rem,17vw,14rem)" },
-  { height: "96%", width: "clamp(9.5rem,14vw,12rem)" },
-] as const;
+/** "Copper, Antimony, Garnet" — the minerals in a site group, in first-seen order. */
+function siteMinerals(images: GalleryImage[]) {
+  return Array.from(
+    new Set(images.map((image) => image.mineral).filter(Boolean)),
+  ).join(", ");
+}
 
 function displayTitle(name: string) {
   return name.split(" (")[0].toUpperCase();
 }
 
+/**
+ * One division of the archive as a uniform catalogue grid.
+ *
+ * Replaced a horizontally scrolling strip of mixed-height tiles (Oct 2026):
+ * only five or six photos were ever on screen, the rest hidden behind
+ * arrows, and the ragged heights read as unfinished. Every photo now sits in
+ * the same 4:5 frame with its mineral and title printed underneath, so a
+ * division can be scanned at a glance and nothing depends on scrolling
+ * sideways.
+ */
 export function GalleryEditorialSection({
   title,
   subtitle,
@@ -36,65 +43,76 @@ export function GalleryEditorialSection({
   index: sectionIndex,
 }: GalleryEditorialSectionProps) {
   const sectionRef = useRef<HTMLElement>(null);
-  const scrollRef = useRef<HTMLDivElement>(null);
 
-  const scrollContainer = (dir: "left" | "right") => {
-    if (scrollRef.current) {
-      const scrollAmount = 350;
-      scrollRef.current.scrollBy({
-        left: dir === "left" ? -scrollAmount : scrollAmount,
-        behavior: "smooth",
-      });
+  const mineralCounts = useMemo(() => {
+    const counts = new Map<string, number>();
+    for (const image of images) {
+      if (!image.mineral) continue;
+      counts.set(image.mineral, (counts.get(image.mineral) ?? 0) + 1);
     }
-  };
+    return Array.from(counts.entries()).sort((a, b) => b[1] - a[1]);
+  }, [images]);
+
+  /**
+   * Sub-groups by site when a division spans more than one (Zircon Mines:
+   * Hilal Abad nephrite, then Askoli samples). Order follows the data file;
+   * images without a site collect in a trailing "Other specimens" group.
+   */
+  const siteGroups = useMemo(() => {
+    const groups = new Map<string, GalleryImage[]>();
+    for (const image of images) {
+      const key = image.site ?? "";
+      if (!groups.has(key)) groups.set(key, []);
+      groups.get(key)!.push(image);
+    }
+    const ordered = Array.from(groups.entries()).sort(
+      ([a], [b]) => Number(a === "") - Number(b === ""),
+    );
+    let offset = 0;
+    return ordered.map(([site, list]) => {
+      const group = { site: site || "Other specimens", images: list, offset };
+      offset += list.length;
+      return group;
+    });
+  }, [images]);
+  const showSites = siteGroups.length > 1;
 
   useLayoutEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
-
-    const reduceMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-
-    if (reduceMotion) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const ctx = gsap.context(() => {
       gsap.fromTo(
         section.querySelector("[data-gal-ed-header]"),
-        { opacity: 0, y: 28 },
+        { opacity: 0, y: 24 },
         {
           opacity: 1,
           y: 0,
-          duration: 0.85,
+          duration: 0.8,
           ease: "power3.out",
-          scrollTrigger: {
-            trigger: section,
-            start: "top 85%",
-            once: true,
-          },
-        }
+          scrollTrigger: { trigger: section, start: "top 85%", once: true },
+        },
       );
 
-      gsap.fromTo(
-        section.querySelectorAll("[data-gal-ed-tile]"),
-        { opacity: 0, y: 40 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.75,
-          stagger: 0.06,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: section.querySelector("[data-gal-ed-row]"),
-            start: "top 88%",
-            once: true,
+      section.querySelectorAll("[data-gal-ed-grid]").forEach((grid) => {
+        gsap.fromTo(
+          grid.querySelectorAll("[data-gal-ed-tile]"),
+          { opacity: 0, y: 24 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            stagger: 0.035,
+            ease: "power3.out",
+            scrollTrigger: { trigger: grid, start: "top 90%", once: true },
           },
-        }
-      );
+        );
+      });
     }, section);
 
     return () => ctx.revert();
-  }, [images.length]);
+  }, [images.length, siteGroups.length]);
 
   if (!images.length) return null;
 
@@ -102,131 +120,122 @@ export function GalleryEditorialSection({
     <section
       ref={sectionRef}
       data-gal-section
-      className="relative border-t border-graphite-950/[0.06] py-14 md:py-20"
+      aria-labelledby={`gal-division-${sectionIndex}`}
+      className="border-t border-graphite-950/[0.08] py-14 md:py-20"
     >
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.35]"
-        style={{
-          backgroundImage: `
-            linear-gradient(rgba(233,122,60,0.04) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(233,122,60,0.04) 1px, transparent 1px)
-          `,
-          backgroundSize: "28px 28px",
-        }}
-        aria-hidden
-      />
-      <div
-        className="pointer-events-none absolute inset-0 opacity-20"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle at center, rgba(233,122,60,0.5) 0.5px, transparent 0.6px)",
-          backgroundSize: "28px 28px",
-        }}
-        aria-hidden
-      />
-
-      <div className="relative">
-        <header data-gal-ed-header className="mb-8 md:mb-10">
+      <header
+        data-gal-ed-header
+        className="mb-8 flex flex-col gap-5 md:mb-10 md:flex-row md:items-end md:justify-between"
+      >
+        <div>
           <p className="font-mono text-[10px] uppercase tracking-[0.32em] text-graphite-500">
             Division {String(sectionIndex + 1).padStart(2, "0")}
           </p>
-          <h2 className="mt-2 font-[family-name:var(--font-display)] text-2xl font-bold uppercase tracking-[0.12em] text-graphite-950 md:text-3xl lg:text-4xl">
+          <h2
+            id={`gal-division-${sectionIndex}`}
+            className="mt-2 font-[family-name:var(--font-display)] text-2xl font-bold uppercase tracking-[0.12em] text-graphite-950 md:text-3xl"
+          >
             {displayTitle(title)}
           </h2>
           {subtitle && (
-            <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.22em] text-copper-500/75">
+            <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.22em] text-copper-600">
               {subtitle}
             </p>
           )}
-          <div className="mt-4 h-px w-full max-w-md bg-gradient-to-r from-copper-500/40 via-graphite-950/10 to-transparent" />
-        </header>
+        </div>
 
+        {mineralCounts.length > 0 && (
+          <ul className="flex flex-wrap gap-x-5 gap-y-1.5 md:max-w-[50%] md:justify-end">
+            {mineralCounts.map(([mineral, count]) => (
+              <li
+                key={mineral}
+                className="font-mono text-[10px] uppercase tracking-[0.18em] text-graphite-500"
+              >
+                {mineral}{" "}
+                <span className="tabular-nums text-graphite-950">{count}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+      </header>
+
+      {siteGroups.map((group, groupIndex) => (
         <div
-          ref={scrollRef}
-          data-gal-ed-row
-          className="relative -mx-4 overflow-x-auto px-4 pb-2 [scrollbar-width:none] sm:-mx-6 sm:px-6 md:-mx-0 md:px-0 [&::-webkit-scrollbar]:hidden"
+          key={group.site}
+          className={cn(groupIndex > 0 && "mt-14 md:mt-16")}
         >
-          <div className="flex min-w-max items-end gap-0 h-[min(42vh,22rem)] min-h-[14rem] sm:min-h-[16rem] md:min-h-[18rem]">
-            {images.map((image, i) => {
-              const size = SIZE_PATTERN[i % SIZE_PATTERN.length];
+          {showSites && (
+            <div className="mb-6 flex items-baseline justify-between gap-4 border-b border-graphite-950/[0.08] pb-3">
+              <h3 className="font-[family-name:var(--font-display)] text-base font-semibold uppercase tracking-[0.14em] text-graphite-950 md:text-lg">
+                {group.site}
+              </h3>
+              <p className="shrink-0 font-mono text-[10px] uppercase tracking-[0.2em] text-graphite-500">
+                {siteMinerals(group.images)} ·{" "}
+                <span className="tabular-nums">{group.images.length}</span>
+              </p>
+            </div>
+          )}
+          <ul
+            data-gal-ed-grid
+            className="grid grid-cols-2 gap-x-3 gap-y-6 sm:grid-cols-3 md:gap-x-4 md:gap-y-8 lg:grid-cols-4 xl:grid-cols-5"
+          >
+            {group.images.map((image, j) => {
+              const i = group.offset + j;
               return (
-                <button
-                  key={image.id}
-                  type="button"
-                  data-gal-ed-tile
-                  onClick={() => onOpen(image)}
-                  className={cn(
-                    "group relative shrink-0 overflow-hidden bg-bone-50",
-                    "border-r border-graphite-950/[0.06] last:border-r-0",
-                    "transition-[transform,filter] duration-500 ease-out",
-                    "hover:z-10 hover:-translate-y-1 hover:brightness-110",
-                    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-copper-500/50"
-                  )}
-                  style={{
-                    height: size.height,
-                    width: size.width,
-                  }}
-                >
-                  <div className="relative h-full w-full">
-                    <Image
-                      src={image.url}
-                      alt={image.title}
-                      fill
-                      className="object-cover transition duration-700 ease-out group-hover:scale-[1.04]"
-                      sizes="280px"
-                    />
-                    <div className="absolute inset-0 bg-graphite-950/0 transition duration-500 group-hover:bg-graphite-950/10" />
-                    <div className="absolute inset-0 opacity-0 transition duration-500 group-hover:opacity-100">
-                      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-graphite-950/95 via-graphite-950/50 to-transparent p-3 md:p-4">
-                        {image.mineral && (
-                          <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-copper-500">
-                            {image.mineral}
-                          </p>
-                        )}
-                        <p className="mt-1 line-clamp-2 text-left text-xs font-medium text-bone-50 md:text-sm">
-                          {image.title}
-                        </p>
-                      </div>
+                <li key={image.id} data-gal-ed-tile>
+                  <button
+                    type="button"
+                    onClick={() => onOpen(image)}
+                    className="group block w-full text-left focus-visible:outline-none"
+                  >
+                    <div className="relative aspect-[4/5] overflow-hidden rounded-sm bg-graphite-950/[0.06] ring-1 ring-graphite-950/[0.08] transition duration-300 group-hover:ring-copper-500/50 group-focus-visible:ring-2 group-focus-visible:ring-copper-500">
+                      <Image
+                        src={image.url}
+                        alt={image.title}
+                        fill
+                        sizes="(min-width: 1280px) 18vw, (min-width: 1024px) 23vw, (min-width: 640px) 31vw, 48vw"
+                        className="object-cover transition duration-700 ease-out group-hover:scale-[1.04]"
+                      />
+                      <span
+                        aria-hidden
+                        className="absolute left-2 top-2 rounded-sm bg-graphite-950/55 px-1.5 py-0.5 font-mono text-[10px] tabular-nums text-bone-50 backdrop-blur-sm"
+                      >
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <span
+                        aria-hidden
+                        className="absolute bottom-2 right-2 flex h-7 w-7 items-center justify-center rounded-full bg-bone-50/90 text-graphite-950 opacity-0 shadow-sm transition duration-300 group-hover:opacity-100"
+                      >
+                        <svg
+                          viewBox="0 0 20 20"
+                          fill="none"
+                          stroke="currentColor"
+                          className="h-3.5 w-3.5"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="1.6"
+                            d="M8 3H3v5M12 3h5v5M8 17H3v-5M12 17h5v-5"
+                          />
+                        </svg>
+                      </span>
                     </div>
-                    <span
-                      className="pointer-events-none absolute left-2 top-2 font-[family-name:var(--font-display)] text-lg font-bold text-bone-50/70 drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)] transition duration-500 group-hover:text-bone-50 md:text-xl"
-                      aria-hidden
-                    >
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                  </div>
-                </button>
+                    {image.mineral && (
+                      <p className="mt-2.5 font-mono text-[9px] uppercase tracking-[0.2em] text-copper-600">
+                        {image.mineral}
+                      </p>
+                    )}
+                    <p className="mt-1 line-clamp-2 text-[13px] leading-snug text-graphite-700 transition-colors group-hover:text-graphite-950">
+                      {image.title}
+                    </p>
+                  </button>
+                </li>
               );
             })}
-          </div>
+          </ul>
         </div>
-
-        <div className="mt-4 flex items-center justify-between">
-          <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-graphite-500">
-            {images.length} specimens · scroll to browse
-          </p>
-          <div className="flex gap-2">
-            <button
-              onClick={() => scrollContainer("left")}
-              className="flex h-8 w-8 items-center justify-center rounded-full border border-graphite-950/10 text-graphite-500 transition-colors hover:bg-graphite-950/5 hover:text-graphite-950 focus-visible:outline-copper-500"
-              aria-label="Scroll left"
-            >
-              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" className="h-4 w-4">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12.5 15L7.5 10l5-5" />
-              </svg>
-            </button>
-            <button
-              onClick={() => scrollContainer("right")}
-              className="flex h-8 w-8 items-center justify-center rounded-full border border-graphite-950/10 text-graphite-500 transition-colors hover:bg-graphite-950/5 hover:text-graphite-950 focus-visible:outline-copper-500"
-              aria-label="Scroll right"
-            >
-              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" className="h-4 w-4">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M7.5 5l5 5-5 5" />
-              </svg>
-            </button>
-          </div>
-        </div>
-      </div>
+      ))}
     </section>
   );
 }

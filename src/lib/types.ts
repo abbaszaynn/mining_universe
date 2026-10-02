@@ -39,6 +39,8 @@ export interface GalleryImage {
   companyName: string;
   mineral?: string;
   properties?: string;
+  /** Site within the division. When a division spans several sites the gallery sub-groups by this. */
+  site?: string;
 }
 
 export interface Deposit {

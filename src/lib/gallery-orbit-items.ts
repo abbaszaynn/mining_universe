@@ -12,8 +12,8 @@ const ORBIT_SPECIMEN_IDS = [
   "gal-mo-1",
   "gal-ruby-bagicha",
   "gal-lithium-bagicha",
-  "gal-copper-hilalabad",
-  "gal-qz-3",
+  "gal-copper-jutial",
+  "gal-zn-07",
 ] as const;
 
 function specimenToOrbitItem(id: string): OrbitMediaItem | null {
