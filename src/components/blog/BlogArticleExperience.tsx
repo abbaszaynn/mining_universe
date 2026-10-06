@@ -78,6 +78,67 @@ export function BlogArticleExperience({
   const isQa = questionCount > 0;
   let paragraphIndex = -1;
   const renderedBlocks = blocks.map((block, index) => {
+    if (block.kind === "facts") {
+      return (
+        <dl
+          key={index}
+          data-blog-paragraph
+          data-blog-animate
+          className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-graphite-950/10 bg-graphite-950/10 md:grid-cols-4"
+        >
+          {block.items.map((item) => (
+            <div key={item.label} className="flex flex-col gap-1.5 bg-bone-50 px-4 py-5 md:px-5 md:py-6">
+              <dt className="order-2 text-xs leading-snug text-graphite-600 md:text-[13px]">
+                {item.label}
+              </dt>
+              <dd className="order-1 font-[family-name:var(--font-display)] text-2xl font-semibold tracking-[-0.02em] text-copper-600 md:text-3xl">
+                {item.value}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      );
+    }
+
+    if (block.kind === "figure") {
+      const single = block.images.length === 1;
+      return (
+        <figure
+          key={index}
+          data-blog-paragraph
+          data-blog-animate
+          className={cn(
+            "grid gap-3 md:gap-4",
+            !single && (block.images.length === 2 ? "grid-cols-2" : "grid-cols-2 sm:grid-cols-3"),
+            // Single figures break out of the text column slightly for impact.
+            single && "md:-mx-8"
+          )}
+        >
+          {block.images.map((image) => (
+            <div key={image.src}>
+              <div
+                className={cn(
+                  "relative overflow-hidden rounded-2xl border border-graphite-950/10 bg-graphite-950/5",
+                  single ? "aspect-[16/9]" : "aspect-[4/5]"
+                )}
+              >
+                <Image
+                  src={image.src}
+                  alt={image.caption}
+                  fill
+                  className="object-cover"
+                  sizes={single ? "(max-width: 896px) 100vw, 832px" : "(max-width: 640px) 50vw, 260px"}
+                />
+              </div>
+              <figcaption className="mt-2 text-xs leading-relaxed text-graphite-600 md:text-[13px]">
+                {image.caption}
+              </figcaption>
+            </div>
+          ))}
+        </figure>
+      );
+    }
+
     if (block.kind === "question") {
       return (
         <h2

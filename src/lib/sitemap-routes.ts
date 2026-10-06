@@ -94,4 +94,8 @@ export const NEWS_ROUTES = [
     id: "how-to-invest-in-mining-sector-pakistan",
     publishDate: "2026-09-26T09:00:00Z",
   },
+  {
+    id: "nephrite-jade-investment-pakistan-china-hilal-abad",
+    publishDate: "2026-10-06T09:00:00Z",
+  },
 ];

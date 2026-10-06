@@ -1035,6 +1035,58 @@ export const news: NewsArticle[] = [
     imageUrl: '/blogs/b6.jpeg',
     publishDate: '2026-09-26T09:00:00Z',
     companyId: 'durr-zircon',
+  },
+  /*
+   * Investment case for Hilal Abad nephrite, written for Chinese buyers first.
+   * Deliberately does not repeat nephrite-jade-hilal-abad-gilgit-baltistan
+   * (colours, value factors, the KP price range, vetting) or the serpentine
+   * geology piece: it links to both. Access times are the field team's own
+   * (Skardu to Hilal Abad 79 km, ~2 h; village to working area ~45 min by
+   * vehicle track; 15 min on foot from the road end to the target zone). The
+   * satellite figures are cropped from the company's own project deck; the
+   * signed survey map in that deck is a department document and is not used.
+   */
+  {
+    id: 'nephrite-jade-investment-pakistan-china-hilal-abad',
+    title: 'Green Gold in the Karakoram: Investing in Hilal Abad Nephrite Jade, Pakistan',
+    excerpt: 'A licensed nephrite jade concession in Gilgit Baltistan with more than ten occurrences found in the field, stone exposed at the surface and a road to within a 15-minute walk of the deposit. Here is the investment case, written first for buyers in China, where jade has been sacred for five thousand years.',
+    content: [
+      "In China there is a saying older than any stock exchange: 黄金有价玉无价, gold has a price, jade is beyond price. Good green nephrite has earned its nickname of green gold the same way, by holding its value through every cycle the gold market has seen. Our Hilal Abad concession in Gilgit Baltistan holds that stone, at the surface, a road journey from Skardu. This is the case for investing in it, and the honest limits of what we can say today.",
+      "::facts\n10+ | nephrite occurrences identified in the field\n~10 km² | licensed concession area\n79 km | by road from Skardu, about two hours\n15 min | on foot from the road end to the target zone",
+      "![A torch pressed to rough Hilal Abad nephrite. Light travelling through the stone is the first sign buyers look for.](/images/gallery/hilal-abad-nephrite/hilal-abad-nephrite-14.jpg)",
+      "## Why is nephrite jade so important in China?",
+      "Because in China jade was sacred long before it was valuable. The Neolithic Hongshan and Liangzhu cultures were carving nephrite into ritual objects more than five thousand years ago, among them the Liangzhu bi discs and cong tubes made to honour heaven and earth and buried with the people who mattered most. Confucian tradition then gave the stone a moral meaning: the cultivated person was said to match his virtue to jade, warm, smooth and unyielding at once. The character 玉 itself sits inside words for treasure and for the emperor's seal. That is why demand for good nephrite in China is not a passing fashion. It is a five-thousand-year habit, and buyers pay for quality accordingly.",
+      "## Why are Chinese buyers looking beyond Xinjiang for nephrite?",
+      "Because the classic source cannot keep up. The nephrite Chinese buyers know as Hetian jade (和田玉) takes its name from Hotan in Xinjiang, where the river deposits that supplied carvers for centuries have been worked hard for generations. China's jade trade already relies on imported nephrite from Russia, Canada and other countries to meet demand. What carvers and traders want is steady supply of good colour from a source they can trust. A licensed concession that ships rough stone with its paperwork in order is exactly that.",
+      "## Where is Hilal Abad, and how close is it to China?",
+      "Hilal Abad lies in Kharmang district of Gilgit Baltistan, in Pakistan's far north, the region that borders Xinjiang. From Skardu the Karakoram road network connects to the Karakoram Highway, which crosses into China at the Khunjerab Pass and runs on to Kashgar, in the same province that gave Hetian jade its name. Khunjerab closes in the depth of winter, so shipments plan around the season, but few nephrite sources outside China sit this close to its jade markets by road. Our [China market page](/markets/china) covers the trade and investment framework between the two countries.",
+      "![The Hilal Abad concession boundary on satellite terrain. The licensed block covers about ten square kilometres of the valley sides.](/images/blog/hilal-abad-nephrite/hilal-abad-concession-boundary-satellite.jpg)",
+      "## How easy is it to reach the deposit?",
+      "Easier than almost any hard-rock site in the region, and this is the point investors underestimate. The drive from Skardu to Hilal Abad village is 79 kilometres on the valley road, about two hours. From the village a vehicle track leaves the road and climbs towards the working area, about 45 minutes. From the road end to the target zone is a 15-minute walk. There is no river to cross, no aerial ropeway and no porter route over a pass, which in Gilgit Baltistan is the difference between a deposit you can work and one you can only photograph.",
+      "![Satellite view of the last stretch: the road end in yellow, the walking track in red, 15 minutes on foot to the target zone.](/images/blog/hilal-abad-nephrite/hilal-abad-road-end-walking-track-satellite.jpg)",
+      "## How many nephrite occurrences have been found at Hilal Abad?",
+      "More than ten, so far. Our field team has identified nephrite at more than ten separate points across the concession, and three target zones on the valley sides above the village are where work is concentrated. Each occurrence is a field identification by our own team; mapping how far each body runs is the next stage of work, and we say so plainly rather than put a tonnage on ground nobody has measured yet.",
+      "![The three target zones (outlined in red) on the valley sides above Hilal Abad village.](/images/blog/hilal-abad-nephrite/hilal-abad-nephrite-target-zones-satellite.jpg)",
+      "## Why is nephrite at Hilal Abad straightforward to extract?",
+      "Because it is already at the surface. The stone is exposed in outcrops and loose boulders on the slopes, so early extraction is careful surface work, splitting and lifting blocks, rather than sinking shafts or driving tunnels before the first kilogram is recovered. Nephrite is also one of the toughest natural materials known, which means blocks survive handling and transport without the losses a brittle stone would suffer. Why the stone formed here at all, in serpentine-rich rock, is explained in our piece on [serpentine and nephrite at Kharmang](/news/serpentine-nephrite-kharmang-hilal-abad).",
+      "![Green rock face at Hilal Abad, photographed in place.](/images/gallery/hilal-abad-nephrite/hilal-abad-nephrite-22.jpg)\n![Nephrite-bearing boulder on the hillside.](/images/gallery/hilal-abad-nephrite/hilal-abad-nephrite-19.jpg)\n![Torch test made on the outcrop itself, before anything is moved.](/images/gallery/hilal-abad-nephrite/hilal-abad-nephrite-26.jpg)",
+      "## What does Hilal Abad nephrite look like?",
+      "Green, in a range from apple-green to a deep, dark green with a fibrous grain, the shades Chinese buyers group under 碧玉 (green nephrite). The torch test is the quickest field check of quality: hold a strong light against the stone and good nephrite carries the light into its body rather than reflecting it. The photographs here are our own, taken on site and in hand. The full colour range, including the white nephrite we have also recovered, and how buyers value each, is in our [Hilal Abad nephrite buyers' guide](/news/nephrite-jade-hilal-abad-gilgit-baltistan).",
+      "![Apple-green nephrite with pale flecks.](/images/gallery/hilal-abad-nephrite/hilal-abad-nephrite-07.jpg)\n![Dark green, fibrous nephrite in hand.](/images/gallery/hilal-abad-nephrite/hilal-abad-nephrite-04.jpg)\n![A cut and faced block, the form buyers assess.](/images/gallery/hilal-abad-nephrite/hilal-abad-nephrite-15.jpg)",
+      "## What are the benefits for an investor?",
+      "Taken together: a licensed concession held by Zircon Mines (PVT) LTD, already producing rather than waiting on a permit. Road access to within a 15-minute walk of the stone. Nephrite exposed at the surface, so capital goes into extraction rather than into reaching the deposit. More than ten occurrences across about ten square kilometres, which leaves room to grow beyond the first target zones. A stone with five thousand years of demand behind it and a buyer market in China reachable overland. And physical samples you can hold before any money changes hands.",
+      "## Is there a certified reserve for Hilal Abad nephrite?",
+      "No, and you should be wary of anyone who claims one for early ground like this. What we have is a licence, more than ten field-identified occurrences, surface exposures you can walk to and samples you can inspect. Grade, colour consistency and volume are established by mapping, sampling and laboratory work, and part of what an investor's capital buys is that work. We would rather you price that risk in from the start than discover it later.",
+      "## How can investors from China and other countries take part?",
+      "Three ways, depending on how close to the stone you want to be. You can buy rough nephrite by the parcel, or agree a supply contract for regular volumes. You can invest in extraction through a joint venture, putting capital beside our licence and field team and sharing in production. Or you can take equity in the project itself. How each route works, and the legal steps for a foreign investor in Pakistan, are set out in our guide to [investing in Pakistan's mining sector](/news/how-to-invest-in-mining-sector-pakistan) and on the [investment page](/invest). The block itself, with its licence holder and every mineral recorded there, has its own [Hilal Abad concession page](/concessions/hilal-abad-polymetallic-complex).",
+      "## 中国投资者如何参与希拉勒阿巴德软玉项目?",
+      "希拉勒阿巴德(Hilal Abad)位于巴基斯坦吉尔吉特-巴尔蒂斯坦卡尔芒地区,是锆石矿业公司(Zircon Mines (PVT) LTD)持有许可证的软玉(碧玉)矿区,面积约10平方公里。我们的团队已在实地发现十余处软玉矿点,玉石直接出露于地表,开采条件简单。从斯卡杜(Skardu)沿公路行驶79公里、约两小时即可到达希拉勒阿巴德村,再经车行道约45分钟到达作业区,从路尽头步行15分钟即达目标矿带,无需过河、索道或人力背运。喀喇昆仑公路经红其拉甫口岸直通新疆喀什。我们欢迎中国及全球投资者以原石采购、长期供货、合资开采或股权合作等方式参与,可安排实地考察并提供实物样品。请通过[投资者服务台](/investor-desk)与我们联系。",
+      "## How do I see the stone or visit the site?",
+      "Ask through the [investor desk](/investor-desk). We send physical samples to serious buyers, arrange site visits with the permits and security clearance in hand, and open the licence and field data once an NDA is signed. More photographs of Hilal Abad nephrite, from torch tests to the outcrops themselves, are in our [gallery](/gallery).",
+    ].join('\n\n'),
+    imageUrl: '/images/gallery/hilal-abad-nephrite/hilal-abad-nephrite-12.jpg',
+    publishDate: '2026-10-06T09:00:00Z',
+    companyId: 'zircon-mines',
   }
 ];
 
