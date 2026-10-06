@@ -11,6 +11,25 @@ type PageSeoOptions = {
   noIndex?: boolean;
 };
 
+const TITLE_MAX = 60;
+const DESCRIPTION_MAX = 158;
+
+/**
+ * Google truncates snippets at roughly 155-160 characters, mid-word. Cut at
+ * the last full sentence that fits if one ends late enough to carry the
+ * point, otherwise at the last whole word, so the visible snippet always
+ * reads as finished.
+ */
+export function trimDescription(text: string, max = DESCRIPTION_MAX) {
+  const clean = text.replace(/\s+/g, " ").trim();
+  if (clean.length <= max) return clean;
+  const window = clean.slice(0, max);
+  const sentenceEnd = Math.max(window.lastIndexOf(". "), window.lastIndexOf("? "));
+  if (sentenceEnd >= 100) return window.slice(0, sentenceEnd + 1);
+  const wordEnd = window.slice(0, max - 1).lastIndexOf(" ");
+  return `${window.slice(0, wordEnd).replace(/[,;:\s]+$/, "")}…`;
+}
+
 export function absoluteUrl(path = "") {
   const base = getSiteUrl();
   if (!path) return base;
@@ -29,11 +48,18 @@ export function createPageMetadata({
   const url = absoluteUrl(path);
   const imageUrl = ogImage.startsWith("http") ? ogImage : absoluteUrl(ogImage);
 
-  // Short suffix so page titles stay inside Google's ~60-character display.
+  // Google shows roughly 60 characters of a title. The brand suffix is kept
+  // only when it still fits; otherwise it would push the keywords that earn
+  // the click off the end. Google displays the site name separately anyway.
+  const suffixed = `${title} | ${SITE.shortName}`;
   const fullTitle =
     path === "" || path === "/"
       ? SITE.title
-      : `${title} | ${SITE.shortName}`;
+      : suffixed.length <= TITLE_MAX
+        ? suffixed
+        : title;
+
+  description = trimDescription(description);
 
   return {
     title: fullTitle,

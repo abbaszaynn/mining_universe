@@ -787,6 +787,7 @@ export const news: NewsArticle[] = [
   {
     id: 'pakistan-us-critical-minerals-partnership',
     title: 'What the $500 Million Pakistan-US Minerals Deal Means for Gilgit Baltistan',
+    seoTitle: 'Pakistan-US $500M Minerals Deal and GB',
     excerpt: 'US Strategic Metals and Pakistan signed a framework in September 2025 covering exploration through refining. The first shipment, in October 2025, was antimony, copper concentrate and rare earths, the same commodities held under licence across our own concessions.',
     content: 'In September 2025, Pakistan and US Strategic Metals signed two memoranda of understanding covering the full mineral value chain, from exploration through refining, backing a $500 million partnership framework. The first shipment moved in October 2025: antimony, copper concentrate, and rare earth elements including neodymium and praseodymium. The US side has been explicit about why: reducing dependence on a small number of existing suppliers for materials it considers critical to national security, clean energy, and advanced manufacturing.\n\nWhat makes this relevant to Gilgit Baltistan specifically is the commodity list. Antimony, copper, and gold, three of the minerals this partnership is built to develop and refine domestically rather than export as raw ore, are exactly what several of our own licensed concessions carry. Gultari and the Gojal tehsil of Hunza hold our antimony, Shigar and Kharmang carry copper alongside a gold indication, and Skardu holds a licensed placer gold operation. None of that is coincidence: the same geology that put Gilgit-Baltistan on the map for these minerals is what drew a $500 million US partnership to Pakistan in the first place.\n\nFor a US investor, that partnership is a live, government-backed precedent rather than a speculative pitch. It also raises the practical question of where the next tranche of that supply actually comes from. Licensed, surveyed concessions with published area and licence status, rather than unlicensed artisanal extraction, are the more straightforward answer, and it is the model our concessions are built on. More detail on how a US company would actually structure a position is on our [United States market page](/markets/usa).',
     imageUrl: '/images/commodities/copper.webp',
@@ -796,6 +797,7 @@ export const news: NewsArticle[] = [
   {
     id: 'saudi-reko-diq-gilgit-baltistan-copper-gold',
     title: 'Saudi Arabia\'s Reko Diq Stake and What It Signals for Northern Pakistan\'s Copper-Gold Belt',
+    seoTitle: 'Saudi Reko Diq Stake: GB Copper-Gold Belt',
     excerpt: 'Saudi Arabia is pursuing a 15% stake in Pakistan\'s Reko Diq copper-gold project, backed by a reported $540 million commitment. Our Shigar and Kharmang concessions carry the same commodity pairing, at a much earlier stage.',
     content: 'Saudi Arabia\'s own mining sector had a record 2025: exploitation licences up 220 percent domestically and investment reaching $11.7 billion. That appetite has extended into Pakistan directly. The Kingdom has pursued a 15 percent stake in Reko Diq, Pakistan\'s copper-gold project in Balochistan, backed by a reported $540 million commitment, and the Saudi Fund for Development has signalled it may put over $100 million more into Pakistani mining infrastructure. Broader estimates put combined Saudi and UAE investment interest in Pakistan as high as $50 billion over five years, with mining one part of that.\n\nReko Diq is a copper-gold deposit at a scale most projects never reach, with reserves reported at 13.1 million tonnes of copper and 17.9 million ounces of gold and a mine life projected past three decades. Our own Shigar concession carries the same commodity pairing, copper ore with gold as a strong secondary indication, in the same Karakoram (Shyok) Suture structural belt that regional surveys have logged anomalous gold, platinum, silver, and copper values along. Kharmang, in the same district, adds copper, iron, and silver in a documented antimony corridor. Neither is Reko Diq in scale. Both sit in the same commodity category that just drew a nine-figure Saudi commitment.\n\nWhat that tells a Saudi investor is less about any single deal and more about risk appetite: Saudi capital is already comfortable underwriting Pakistani copper-gold mining risk at scale. An earlier-stage, licensed concession in the same commodity pairing is a different point on the same curve, not a different asset class. More on how that would actually be structured is on our [Saudi Arabia market page](/markets/saudi-arabia).',
     imageUrl: '/images/commodities/gold.webp',
@@ -805,6 +807,7 @@ export const news: NewsArticle[] = [
   {
     id: 'serpentine-nephrite-kharmang-hilal-abad',
     title: 'The Green Rock at Kharmang: Serpentine, Jade, and a Mineral Mars Rovers Look For',
+    seoTitle: 'Serpentine and Nephrite Jade in Kharmang',
     excerpt: 'Serpentine turns up across both of our Kharmang licences, Hilal Abad and Mahdi Abad, alongside nephrite jade. It forms through a reaction that makes hydrogen out of rock and water, which is why NASA instruments have spent years hunting for it on Mars.',
     content: 'Our field teams keep coming back from Kharmang with the same rock in their hands. It is green, sometimes waxy, sometimes fibrous, and it turns up across both of our licences there: Hilal Abad and Mahdi Abad. The rock is serpentine, and its story runs a long way past the valley it came from.\n\nSerpentine is less a single mineral than a family of them, and the way it forms is the interesting part. Deep rock rich in olivine and pyroxene meets water. The water does not simply wet the rock, it reacts with it, restructuring those minerals into something new and releasing hydrogen as it goes. Geologists call the process serpentinization. It is one of the few natural reactions that manufactures hydrogen from nothing more than rock and water.\n\nThat detail is why serpentine has an audience well outside mining. Hydrogen can feed certain kinds of microbial life. So when scientists look for places where life could plausibly have started, serpentine is one of the things they look for.\n\nThey have been looking on Mars. Researchers mapping magnesium-rich serpentine across the planet using data from the Compact Reconnaissance Imaging Spectrometer for Mars, the orbital instrument known as CRISM, identified it across 43 separate images in work published in Geophysical Research Letters in 2025. Those deposits sit in Noachian and Hesperian terrain, which is to say the oldest rock Mars still has, and their presence implies serpentinization was running there early in the planet\'s history. More recently the SuperCam instrument aboard the Perseverance rover picked out magnesium serpentine at three separate points along its traverse through Jezero crater: the Amalik outcrop, the Falcon Lake boulder field, and a spot the science team called Tablelands.\n\nNone of that makes the Kharmang rock extraordinary. It makes it familiar. The same reaction that left serpentine in a Baltistan valley left it in a Martian crater, and one of the most expensive machines ever landed on another world was built in part to go and find it.\n\nThere is a second reason we pay attention when serpentine appears, and this one is commercial. Nephrite jade tends to form near serpentinite, usually along contact zones where serpentinised rock meets something else. The two travel together. So when a licence produces serpentine, jade stops being a hopeful thing to look for and becomes a reasonable one. Both Hilal Abad and Mahdi Abad have produced both.\n\nIt is difficult to hold a piece of this rock and not think about how old the transaction is. The Quran describes what the earth holds in close to those terms, as provision placed rather than luck stumbled upon. Iron is named directly: "And We sent down iron with its great might, benefits for humanity" (Al-Hadid 57:25, in the translation of Dr. Mustafa Khattab). Copper appears beside it in the account of Dhul-Qarnayn sealing a mountain pass, where the instruction is to bring blocks of iron and then molten copper to pour over them (Al-Kahf 18:96). Serpentine is named nowhere in the text, and we are not going to pretend otherwise. What is named is the principle: that metal and stone in the ground are a benefit set there on purpose, and that working them is ordinary, honourable human labour rather than a trespass. For anyone mining in a Muslim society, that is not decoration on a company page. It is the baseline the work sits on.\n\nWhich brings us to the least romantic and most important fact about these two licences. You can drive to them. Road access reads like a footnote until you cost a project without it. Helicopter-supported exploration in the Karakoram can eat a budget before a single tonne of material moves. A licence a truck can reach changes the arithmetic on sampling, on bulk testing, and eventually on shipping anything at all. Hilal Abad and Mahdi Abad both have it.\n\nThe field identification of serpentine and nephrite at both sites is our own. The laboratory work behind it, along with boundary data and the full geological reporting, goes to verified investors and buyers through the investor desk rather than onto a public page. What is public sits on the [Hilal Abad concession page](/concessions/hilal-abad-polymetallic-complex), the [Mahdi Abad Kharmang concession page](/concessions/kharmang-polymetallic-structure), and the [nephrite jade commodity page](/commodities/nephrite-jade).',
     imageUrl: '/images/nephrite-1.jpg',
@@ -821,6 +824,7 @@ export const news: NewsArticle[] = [
   {
     id: 'best-mining-investment-opportunity-gilgit-baltistan-pakistan',
     title: 'Best Investment Opportunity in Gilgit Baltistan, Pakistan: What Foreign Investors Ask Us',
+    seoTitle: 'Best Mining Investment in Pakistan\'s North',
     excerpt: 'The questions foreign investors actually ask us about mining in Gilgit Baltistan, Pakistan, answered plainly, including the parts that should make you cautious.',
     content: [
       "Most of what gets written about investing in Pakistan's minerals is either a government brochure or a warning. We sit somewhere in the middle. We hold ten licensed blocks in Gilgit Baltistan, so obviously we think the region deserves your time, but we also take the calls where investors ask the uncomfortable questions. These are those questions, with the answers we actually give.",
@@ -853,6 +857,7 @@ export const news: NewsArticle[] = [
   {
     id: 'mines-of-gilgit-baltistan-pakistan-minerals-guide',
     title: 'Discover the Mines of Gilgit Baltistan, Pakistan: Every Major Mineral and Where It Is Found',
+    seoTitle: 'Mines of Gilgit Baltistan: Minerals Guide',
     excerpt: 'Copper, gold, silver, iron, nephrite, antimony and more: where each is found in Gilgit Baltistan, how it compares with the rest of Pakistan, and which blocks hold it.',
     content: [
       "If you are trying to work out what is actually in the ground in Gilgit Baltistan, most sources give you either one mineral or a long list with no locations. This is the version we wish we had when we started: each mineral, where it turns up in the region, how it fits into Pakistan's wider picture, and which of our own licensed blocks carry it. The regional figures come from the Gilgit Baltistan Secretary of Minerals, Shahzeb Sheikh, speaking in February 2026.",
@@ -888,6 +893,7 @@ export const news: NewsArticle[] = [
   {
     id: 'placer-gold-mining-pakistan-gilgit-baltistan',
     title: 'Placer Gold Mining in Pakistan and Gilgit Baltistan: How It Works and Where the Gold Is',
+    seoTitle: 'Placer Gold Mining in Pakistan: GB Guide',
     excerpt: 'Where placer gold is found in Pakistan and Gilgit Baltistan, how it is mined today, why most of it is still done by hand, and what a modern operation looks like.',
     content: [
       "Stand beside almost any river in Gilgit Baltistan for long enough and you will see someone washing sand for gold. It is one of the oldest jobs in the Karakoram. It is also, commercially, one of the least developed. Here is what placer gold mining in Pakistan actually involves, where the gold is, and what we are doing with our own 26 kilometre licence on the Skardu road.",
@@ -917,6 +923,7 @@ export const news: NewsArticle[] = [
   {
     id: 'rare-earth-metals-mining-pakistan-gilgit-baltistan',
     title: 'Rare Earth Metals in Pakistan and Gilgit Baltistan: What Is Real and What Is Hype',
+    seoTitle: 'Rare Earth Mining in Pakistan: Real or Hype',
     excerpt: 'Where rare earth elements have actually been found in Pakistan, what Gilgit Baltistan does and does not have, and what the 2025 US shipment really tells investors.',
     content: [
       "Rare earths are the most searched mineral topic in Pakistan right now, and the most exaggerated. Trillion dollar figures get repeated without a source in sight. We do not hold a rare earth licence ourselves, which puts us in a reasonable position to give you a straight picture: where they have been found, what is still unproven, and which related minerals in Gilgit Baltistan are genuinely in play.",
@@ -944,6 +951,7 @@ export const news: NewsArticle[] = [
   {
     id: 'nephrite-jade-hilal-abad-gilgit-baltistan',
     title: 'Nephrite Jade at Hilal Abad: White, Apple-Green and Deep Green, and What Buyers Are Asking Us',
+    seoTitle: 'Hilal Abad Nephrite Jade: Colours and Buyers',
     excerpt: 'Photographs of the actual rough nephrite coming out of our Hilal Abad concession, and answers to what buyers and investors ask us most: which colours we have, how it compares to Pakistan\'s known nephrite belt further south, and how to see a physical sample.',
     content: [
       "The photographs on this page are not stock images. They are rough nephrite jade pulled from our Hilal Abad concession in Kharmang, photographed on site the way our field team actually handles it. We are publishing them because the question we get asked most about this stone is some version of \"can I actually see one\", and the honest answer is yes, and here is what one looks like before anyone has done anything to it.",
@@ -971,6 +979,7 @@ export const news: NewsArticle[] = [
   {
     id: 'gold-mining-gilgit-baltistan-sonewal-to-elaman-group',
     title: 'Gold Mining in Gilgit Baltistan: The Sonewal Panners, an Unregulated Rush, and a $20 Million Kazakh Bet',
+    seoTitle: 'Gold Mining in Gilgit Baltistan, Pakistan',
     excerpt: 'Families have panned Gilgit Baltistan\'s rivers for gold for generations. Regulators are now warning about the machine-driven rush that followed them, and a Kazakh investor just committed $20 million on the strength of preliminary studies alone. Here is where a licensed, producing operation actually fits into that picture.',
     content: [
       "Ask how long gold mining has gone on in Gilgit Baltistan and the honest answer is longer than any licence, ours included, has existed. What has changed recently is everything around that old practice: a genuine regulatory scramble, and a fresh nine-figure bet from Kazakhstan on ground nobody has fully proven yet. This is the fuller picture, not just our own piece of it.",
@@ -1006,6 +1015,7 @@ export const news: NewsArticle[] = [
   {
     id: 'how-to-invest-in-mining-sector-pakistan',
     title: 'How Investors Can Invest in Pakistan\'s Mining Sector: Legal Routes, Geology, Returns and Risks',
+    seoTitle: 'How to Invest in Mining in Pakistan',
     excerpt: 'The practical side of investing in mining in Pakistan: the company structure you need, what the law says about taking profits home, what the geology of Gilgit Baltistan does and does not prove, how returns work in each route, and the risks worth pricing in.',
     content: [
       "Most of what we get asked on calls from abroad is not whether Pakistan has minerals. It is how the money actually moves: what company you need, whether profits can leave the country, and what exactly you are buying. This is the process as we walk investors through it, including the parts that slow deals down. The wider case for Gilgit Baltistan is in our [investment opportunity piece](/news/best-mining-investment-opportunity-gilgit-baltistan-pakistan); this one is about the mechanics.",
@@ -1049,6 +1059,7 @@ export const news: NewsArticle[] = [
   {
     id: 'nephrite-jade-investment-pakistan-china-hilal-abad',
     title: 'Green Gold in the Karakoram: Investing in Hilal Abad Nephrite Jade, Pakistan',
+    seoTitle: 'Nephrite Jade Investment in Pakistan',
     excerpt: 'A licensed nephrite jade concession in Gilgit Baltistan with more than ten occurrences found in the field, stone exposed at the surface and a road to within a 15-minute walk of the deposit. Here is the investment case, written first for buyers in China, where jade has been sacred for five thousand years.',
     content: [
       "In China there is a saying older than any stock exchange: 黄金有价玉无价, gold has a price, jade is beyond price. Good green nephrite has earned its nickname of green gold the same way, by holding its value through every cycle the gold market has seen. Our Hilal Abad concession in Gilgit Baltistan holds that stone, at the surface, a road journey from Skardu. This is the case for investing in it, and the honest limits of what we can say today.",
@@ -1140,6 +1151,7 @@ export async function getNews(): Promise<NewsArticle[]> {
   return items.map((i) => ({
     id: i.id,
     title: i.title,
+    seoTitle: str(i.seoTitle),
     excerpt: str(i.excerpt) ?? "",
     content: str(i.content) ?? "",
     imageUrl: str(i.imageUrl) ?? "/images/commodities/copper.webp",

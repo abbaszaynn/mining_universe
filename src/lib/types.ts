@@ -103,6 +103,11 @@ export interface Company {
 export interface NewsArticle {
   id: string;
   title: string;
+  /**
+   * Short, keyword-led title for the <title> tag and search results only
+   * (aim for 45 characters or fewer). The page headline still uses `title`.
+   */
+  seoTitle?: string;
   excerpt: string;
   content: string;
   imageUrl: string;

@@ -159,9 +159,9 @@ export function MapExperience({ companies }: MapExperienceProps) {
       <p className="font-mono text-[10px] uppercase tracking-[0.35em] text-copper-500">
         Durr & Zircon Mines Consortium
       </p>
-      <h1 className="mt-2 font-[family-name:var(--font-display)] text-xl font-semibold text-graphite-950 md:text-2xl">
+      <h2 className="mt-2 font-[family-name:var(--font-display)] text-xl font-semibold text-graphite-950 md:text-2xl">
         Explore the mines
-      </h1>
+      </h2>
       <p className="mt-2 text-sm leading-relaxed text-graphite-600">
         {mines.length} licensed sites · 3D terrain with satellite imagery. Select a
         site to fly to its coordinates.

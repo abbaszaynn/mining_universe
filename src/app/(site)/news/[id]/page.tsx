@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: PageProps) {
   if (!article) return { title: "Article Not Found" };
 
   return createPageMetadata({
-    title: article.title,
+    title: article.seoTitle ?? article.title,
     description: article.excerpt,
     path: `/news/${article.id}`,
     ogImage: article.imageUrl,
