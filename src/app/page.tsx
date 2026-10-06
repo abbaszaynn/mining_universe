@@ -3,6 +3,7 @@ import type { PressArticle } from "@/components/landing/PressInsightsSection";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { getCompanies, getLatestNews } from "@/lib/data";
 import { getSiteUrl } from "@/lib/site";
+import { articleTags } from "@/lib/article-tags";
 
 const NEW_FOR_DAYS = 14;
 
@@ -11,7 +12,7 @@ const NEW_FOR_DAYS = 14;
 export const revalidate = 3600;
 
 export default async function Home() {
-  const [latest, companies] = await Promise.all([getLatestNews(5), getCompanies()]);
+  const [latest, companies] = await Promise.all([getLatestNews(4), getCompanies()]);
   const companyNames = Object.fromEntries(companies.map((c) => [c.id, c.name]));
   const now = Date.now();
 
@@ -24,6 +25,7 @@ export default async function Home() {
     imageUrl: article.imageUrl,
     publishDate: article.publishDate,
     companyName: article.companyId ? companyNames[article.companyId] : undefined,
+    tags: articleTags(article),
     isNew: now - new Date(article.publishDate).getTime() < NEW_FOR_DAYS * 86_400_000,
   }));
 

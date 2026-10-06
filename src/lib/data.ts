@@ -1000,7 +1000,7 @@ export const news: NewsArticle[] = [
       "## How do I buy from this operation or discuss investing in it?",
       "Through the [investor desk](/investor-desk). Tell us whether you are after material, a stake in the operation, or simply want the documentation that shows this is a licensed lease rather than one of the extraction sites currently under regulatory scrutiny, and we will take it from there.",
     ].join('\n\n'),
-    imageUrl: '/images/commodities/placer-gold-new.webp',
+    imageUrl: '/images/blog/placer-gold-sand.jpg',
     publishDate: '2026-09-13T09:00:00Z',
     companyId: 'durr-zircon',
   },
@@ -1095,7 +1095,7 @@ export const news: NewsArticle[] = [
       "## How do I see the stone or visit the site?",
       "Ask through the [investor desk](/investor-desk). We send physical samples to serious buyers, arrange site visits with the permits and security clearance in hand, and open the licence and field data once an NDA is signed. More photographs of Hilal Abad nephrite, from torch tests to the outcrops themselves, are in our [gallery](/gallery).",
     ].join('\n\n'),
-    imageUrl: '/images/gallery/hilal-abad-nephrite/hilal-abad-nephrite-12.jpg',
+    imageUrl: '/images/blog/hilal-abad-nephrite/hilal-abad-nephrite-jade-hero.jpg',
     publishDate: '2026-10-06T09:00:00Z',
     companyId: 'zircon-mines',
   }
