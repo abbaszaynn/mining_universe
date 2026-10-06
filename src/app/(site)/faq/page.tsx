@@ -2,6 +2,7 @@ import { GridLines } from "@/components/ui/GridLines";
 import { Pill } from "@/components/ui/Pill";
 import { FaqSection } from "@/components/faq/FaqSection";
 import { GOS_FAQ_ITEMS } from "@/lib/faq-data";
+import { opsContent, str } from "@/lib/ops-content";
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata = createPageMetadata({
@@ -11,7 +12,10 @@ export const metadata = createPageMetadata({
   path: "/faq",
 });
 
-export default function FaqPage() {
+export default async function FaqPage() {
+  // Edited in the operations platform's Website admin; the file is the fallback.
+  const cms = await opsContent("faq");
+  const items = cms ? cms.map((i) => ({ question: i.title, answer: str(i.answer) ?? "" })) : GOS_FAQ_ITEMS;
   return (
     <main className="relative bg-bone-50">
       <section className="relative overflow-hidden pb-16 pt-32 md:pb-24 md:pt-40">
@@ -35,7 +39,7 @@ export default function FaqPage() {
       </section>
 
       <FaqSection
-        items={GOS_FAQ_ITEMS}
+        items={items}
         title="Investor FAQ"
         subtitle="Straight answers on licensing, documentation, and how to start a conversation."
         id="faq"

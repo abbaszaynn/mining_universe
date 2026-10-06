@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { buildMailtoFallback, FORM_INBOX } from "@/lib/form-fallback";
+import { deliverLead } from "@/lib/lead-delivery";
 import { cn } from "@/lib/utils";
 
 type ContactFormProps = {
@@ -40,57 +41,33 @@ export function ContactForm({
     // Same fallback as the investor desk form: see lib/form-fallback.
     const fallback = buildMailtoFallback(defaultSubject, new FormData(form));
 
-    if (!accessKey) {
-      setStatus("error");
-      setErrorMessage(
-        "Our online form is temporarily unavailable. Your message is ready to send by email instead."
-      );
-      setFallbackHref(fallback);
-      setLoading(false);
-      return;
-    }
+    // Sent to the operations platform and the Web3Forms inbox in parallel;
+    // success if either accepts it (see lib/lead-delivery).
+    const fields = Object.fromEntries(
+      Array.from(new FormData(form).entries()).filter((e): e is [string, string] => typeof e[1] === "string")
+    );
+    if (companyName) fields.interested_company = companyName;
+    const result = await deliverLead("contact", fields, {
+      accessKey,
+      fromName: "GOS Contact",
+      subject: defaultSubject,
+      extra: companyName ? { company: companyName } : undefined,
+    });
 
-    const formData = new FormData(form);
-    formData.append("access_key", accessKey);
-    formData.append("from_name", "GOS Contact");
-    if (companyName) {
-      formData.append("company", companyName);
-    }
-
-    try {
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify(Object.fromEntries(formData)),
+    if (result.ok) {
+      setStatus("success");
+      form.reset();
+      onSuccess?.();
+      window.gtag?.("event", "generate_lead", {
+        form_name: "contact",
+        company: companyName || "unspecified",
       });
-
-      const result = await response.json();
-
-      if (result.success) {
-        setStatus("success");
-        form.reset();
-        onSuccess?.();
-        window.gtag?.("event", "generate_lead", {
-          form_name: "contact",
-          company: companyName || "unspecified",
-        });
-      } else {
-        throw new Error(result.message || "Unable to send message.");
-      }
-    } catch (error) {
+    } else {
       setStatus("error");
-      setErrorMessage(
-        `${
-          error instanceof Error ? error.message : "Something went wrong."
-        } Your message is ready to send by email instead.`
-      );
+      setErrorMessage(`${result.error} Your message is ready to send by email instead.`);
       setFallbackHref(fallback);
-    } finally {
-      setLoading(false);
     }
+    setLoading(false);
   };
 
   const inputClass = cn(

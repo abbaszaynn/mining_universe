@@ -2,6 +2,7 @@
 import type { Company, NewsArticle, Document, GalleryImage } from '@/lib/types';
 import { galleryImages } from '@/lib/gallery-images-data';
 import { companies as companiesData } from '@/lib/companies-data';
+import { opsContent, str } from '@/lib/ops-content';
 
 /**
  * Client direction (2026-09-11): only the Incorporation Letters and the GB
@@ -1047,9 +1048,33 @@ const companies: Company[] = companiesData.map(company => ({
   ]
 }));
 
+/**
+ * Documents come from the operations platform's Website admin when it is
+ * connected; the arrays above remain the fallback. Static fields the CMS does
+ * not carry (contentText for the incorporation letters) are kept by id.
+ */
+async function cmsDocuments(): Promise<Document[] | null> {
+  const items = await opsContent("document");
+  if (!items) return null;
+  const staticById = new Map(companies.flatMap((c) => c.documents).map((d) => [d.id, d]));
+  return items.map((i) => {
+    const access = str(i.access);
+    return {
+      ...staticById.get(i.id),
+      id: i.id,
+      title: i.title,
+      type: (str(i.docType) ?? "Investor Report") as Document["type"],
+      url: access === "request" ? "#" : (str(i.url) ?? "#"),
+      access: access === "view" ? "view" : "download",
+      companyId: str(i.companyId),
+    };
+  });
+}
+
 export async function getCompanies(): Promise<Company[]> {
-  // This function simulates fetching data. In a real app, this would be an API call.
-  return companies;
+  const docs = await cmsDocuments();
+  if (!docs) return companies;
+  return companies.map((c) => ({ ...c, documents: docs.filter((d) => d.companyId === c.id) }));
 }
 
 export async function getCompanyById(id: string): Promise<Company | undefined> {
@@ -1058,7 +1083,17 @@ export async function getCompanyById(id: string): Promise<Company | undefined> {
 }
 
 export async function getNews(): Promise<NewsArticle[]> {
-  return news;
+  const items = await opsContent("news");
+  if (!items) return news;
+  return items.map((i) => ({
+    id: i.id,
+    title: i.title,
+    excerpt: str(i.excerpt) ?? "",
+    content: str(i.content) ?? "",
+    imageUrl: str(i.imageUrl) ?? "/images/commodities/copper.webp",
+    publishDate: str(i.publishDate) ?? new Date().toISOString(),
+    companyId: str(i.companyId),
+  }));
 }
 
 export async function getNewsById(id: string): Promise<NewsArticle | undefined> {
@@ -1084,6 +1119,17 @@ export async function getDocuments(): Promise<Document[]> {
 }
 
 export async function getGalleryImages(): Promise<GalleryImage[]> {
-  return galleryImages;
+  const items = await opsContent("gallery");
+  if (!items) return galleryImages;
+  return items.map((i) => ({
+    id: i.id,
+    url: str(i.url) ?? "",
+    title: i.title,
+    description: str(i.description) ?? "",
+    companyName: str(i.companyName) ?? "",
+    mineral: str(i.mineral),
+    properties: str(i.properties),
+    site: str(i.site),
+  }));
 }
 

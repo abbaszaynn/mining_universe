@@ -3,6 +3,7 @@
 import { useState, type FormEvent } from "react";
 import { getInvestorDeskCompanies, type InvestorDeskCompany } from "@/lib/investor-desk-data";
 import { buildMailtoFallback, FORM_INBOX } from "@/lib/form-fallback";
+import { deliverLead } from "@/lib/lead-delivery";
 import { cn } from "@/lib/utils";
 import { SquareButton } from "@/components/ui/SquareButton";
 
@@ -49,55 +50,31 @@ export function InvestorDeskForm({
       new FormData(form)
     );
 
-    if (!accessKey) {
-      setStatus("error");
-      setErrorMessage(
-        "Our online form is temporarily unavailable. Your details are ready to send by email instead, one click below."
-      );
-      setFallbackHref(fallback);
-      setLoading(false);
-      return;
-    }
+    // Sent to the operations platform and the Web3Forms inbox in parallel;
+    // success if either accepts it (see lib/lead-delivery).
+    const fields = Object.fromEntries(
+      Array.from(new FormData(form).entries()).filter((e): e is [string, string] => typeof e[1] === "string")
+    );
+    const result = await deliverLead("investor_desk", fields, {
+      accessKey,
+      fromName: "GOS Investor Desk",
+      subject: "Investor desk inquiry",
+    });
 
-    const formData = new FormData(form);
-    formData.append("access_key", accessKey);
-    formData.append("from_name", "GOS Investor Desk");
-    formData.append("subject", "Investor desk inquiry");
-
-    try {
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify(Object.fromEntries(formData)),
+    if (result.ok) {
+      setStatus("success");
+      form.reset();
+      setSelectedCompany("");
+      window.gtag?.("event", "generate_lead", {
+        form_name: "investor_desk",
+        company: selectedCompany || "unspecified",
       });
-
-      const result = await response.json();
-
-      if (result.success) {
-        setStatus("success");
-        form.reset();
-        setSelectedCompany("");
-        window.gtag?.("event", "generate_lead", {
-          form_name: "investor_desk",
-          company: selectedCompany || "unspecified",
-        });
-      } else {
-        throw new Error(result.message || "Unable to send inquiry.");
-      }
-    } catch (error) {
+    } else {
       setStatus("error");
-      setErrorMessage(
-        `${
-          error instanceof Error ? error.message : "Something went wrong."
-        } Your details are ready to send by email instead, one click below.`
-      );
+      setErrorMessage(`${result.error} Your details are ready to send by email instead, one click below.`);
       setFallbackHref(fallback);
-    } finally {
-      setLoading(false);
     }
+    setLoading(false);
   };
 
   const inputClass =
