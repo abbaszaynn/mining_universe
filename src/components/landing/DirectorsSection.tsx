@@ -14,10 +14,12 @@ import { DIRECTORS } from "@/lib/directors";
  * individuals on an investment-facing page, so nothing here is written for
  * them that they have not supplied themselves.
  *
- * Layout mirrors WhoWeAreSection's 12-column split (intro left, content
- * right) so the two leadership sections read as one family rather than the
- * carousel floating as an independently centred block under a full-width
- * heading.
+ * Intro left, carousel right on a 12-column split, so the carousel does not
+ * float as an independently centred block under a full-width heading. This
+ * is the homepage's only leadership section: the older "We are directors of
+ * this land" tile grid (WhoWeAreSection) was removed in Oct 2026, and its one
+ * substantive line, that the mining rights are granted by the Government of
+ * Gilgit Baltistan, now lives in the intro below.
  */
 const PROFILES: Testimonial[] = DIRECTORS.map((d) => ({
   quote: `“${d.statement ?? d.bio}”`,
@@ -38,7 +40,8 @@ export function DirectorsSection() {
           </h2>
           <p className="mt-6 max-w-[42ch] text-base leading-[1.5] text-graphite-500 md:text-lg">
             Durr &amp; Zircon Consortium is run by directors from Gilgit
-            Baltistan itself. Every concession, permit and community
+            Baltistan itself, holding mining rights granted by the Government
+            of Gilgit Baltistan. Every concession, permit and community
             agreement sits with the people below.
           </p>
         </div>
