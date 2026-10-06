@@ -2,6 +2,12 @@
 export interface MineLocation {
   name: string;
   polygon: { lat: number; lng: number }[];
+  /**
+   * TEMPORARY. A boundary that `polygon` replaces but that has not yet been
+   * formally released, drawn on the map as a red dashed outline. Delete the
+   * field from the location once the department approves the revision.
+   */
+  supersededPolygon?: { lat: number; lng: number }[];
 }
 
 export interface Document {

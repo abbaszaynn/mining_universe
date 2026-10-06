@@ -91,6 +91,17 @@ export function MapExperience({ companies }: MapExperienceProps) {
 
   const selectedMine = mines.find((m) => m.id === selectedMineId) ?? null;
 
+  /** Sites whose boundary is under revision (see MineLocation.supersededPolygon). */
+  const revisedSites = useMemo(
+    () =>
+      companies.flatMap((company) =>
+        company.locations
+          .filter((location) => location.supersededPolygon?.length)
+          .map((location) => location.name)
+      ),
+    [companies]
+  );
+
   const handleMineSelect = useCallback(
     (id: string | null) => {
       setSelectedMineId(id);
@@ -204,6 +215,30 @@ export function MapExperience({ companies }: MapExperienceProps) {
           Flat view
         </button>
       </div>
+
+      {/* Legend: only while a boundary revision is pending */}
+      {revisedSites.length > 0 && (
+        <div
+          className={cn(
+            "pointer-events-none absolute z-20 rounded-xl border border-graphite-950/10 bg-white/85 shadow-lg backdrop-blur-md",
+            isMobile
+              ? "right-3 top-14 max-w-[13rem] px-3 py-2"
+              : "right-4 top-16 max-w-[17rem] px-4 py-3 md:right-6 md:top-[4.5rem]"
+          )}
+        >
+          <p className="flex items-center gap-2 text-[11px] text-graphite-950">
+            <span className="h-0.5 w-6 shrink-0 bg-[#e97a3c]" aria-hidden />
+            Licence boundary
+          </p>
+          <p className="mt-1.5 flex items-start gap-2 text-[11px] leading-snug text-graphite-600">
+            <span
+              className="mt-[0.45rem] h-0 w-6 shrink-0 border-t-2 border-dashed border-[#ff2a2a]"
+              aria-hidden
+            />
+            Previous {revisedSites.join(", ")} boundary, revision pending approval
+          </p>
+        </div>
+      )}
 
       {/* Mobile: mines list toggle */}
       <button

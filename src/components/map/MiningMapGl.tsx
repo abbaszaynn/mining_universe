@@ -19,8 +19,19 @@ function polygonCenter(polygon: { lat: number; lng: number }[]) {
   return { lat, lng };
 }
 
+function closedRing(polygon: { lat: number; lng: number }[]) {
+  const ring = polygon.map((p) => [p.lng, p.lat] as [number, number]);
+  const first = ring[0];
+  const last = ring[ring.length - 1];
+  if (first[0] !== last[0] || first[1] !== last[1]) {
+    ring.push(first);
+  }
+  return ring;
+}
+
 function buildGeoJson(companies: Company[]) {
   const boundaries: GeoJSON.Feature[] = [];
+  const superseded: GeoJSON.Feature[] = [];
   const labels: GeoJSON.Feature[] = [];
 
   companies.forEach((company) => {
@@ -28,11 +39,19 @@ function buildGeoJson(companies: Company[]) {
       if (!location.polygon?.length) return;
 
       const mineId = `${company.id}::${location.name}`;
-      const ring = location.polygon.map((p) => [p.lng, p.lat] as [number, number]);
-      const first = ring[0];
-      const last = ring[ring.length - 1];
-      if (first[0] !== last[0] || first[1] !== last[1]) {
-        ring.push(first);
+      const ring = closedRing(location.polygon);
+
+      // Temporary: a replaced boundary still awaiting formal release
+      // (see MineLocation.supersededPolygon). Not clickable, no label.
+      if (location.supersededPolygon?.length) {
+        superseded.push({
+          type: "Feature",
+          properties: { mineId, locationName: location.name },
+          geometry: {
+            type: "Polygon",
+            coordinates: [closedRing(location.supersededPolygon)],
+          },
+        });
       }
 
       const center = polygonCenter(location.polygon);
@@ -72,6 +91,10 @@ function buildGeoJson(companies: Company[]) {
     boundaries: {
       type: "FeatureCollection" as const,
       features: boundaries,
+    },
+    superseded: {
+      type: "FeatureCollection" as const,
+      features: superseded,
     },
     labels: {
       type: "FeatureCollection" as const,
@@ -176,6 +199,34 @@ export function MiningMapGl({
         map.addSource("mine-labels", {
           type: "geojson",
           data: geo.labels,
+        });
+
+        // Drawn first so the current boundary sits on top of it.
+        map.addSource("mine-boundaries-superseded", {
+          type: "geojson",
+          data: geo.superseded,
+        });
+
+        map.addLayer({
+          id: "mine-superseded-fill",
+          type: "fill",
+          source: "mine-boundaries-superseded",
+          paint: {
+            "fill-color": "#ff2a2a",
+            "fill-opacity": 0.28,
+          },
+        });
+
+        map.addLayer({
+          id: "mine-superseded-lines",
+          type: "line",
+          source: "mine-boundaries-superseded",
+          paint: {
+            "line-color": "#ff2a2a",
+            "line-width": 3,
+            "line-opacity": 1,
+            "line-dasharray": [2, 1],
+          },
         });
 
         map.addLayer({
@@ -318,8 +369,10 @@ export function MiningMapGl({
     const geo = buildGeoJson(companies);
     const boundarySource = map.getSource("mine-boundaries") as GeoJSONSource | undefined;
     const labelSource = map.getSource("mine-labels") as GeoJSONSource | undefined;
+    const supersededSource = map.getSource("mine-boundaries-superseded") as GeoJSONSource | undefined;
     boundarySource?.setData(geo.boundaries);
     labelSource?.setData(geo.labels);
+    supersededSource?.setData(geo.superseded);
   }, [companies]);
 
   useEffect(() => {
