@@ -78,9 +78,9 @@ export const COMMODITIES: Commodity[] = [
     name: "Placer Gold",
     metaTitle: "Gold Mining Company & Placer Gold Supplier, Pakistan",
     metaDescription:
-      "Placer gold and dore from a licensed 26 km riverbed concession in Skardu, Gilgit Baltistan. FOB Karachi or CIF, assay and inspection available, trial shipments accepted.",
+      "Placer gold and dore from a licensed 9.5 km riverbed concession in Skardu, Gilgit Baltistan. FOB Karachi or CIF, assay and inspection available, trial shipments accepted.",
     intro:
-      "Our placer gold comes from a licensed 26 km riverbed concession in Skardu, carried in black sand deposits at a scale that supports mechanized recovery rather than artisanal panning. Quoted FOB Karachi or CIF, with assay reports and SGS inspection arranged for verified buyers.",
+      "Our placer gold comes from a licensed 9.5 km riverbed concession in Skardu, carried in black sand deposits at a scale that supports mechanized recovery rather than artisanal panning. Quoted FOB Karachi or CIF, with assay reports and SGS inspection arranged for verified buyers.",
     demand:
       "Gold remains a universally traded store of value, with demand spanning central banks, technology manufacturers and jewellery markets worldwide. Placer recovery is the fast end of gold mining: the metal is already liberated from its host rock, so it needs washing and concentration rather than drilling, blasting and milling. That is why this block is producing while our hard-rock gold is still at exploration stage.",
     /**
@@ -165,7 +165,7 @@ export const COMMODITIES: Commodity[] = [
      * Two gold pages only make sense if they are genuinely two products, so
      * the split is by deposit type: this page is lode gold in ore at Askoli
      * (Shigar) and Gultari, both early stage; `placer-gold` is the producing
-     * alluvial operation on the 26 km Skardu riverbed. Different recovery,
+     * alluvial operation on the 9.5 km Skardu riverbed. Different recovery,
      * different timeline, different buyer. If the copy on either page ever
      * drifts back into describing the other, they become near-duplicates and
      * should be merged, which is what got flagged in Search Console before.

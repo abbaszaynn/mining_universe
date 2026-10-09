@@ -38,7 +38,7 @@ const MapExperience = nextDynamic(
   }
 );
 
-/** Registry detail lines mix minerals with notes ("Riverbed Length: 26 km",
+/** Registry detail lines mix minerals with notes ("Riverbed Length: 9.5 km",
  * "Copper, vein exposed at surface"); keep just the mineral names. */
 function mineralList(details: string[]) {
   return details

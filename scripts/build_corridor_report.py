@@ -34,7 +34,13 @@ LIGHT_GREY = colors.HexColor("#8A8A8A")
 ROW_ALT = colors.HexColor("#F5F1EC")
 TABLE_HEAD_BG = colors.HexColor("#1A1A1A")
 
-OUT = r"E:\GOS\mining_universe\public\reports\gb-mineral-corridor-report-2026.pdf"
+# Relative to this script, so it always writes into the checkout it lives in
+# (it used to hardcode an older copy of the repo at E:\GOS\mining_universe).
+import os
+OUT = os.path.join(
+    os.path.dirname(os.path.abspath(__file__)),
+    "..", "public", "reports", "gb-mineral-corridor-report-2026.pdf",
+)
 
 styles = {
     "kicker": ParagraphStyle("kicker", fontName="Helvetica-Bold", fontSize=9,
@@ -213,13 +219,13 @@ concessions_rows = [
     [head("Concession"), head("District"), head("Minerals"), head("Area"),
      head("Status"), head("Access")],
     [cell("Hilal Abad", True), cell("Kharmang"),
-     cell("Premium nephrite jade, serpentine, copper"), cell("9.97 sq/km"),
+     cell("Premium nephrite jade, serpentine, copper"), cell("9.75 sq/km"),
      cell("Producing"), cell("Road")],
     [cell("Bagicha", True), cell("Skardu"),
      cell("Copper (vein exposed), marble, ruby, lithium, quartz"),
      cell("20 sq/km"), cell("Producing"), cell("Road")],
     [cell("Skardu Placer Gold", True), cell("Skardu"),
-     cell("Placer gold, black sand"), cell("26 km riverbed"),
+     cell("Placer gold, black sand"), cell("9.5 km riverbed"),
      cell("Producing"), cell("Road")],
     [cell("Jutial Nala", True), cell("Gilgit"),
      cell("Copper veins, lead, silver"), cell("9.97 sq/km"),
@@ -296,7 +302,7 @@ commodity_entries = [
     ("Antimony.", "Sourced from Gultari, Gojal (Hunza) and Ishkoman. On "
      "most Western critical-minerals watch lists, driven by flame "
      "retardants, battery chemistries and semiconductor manufacture."),
-    ("Placer gold.", "A licensed 26 km riverbed concession in Skardu, "
+    ("Placer gold.", "A licensed 9.5 km riverbed concession in Skardu, "
      "scaled for mechanised recovery and already producing."),
     ("Hard-rock gold.", "A separate, earlier-stage product from placer "
      "gold: lode gold in ore at Shigar (Askoli) and Gultari, both at "
