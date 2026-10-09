@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2"><Document>
+<name>Hilal Abad - revised boundary</name>
+<Style id="new"><LineStyle><color>ff00d7ff</color><width>3</width></LineStyle><PolyStyle><color>4000d7ff</color></PolyStyle></Style>
+<Style id="old"><LineStyle><color>ff2a2aff</color><width>2</width></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+<Style id="pin"><IconStyle><scale>0.8</scale><Icon><href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href></Icon></IconStyle><LabelStyle><scale>0.9</scale></LabelStyle></Style>
+<Placemark><name>Hilal Abad revised boundary (9.7465 sq km)</name><description>Zircon Mines (PVT) LTD, Hilal Abad, District Kharmang. Populated village area removed; lies entirely within the previous boundary.</description><styleUrl>#new</styleUrl><Polygon><tessellate>1</tessellate><outerBoundaryIs><LinearRing><coordinates>76.049661,35.107625,0 76.075174,35.099896,0 76.083283,35.072071,0 76.064473,35.076076,0 76.050061,35.072599,0 76.045600,35.089571,0 76.041811,35.094811,0 76.049661,35.107625,0</coordinates></LinearRing></outerBoundaryIs></Polygon></Placemark>
+<Placemark><name>Previous boundary (for comparison, 9.9650 sq km)</name><visibility>0</visibility><styleUrl>#old</styleUrl><Polygon><tessellate>1</tessellate><outerBoundaryIs><LinearRing><coordinates>76.039939,35.088692,0 76.040512,35.088201,0 76.045600,35.089571,0 76.050061,35.072599,0 76.064473,35.076076,0 76.083283,35.072071,0 76.075174,35.099896,0 76.049661,35.107625,0 76.039591,35.091198,0 76.039939,35.088692,0</coordinates></LinearRing></outerBoundaryIs></Polygon></Placemark>
+<Folder><name>Boundary points P1-P7</name>
+<Placemark><name>P1</name><description>previous corner 8</description><styleUrl>#pin</styleUrl><Point><coordinates>76.049661,35.107625,0</coordinates></Point></Placemark>
+<Placemark><name>P2</name><description>previous corner 7</description><styleUrl>#pin</styleUrl><Point><coordinates>76.075174,35.099896,0</coordinates></Point></Placemark>
+<Placemark><name>P3</name><description>previous corner 6</description><styleUrl>#pin</styleUrl><Point><coordinates>76.083283,35.072071,0</coordinates></Point></Placemark>
+<Placemark><name>P4</name><description>previous corner 5</description><styleUrl>#pin</styleUrl><Point><coordinates>76.064473,35.076076,0</coordinates></Point></Placemark>
+<Placemark><name>P5</name><description>previous corner 4</description><styleUrl>#pin</styleUrl><Point><coordinates>76.050061,35.072599,0</coordinates></Point></Placemark>
+<Placemark><name>P6</name><description>previous corner 3</description><styleUrl>#pin</styleUrl><Point><coordinates>76.045600,35.089571,0</coordinates></Point></Placemark>
+<Placemark><name>P7</name><description>NEW point on previous edge 9-8 (450 m from corner 9)</description><styleUrl>#pin</styleUrl><Point><coordinates>76.041811,35.094811,0</coordinates></Point></Placemark>
+</Folder>
+</Document></kml>
