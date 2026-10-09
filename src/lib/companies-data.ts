@@ -318,7 +318,23 @@ const rawCompanies: Company[] = [
     locations: [
       {
         name: 'Hilal Abad Site',
+        // Revised boundary (Oct 2026): the populated Hilal Abad village and its
+        // orchard are cut out along a line from previous corner 3 to a new
+        // point on the previous north-west edge (450 m from corner 9). Lies
+        // entirely inside the previous boundary; 9.7465 sq km (was 9.965).
         polygon: [
+          { lat: 35.107625, lng: 76.049661 },
+          { lat: 35.099896, lng: 76.075174 },
+          { lat: 35.072071, lng: 76.083283 },
+          { lat: 35.076076, lng: 76.064473 },
+          { lat: 35.072599, lng: 76.050061 },
+          { lat: 35.089571, lng: 76.045600 },
+          { lat: 35.094811, lng: 76.041811 },
+          { lat: 35.107625, lng: 76.049661 },
+        ],
+        // TEMPORARY: the previous boundary, shown in red on the map until the
+        // revision is approved. Delete this whole field after approval.
+        supersededPolygon: [
           { lat: 35.088692, lng: 76.039939 },
           { lat: 35.088201, lng: 76.040512 },
           { lat: 35.089571, lng: 76.0456 },

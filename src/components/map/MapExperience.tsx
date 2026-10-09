@@ -235,7 +235,9 @@ export function MapExperience({ companies }: MapExperienceProps) {
               className="mt-[0.45rem] h-0 w-6 shrink-0 border-t-2 border-dashed border-[#ff2a2a]"
               aria-hidden
             />
-            Previous {revisedSites.join(", ")} boundary, revision pending approval
+            {revisedSites.length === 1
+              ? `Previous ${revisedSites[0]} boundary, revision pending approval`
+              : `Previous boundaries (${revisedSites.join(" and ")}), revisions pending approval`}
           </p>
         </div>
       )}
