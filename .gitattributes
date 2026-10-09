@@ -1,0 +1,4 @@
+# PDFs are binary even when their internal structure is plain ASCII (the
+# reportlab-built corridor report is). Without this, core.autocrlf would
+# rewrite line endings on Windows checkouts and break the xref offsets.
+*.pdf binary
