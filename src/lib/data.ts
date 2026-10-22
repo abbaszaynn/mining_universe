@@ -1098,6 +1098,44 @@ export const news: NewsArticle[] = [
     imageUrl: '/images/blog/hilal-abad-nephrite/hilal-abad-nephrite-jade-hero.jpg',
     publishDate: '2026-10-06T09:00:00Z',
     companyId: 'zircon-mines',
+  },
+  /*
+   * News analysis, October 2026. Deliberately corrects the "Pakistan has
+   * allowed the US to mine in Balochistan" framing circulating that week:
+   * the record is an invitation (Oct 20) and a denial that any mine or
+   * contract has been awarded (Khawaja Asif, Oct 16). Every claim below is
+   * attributed to the outlet and date it came from. The GB conclusion rests
+   * on the US Embassy briefing reported by Dawn and Minute Mirror on
+   * 6 Aug 2026, and on an anonymous official quoted by Al Jazeera (Sept
+   * 2025), which is flagged as unconfirmed in the text.
+   */
+  {
+    id: 'us-mining-balochistan-gilgit-baltistan',
+    title: 'Is the US Planning to Work in Gilgit Baltistan as Well? Pakistan\'s Balochistan Mining Invitation, Pros and Cons',
+    seoTitle: 'US Mining in Balochistan: Is GB Next?',
+    excerpt: 'Pakistan has invited American companies into Balochistan\'s minerals, but no mine has been awarded yet. Here is what was actually agreed, the real pros and cons, and the evidence on whether US investors are looking at Gilgit Baltistan too.',
+    content: [
+      "If you followed Pakistani mining news this month you could be forgiven for thinking the deal is done: the United States is coming to mine Balochistan. The record is more careful than the headlines. Pakistan has opened the door and the US has said it is interested, but no American company has been handed a mine. What has actually been agreed matters, because the same conversation is starting to reach Gilgit Baltistan, where we hold our licences.",
+      "## What did Pakistan actually agree with the US on Balochistan?",
+      "An invitation, not an award. On 20 October 2026, Commerce Minister Jam Kamal Khan met the US Chargé d'Affaires, Natalie A. Baker, in Islamabad and invited American companies to invest in Balochistan's mining and minerals sector, according to ProPakistani; both sides reported progress while saying some technical issues were still unresolved. Days earlier, Defence Minister Khawaja Asif said Pakistan has not awarded any mineral mine or mining contract to the United States and that talks are at an initial stage (Daily Times, 16 October). The Express Tribune reported on 17 October that no US company currently operates in Balochistan.",
+      "## What US mining deals already exist in Pakistan?",
+      "Two, and neither is an American-run mine. In September 2025 Pakistan's Frontier Works Organisation signed two memorandums with Missouri-based US Strategic Metals, with a first phase of $500 million covering antimony, copper, gold, tungsten and rare earth elements and a possible polymetallic refinery in Pakistan; we covered that agreement in detail in [what the $500 million deal means](/news/pakistan-us-critical-minerals-partnership). Separately, the US Export-Import Bank approved $1.25 billion in December 2025 for Reko Diq, the copper-gold project in Chagai owned 50 percent by Barrick, 25 percent by the Balochistan government and 25 percent by federal state enterprises. Pakistan's next big pitch is the Pakistan Minerals Investment Forum on 12 and 13 November.",
+      "## What are the advantages of US investment for Pakistan?",
+      "Capital, equipment and a second major buyer. The US embassy has said the Reko Diq financing alone could unlock up to $2 billion in American mining equipment and service exports. Bankable US partners also make it easier for Pakistani projects to raise money from other lenders, as the more than $2.6 billion already assembled for Reko Diq shows. A US customer base alongside China gives Pakistani producers more than one market to sell into, and the USSM plan for a refinery inside Pakistan points at the value-addition the country has long lacked. The Express Tribune, citing ICMA, put the prize plainly: with strong governance and security, mineral exports could rise from about $3 billion a year to $8 billion.",
+      "## What are the risks and downsides?",
+      "Security first. Balochistan's mining projects operate amid an insurgency, and analysts writing for Georgetown's Security Studies Review and Risk Intelligence warn that foreign-backed extraction can deepen local grievances if communities do not see the benefit. Second, where the processing happens: a US Embassy official told Dawn in August that Washington wants minerals processed in the United States, which sits uneasily with Pakistan's push to refine at home. Third, time: Reko Diq is moving more slowly than first planned and its production is now expected by the end of 2028. And fourth, balance: Balochistan is also home to China's flagship CPEC investments, so every American step there is read in Beijing as well as Islamabad. A memorandum is not a mine, and none of these risks disappears because a meeting went well.",
+      "## Is the US planning to work in Gilgit Baltistan as well?",
+      "There are clear signs of interest, but no announced project yet. At a background briefing reported by Dawn on 6 August 2026, a US Embassy official said that similar mineral potential existed in Gilgit-Baltistan and Balochistan, and that US companies were exploring opportunities to take over and develop smaller Pakistani mines. Minute Mirror's report of the same briefing said rare earth prospects in Gilgit Baltistan had attracted American attention. In September 2025 an unnamed Pakistani official told Al Jazeera that US Strategic Metals also held an exploration licence in Gilgit Baltistan; we have not seen that confirmed by the company or the provincial government, so treat it as unverified. Our reading: Gilgit Baltistan is on the American list, behind Balochistan, and the first moves are likely to be partnerships with existing licence holders rather than new mega-projects.",
+      "## Why would Gilgit Baltistan appeal to American investors?",
+      "Because it offers what the embassy said US firms are looking for. Smaller, already licensed mines that can be developed, rather than greenfield ground that takes a decade to permit. Critical minerals on the US list, antimony and copper among them, in a region that has not seen the insurgency that has hit Balochistan's mining projects. And sites that trucks can actually reach, which in these mountains decides whether a discovery ever turns into production. The geology behind that, the collision belt that runs through the region, is set out in our [guide to the mines of Gilgit Baltistan](/news/mines-of-gilgit-baltistan-pakistan-minerals-guide).",
+      "## What should investors watch before committing to Gilgit Baltistan?",
+      "Four things. The rules: Gilgit Baltistan sets its own concession rules, and a new community-based mining framework has been under discussion since the 2026 elections, so terms can still change. Geopolitics: the Karakoram Highway through Gilgit Baltistan is part of the China-Pakistan Economic Corridor, and an American presence here would be watched as closely as it is in Balochistan. Seasons: high passes and winter weather shape when sites can be worked and ore can move. And title: confirm that any licence you are offered is registered with the provincial mines department, which our [due diligence checklist](/guides/mining-companies-gilgit-baltistan) walks through step by step.",
+      "## Where does Durr & Zircon fit for a US investor?",
+      "We are exactly the kind of partner the embassy described: a licence holder with ten registered blocks, four of them already producing and four reachable by road. Our [Gojal antimony block](/concessions/gojal-hunza-antimony-deposit) in Hunza is at exploration stage, our copper sits across several blocks, and our full registry is on the [concessions page](/concessions). For American investors, our [US market page](/markets/usa) sets out the routes, from offtake to joint venture, and our guide on [how to invest in Pakistan's mining sector](/news/how-to-invest-in-mining-sector-pakistan) covers the legal steps. If you are coming to the Pakistan Minerals Investment Forum in November, contact us through the [investor desk](/investor-desk) to arrange a meeting or a site visit.",
+    ].join('\n\n'),
+    imageUrl: '/images/blog/gilgit-baltistan-field-team-camp.jpg',
+    publishDate: '2026-10-22T09:00:00Z',
+    companyId: 'durr-zircon',
   }
 ];
 

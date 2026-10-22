@@ -98,4 +98,8 @@ export const NEWS_ROUTES = [
     id: "nephrite-jade-investment-pakistan-china-hilal-abad",
     publishDate: "2026-10-06T09:00:00Z",
   },
+  {
+    id: "us-mining-balochistan-gilgit-baltistan",
+    publishDate: "2026-10-22T09:00:00Z",
+  },
 ];
