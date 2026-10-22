@@ -2,7 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { getInvestorDeskCompanies, type InvestorDeskCompany } from "@/lib/investor-desk-data";
-import { buildMailtoFallback, FORM_INBOX } from "@/lib/form-fallback";
+import { buildMailtoFallback, buildWhatsAppFallback, trackFallback, FORM_INBOX } from "@/lib/form-fallback";
 import { deliverLead } from "@/lib/lead-delivery";
 import { cn } from "@/lib/utils";
 import { SquareButton } from "@/components/ui/SquareButton";
@@ -21,6 +21,7 @@ export function InvestorDeskForm({
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
   const [fallbackHref, setFallbackHref] = useState("");
+  const [whatsappHref, setWhatsappHref] = useState("");
   const [selectedCompany, setSelectedCompany] = useState("");
 
   const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
@@ -40,6 +41,7 @@ export function InvestorDeskForm({
     setStatus("idle");
     setErrorMessage("");
     setFallbackHref("");
+    setWhatsappHref("");
 
     const form = event.currentTarget;
     // Built from the raw form before any plumbing fields are appended, so
@@ -49,6 +51,7 @@ export function InvestorDeskForm({
       "Investor desk inquiry",
       new FormData(form)
     );
+    const whatsapp = buildWhatsAppFallback("Investor desk inquiry", new FormData(form));
 
     // Sent to the operations platform and the Web3Forms inbox in parallel;
     // success if either accepts it (see lib/lead-delivery).
@@ -71,8 +74,9 @@ export function InvestorDeskForm({
       });
     } else {
       setStatus("error");
-      setErrorMessage(`${result.error} Your details are ready to send by email instead, one click below.`);
+      setErrorMessage(`${result.error} Your details are ready to send by WhatsApp or email instead, one click below.`);
       setFallbackHref(fallback);
+      setWhatsappHref(whatsapp);
     }
     setLoading(false);
   };
@@ -304,14 +308,28 @@ export function InvestorDeskForm({
         {status === "error" && (
           <div className="rounded-lg border border-red-500/20 bg-red-500/10 px-4 py-3 text-sm text-red-600">
             <p>{errorMessage}</p>
-            {fallbackHref && (
-              <a
-                href={fallbackHref}
-                className="mt-3 inline-block font-medium text-copper-600 underline underline-offset-4"
-              >
-                Send my inquiry by email to {FORM_INBOX}
-              </a>
-            )}
+            <div className="mt-3 flex flex-wrap gap-x-6 gap-y-2">
+              {whatsappHref && (
+                <a
+                  href={whatsappHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackFallback("investor_desk", "whatsapp")}
+                  className="font-medium text-copper-600 underline underline-offset-4"
+                >
+                  Send my inquiry on WhatsApp
+                </a>
+              )}
+              {fallbackHref && (
+                <a
+                  href={fallbackHref}
+                  onClick={() => trackFallback("investor_desk", "email")}
+                  className="font-medium text-copper-600 underline underline-offset-4"
+                >
+                  Send my inquiry by email to {FORM_INBOX}
+                </a>
+              )}
+            </div>
           </div>
         )}
 

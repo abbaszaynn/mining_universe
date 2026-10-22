@@ -34,6 +34,15 @@ const LABELS: Record<string, string> = {
   message: "Message",
 };
 
+function enquiryLines(form: FormData): string[] {
+  const lines: string[] = [];
+  form.forEach((value, key) => {
+    if (SKIP.has(key) || typeof value !== "string" || !value.trim()) return;
+    lines.push(`${LABELS[key] ?? key}: ${value.trim()}`);
+  });
+  return lines;
+}
+
 /**
  * Builds a `mailto:` link carrying everything the visitor typed.
  *
@@ -45,13 +54,29 @@ const LABELS: Record<string, string> = {
  * than retyping them, or giving up.
  */
 export function buildMailtoFallback(subject: string, form: FormData): string {
-  const lines: string[] = [];
-  form.forEach((value, key) => {
-    if (SKIP.has(key) || typeof value !== "string" || !value.trim()) return;
-    lines.push(`${LABELS[key] ?? key}: ${value.trim()}`);
-  });
-
   return `mailto:${FORM_INBOX}?subject=${encodeURIComponent(
     subject
-  )}&body=${encodeURIComponent(lines.join("\n"))}`;
+  )}&body=${encodeURIComponent(enquiryLines(form).join("\n"))}`;
+}
+
+/**
+ * The company's published WhatsApp number (also in the footer and on the
+ * contact page), in international format without "+", as wa.me expects.
+ */
+export const FORM_WHATSAPP = "923169244827";
+
+/**
+ * Same enquiry as a pre-filled WhatsApp message. Added Oct 2026 after both
+ * delivery paths were found unconfigured in production: investors here
+ * reach the team by phone and WhatsApp far more readily than by email, so
+ * offering it beside the mailto link keeps far more enquiries alive.
+ */
+export function buildWhatsAppFallback(subject: string, form: FormData): string {
+  const text = [subject, ...enquiryLines(form)].join("\n");
+  return `https://wa.me/${FORM_WHATSAPP}?text=${encodeURIComponent(text)}`;
+}
+
+/** Fires when a visitor uses a fallback, so lost-then-rescued leads are countable in GA4. */
+export function trackFallback(form: string, method: "email" | "whatsapp") {
+  window.gtag?.("event", "lead_fallback", { form_name: form, method });
 }

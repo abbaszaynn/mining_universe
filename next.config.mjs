@@ -33,6 +33,17 @@ const nextConfig = {
   },
   async redirects() {
     return [
+      // www.gbmines.com served the whole site (200) with a canonical pointing
+      // at the apex, which Search Console reports as "Alternative page with
+      // proper canonical tag" (Oct 2026). A permanent redirect consolidates
+      // it outright. Matched on the host header, so the apex is unaffected.
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.gbmines.com" }],
+        destination: "https://gbmines.com/:path*",
+        permanent: true,
+      },
+
       // /companies was live and crawlable before the rename. Without a 301 it
       // 404s, throwing away any indexing and inbound links it had earned.
       { source: "/companies", destination: "/about", permanent: true },

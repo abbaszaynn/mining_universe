@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { buildMailtoFallback, FORM_INBOX } from "@/lib/form-fallback";
+import { buildMailtoFallback, buildWhatsAppFallback, trackFallback, FORM_INBOX } from "@/lib/form-fallback";
 import { deliverLead } from "@/lib/lead-delivery";
 import { cn } from "@/lib/utils";
 
@@ -24,6 +24,7 @@ export function ContactForm({
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
   const [fallbackHref, setFallbackHref] = useState("");
+  const [whatsappHref, setWhatsappHref] = useState("");
 
   const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
   const defaultSubject = companyName
@@ -36,10 +37,12 @@ export function ContactForm({
     setStatus("idle");
     setErrorMessage("");
     setFallbackHref("");
+    setWhatsappHref("");
 
     const form = event.currentTarget;
     // Same fallback as the investor desk form: see lib/form-fallback.
     const fallback = buildMailtoFallback(defaultSubject, new FormData(form));
+    const whatsapp = buildWhatsAppFallback(defaultSubject, new FormData(form));
 
     // Sent to the operations platform and the Web3Forms inbox in parallel;
     // success if either accepts it (see lib/lead-delivery).
@@ -64,8 +67,9 @@ export function ContactForm({
       });
     } else {
       setStatus("error");
-      setErrorMessage(`${result.error} Your message is ready to send by email instead.`);
+      setErrorMessage(`${result.error} Your message is ready to send by WhatsApp or email instead.`);
       setFallbackHref(fallback);
+      setWhatsappHref(whatsapp);
     }
     setLoading(false);
   };
@@ -178,14 +182,28 @@ export function ContactForm({
         {status === "error" && (
           <div className="text-sm text-red-300">
             <p>{errorMessage}</p>
-            {fallbackHref && (
-              <a
-                href={fallbackHref}
-                className="mt-2 inline-block font-medium text-[#d4af37] underline underline-offset-4"
-              >
-                Send by email to {FORM_INBOX}
-              </a>
-            )}
+            <div className="mt-2 flex flex-wrap gap-x-5 gap-y-1">
+              {whatsappHref && (
+                <a
+                  href={whatsappHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackFallback("contact", "whatsapp")}
+                  className="font-medium text-[#d4af37] underline underline-offset-4"
+                >
+                  Send on WhatsApp
+                </a>
+              )}
+              {fallbackHref && (
+                <a
+                  href={fallbackHref}
+                  onClick={() => trackFallback("contact", "email")}
+                  className="font-medium text-[#d4af37] underline underline-offset-4"
+                >
+                  Send by email to {FORM_INBOX}
+                </a>
+              )}
+            </div>
           </div>
         )}
       </form>
@@ -262,14 +280,28 @@ export function ContactForm({
       {status === "error" && (
         <div className="rounded-lg border border-red-500/20 bg-red-500/10 px-3 py-2.5 text-sm text-red-300">
           <p>{errorMessage}</p>
-          {fallbackHref && (
-            <a
-              href={fallbackHref}
-              className="mt-2 inline-block font-medium text-[#d4af37] underline underline-offset-4"
-            >
-              Send by email to {FORM_INBOX}
-            </a>
-          )}
+          <div className="mt-2 flex flex-wrap gap-x-5 gap-y-1">
+            {whatsappHref && (
+              <a
+                href={whatsappHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackFallback("contact", "whatsapp")}
+                className="font-medium text-[#d4af37] underline underline-offset-4"
+              >
+                Send on WhatsApp
+              </a>
+            )}
+            {fallbackHref && (
+              <a
+                href={fallbackHref}
+                onClick={() => trackFallback("contact", "email")}
+                className="font-medium text-[#d4af37] underline underline-offset-4"
+              >
+                Send by email to {FORM_INBOX}
+              </a>
+            )}
+          </div>
         </div>
       )}
 

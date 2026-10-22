@@ -1,4 +1,5 @@
 import { concessions } from "@/lib/concessions";
+import type { FaqItem } from "@/lib/faq-data";
 
 /**
  * Buyer-intent pages, Cluster A in docs/SEO-PLAN.md. Traders search
@@ -32,6 +33,14 @@ export type Commodity = {
   demand: string;
   sourcedFrom: string[]; // concession slugs
   image: string;
+  /**
+   * Questions specific to this commodity, shown before the two shared supply
+   * questions and emitted as FAQPage schema. Commodity pages share a template,
+   * so a page with little unique copy reads to Google as a duplicate of its
+   * siblings: granite was flagged "Duplicate without user-selected canonical"
+   * in Search Console (Oct 2026). Unique, specific answers are the fix.
+   */
+  faqs?: FaqItem[];
 };
 
 export const COMMODITIES: Commodity[] = [
@@ -157,6 +166,23 @@ export const COMMODITIES: Commodity[] = [
       "bagicha-skardu-gemstones-and-minerals",
     ],
     image: "/images/commodities/granite.webp",
+    faqs: [
+      {
+        question: "Is your granite and marble available now, or still at exploration stage?",
+        answer:
+          "Marble is available now: Bagicha in Skardu is a producing block and carries snow white marble. The granite is earlier stage. Gupis in Ghizer is an exploratory block carrying granite alongside premium marble, and Ishkoman holds a reconnaissance licence covering granite and antimony. Every quote names the block it comes from, because a producing block can ship to a timetable and an exploratory one cannot yet.",
+      },
+      {
+        question: "What should I test before ordering dimension stone from Gilgit Baltistan?",
+        answer:
+          "Ask for block samples and have them tested at a laboratory of your choice for water absorption, density and compressive strength, then compare colour and veining across more than one block. Dimension stone is judged block by block, so samples from the actual quarry face tell you far more than a single showroom slab.",
+      },
+      {
+        question: "How does granite and marble from these valleys reach an export port?",
+        answer:
+          "Ghizer and Skardu are linked by road to Gilgit and the Karakoram Highway, and stone travels south by road to Karachi, which is why we quote FOB Karachi or CIF to your discharge port. Mountain weather shapes the calendar, so delivery windows are agreed per order rather than promised year-round.",
+      },
+    ],
   },
   {
     /**

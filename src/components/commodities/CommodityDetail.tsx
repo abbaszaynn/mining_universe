@@ -39,6 +39,7 @@ export function CommodityDetail({ commodity: c }: { commodity: Commodity }) {
   };
 
   const faqItems: FaqItem[] = [
+    ...(c.faqs ?? []),
     {
       question: `What are the minimum order quantity and shipping terms for ${c.name.toLowerCase()}?`,
       answer: `We quote FOB Karachi or CIF to your discharge port. Trial shipments are accepted before any monthly offtake commitment, so minimum order quantity is negotiated per buyer rather than fixed.`,
