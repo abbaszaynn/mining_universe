@@ -42,6 +42,18 @@ const DIRECTORY = [
       detail: "",
     })),
   },
+  {
+    // The three guides were the least-linked pages on the site in the
+    // Nov 2026 crawl (2 to 4 inbound links each); listing them here gives
+    // every page a direct link to them.
+    heading: "Investor guides",
+    links: [
+      { href: "/guides/mining-companies-gilgit-baltistan", label: "Mining companies in Gilgit Baltistan", detail: "" },
+      { href: "/guides/mining-licence-gilgit-baltistan", label: "How to get a mining licence", detail: "" },
+      { href: "/guides/gilgit-baltistan-mining-statistics-2026", label: "GB mining statistics 2026", detail: "" },
+      { href: "/news", label: "All articles", detail: "" },
+    ],
+  },
 ];
 
 export function SiteFooter() {
@@ -87,7 +99,7 @@ export function SiteFooter() {
           {/* Directory: see DIRECTORY above for why this exists. */}
           <nav
             aria-label="Site directory"
-            className="mb-16 grid gap-10 border-t border-bone-50/20 pt-12 sm:grid-cols-2 lg:grid-cols-3 md:mb-20"
+            className="mb-16 grid gap-10 border-t border-bone-50/20 pt-12 sm:grid-cols-2 lg:grid-cols-4 md:mb-20"
           >
             {DIRECTORY.map((group) => (
               <div key={group.heading}>

@@ -10,6 +10,7 @@ import type { Concession } from "@/lib/concessions";
 import { concessions } from "@/lib/concessions";
 import { getConcessionContext } from "@/lib/concession-context";
 import type { FaqItem } from "@/lib/faq-data";
+import { RelatedReading } from "@/components/blog/RelatedReading";
 
 export function ConcessionDetail({ concession: c }: { concession: Concession }) {
   const url = absoluteUrl(`/concessions/${c.slug}`);
@@ -42,7 +43,11 @@ export function ConcessionDetail({ concession: c }: { concession: Concession }) 
     { name: c.name },
   ]);
 
-  const others = concessions.filter((o) => o.slug !== c.slug).slice(0, 3);
+  // The next three blocks in registry order, wrapping round, so every
+  // concession is linked from three others rather than all linking to the
+  // same first three.
+  const idx = concessions.findIndex((o) => o.slug === c.slug);
+  const others = [1, 2, 3].map((k) => concessions[(idx + k) % concessions.length]).filter((o) => o.slug !== c.slug);
 
   return (
     <>
@@ -219,6 +224,8 @@ export function ConcessionDetail({ concession: c }: { concession: Concession }) 
           subtitle={`Direct answers for investors and buyers evaluating ${c.name}, ${c.district}.`}
           id="faq"
         />
+
+        <RelatedReading path={`/concessions/${c.slug}`} subject={c.name} />
 
         {others.length > 0 && (
           <section className="relative overflow-hidden bg-bone-50 py-16 md:py-24">

@@ -7,6 +7,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { FaqSection } from "@/components/faq/FaqSection";
 import { absoluteUrl, breadcrumbJsonLd } from "@/lib/seo";
 import type { FaqItem } from "@/lib/faq-data";
+import { RelatedReading } from "@/components/blog/RelatedReading";
 import type { Commodity } from "@/lib/commodities";
 import { getCommoditySourceConcessions } from "@/lib/commodities";
 
@@ -232,6 +233,8 @@ export function CommodityDetail({ commodity: c }: { commodity: Commodity }) {
           subtitle={`Direct answers for buyers evaluating ${c.name.toLowerCase()} from Durr & Zircon Consortium.`}
           id="faq"
         />
+
+        <RelatedReading path={`/commodities/${c.slug}`} subject={c.name.toLowerCase()} />
       </main>
     </>
   );

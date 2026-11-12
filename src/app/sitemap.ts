@@ -34,8 +34,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
    * all. Update these when the content genuinely changes again: a lastmod
    * that moves on every build teaches Google to ignore it.
    */
-  const REGISTRY_UPDATED = new Date("2026-09-11T00:00:00Z");
-  const COMMODITIES_UPDATED = new Date("2026-09-12T00:00:00Z");
+  // Nov 2026: revised Hilal Abad and Placer Gold areas (Oct), granite FAQ
+  // (Oct), and related-reading links on every concession and commodity page.
+  const REGISTRY_UPDATED = new Date("2026-11-12T00:00:00Z");
+  const COMMODITIES_UPDATED = new Date("2026-11-12T00:00:00Z");
+  // Last real change to lib/markets.ts (git), not "now".
+  const MARKETS_UPDATED = new Date("2026-09-12T00:00:00Z");
 
   const concessionEntries: MetadataRoute.Sitemap = [
     {
@@ -70,11 +74,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const marketEntries: MetadataRoute.Sitemap = [
     {
       url: `${base}/markets`,
+      lastModified: MARKETS_UPDATED,
       changeFrequency: "monthly",
       priority: 0.8,
     },
     ...MARKETS.map((m) => ({
       url: `${base}/markets/${m.slug}`,
+      lastModified: MARKETS_UPDATED,
       changeFrequency: "monthly" as const,
       priority: 0.75,
     })),

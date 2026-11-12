@@ -4,6 +4,7 @@ import { BlogArticleExperience } from "@/components/blog/BlogArticleExperience";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { articleJsonLd, createPageMetadata, faqJsonLd } from "@/lib/seo";
 import { articleFaqItems } from "@/lib/article-blocks";
+import { relatedArticles as pickRelated } from "@/lib/related-articles";
 
 type PageProps = {
   params: { id: string };
@@ -52,9 +53,8 @@ export default async function NewsDetailPage({ params }: PageProps) {
     companies.map((company) => [company.id, company.name])
   );
 
-  const relatedArticles = allArticles
-    .filter((item) => item.id !== article.id)
-    .slice(0, 3);
+  // Newest article plus closest topical matches; see lib/related-articles.
+  const relatedArticles = pickRelated(article, allArticles);
 
   return (
     <>
