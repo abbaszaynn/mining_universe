@@ -1136,6 +1136,45 @@ export const news: NewsArticle[] = [
     imageUrl: '/images/blog/gilgit-baltistan-field-team-camp.jpg',
     publishDate: '2026-10-22T09:00:00Z',
     companyId: 'durr-zircon',
+  },
+  /*
+   * Event report, written on day one of PMIF26 (12 Nov 2026). Facts come
+   * from Arab News and ARY News (Radio Pakistan) opening-day reports and the
+   * ProPakistani preview of 5 Nov. Scheduled speakers who were not confirmed
+   * as having spoken (the PM, the army chief, the international names) are
+   * described as listed, not quoted. Provincial claims (Reko Diq by 2029,
+   * Punjab figures) are attributed to the person who made them. Update after
+   * day two if signed agreements are reported.
+   */
+  {
+    id: 'pakistan-minerals-investment-forum-2026-gilgit-baltistan',
+    title: 'Pakistan Minerals Investment Forum 2026 in Islamabad: What Was Said, and What It Means for Gilgit Baltistan',
+    seoTitle: 'PMIF 2026 Islamabad: What It Means for GB',
+    excerpt: 'The Pakistan Minerals Investment Forum opened in Islamabad on 12 November with every provincial leader on stage, Gilgit Baltistan\'s Chief Minister among them. Here is what was said on day one, what to watch on day two, and where licensed Gilgit Baltistan ground fits.',
+    content: [
+      "Pakistan's mining sector put itself on show this week. The Pakistan Minerals Investment Forum 2026, PMIF26, opened at the Jinnah Convention Centre in Islamabad on Thursday 12 November and runs to 13 November. Every province and region stood up in the same room to pitch its minerals, and Gilgit Baltistan was one of them. This is what was said, what is still to come, and what it means if you are looking at our part of the country.",
+      "::facts\n12 to 13 Nov | forum dates, Jinnah Convention Centre, Islamabad\n60+ | countries participating, according to Ishaq Dar\n50+ | peer-reviewed technical papers on Pakistan's geology\n6 | provinces and regions pitching their minerals on stage",
+      "## What is the Pakistan Minerals Investment Forum?",
+      "It is the government's flagship event for selling Pakistan's minerals to the world. It is organised by the Government of Pakistan, endorsed by the Special Investment Facilitation Council and run with OGDC as founding partner, according to ProPakistani. This year's format has three parts: a strategic conference for policymakers and investors, a technical conference with more than 50 peer-reviewed papers on Pakistan's geology, and an international exhibition that includes a mineral specimen expo and a European pavilion, with meetings set up between producers and potential buyers. Arab News describes it as the third edition of the forum.",
+      "## What did the government say on the opening day?",
+      "That minerals are now national strategy. Deputy Prime Minister and Foreign Minister Ishaq Dar called mineral development a strategic national economic priority and presented Pakistan as a competitive and trusted destination for exploration and investment, ARY News reported, citing Radio Pakistan. He said more than sixty countries were taking part, described Balochistan as central to Pakistan's mineral future, and said the agenda also reaches Khyber Pakhtunkhwa, the northern regions, Punjab and Sindh, with local communities meant to be participants and beneficiaries rather than bystanders.",
+      "## What did each province put on the table?",
+      "Each leader came with a pitch, as reported by ARY News. Balochistan's Chief Minister Sarfraz Bugti said a further security division has been raised for the mineral corridor and that Reko Diq will be operating by 2029. Khyber Pakhtunkhwa's Governor Faisal Karim Kundi said a provincial mines and minerals company will soon be running and promised investors security. Sindh's Chief Minister Murad Ali Shah said 27 minerals have been identified in the province, with Thar coal the headline. Punjab's Chief Minister Maryam Nawaz said mines revenue has risen to Rs 40 billion over two and a half years, pointed to 261.5 million tonnes of iron ore at Chiniot, and said surveys of placer gold in Punjab's rivers are under way. Azad Kashmir's Prime Minister invited investors to explore there too.",
+      "## What did Gilgit Baltistan say at PMIF 2026?",
+      "That it is ready for investors. Gilgit Baltistan's Chief Minister, Amjad Hussain Azar, told the forum that the region has put in place the mechanism needed to facilitate investment in mineral exploration, according to ARY News. Arab News listed Gilgit Baltistan alongside Balochistan, Khyber Pakhtunkhwa and Sindh as home to Pakistan's copper, gold, rare earth, lithium and gemstone deposits. For a region that has usually sat in Balochistan's shadow at these events, having its own leader on the main stage with an investment message is a real change.",
+      "![The road into Askoli, Shigar, where our Shigar block carries gold, lead, lithium and copper.](/images/blog/askoli-shigar-k2-signboard.jpg)",
+      "## What is happening on day two?",
+      "Policy and announcements. The published agenda for 13 November includes a dialogue in which ministers from several countries discuss how to build investor-ready mining jurisdictions, scheduled strategic announcements across the mineral value chain, and a session on security, rail, power, water and CPEC connectivity under the title License to Deliver. ProPakistani's preview also listed international speakers including Robert Friedland of Ivanhoe Mines and John Thornton, chairman of Barrick. We will update this page if agreements are signed; last year's forum produced 16 memorandums according to the organisers.",
+      "## What does PMIF 2026 mean for investors looking at Gilgit Baltistan?",
+      "Three things. First, the government is now pitching the whole country, not just Balochistan, and Gilgit Baltistan's leadership is openly asking for exploration investment, which tends to mean faster attention for licence holders who already have their paperwork in order. Second, security dominated the provincial speeches; Gilgit Baltistan's calmer record is a genuine advantage there, as we set out in our analysis of [whether US investors are looking at Gilgit Baltistan](/news/us-mining-balochistan-gilgit-baltistan). Third, the emphasis on exploration finance and technical papers favours ground that is already licensed and mapped, because that is what lets an investor move from a forum handshake to a site visit.",
+      "## Where does Durr & Zircon fit?",
+      "We hold ten registered concessions across Gilgit Baltistan through three Pakistani companies, four of them already producing: nephrite jade at [Hilal Abad](/concessions/hilal-abad-polymetallic-complex), copper and marble at Bagicha, copper and lead at Jutial Nala, and placer gold on the Skardu riverbed. The full registry, with area and stage for every block, is on the [concessions page](/concessions), and the legal routes for a foreign investor are in our guide on [how to invest in Pakistan's mining sector](/news/how-to-invest-in-mining-sector-pakistan).",
+      "## How can I meet you during or after the forum?",
+      "Message us through the [investor desk](/investor-desk) or on WhatsApp at +92 316 9244827. We can meet in Islamabad while delegations are in town, send physical samples, share licences and field data under NDA, and arrange a site visit to Gilgit Baltistan with permits in hand.",
+    ].join('\n\n'),
+    imageUrl: '/images/blog/askoli-shigar-k2-signboard.jpg',
+    publishDate: '2026-11-12T12:00:00Z',
+    companyId: 'durr-zircon',
   }
 ];
 

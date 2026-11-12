@@ -22,17 +22,10 @@ export function ConcessionDetail({ concession: c }: { concession: Concession }) 
     // Deliberately no `geo` property — exact coordinates are not published.
     address: { "@type": "PostalAddress", addressRegion: c.district, addressCountry: "PK" },
     url,
-    ...(c.forSale
-      ? {
-          "@type": ["Place", "Product"],
-          offers: {
-            "@type": "Offer",
-            businessFunction: "http://purl.org/goodrelations/v1#Sell",
-            availability: "https://schema.org/InStock",
-            seller: { "@type": "Organization", name: c.licenceHolder },
-          },
-        }
-      : {}),
+    // Blocks offered for acquisition used to be typed ["Place", "Product"]
+    // with a price-less Offer, which Google read as a merchant listing and
+    // flagged (Oct 2026). A sale of a licence is not a shop item, so the
+    // schema stays a plain Place; the page copy states the sale.
   };
 
   // Coordinates question first — it's the one every serious enquirer actually

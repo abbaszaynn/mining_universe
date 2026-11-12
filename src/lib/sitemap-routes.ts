@@ -102,4 +102,8 @@ export const NEWS_ROUTES = [
     id: "us-mining-balochistan-gilgit-baltistan",
     publishDate: "2026-10-22T09:00:00Z",
   },
+  {
+    id: "pakistan-minerals-investment-forum-2026-gilgit-baltistan",
+    publishDate: "2026-11-12T12:00:00Z",
+  },
 ];

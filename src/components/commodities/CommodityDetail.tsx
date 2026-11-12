@@ -14,28 +14,23 @@ export function CommodityDetail({ commodity: c }: { commodity: Commodity }) {
   const url = absoluteUrl(`/commodities/${c.slug}`);
   const sources = getCommoditySourceConcessions(c);
 
+  /**
+   * A B2B supply service, not a retail Product. These commodities are quoted
+   * per shipment and never carry a published price, so Product + Offer made
+   * Google treat every commodity page as a shop listing and flag it for
+   * missing price, currency, shipping, returns and reviews (Search Console,
+   * Oct 2026). Service is the accurate type and is not a merchant listing.
+   */
   const productSchema = {
     "@context": "https://schema.org",
-    "@type": "Product",
-    name: c.name,
+    "@type": "Service",
+    name: `${c.name} supply from Gilgit Baltistan, Pakistan`,
+    serviceType: `${c.name} supply`,
     description: c.intro,
     url,
     image: absoluteUrl(c.image),
-    brand: { "@type": "Organization", name: "Durr & Zircon Consortium" },
-    offers: {
-      "@type": "Offer",
-      availability: "https://schema.org/InStock",
-      businessFunction: "http://purl.org/goodrelations/v1#Sell",
-      priceSpecification: {
-        "@type": "PriceSpecification",
-        // No published price - this is a B2B commodity quoted per shipment,
-        // not a fixed retail price. Omitting `price` outright trips schema
-        // validators that expect one, so this stays deliberately vague
-        // instead of publishing a number nobody actually quotes at.
-        valueAddedTaxIncluded: false,
-      },
-      seller: { "@type": "Organization", name: "Durr & Zircon Consortium" },
-    },
+    provider: { "@type": "Organization", name: "Durr & Zircon Consortium", url: absoluteUrl("/") },
+    areaServed: "Worldwide",
   };
 
   const faqItems: FaqItem[] = [
