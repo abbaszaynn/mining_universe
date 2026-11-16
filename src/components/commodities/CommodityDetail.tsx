@@ -14,6 +14,8 @@ import { getCommoditySourceConcessions } from "@/lib/commodities";
 export function CommodityDetail({ commodity: c }: { commodity: Commodity }) {
   const url = absoluteUrl(`/commodities/${c.slug}`);
   const sources = getCommoditySourceConcessions(c);
+  const exploration = c.stage === "exploration";
+  const lower = c.name.toLowerCase();
 
   /**
    * A B2B supply service, not a retail Product. These commodities are quoted
@@ -25,8 +27,10 @@ export function CommodityDetail({ commodity: c }: { commodity: Commodity }) {
   const productSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
-    name: `${c.name} supply from Gilgit Baltistan, Pakistan`,
-    serviceType: `${c.name} supply`,
+    name: exploration
+      ? `${c.name} exploration ground in Gilgit Baltistan, Pakistan`
+      : `${c.name} supply from Gilgit Baltistan, Pakistan`,
+    serviceType: exploration ? `${c.name} exploration partnership` : `${c.name} supply`,
     description: c.intro,
     url,
     image: absoluteUrl(c.image),
@@ -34,17 +38,28 @@ export function CommodityDetail({ commodity: c }: { commodity: Commodity }) {
     areaServed: "Worldwide",
   };
 
-  const faqItems: FaqItem[] = [
-    ...(c.faqs ?? []),
-    {
-      question: `What are the minimum order quantity and shipping terms for ${c.name.toLowerCase()}?`,
-      answer: `We quote FOB Karachi or CIF to your discharge port. Trial shipments are accepted before any monthly offtake commitment, so minimum order quantity is negotiated per buyer rather than fixed.`,
-    },
-    {
-      question: `Can I get an assay report before committing to a purchase?`,
-      answer: `Yes. Assay reports and, where relevant, SGS pre-shipment inspection are arranged for verified buyers ahead of any commitment. Reach out through the investor desk to start that process.`,
-    },
-  ];
+  const sharedFaqs: FaqItem[] = exploration
+    ? [
+        {
+          question: `Can I buy ${lower} from you today?`,
+          answer: `Not yet. Our ${lower} ground is at exploration stage, so there is no concentrate to ship. What is available now is field samples for inspection, our field data under NDA, and a position for investors who fund the sampling and assay programme: a farm-in for a share of the block, a joint venture, or an offtake option on future production.`,
+        },
+        {
+          question: `What ${lower} data exists for these blocks?`,
+          answer: `Field identifications and photographed samples from our own exploration, shared with verified investors once an enquiry is confirmed through the investor desk. No grade or tonnage has been published, by us or by any survey, and we would rather say so than quote a figure nobody has measured.`,
+        },
+      ]
+    : [
+        {
+          question: `What are the minimum order quantity and shipping terms for ${lower}?`,
+          answer: `We quote FOB Karachi or CIF to your discharge port. Trial shipments are accepted before any monthly offtake commitment, so minimum order quantity is negotiated per buyer rather than fixed.`,
+        },
+        {
+          question: `Can I get an assay report before committing to a purchase?`,
+          answer: `Yes. Assay reports and, where relevant, SGS pre-shipment inspection are arranged for verified buyers ahead of any commitment. Reach out through the investor desk to start that process.`,
+        },
+      ];
+  const faqItems: FaqItem[] = [...(c.faqs ?? []), ...sharedFaqs];
 
   const breadcrumbSchema = breadcrumbJsonLd([
     { name: "Home", path: "/" },
@@ -103,6 +118,7 @@ export function CommodityDetail({ commodity: c }: { commodity: Commodity }) {
 
             <div className="mt-6 flex flex-wrap items-center gap-3">
               <Pill>Gilgit Baltistan</Pill>
+              {exploration && <Pill>Exploration stage</Pill>}
             </div>
 
             <h1 className="mt-6 max-w-[24ch] text-display-lg tracking-[-0.035em] text-graphite-950">
@@ -115,7 +131,7 @@ export function CommodityDetail({ commodity: c }: { commodity: Commodity }) {
 
             <div className="mt-10 flex flex-wrap gap-4">
               <SquareButton href="/investor-desk" tone="accent">
-                Enquire about {c.name.toLowerCase()}
+                {exploration ? `Discuss ${lower} exploration` : `Enquire about ${lower}`}
               </SquareButton>
               <SquareButton href="/documents" tone="light">
                 Review documentation
@@ -147,9 +163,9 @@ export function CommodityDetail({ commodity: c }: { commodity: Commodity }) {
 
               <div className="mt-8 border-t border-graphite-950/12 pt-8">
                 <p className="text-sm leading-[1.5] text-graphite-500">
-                  Assay data, trade documentation and shipment history are
-                  shared directly with verified buyers, by email or once an
-                  enquiry is confirmed through the investor desk.
+                  {exploration
+                    ? "Field identifications, sample photographs and licence documents are shared with verified investors once an enquiry is confirmed through the investor desk. No grade or tonnage is published until it has been measured."
+                    : "Assay data, trade documentation and shipment history are shared directly with verified buyers, by email or once an enquiry is confirmed through the investor desk."}
                 </p>
               </div>
             </div>
@@ -161,7 +177,7 @@ export function CommodityDetail({ commodity: c }: { commodity: Commodity }) {
             <GridLines />
             <div className="relative z-10 mx-auto max-w-[105rem] px-5 md:px-10">
               <h2 className="text-display-md tracking-[-0.03em] text-graphite-950">
-                Which licensed blocks {c.name.toLowerCase()} comes from
+                {exploration ? `Which licensed blocks carry ${lower}` : `Which licensed blocks ${lower} comes from`}
               </h2>
               <p className="mt-6 max-w-[62ch] text-base leading-[1.6] text-graphite-600 md:text-lg">
                 {sources.length === 1
@@ -229,8 +245,12 @@ export function CommodityDetail({ commodity: c }: { commodity: Commodity }) {
 
         <FaqSection
           items={faqItems}
-          title={`${c.name}: supply FAQ`}
-          subtitle={`Direct answers for buyers evaluating ${c.name.toLowerCase()} from Durr & Zircon Consortium.`}
+          title={exploration ? `${c.name}: exploration FAQ` : `${c.name}: supply FAQ`}
+          subtitle={
+            exploration
+              ? `Direct answers for investors evaluating ${lower} ground held by Durr & Zircon Consortium.`
+              : `Direct answers for buyers evaluating ${lower} from Durr & Zircon Consortium.`
+          }
           id="faq"
         />
 

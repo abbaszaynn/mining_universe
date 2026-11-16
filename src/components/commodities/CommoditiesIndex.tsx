@@ -17,10 +17,12 @@ export function CommoditiesIndex() {
             supplied direct from our own concessions.
           </h1>
           <p className="mt-8 max-w-[62ch] text-lg leading-[1.5] text-graphite-500 md:text-xl">
-            {COMMODITIES.map((c) => c.name).join(", ")}, quoted FOB Karachi
-            or CIF, with no intermediary layer
-            between the pit and your purchase order. Assay reports and
-            trade documentation are shared with verified buyers on request.
+            {COMMODITIES.filter((c) => c.stage !== "exploration").map((c) => c.name).join(", ")},
+            quoted FOB Karachi or CIF, with no intermediary layer between the
+            pit and your purchase order. Assay reports and trade documentation
+            are shared with verified buyers on request.{" "}
+            {COMMODITIES.filter((c) => c.stage === "exploration").map((c) => c.name).join(" and ")}{" "}
+            are exploration-stage ground, open to farm-in and joint venture.
           </p>
         </div>
       </section>

@@ -115,7 +115,7 @@ export function GET() {
 ${SITE.legalName} is an SECP-registered mining group in Gilgit Baltistan, Pakistan.
 It is the merged entity of Durr Mines and Minerals (PVT) LTD and Zircon Mines
 (PVT) LTD, and also operates Earth Lux Mines & Minerals (PVT) LTD as a third
-registered company. "Game of Stones" is a brand name for the same organisation.
+registered company. "GB Mines" (the name on the logo and the gbmines.com domain) and "Game of Stones" are brand names for the same organisation.
 
 ## Key facts
 
@@ -239,6 +239,8 @@ and every figure carries a named source in the text.
 - [Investing in Hilal Abad nephrite jade](${base}/news/nephrite-jade-investment-pakistan-china-hilal-abad): the investment case for green nephrite from a licensed Gilgit Baltistan concession, written for Chinese buyers first: jade's place in Chinese culture, why buyers look beyond Xinjiang, the overland route to Kashgar via Khunjerab, road access to within a 15-minute walk, more than ten field-identified occurrences across about 10 sq km, surface extraction, no certified reserve, and the routes for foreign investors
 - [Is the US planning to work in Gilgit Baltistan?](${base}/news/us-mining-balochistan-gilgit-baltistan): October 2026 analysis of Pakistan's invitation to US companies in Balochistan (an invitation, with no mine or contract awarded yet), the existing USSM and US EXIM Reko Diq deals, the pros and cons for Pakistan, and the evidence that US investors are also looking at Gilgit Baltistan's smaller licensed mines
 - [Pakistan Minerals Investment Forum 2026](${base}/news/pakistan-minerals-investment-forum-2026-gilgit-baltistan): day-one report from PMIF26 in Islamabad (12-13 Nov 2026): what the federal government and each province said, including Gilgit Baltistan Chief Minister Amjad Hussain Azar on facilitating exploration investment, the day-two agenda, and what it means for investors in Gilgit Baltistan
+- [South Korea's antimony market](${base}/news/south-korea-antimony-market-korea-zinc-supply): how Korean antimony supply works (Korea Zinc's Onsan smelter is the country's only producer), China's December 2024 export ban to the US, the 2025 price peak and 2026 easing, Korea Zinc's planned US smelter, where non-Chinese concentrate could come from, and what a Korean buyer should ask a new supplier
+- [Lithium in Gilgit Baltistan](${base}/news/lithium-gilgit-baltistan-shigar-pegmatites): what the Geological Survey of Pakistan has recorded (lepidolite and lithium-tourmaline pegmatites at Shigar and Shengus), the 2026 mica-type lithium ore study, why lepidolite differs from spodumene, that no grade or tonnage has been published by anyone, and the farm-in route on our Shigar and Bagicha blocks
 
 ## Disclosure policy
 

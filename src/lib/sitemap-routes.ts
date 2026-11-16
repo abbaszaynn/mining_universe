@@ -106,4 +106,12 @@ export const NEWS_ROUTES = [
     id: "pakistan-minerals-investment-forum-2026-gilgit-baltistan",
     publishDate: "2026-11-12T12:00:00Z",
   },
+  {
+    id: "south-korea-antimony-market-korea-zinc-supply",
+    publishDate: "2026-11-16T09:00:00Z",
+  },
+  {
+    id: "lithium-gilgit-baltistan-shigar-pegmatites",
+    publishDate: "2026-11-16T10:00:00Z",
+  },
 ];

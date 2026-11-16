@@ -130,7 +130,7 @@ export function organizationJsonLd() {
         name: SITE.legalName,
         // Feeds entity resolution: tells Google the brand flourish and the two
         // predecessor companies all refer to this same registered entity.
-        alternateName: [SITE.brandName, ...SITE.formerNames],
+        alternateName: ["GB Mines", "GBMINES", SITE.brandName, ...SITE.formerNames],
         url,
         // The consortium's own social profiles (gb__mines). Links the site to
         // those accounts as one entity for Google and answer engines.

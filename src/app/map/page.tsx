@@ -2,14 +2,15 @@ import Link from "next/link";
 import nextDynamic from "next/dynamic";
 import { getCompanies } from "@/lib/data";
 import { concessions } from "@/lib/concessions";
-import { createPageMetadata } from "@/lib/seo";
+import { absoluteUrl, createPageMetadata } from "@/lib/seo";
+import { JsonLd } from "@/components/seo/JsonLd";
 
 export const dynamic = "force-dynamic";
 
 export const metadata = createPageMetadata({
-  title: "Mining Map of Gilgit Baltistan: Licensed Concessions",
+  title: "Gilgit Baltistan Mining Map: Minerals & Licensed Concessions",
   description:
-    "Interactive 3D satellite map of Durr & Zircon's licensed mining concessions in Gilgit Baltistan, with each site's district, minerals and stage across Skardu, Kharmang, Gilgit, Ghizer, Shigar and Hunza.",
+    "Interactive Gilgit Baltistan mining map on 3D satellite terrain: a minerals map of ten licensed concessions across Skardu, Kharmang, Gilgit, Ghizer, Shigar and Hunza, with each site's minerals, area and stage.",
   path: "/map",
 });
 
@@ -60,6 +61,18 @@ export default async function MapPage() {
 
   return (
     <>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "Map",
+          name: "Gilgit Baltistan mining map",
+          description:
+            "Interactive map of licensed mining concessions in Gilgit Baltistan, Pakistan, with minerals, area and stage for each block.",
+          url: absoluteUrl("/map"),
+          about: { "@type": "AdministrativeArea", name: "Gilgit Baltistan, Pakistan" },
+          publisher: { "@id": `${absoluteUrl("/")}/#organization` },
+        }}
+      />
       <div className="relative h-[calc(100dvh-4.75rem)] w-full" data-gos-page-root>
         <MapExperience companies={companies} />
       </div>
@@ -79,11 +92,12 @@ export default async function MapPage() {
             id="map-index-heading"
             className="mt-3 max-w-3xl font-[family-name:var(--font-display)] text-3xl font-semibold tracking-[-0.02em] md:text-5xl"
           >
-            Mining map of Gilgit Baltistan
+            Gilgit Baltistan mining map
           </h1>
           <p className="mt-5 max-w-3xl text-base leading-relaxed text-graphite-600 md:text-lg">
-            The map above plots the surveyed boundaries of our {concessions.length}{" "}
-            licensed concessions on 3D satellite terrain. {producing} are producing
+            A minerals map of Gilgit Baltistan from our own registry: the map above
+            plots the surveyed boundaries of our {concessions.length} licensed
+            concessions on 3D satellite terrain. {producing} are producing
             and the rest are at exploration or reconnaissance stage, spread across
             the Karakoram and Himalayan districts of Gilgit Baltistan where copper,
             gold, antimony, lead and nephrite jade occur. Select a site on the map to

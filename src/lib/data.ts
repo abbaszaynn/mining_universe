@@ -1152,8 +1152,8 @@ export const news: NewsArticle[] = [
     seoTitle: 'PMIF 2026 Islamabad: What It Means for GB',
     excerpt: 'The Pakistan Minerals Investment Forum opened in Islamabad on 12 November with every provincial leader on stage, Gilgit Baltistan\'s Chief Minister among them. Here is what was said on day one, what to watch on day two, and where licensed Gilgit Baltistan ground fits.',
     content: [
-      "Pakistan's mining sector put itself on show this week. The Pakistan Minerals Investment Forum 2026, PMIF26, opened at the Jinnah Convention Centre in Islamabad on Thursday 12 November and runs to 13 November. Every province and region stood up in the same room to pitch its minerals, and Gilgit Baltistan was one of them. This is what was said, what is still to come, and what it means if you are looking at our part of the country.",
-      "::facts\n12 to 13 Nov | forum dates, Jinnah Convention Centre, Islamabad\n60+ | countries participating, according to Ishaq Dar\n50+ | peer-reviewed technical papers on Pakistan's geology\n6 | provinces and regions pitching their minerals on stage",
+      "Pakistan's mining sector put itself on show this week. The Pakistan Minerals Investment Forum 2026, PMIF26, opened at the Jinnah Convention Centre in Islamabad on Thursday 12 November and runs to 13 November. Every province and region stood up in the same room to pitch its minerals, and Gilgit Baltistan was one of them. This is what was said, what the two days delivered, and what it means if you are looking at our part of the country. Updated 16 November with the closing-day outcomes.",
+      "::facts\n12 to 13 Nov | forum dates, Jinnah Convention Centre, Islamabad\n13 | agreements and MoUs signed over the two days\n60+ | countries participating, according to Ishaq Dar\n6 | provinces and regions pitching their minerals on stage",
       "## What is the Pakistan Minerals Investment Forum?",
       "It is the government's flagship event for selling Pakistan's minerals to the world. It is organised by the Government of Pakistan, endorsed by the Special Investment Facilitation Council and run with OGDC as founding partner, according to ProPakistani. This year's format has three parts: a strategic conference for policymakers and investors, a technical conference with more than 50 peer-reviewed papers on Pakistan's geology, and an international exhibition that includes a mineral specimen expo and a European pavilion, with meetings set up between producers and potential buyers. Arab News describes it as the third edition of the forum.",
       "## What did the government say on the opening day?",
@@ -1163,8 +1163,8 @@ export const news: NewsArticle[] = [
       "## What did Gilgit Baltistan say at PMIF 2026?",
       "That it is ready for investors. Gilgit Baltistan's Chief Minister, Amjad Hussain Azar, told the forum that the region has put in place the mechanism needed to facilitate investment in mineral exploration, according to ARY News. Arab News listed Gilgit Baltistan alongside Balochistan, Khyber Pakhtunkhwa and Sindh as home to Pakistan's copper, gold, rare earth, lithium and gemstone deposits. For a region that has usually sat in Balochistan's shadow at these events, having its own leader on the main stage with an investment message is a real change.",
       "![The road into Askoli, Shigar, where our Shigar block carries gold, lead, lithium and copper.](/images/blog/askoli-shigar-k2-signboard.jpg)",
-      "## What is happening on day two?",
-      "Policy and announcements. The published agenda for 13 November includes a dialogue in which ministers from several countries discuss how to build investor-ready mining jurisdictions, scheduled strategic announcements across the mineral value chain, and a session on security, rail, power, water and CPEC connectivity under the title License to Deliver. ProPakistani's preview also listed international speakers including Robert Friedland of Ivanhoe Mines and John Thornton, chairman of Barrick. We will update this page if agreements are signed; last year's forum produced 16 memorandums according to the organisers.",
+      "## What did the forum deliver on day two?",
+      "Thirteen signed agreements, most of them for Balochistan. Arab News and Business Recorder reported 13 MoUs, joint ventures and international agreements at the close on 13 November, covering exploration, investment, geological surveys and work on existing licences, according to OGDCL's managing director, who presides over the forum. The named deals cluster in Chagai, the district that holds Reko Diq: Mari Minerals signed a joint venture with Turkey's Lidya Mining and a framework with MTA International, and an agreement with Ivanhoe Atlantic for copper and gold exploration, while the Frontier Works Organisation signed with Ivanhoe Mines for the same district. The Pakistan Mineral Development Corporation partnered with MTA to explore antimony, copper, gold, silver and molybdenum in Pishin. Pakistan also signed a geoscience cooperation agreement with Germany's BGR. Two launches matter more for Gilgit Baltistan than any single deal: the National Minerals Database and Data Centre portal and the Geological Survey of Pakistan's GeoPortal, both meant to put geological data in front of investors, which is where northern ground has always been thinnest. Executives from Barrick, Ivanhoe Mines and China's Minmetals attended. One outlet's caution is worth repeating: most of the paperwork is early-stage, and the test now is turning pledges into mines.",
       "## What does PMIF 2026 mean for investors looking at Gilgit Baltistan?",
       "Three things. First, the government is now pitching the whole country, not just Balochistan, and Gilgit Baltistan's leadership is openly asking for exploration investment, which tends to mean faster attention for licence holders who already have their paperwork in order. Second, security dominated the provincial speeches; Gilgit Baltistan's calmer record is a genuine advantage there, as we set out in our analysis of [whether US investors are looking at Gilgit Baltistan](/news/us-mining-balochistan-gilgit-baltistan). Third, the emphasis on exploration finance and technical papers favours ground that is already licensed and mapped, because that is what lets an investor move from a forum handshake to a site visit.",
       "## Where does Durr & Zircon fit?",
@@ -1175,6 +1175,72 @@ export const news: NewsArticle[] = [
     imageUrl: '/images/blog/askoli-shigar-k2-signboard.jpg',
     publishDate: '2026-11-12T12:00:00Z',
     companyId: 'durr-zircon',
+  },
+  /*
+   * Written for the query "south korea antimony market" (56 impressions, 0
+   * clicks in Search Console, Aug-Nov 2026): the Korea market page ranked
+   * for it but is a supplier pitch, and the searcher wants the market.
+   * Facts attributed to The Tribune (India), Seoul Economic Daily, SMM and
+   * Reuters via Yahoo Finance; USGS price via The Tribune.
+   */
+  {
+    id: 'south-korea-antimony-market-korea-zinc-supply',
+    title: 'South Korea\'s Antimony Market: One Smelter, China\'s Export Ban, and Where New Supply Could Come From',
+    seoTitle: 'South Korea Antimony Market Explained',
+    excerpt: 'South Korea refines antimony at exactly one plant, Korea Zinc\'s Onsan smelter, and since China banned antimony exports to the United States that plant has become a strategic asset. Here is how the Korean antimony market works, what it imports, and why a Pakistani licence holder is paying attention.',
+    content: [
+      "Antimony is a small market with an outsized role: flame retardants, lead-acid batteries, ammunition primers and semiconductor dopants. South Korea is unusual in that its entire refined output comes from one company and one site. That concentration, and China's decision to cut off antimony exports to the United States, is why a metal most people have never heard of now appears in trade ministry strategies in Seoul and Washington alike.",
+      "::facts\n1 | antimony smelter in South Korea: Korea Zinc, Onsan\n~10 t/day | reported output at Onsan, Seoul Economic Daily, March 2026\n240 t | Korea Zinc's annual US supply target from 2026\n$25/lb | average antimony price in 2025, more than double 2024 (USGS)",
+      "## Who produces antimony in South Korea?",
+      "Korea Zinc, and nobody else. The company is South Korea's only producer of antimony, bismuth and indium, all recovered at its Onsan smelter in Ulsan from the residues of its lead and zinc refining. Seoul Economic Daily reported in March 2026 that Onsan turns out roughly 10 tonnes of antimony a day, about 300 tonnes a month, and earlier reporting put annual capacity at around 3,500 tonnes with an expansion under consideration. Korea has no antimony mines of its own, so every tonne starts as imported ore, concentrate or smelter feed.",
+      "## Why did China's export ban change the Korean market?",
+      "Because it turned a by-product into a strategic export. China is the world's dominant antimony producer. It placed antimony under export licensing in September 2024 and on 3 December 2024 banned exports of antimony, gallium and germanium to the United States outright, after Washington tightened controls on China's chip industry. American buyers needed a non-Chinese refiner, and Korea Zinc was one of very few outside China. The Tribune reported the company's first US shipment, 20 tonnes from Ulsan to Baltimore, in 2025, with a target of 240 tonnes a year from 2026.",
+      "## What happened to antimony prices?",
+      "They more than doubled. US Geological Survey data cited by The Tribune puts the average antimony price in 2025 at about $25 a pound, over twice the 2024 level, and Korea Zinc credited antimony sales for a record operating profit. The cycle has since turned: in its third-quarter 2026 results Korea Zinc reported revenue up 46 percent on the year but operating profit down 48 percent, which it attributed to lower metal prices, according to Shanghai Metals Market. Antimony remains far above its pre-2024 range, but the 2025 peak is behind it.",
+      "## Is Korea Zinc building capacity outside Korea?",
+      "Yes, in the United States. Reuters reported that Korea Zinc's board was to consider a US smelter under a joint venture with the US government and American companies, with investment of around 10 trillion won, about $6.8 billion, and planned output of 540,000 tonnes of non-ferrous metals including eleven critical minerals, antimony, gallium and germanium among them. If built, it would be the first major new antimony refining capacity in the West in decades, and it would need feed.",
+      "## Where will the feed come from?",
+      "That is the open question, and the reason this market matters to a company in northern Pakistan. A smelter is only as good as its concentrate supply, and the non-Chinese sources are few: Tajikistan, Russia, Bolivia, Myanmar, Australia's restarted Costerfield, and a handful of projects in development. Pakistan is a late entrant. At the Pakistan Minerals Investment Forum in November 2026, the Pakistan Mineral Development Corporation signed with Turkey's MTA to explore antimony and other critical minerals in Pishin, and the 2025 US Strategic Metals agreement put antimony first on its export list. Our own [antimony ground](/commodities/antimony-concentrate) at Gojal in Hunza, Gultari and Ishkoman is at exploration stage. What we can offer a Korean smelter today is early access: samples, assay data under NDA, and an offtake position ahead of production, as set out on our [South Korea market page](/markets/south-korea).",
+      "## What should a Korean buyer ask a new antimony supplier?",
+      "Three things before anything else. The licence, verified against the provincial register, because an exploration licence and a mining lease are different promises. An independent assay of the ore, since antimony grade and arsenic content decide whether a smelter wants it at all. And the route to port: antimony concentrate from Gilgit Baltistan moves by road to Karachi, and the season sets the calendar. Our [due diligence checklist](/guides/mining-companies-gilgit-baltistan) covers each of these, and our [investor desk](/investor-desk) is where that conversation starts.",
+    ].join('\n\n'),
+    imageUrl: '/images/commodities/antimony-updated.webp',
+    publishDate: '2026-11-16T09:00:00Z',
+    companyId: 'zircon-mines',
+  },
+  /*
+   * Lithium: the query "gilgit baltistan lithium" was drawing impressions
+   * with no page to land on, and the registry lists lithium at Shigar and
+   * Bagicha. Sources: GSP concept note "Lithium Exploration Potential of
+   * Pakistan" (2025), GSP project listings, and the 2026 Arabian Journal of
+   * Geosciences paper on mica-type lithium ore from Shigar. Deliberately
+   * states that no grade or tonnage exists, ours or anyone's.
+   */
+  {
+    id: 'lithium-gilgit-baltistan-shigar-pegmatites',
+    title: 'Lithium in Gilgit Baltistan: What Has Actually Been Found, and What Our Shigar Ground Holds',
+    seoTitle: 'Lithium in Gilgit Baltistan: What Is Known',
+    excerpt: 'Lithium turns up in the pegmatites of Shigar Valley, in lepidolite mica and lithium tourmaline rather than spodumene. Here is what Pakistan\'s Geological Survey has recorded, what a 2026 study found, what nobody has measured yet, and where our licensed Shigar and Bagicha blocks fit.',
+    content: [
+      "Search for lithium in Gilgit Baltistan and you will find claims running from nothing to a new Chile. The record sits between them. Lithium minerals have been documented in the region's pegmatites by Pakistan's own Geological Survey, a peer-reviewed study has now characterised one of them, and not one tonne has been measured to a reserve standard. We hold two licensed blocks where lithium is recorded, so we have an interest in getting this right, and that starts with saying what is known.",
+      "![Lithium-bearing pegmatite sampled at Askoli, Shigar, on our licensed block.](/images/gallery/askoli-shigar/askoli-shigar-lithium-03.jpg)",
+      "## Where has lithium been found in Gilgit Baltistan?",
+      "In pegmatites, the coarse-grained veins that cut the granites of the Karakoram. The Geological Survey of Pakistan's concept note on the country's lithium potential records lithium-tourmaline (elbaite) and lepidolite pegmatites in Shigar and Shengus, with pathfinder minerals including pollucite, cleavelandite and columbite, and notes that the Shigar pegmatites are enriched in fluorine, rubidium and niobium, the chemical signature of the lithium-caesium-tantalum family. The Survey has listed geological mapping and economic evaluation of pegmatites in Shigar Valley with an emphasis on lithium among its projects, and separate work on lithium with tin and tungsten near Dasu and Gilgit.",
+      "## What did the 2026 study find?",
+      "That Shigar's lithium is a mica ore. A paper in the Arabian Journal of Geosciences characterised the mineralogy and microstructure of a lithium-bearing ore from Shigar Valley, which the authors describe as the first multidisciplinary investigation of it. The lithium sits in lepidolite, a lithium mica, consistent with the Survey's description, rather than in spodumene, the mineral behind most hard-rock lithium production. That is a mineralogical finding, not an exploration result: it tells you what the rock is, not how much of it there is.",
+      "## Does lepidolite lithium matter commercially?",
+      "Yes, with caveats. Spodumene from Australia and elsewhere has set the standard for hard-rock lithium because of its grade and a well-established processing route. Lepidolite ores generally carry less lithium per tonne and need different processing, but they are mined and converted at scale in China, where lepidolite became a significant source during the last price run. For Gilgit Baltistan the practical point is that the mineral is known, the processing route exists, and the economics depend entirely on grade and tonnage, which is exactly what has not been measured.",
+      "## What does your own ground show?",
+      "Two blocks record lithium. Our [Shigar block](/concessions/shigar-copper-deposit) at Askoli lists lithium alongside gold, lead, copper and gemstones, and our field team has sampled lithium-bearing pegmatite there; the photographs in our [gallery](/gallery) are of that material where it was found. [Bagicha](/concessions/bagicha-skardu-gemstones-and-minerals) in Skardu, a producing copper and marble block, records lithium indications. Both are field identifications. We have not published a lithium grade for either, because we have not measured one, and we would rather you heard that from us than discovered it later.",
+      "::facts\n2 | of our licensed blocks record lithium: Shigar and Bagicha\n0 | published lithium grades or tonnages, ours or anyone's, in Gilgit Baltistan\nLepidolite | the lithium mineral identified at Shigar, a mica rather than spodumene\n8.87 km² | area of the Shigar block, at exploration stage",
+      "## What would it take to prove a lithium deposit here?",
+      "The same steps as anywhere: map the pegmatite swarm, sample it systematically, assay for lithium oxide and the pathfinder elements, and establish which mineral hosts the lithium and how far the mineralised dykes run. Then, if the numbers justify it, drilling. None of that is exotic, but all of it costs money and a season or two in the mountains, which is why lithium in Gilgit Baltistan has stayed at the level of occurrences. It is a funded programme waiting for a funder.",
+      "## How can an investor take part?",
+      "Through a farm-in on the Shigar or Bagicha block, funding a defined sampling and assay programme in return for a share of it, or a joint venture across the block. The legal routes for a foreign investor, including a wholly owned Pakistani subsidiary, are in our guide on [how to invest in Pakistan's mining sector](/news/how-to-invest-in-mining-sector-pakistan). Our [lithium page](/commodities/lithium) has the block-by-block detail, and the [investor desk](/investor-desk) is where to ask for samples and the field data.",
+    ].join('\n\n'),
+    imageUrl: '/images/gallery/askoli-shigar/askoli-shigar-lithium-01.jpg',
+    publishDate: '2026-11-16T10:00:00Z',
+    companyId: 'zircon-mines',
   }
 ];
 

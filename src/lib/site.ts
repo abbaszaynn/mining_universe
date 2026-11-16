@@ -26,9 +26,15 @@ export const SITE = {
   legalName: "Durr & Zircon Consortium",
   /** Brand flourish. Loader, footer, gallery only. */
   brandName: "Game of Stones",
-  title: "Durr & Zircon Consortium | Mining & Minerals, Gilgit Baltistan",
+  /**
+   * "GB Mines" leads: it is the name on the logo and the domain, and the
+   * brand query searchers actually type ("gb mines and minerals", "gb
+   * mining": 140+ impressions a quarter in Search Console with a 3% click
+   * rate, because the listing read "Durr & Zircon Consortium").
+   */
+  title: "GB Mines: Durr & Zircon Consortium, Gilgit Baltistan Mining",
   description:
-    "SECP-registered mining consortium holding ten licensed concessions across seven districts of Gilgit Baltistan. Mineral supply and export, joint ventures, equity and outright mine sale, plus contract exploration for mine owners.",
+    "GB Mines is Durr & Zircon Consortium, an SECP-registered mining group holding ten licensed concessions across seven districts of Gilgit Baltistan. Mineral supply and export, joint ventures, equity and outright mine sale, plus contract exploration for mine owners.",
   tagline: "Mines in the North",
   locale: "en_US",
   region: "Gilgit Baltistan, Pakistan",
@@ -73,6 +79,8 @@ export const SITE = {
   formerNames: ["Durr Mines and Minerals (PVT) LTD", "Zircon Mines (PVT) LTD"],
   keywords: [
     // Entity
+    "GB Mines",
+    "GB mining",
     "Durr & Zircon Consortium",
     "Durr Mines and Minerals",
     "Zircon Mines",

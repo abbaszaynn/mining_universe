@@ -609,7 +609,7 @@ export const galleryImages: GalleryImage[] = [
     id: 'gal-askoli-lithium-01',
     url: '/images/gallery/askoli-shigar/askoli-shigar-lithium-01.jpg',
     title: 'Lithium-Bearing Pegmatite - Askoli, Shigar',
-    description: 'Pale pink-white pegmatite identified in the field as lithium-bearing. Rock of this kind hosts spodumene, the main hard-rock lithium ore; grade is established by laboratory assay, not by eye.',
+    description: 'Pale pink-white pegmatite identified in the field as lithium-bearing. Pakistan\x27s Geological Survey records the Shigar pegmatites as lepidolite and lithium-tourmaline bearing, a mica-hosted lithium rather than spodumene; grade is established by laboratory assay, not by eye.',
     companyName: 'Zircon Mines',
     mineral: 'Lithium',
     properties: 'Pegmatite, Lithium',
