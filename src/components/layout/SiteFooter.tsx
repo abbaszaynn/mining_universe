@@ -4,6 +4,7 @@ import { SITE } from "@/lib/site";
 import { concessions } from "@/lib/concessions";
 import { COMMODITIES } from "@/lib/commodities";
 import { MARKETS } from "@/lib/markets";
+import { SocialLinks } from "@/components/layout/SocialLinks";
 
 /**
  * Site-wide directory of every deep page, generated from the registry data.
@@ -167,16 +168,7 @@ export function SiteFooter() {
               </div>
               <div>
                 <p className="font-medium">Follow Us</p>
-                <p className="mt-2 text-sm text-bone-50/70">
-                  <a
-                    href="https://www.linkedin.com/company/zircon-mines/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="transition-colors hover:text-bone-50"
-                  >
-                    LinkedIn
-                  </a>
-                </p>
+                <SocialLinks size="sm" className="mt-3 flex-nowrap gap-2" />
               </div>
             </div>
 

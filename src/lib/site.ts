@@ -34,6 +34,26 @@ export const SITE = {
   region: "Gilgit Baltistan, Pakistan",
   email: "info@gbmines.com",
   phone: "+92 316 9244827",
+  /** Investor relations lead, shown on the contact page. */
+  relationsLead: {
+    name: "Zain Abbas",
+    title: "Investor relations lead",
+    phone: "+92 355 5653738",
+    linkedin: "https://www.linkedin.com/in/zain-abbas1/",
+  },
+  /**
+   * Official social profiles, clean URLs with share-tracking parameters
+   * removed. The gb__mines accounts are the consortium's own and are emitted
+   * as Organization `sameAs`; LinkedIn is the Zircon Mines company page and
+   * stays on that sub-organisation in the schema (see lib/seo).
+   */
+  social: [
+    { name: "LinkedIn", href: "https://www.linkedin.com/company/zircon-mines/", icon: "/images/social/linkedin.png", consortium: false },
+    { name: "Instagram", href: "https://www.instagram.com/gb__mines/", icon: "/images/social/instagram.png", consortium: true },
+    { name: "Facebook", href: "https://www.facebook.com/gbmines", icon: "/images/social/facebook.png", consortium: true },
+    { name: "YouTube", href: "https://www.youtube.com/@gb__mines_minerals", icon: "/images/social/youtube.png", consortium: true },
+    { name: "TikTok", href: "https://www.tiktok.com/@gb__mines", icon: "/images/social/tiktok.png", consortium: true },
+  ],
   /**
    * Canonical NAP (name / address / phone). Every off-site listing —
    * directories, marketplaces, trade bodies, Google Business Profile —

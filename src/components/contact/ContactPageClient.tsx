@@ -2,6 +2,8 @@
 
 import { useLayoutEffect, useRef } from "react";
 import { gsap } from "@/lib/gsap";
+import { SITE } from "@/lib/site";
+import { SocialLinks } from "@/components/layout/SocialLinks";
 
 const CONTACT = {
   phones: ["+92 316 9244827", "+92 355 5653738"],
@@ -10,8 +12,7 @@ const CONTACT = {
   office: "Qasimi market in front of Cmh Gilgit",
   hours: "Mon to Fri, 9am to 6pm (PKT)",
   support: "Online support available 24/7",
-  lead: { name: "Daniyal Ali", title: "Investor relations lead" },
-  linkedin: "https://www.linkedin.com/in/zain-abbas1",
+  lead: SITE.relationsLead,
 };
 
 function PhoneIcon() {
@@ -50,12 +51,14 @@ function GlobeIcon() {
   );
 }
 
-function LinkedinIcon() {
+function ShareIcon() {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-      <rect x="2" y="9" width="4" height="12" />
-      <circle cx="4" cy="4" r="2" />
+      <circle cx="18" cy="5" r="3" />
+      <circle cx="6" cy="12" r="3" />
+      <circle cx="18" cy="19" r="3" />
+      <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
+      <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
     </svg>
   );
 }
@@ -169,6 +172,22 @@ export function ContactPageClient() {
               {CONTACT.lead.name}
             </p>
             <p className="mt-1 text-sm text-graphite-600">{CONTACT.lead.title}</p>
+            <p className="mt-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-sm">
+              <a
+                href={`tel:${CONTACT.lead.phone.replace(/s/g, "")}`}
+                className="font-medium text-graphite-950 transition hover:text-copper-600"
+              >
+                {CONTACT.lead.phone}
+              </a>
+              <a
+                href={CONTACT.lead.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-copper-600 underline underline-offset-4 transition hover:text-copper-700"
+              >
+                LinkedIn
+              </a>
+            </p>
           </div>
 
           <div className="mt-8 grid gap-4 sm:grid-cols-2">
@@ -222,15 +241,8 @@ export function ContactPageClient() {
             </div>
 
             <div data-contact-card className="sm:col-span-2 max-w-lg mx-auto w-full">
-              <ContactCard icon={<LinkedinIcon />} label="Follow Us">
-                <a
-                  href={CONTACT.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block break-all transition text-graphite-950 hover:text-copper-600"
-                >
-                  LinkedIn: Zain Abbas
-                </a>
+              <ContactCard icon={<ShareIcon />} label="Follow Us">
+                <SocialLinks className="pt-1" />
               </ContactCard>
             </div>
           </div>

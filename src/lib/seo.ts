@@ -132,6 +132,9 @@ export function organizationJsonLd() {
         // predecessor companies all refer to this same registered entity.
         alternateName: [SITE.brandName, ...SITE.formerNames],
         url,
+        // The consortium's own social profiles (gb__mines). Links the site to
+        // those accounts as one entity for Google and answer engines.
+        sameAs: SITE.social.filter((s) => s.consortium).map((s) => s.href),
         logo: absoluteUrl("/icon.svg"),
         description: SITE.description,
         email: SITE.email,
