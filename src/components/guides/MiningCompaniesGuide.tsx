@@ -7,6 +7,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { concessions } from "@/lib/concessions";
 import { absoluteUrl, breadcrumbJsonLd, faqJsonLd } from "@/lib/seo";
 import type { FaqItem } from "@/lib/faq-data";
+import { GROUP_COMPANIES } from "@/lib/group-companies";
 
 /**
  * Built against a specific search finding (Sept 2026): every first-page result
@@ -51,7 +52,33 @@ const EVALUATION_CRITERIA = [
   },
 ];
 
+/**
+ * Pakistan's best-known mining operators, for the query "mining companies in
+ * Pakistan". Every line is attributable: USGS Minerals Yearbook 2020-21,
+ * Express Tribune (Oct 2026) and the Pakistan Minerals Investment Forum 2026
+ * coverage (Arab News, Business Recorder, 13 Nov 2026). Descriptive only, no
+ * ranking, because there is no reliable public ranking to cite.
+ */
+const PAKISTAN_OPERATORS = [
+  { name: "Barrick Mining Corporation", what: "Holds 50% of Reko Diq, the copper-gold project in Chagai, Balochistan, alongside three federal state enterprises (25%) and the Government of Balochistan (25%)." },
+  { name: "Saindak Metals Ltd (Metallurgical Corporation of China)", what: "Operates the Saindak copper-gold mine in Chagai, Balochistan, Pakistan's longest-running metal mine." },
+  { name: "Pakistan Mineral Development Corporation (PMDC)", what: "State-owned mineral corporation, best known for salt; in November 2026 it agreed a critical-minerals exploration partnership in Pishin, Balochistan." },
+  { name: "Sindh Engro Coal Mining Company", what: "Mines lignite in the Thar coalfield; owned 51% by the Government of Sindh and 49% by Engro Energy and partners." },
+  { name: "Frontier Works Organisation (FWO)", what: "Signed the 2025 critical-minerals MoUs with US Strategic Metals and, at PMIF 2026, an MoU with Ivanhoe Mines for Chagai." },
+  { name: "Mari Minerals", what: "Subsidiary of Mari Energies; took Turkish and North American partners for exploration in Chagai at the November 2026 investment forum." },
+];
+
 const FAQ_ITEMS: FaqItem[] = [
+  {
+    question: "What are the top mining companies in Gilgit Baltistan?",
+    answer:
+      "No official ranking exists, so be wary of any list that claims one. What can be checked is who holds licences: the Mines and Minerals Department's List of Title Holders is the authoritative register. Among the licence holders, GB Mines is a group of three companies registered with the SECP (Durr Mine & Minerals, Zircon Mines and Earth Lux Mines & Minerals) with ten concessions in seven districts. Four produce today: Hilal Abad (nephrite), Bagicha (copper, marble), Jutial Nala (copper, lead, silver) and the Skardu riverbed (placer gold).",
+  },
+  {
+    question: "What are the major mining companies in Pakistan?",
+    answer:
+      "The best-known operators are Barrick Mining Corporation (50% of the Reko Diq copper-gold project in Chagai), Saindak Metals of China's MCC (the Saindak copper-gold mine), the state-owned Pakistan Mineral Development Corporation, Sindh Engro Coal Mining Company in the Thar coalfield, and, increasingly, the Frontier Works Organisation and Mari Minerals, both of which took on international exploration partners in late 2026. In Gilgit Baltistan, licence holders are mostly smaller private companies, such as the three companies of GB Mines.",
+  },
   {
     question: "How many mining companies operate in Gilgit Baltistan?",
     answer:
@@ -178,7 +205,16 @@ export function MiningCompaniesGuide() {
             {Object.entries(byCompany).map(([company, blocks]) => (
               <div key={company}>
                 <h3 className="text-xl tracking-[-0.01em] text-graphite-950 md:text-2xl">
-                  {company}
+                  {(() => {
+                    const g = GROUP_COMPANIES.find((x) => x.holder === company);
+                    return g ? (
+                      <Link href={`/companies/${g.slug}`} className="underline decoration-copper-500/40 underline-offset-4 hover:text-copper-700">
+                        {g.legalName}
+                      </Link>
+                    ) : (
+                      company
+                    );
+                  })()}
                 </h3>
                 <p className="mt-2 text-sm uppercase tracking-[0.1em] text-copper-600">
                   {blocks.length} licensed {blocks.length === 1 ? "block" : "blocks"}
@@ -234,6 +270,32 @@ export function MiningCompaniesGuide() {
         </div>
       </section>
 
+      <section className="relative overflow-hidden bg-bone-100 py-16 md:py-24">
+        <GridLines />
+        <div className="relative z-10 mx-auto max-w-[105rem] px-5 md:px-10">
+          <h2 className="max-w-[36ch] text-display-md tracking-[-0.03em] text-graphite-950">
+            Major mining companies in Pakistan
+          </h2>
+          <p className="mt-6 max-w-[62ch] text-base leading-[1.6] text-graphite-600 md:text-lg">
+            The country&apos;s largest mining operations sit mostly in Balochistan and Sindh. These are the
+            operators most often named in official and industry reporting, with what each one actually
+            does. Gilgit Baltistan&apos;s licence holders are smaller private companies, which is where our
+            three sit.
+          </p>
+          <ul className="mt-10 divide-y divide-graphite-950/10 border-y border-graphite-950/10">
+            {PAKISTAN_OPERATORS.map((o) => (
+              <li key={o.name} className="grid gap-2 py-5 md:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] md:gap-8">
+                <h3 className="text-base text-graphite-950 md:text-lg">{o.name}</h3>
+                <p className="text-sm leading-relaxed text-graphite-600 md:text-base">{o.what}</p>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-6 text-xs text-graphite-500">
+            Sources: USGS Minerals Yearbook, Pakistan 2020-21; Express Tribune, October 2026; Pakistan Minerals
+            Investment Forum 2026 coverage, November 2026. Descriptive, not a ranking.
+          </p>
+        </div>
+      </section>
       <section className="relative overflow-hidden bg-bone-50 py-16 md:py-24">
         <GridLines />
         <div className="relative z-10 mx-auto max-w-[105rem] px-5 md:px-10">
@@ -271,9 +333,9 @@ export function MiningCompaniesGuide() {
               List of Title Holders on its portal. That register, not any
               operator&apos;s own website, is what a licence claim should be
               checked against. Ask for the licence or application number and
-              confirm it there. Our own blocks carry the stages and application
-              numbers shown on each concession page, and the underlying
-              incorporation certificates and licences are listed under{" "}
+              confirm it there. Each of our three companies has its own page with its SECP
+              registration number and a link to verify it, and the
+              incorporation certificates are viewable under{" "}
               <Link
                 href="/documents"
                 className="text-copper-600 underline underline-offset-4"

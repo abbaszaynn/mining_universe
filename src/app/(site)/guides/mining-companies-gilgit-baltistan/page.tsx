@@ -2,9 +2,9 @@ import { MiningCompaniesGuide } from "@/components/guides/MiningCompaniesGuide";
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata = createPageMetadata({
-  title: "Mining Companies in Gilgit Baltistan, Pakistan",
+  title: "Mining Companies in Gilgit Baltistan & Pakistan",
   description:
-    "How private mining companies in Gilgit Baltistan are licensed, how to verify a mining lease or exploration title holder, and the ten licensed concessions held by Durr & Zircon Consortium and Earth Lux Mines across seven districts.",
+    "Top mining companies in Gilgit Baltistan and Pakistan: who holds licences, the major national operators, how to verify a title holder, and the three SECP-registered companies of GB Mines.",
   path: "/guides/mining-companies-gilgit-baltistan",
 });
 

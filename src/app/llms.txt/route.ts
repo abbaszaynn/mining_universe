@@ -223,6 +223,12 @@ ${MARKETS.map((m) => `- [${m.name}](${base}/markets/${m.slug})`).join("\n")}
 - [Gilgit Baltistan Mining Statistics 2026](${base}/guides/gilgit-baltistan-mining-statistics-2026): sourced statistics on licensed area, mineral profile, sector economics, 2025-26 investment agreements, and the licensing framework. Every figure carries a named source and a year. Suitable for citation.
 - [GB Mineral Corridor Report 2026](${base}/reports/gb-mineral-corridor-report-2026.pdf): PDF summarising the investment case, the full concession registry, commodity demand, and partnership routes. Built for journalists and investors who want the primary-source detail in one document.
 
+## Our three companies
+
+- [Durr Mine & Minerals (Private) Limited](${base}/companies/durr-mines-and-minerals): SECP CUIN 0297552, incorporated Islamabad 13 June 2025; holds Bagicha, Skardu Placer Gold, Gultari and Mahdi Abad
+- [Zircon Mines (Private) Limited](${base}/companies/zircon-mines): SECP CUIN 0324962, incorporated Islamabad 30 January 2026; holds Hilal Abad, Shigar, Gojal and Ishkoman
+- [Earth Lux Mines & Minerals (Private) Limited](${base}/companies/earth-lux-mines): SECP CUIN 0238137, incorporated Gilgit 28 August 2023; holds Jutial Nala and Gupis; offered for outright acquisition
+
 ## Investor answers
 
 Plain question and answer articles, written around the questions investors
@@ -241,6 +247,9 @@ and every figure carries a named source in the text.
 - [Pakistan Minerals Investment Forum 2026](${base}/news/pakistan-minerals-investment-forum-2026-gilgit-baltistan): day-one report from PMIF26 in Islamabad (12-13 Nov 2026): what the federal government and each province said, including Gilgit Baltistan Chief Minister Amjad Hussain Azar on facilitating exploration investment, the day-two agenda, and what it means for investors in Gilgit Baltistan
 - [South Korea's antimony market](${base}/news/south-korea-antimony-market-korea-zinc-supply): how Korean antimony supply works (Korea Zinc's Onsan smelter is the country's only producer), China's December 2024 export ban to the US, the 2025 price peak and 2026 easing, Korea Zinc's planned US smelter, where non-Chinese concentrate could come from, and what a Korean buyer should ask a new supplier
 - [Lithium in Gilgit Baltistan](${base}/news/lithium-gilgit-baltistan-shigar-pegmatites): what the Geological Survey of Pakistan has recorded (lepidolite and lithium-tourmaline pegmatites at Shigar and Shengus), the 2026 mica-type lithium ore study, why lepidolite differs from spodumene, that no grade or tonnage has been published by anyone, and the farm-in route on our Shigar and Bagicha blocks
+- [Mining in Gilgit Baltistan: complete guide](${base}/news/mining-in-gilgit-baltistan-guide): hub answering the main questions about mining in Gilgit Baltistan and its place in Pakistan's mining sector: minerals, copper and gold, mining companies, licensing, investment, the mining map
+- [Gold mines in Pakistan](${base}/news/gold-mines-pakistan-companies): where Pakistan's gold comes from (Reko Diq and Saindak in Chagai, river placers in Gilgit Baltistan and Punjab, hard-rock gold in the north) and which companies mine it
+- [Copper mining in Gilgit Baltistan](${base}/news/copper-mining-gilgit-baltistan): copper occurrences in at least nine valleys, the Kohistan arc geology, why no reliable grade is published, our seven copper blocks (two producing) and who buys GB copper
 
 ## Disclosure policy
 

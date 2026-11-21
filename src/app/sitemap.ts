@@ -6,6 +6,7 @@ import { NEWS_ROUTES, STATIC_ROUTES } from "@/lib/sitemap-routes";
 import { concessions } from "@/lib/concessions";
 import { COMMODITIES } from "@/lib/commodities";
 import { MARKETS } from "@/lib/markets";
+import { GROUP_COMPANIES } from "@/lib/group-companies";
 
 export const dynamic = "force-static";
 export const revalidate = 86400;
@@ -86,8 +87,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
   ];
 
+  const companyEntries: MetadataRoute.Sitemap = [
+    { url: `${base}/companies`, lastModified: new Date("2026-11-21T00:00:00Z"), changeFrequency: "monthly", priority: 0.9 },
+    ...GROUP_COMPANIES.map((c) => ({
+      url: `${base}/companies/${c.slug}`,
+      lastModified: new Date("2026-11-21T00:00:00Z"),
+      changeFrequency: "monthly" as const,
+      priority: 0.9,
+    })),
+  ];
+
   return [
     ...staticEntries,
+    ...companyEntries,
     ...concessionEntries,
     ...commodityEntries,
     ...marketEntries,

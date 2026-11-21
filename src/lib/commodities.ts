@@ -323,7 +323,7 @@ export const COMMODITIES: Commodity[] = [
   {
     slug: "marble",
     name: "Marble",
-    metaTitle: "Snow White Marble Supplier, Skardu, Gilgit Baltistan",
+    metaTitle: "Marble Supplier in Gilgit Baltistan, Pakistan",
     metaDescription:
       "Snow white marble blocks and slabs from a licensed, road-accessible quarry at Bagicha, Skardu, Gilgit Baltistan, with premium marble recorded at Gupis. Quoted FOB Karachi or CIF, block samples before bulk orders.",
     intro:
@@ -331,7 +331,7 @@ export const COMMODITIES: Commodity[] = [
     demand:
       "Pakistan is already one of the world's larger marble exporters, with most of it quarried in Khyber Pakhtunkhwa and Balochistan, and buyers in the Gulf, China and Europe know Pakistani stone. Gilgit Baltistan's marble is far less worked. A white stone from a licensed, road-accessible quarry gives buyers a new source outside the established belts, and it is quoted separately from our granite because the finish and the market are different.",
     sourcedFrom: ["bagicha-skardu-gemstones-and-minerals", "gupis-ghizer-construction-and-precious-stones"],
-    image: "/images/commodities/granite.webp",
+    image: "/images/commodities/marble.webp",
     faqs: [
       {
         question: "What colour and grade is the Bagicha marble?",

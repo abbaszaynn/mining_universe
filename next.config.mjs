@@ -46,8 +46,10 @@ const nextConfig = {
 
       // /companies was live and crawlable before the rename. Without a 301 it
       // 404s, throwing away any indexing and inbound links it had earned.
-      { source: "/companies", destination: "/about", permanent: true },
-      { source: "/companies/:slug", destination: "/about", permanent: true },
+      // /companies and /companies/zircon-mines, /companies/earth-lux-mines
+      // are real pages again (Nov 2026, one per registered company). Only
+      // the old consortium slug, which has no company of its own, redirects.
+      { source: "/companies/durr-zircon", destination: "/companies", permanent: true },
 
       // Six early articles retired in Sept 2026. They were indexed, and one
       // (the copper article) held position 5 in Search Console, so deleting

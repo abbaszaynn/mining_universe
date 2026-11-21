@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { getSiteUrl, SITE } from "@/lib/site";
+import { GROUP_COMPANIES } from "@/lib/group-companies";
 
 type PageSeoOptions = {
   title: string;
@@ -177,24 +178,23 @@ export function organizationJsonLd() {
          * page is named for Zircon Mines today, which is exactly why it sits
          * here rather than on the consortium itself.
          */
-        subOrganization: [
-          {
-            "@type": "Organization",
-            name: "Durr Mines and Minerals (PVT) LTD",
-            parentOrganization: { "@id": `${url}/#organization` },
+        subOrganization: GROUP_COMPANIES.map((c) => ({
+          "@type": "Organization",
+          "@id": `${url}/companies/${c.slug}#organization`,
+          name: c.legalName,
+          legalName: c.legalName,
+          alternateName: [c.shortName, c.holder],
+          url: `${url}/companies/${c.slug}`,
+          foundingDate: c.incorporatedOn,
+          identifier: {
+            "@type": "PropertyValue",
+            propertyID: "SECP Corporate Unique Identification No.",
+            value: c.cuin,
           },
-          {
-            "@type": "Organization",
-            name: "Zircon Mines (PVT) LTD",
-            parentOrganization: { "@id": `${url}/#organization` },
-            sameAs: ["https://www.linkedin.com/company/zircon-mines/"],
-          },
-          {
-            "@type": "Organization",
-            name: "Earth Lux Mines & Minerals (PVT) LTD",
-            parentOrganization: { "@id": `${url}/#organization` },
-          },
-        ],
+          parentOrganization: { "@id": `${url}/#organization` },
+          // Zircon Mines owns the LinkedIn company page.
+          ...(c.slug === "zircon-mines" ? { sameAs: ["https://www.linkedin.com/company/zircon-mines/"] } : {}),
+        })),
       },
       {
         "@type": "WebSite",

@@ -52,6 +52,7 @@ const DIRECTORY = [
       { href: "/guides/mining-companies-gilgit-baltistan", label: "Mining companies in Gilgit Baltistan", detail: "" },
       { href: "/guides/mining-licence-gilgit-baltistan", label: "How to get a mining licence", detail: "" },
       { href: "/guides/gilgit-baltistan-mining-statistics-2026", label: "GB mining statistics 2026", detail: "" },
+      { href: "/companies", label: "Our three companies", detail: "" },
       { href: "/news", label: "All articles", detail: "" },
     ],
   },

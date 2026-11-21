@@ -11,6 +11,7 @@ import { concessions } from "@/lib/concessions";
 import { getConcessionContext } from "@/lib/concession-context";
 import type { FaqItem } from "@/lib/faq-data";
 import { RelatedReading } from "@/components/blog/RelatedReading";
+import { companyPathForHolder } from "@/lib/group-companies";
 
 export function ConcessionDetail({ concession: c }: { concession: Concession }) {
   const url = absoluteUrl(`/concessions/${c.slug}`);
@@ -116,7 +117,15 @@ export function ConcessionDetail({ concession: c }: { concession: Concession }) 
                   <dt className="text-xs uppercase tracking-[0.08em] text-graphite-400">
                     Operator
                   </dt>
-                  <dd className="mt-1.5 text-base text-graphite-950">{c.licenceHolder}</dd>
+                  <dd className="mt-1.5 text-base text-graphite-950">
+                    {companyPathForHolder(c.licenceHolder) ? (
+                      <Link href={companyPathForHolder(c.licenceHolder)!} className="text-copper-600 underline decoration-copper-500/40 underline-offset-4 hover:text-copper-500">
+                        {c.licenceHolder}
+                      </Link>
+                    ) : (
+                      c.licenceHolder
+                    )}
+                  </dd>
                 </div>
                 <div>
                   <dt className="text-xs uppercase tracking-[0.08em] text-graphite-400">

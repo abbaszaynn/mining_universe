@@ -114,4 +114,16 @@ export const NEWS_ROUTES = [
     id: "lithium-gilgit-baltistan-shigar-pegmatites",
     publishDate: "2026-11-16T10:00:00Z",
   },
+  {
+    id: "mining-in-gilgit-baltistan-guide",
+    publishDate: "2026-11-21T09:00:00Z",
+  },
+  {
+    id: "gold-mines-pakistan-companies",
+    publishDate: "2026-11-21T10:00:00Z",
+  },
+  {
+    id: "copper-mining-gilgit-baltistan",
+    publishDate: "2026-11-21T11:00:00Z",
+  },
 ];

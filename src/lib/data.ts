@@ -1225,7 +1225,7 @@ export const news: NewsArticle[] = [
       "Search for lithium in Gilgit Baltistan and you will find claims running from nothing to a new Chile. The record sits between them. Lithium minerals have been documented in the region's pegmatites by Pakistan's own Geological Survey, a peer-reviewed study has now characterised one of them, and not one tonne has been measured to a reserve standard. We hold two licensed blocks where lithium is recorded, so we have an interest in getting this right, and that starts with saying what is known.",
       "![Lithium-bearing pegmatite sampled at Askoli, Shigar, on our licensed block.](/images/gallery/askoli-shigar/askoli-shigar-lithium-03.jpg)",
       "## Where has lithium been found in Gilgit Baltistan?",
-      "In pegmatites, the coarse-grained veins that cut the granites of the Karakoram. The Geological Survey of Pakistan's concept note on the country's lithium potential records lithium-tourmaline (elbaite) and lepidolite pegmatites in Shigar and Shengus, with pathfinder minerals including pollucite, cleavelandite and columbite, and notes that the Shigar pegmatites are enriched in fluorine, rubidium and niobium, the chemical signature of the lithium-caesium-tantalum family. The Survey has listed geological mapping and economic evaluation of pegmatites in Shigar Valley with an emphasis on lithium among its projects, and separate work on lithium with tin and tungsten near Dasu and Gilgit.",
+      "In pegmatites, the coarse-grained veins that cut the granites of the Karakoram. The Geological Survey of Pakistan's concept note on the country's lithium potential records lithium-tourmaline (elbaite) and lepidolite pegmatites in Shigar and Shengus, with pathfinder minerals including pollucite, cleavelandite and columbite, and notes that the Shigar pegmatites are enriched in fluorine, rubidium and niobium, the chemical signature of the lithium-caesium-tantalum family. Among the Survey's listed projects is a lithium-focused mapping and economic evaluation of the Shigar Valley pegmatites, and separate work on lithium with tin and tungsten near Dasu and Gilgit.",
       "## What did the 2026 study find?",
       "That Shigar's lithium is a mica ore. A paper in the Arabian Journal of Geosciences characterised the mineralogy and microstructure of a lithium-bearing ore from Shigar Valley, which the authors describe as the first multidisciplinary investigation of it. The lithium sits in lepidolite, a lithium mica, consistent with the Survey's description, rather than in spodumene, the mineral behind most hard-rock lithium production. That is a mineralogical finding, not an exploration result: it tells you what the rock is, not how much of it there is.",
       "## Does lepidolite lithium matter commercially?",
@@ -1236,11 +1236,118 @@ export const news: NewsArticle[] = [
       "## What would it take to prove a lithium deposit here?",
       "The same steps as anywhere: map the pegmatite swarm, sample it systematically, assay for lithium oxide and the pathfinder elements, and establish which mineral hosts the lithium and how far the mineralised dykes run. Then, if the numbers justify it, drilling. None of that is exotic, but all of it costs money and a season or two in the mountains, which is why lithium in Gilgit Baltistan has stayed at the level of occurrences. It is a funded programme waiting for a funder.",
       "## How can an investor take part?",
-      "Through a farm-in on the Shigar or Bagicha block, funding a defined sampling and assay programme in return for a share of it, or a joint venture across the block. The legal routes for a foreign investor, including a wholly owned Pakistani subsidiary, are in our guide on [how to invest in Pakistan's mining sector](/news/how-to-invest-in-mining-sector-pakistan). Our [lithium page](/commodities/lithium) has the block-by-block detail, and the [investor desk](/investor-desk) is where to ask for samples and the field data.",
+      "An investor can fund the first season of sampling and assay on the Shigar or Bagicha ground and earn an interest in the block in return, or come in as a joint-venture partner from the start. The legal routes for a foreign investor, including a wholly owned Pakistani subsidiary, are in our guide on [how to invest in Pakistan's mining sector](/news/how-to-invest-in-mining-sector-pakistan). Our [lithium page](/commodities/lithium) has the block-by-block detail, and the [investor desk](/investor-desk) is where to ask for samples and the field data.",
     ].join('\n\n'),
     imageUrl: '/images/gallery/askoli-shigar/askoli-shigar-lithium-01.jpg',
     publishDate: '2026-11-16T10:00:00Z',
     companyId: 'zircon-mines',
+  },
+  /*
+   * Pillar page for the head terms "mining in gilgit baltistan", "mining in
+   * pakistan" and "mining investment in gilgit baltistan" (Nov 2026). It is a
+   * hub: short direct answers that link out to the deep pages, so it does not
+   * duplicate the minerals guide, the licence guide or the investment guide.
+   * Sector figures: Express Tribune 17 Oct 2026 (citing ICMA); copper valleys:
+   * INP WealthPK, quoting a GB official; PMIF: Arab News, 13 Nov 2026.
+   */
+  {
+    id: 'mining-in-gilgit-baltistan-guide',
+    title: 'Mining in Gilgit Baltistan: The Complete Guide to Minerals, Mines, Companies and Investment',
+    seoTitle: 'Mining in Gilgit Baltistan: Complete Guide',
+    excerpt: 'Everything about mining in Gilgit Baltistan in one place: which minerals occur and where, how mining fits into Pakistan\'s wider sector, who holds licences, how titles are granted, what the risks are, and how investors take part. Each answer links to the detail.',
+    content: [
+      "Gilgit Baltistan is where three mountain ranges meet, and the collision that raised the Karakoram, Himalaya and Hindu Kush also concentrated copper, gold, antimony, lithium, nephrite and gemstones in its valleys. Mining here is old as a craft and young as an industry. This guide answers the questions people actually ask about it, briefly, and points to the page that goes deeper on each.",
+      "::facts\n3 | mountain ranges meeting in Gilgit Baltistan: Karakoram, Himalaya, Hindu Kush\n9+ | valleys with recorded copper occurrences, per GB officials\n10 | licensed concessions held by GB Mines across 7 districts\n4 | of those producing: nephrite, copper and marble, copper and lead, placer gold",
+      "## What minerals are mined in Gilgit Baltistan?",
+      "Base and critical metals, precious metals, gemstones and dimension stone. Copper is the most widespread metal; gold occurs both in river sand and in hard rock; antimony, lead, silver, molybdenum and lithium are recorded; nephrite jade and serpentine come from Kharmang; and the region is famous for aquamarine, tourmaline, topaz and ruby. Marble and granite are quarried as building stone. Our [minerals guide](/news/mines-of-gilgit-baltistan-pakistan-minerals-guide) goes district by district, and the [mining map](/map) shows where licensed blocks sit.",
+      "## How big is mining in Pakistan, and where does Gilgit Baltistan fit?",
+      "Large in potential and small in output. Industry estimates cited by the Express Tribune put Pakistan's mineral reserves at about $8 trillion across 600,000 square kilometres, yet the sector contributes under 3 percent of GDP, and the same analysis sees annual mineral exports more than doubling, from about $3 billion to $8 billion, if governance and security improve. The headline projects are in Balochistan, above all Reko Diq. Gilgit Baltistan is the country's second mineral frontier: less developed, less explored, and with a calmer security record than Balochistan's mining districts.",
+      "## Is there copper mining in Gilgit Baltistan?",
+      "Yes. Copper is the region's most widespread metal, recorded from Ishkoman in the west to Misgar near the Chinese border and in the valleys around Gilgit city itself. Copper is recorded on seven of our ten blocks, and two of them, Bagicha and Jutial Nala, are producing. The full picture is in our article on [copper mining in Gilgit Baltistan](/news/copper-mining-gilgit-baltistan) and on the [copper page](/commodities/copper-concentrate).",
+      "## Is there gold mining in Gilgit Baltistan?",
+      "Yes, in two forms. Placer gold is washed from the sands of the Indus, Gilgit and Hunza rivers, by traditional panners for generations and now by machines; hard-rock gold sits in ore in places such as Shigar and Gultari. Our [Skardu placer gold](/concessions/skardu-placer-gold) concession covers 9.5 kilometres of riverbed and is producing. For the national picture, see [gold mines in Pakistan](/news/gold-mines-pakistan-companies).",
+      "## Who are the mining companies in Gilgit Baltistan?",
+      "Mostly smaller private licence holders, alongside state bodies. The authoritative list of who holds what is the Mines and Minerals Department's register of title holders. We are one of them: GB Mines is the trading name of Durr & Zircon Consortium, and its licences sit in three companies, [Durr Mine & Minerals](/companies/durr-mines-and-minerals), [Zircon Mines](/companies/zircon-mines) and [Earth Lux Mines & Minerals](/companies/earth-lux-mines), each with its own licences. How to check any operator, us included, is set out in our [guide to mining companies](/guides/mining-companies-gilgit-baltistan).",
+      "## How do you get a mining licence in Gilgit Baltistan?",
+      "Through the provincial Mines and Minerals Department, under the Gilgit-Baltistan Mining Concession Rules, in stages from reconnaissance to exploration to mining lease, and only through a Pakistan-incorporated company. Foreign investors usually enter through a joint venture or farm-in with an existing licence holder rather than a fresh application. The steps are in our [mining licence guide](/guides/mining-licence-gilgit-baltistan).",
+      "## Is Gilgit Baltistan a good place to invest in mining?",
+      "It can be, for investors who price the risks honestly. In its favour: genuine geology, mostly unexplored ground, licences that can be bought into rather than applied for from scratch, and a provincial government that told the Pakistan Minerals Investment Forum in November 2026 it has the mechanism in place to facilitate exploration investment. Against it: no certified reserves on most ground, mountain logistics and winter seasons, and policy that is still settling. Our guide on [how to invest in Pakistan's mining sector](/news/how-to-invest-in-mining-sector-pakistan) covers routes and protections; our [investment page](/invest) covers ours.",
+      "## Is there a map of mines in Gilgit Baltistan?",
+      "Our [Gilgit Baltistan mining map](/map) plots the surveyed boundaries of all ten of our licensed concessions on 3D satellite terrain, with each block's minerals, area and stage, and the government's GeoPortal, launched at the November 2026 forum, is building a national geological data layer. No single public map yet shows every licence holder in the region.",
+      "## How do I talk to someone about a specific mine or mineral?",
+      "Through the [investor desk](/investor-desk), or on WhatsApp at +92 316 9244827. We share licences, field data and samples with verified investors and buyers, and arrange site visits with the permits handled.",
+    ].join('\n\n'),
+    imageUrl: '/images/gilgit-map-zoom.jpg',
+    publishDate: '2026-11-21T09:00:00Z',
+    companyId: 'durr-zircon',
+  },
+  /*
+   * For "gold mines in pakistan" and "gold mining companies in pakistan".
+   * Sources: Express Tribune 17 Oct 2026 (Reko Diq ownership, reserves,
+   * phase one output, production timing); USGS Minerals Yearbook 2020-21
+   * (Saindak operator); ARY News 12 Nov 2026 (Punjab placer surveys);
+   * Dawn 2016 and GBEPA via Dawn Aug 2026 (GB placer). Reko Diq timing is
+   * contested; both figures are attributed.
+   */
+  {
+    id: 'gold-mines-pakistan-companies',
+    title: 'Gold Mines in Pakistan: Where Gold Is Mined, and Which Companies Mine It',
+    seoTitle: 'Gold Mines in Pakistan & Gold Mining Companies',
+    excerpt: 'Pakistan\'s gold comes from three places: the Reko Diq and Saindak copper-gold deposits in Balochistan, river placers in Gilgit Baltistan and Punjab, and early-stage hard-rock ground in the north. Here is each one, who mines it, and what is actually producing.',
+    content: [
+      "Pakistan does not have a gold mine in the sense a South African or Australian would mean. It has copper-gold deposits where gold comes out with the copper, river sands that have been panned for centuries, and hard-rock gold that is still being explored. Knowing which is which is the first step to understanding where Pakistani gold actually comes from.",
+      "::facts\n26 Moz | gold in Reko Diq's probable reserves (Express Tribune)\n50% | Barrick's share of Reko Diq\n9.5 km | our licensed placer gold riverbed at Skardu\n2 | forms of gold in Gilgit Baltistan: placer and hard rock",
+      "## Where are the gold mines in Pakistan?",
+      "In three settings. Chagai district in Balochistan holds the two big copper-gold deposits, Reko Diq and Saindak. The rivers of Gilgit Baltistan, the Indus, Gilgit, Hunza and Shyok among them, carry placer gold that is panned and dredged, and Punjab's government told the November 2026 minerals forum that surveys of placer gold in its own rivers are under way. And in the northern mountains, hard-rock gold occurs in ore at sites such as Shigar and Gultari, at exploration stage.",
+      "## What is Reko Diq, and how much gold does it hold?",
+      "One of the world's largest undeveloped copper-gold deposits, in Chagai. It is owned 50 percent by Barrick Mining Corporation, 25 percent by the Government of Balochistan and 25 percent by three federal state enterprises. The Express Tribune, citing the 2025 feasibility update, puts probable reserves at about 3 billion tonnes containing roughly 15 million tonnes of copper and 26 million ounces of gold, with phase one designed to produce around 297,000 ounces of gold a year. Timing is the open question: production had been expected around the end of 2028, Balochistan's chief minister told the November forum it will be operating by 2029, and later reports say Barrick has slowed development pending a security review.",
+      "## Is Saindak a gold mine?",
+      "A copper-gold mine, and Pakistan's longest-running metal mine. Saindak in Chagai is operated by Saindak Metals, a company of China's Metallurgical Corporation of China (MCC), according to the US Geological Survey, and produces blister copper with gold as a by-product. Like Reko Diq it sits in a district where insurgent violence has repeatedly threatened operations.",
+      "## Which companies mine gold in Pakistan?",
+      "At industrial scale, Barrick at Reko Diq and MCC's Saindak Metals at Saindak, both copper-gold operations in Balochistan. State bodies, the Pakistan Mineral Development Corporation among them, hold exploration ground, and at the November 2026 forum Mari Minerals signed with Ivanhoe Atlantic to explore copper and gold in Chagai. In the north, gold is produced by licensed placer operators and, informally, by thousands of panners. GB Mines holds a producing placer gold licence on the Skardu riverbed through [Durr Mine & Minerals](/companies/durr-mines-and-minerals), and hard-rock gold ground at Shigar and Gultari. Our [guide to mining companies](/guides/mining-companies-gilgit-baltistan) lists Pakistan's major operators.",
+      "## How do miners recover gold from Gilgit Baltistan's rivers?",
+      "By washing river sand and gravel to recover the heavy gold grains, traditionally with pans and sluices in the low-water winter months, and now increasingly with excavators and wash plants. Gilgit Baltistan's Environmental Protection Agency warned in August 2026 that much of the machine-driven extraction is unregulated. The difference between that and a licensed operation is covered in our article on [gold mining in Gilgit Baltistan](/news/gold-mining-gilgit-baltistan-sonewal-to-elaman-group), and the method itself in [placer gold mining in Pakistan](/news/placer-gold-mining-pakistan-gilgit-baltistan).",
+      "## Can foreigners invest in gold mining in Pakistan?",
+      "Yes, but the licence has to sit in a Pakistan-registered company. Mining is open to foreign investment, such a company can be wholly foreign owned, and licences are held by locally incorporated entities, so foreign investors usually join an existing licence holder through a joint venture or farm-in. Profits and capital can be repatriated under the Foreign Private Investment Act. Our [placer gold page](/commodities/placer-gold) covers buying gold from our concession, and the [hard-rock gold page](/commodities/gold) the exploration ground.",
+      "## How do I buy gold or invest in a gold concession with you?",
+      "Ask through the [investor desk](/investor-desk). For placer gold we quote against assay, and for the exploration ground we share field data under NDA and arrange site visits to Skardu.",
+    ].join('\n\n'),
+    imageUrl: '/images/blog/placer-gold-sand.jpg',
+    publishDate: '2026-11-21T10:00:00Z',
+    companyId: 'durr-zircon',
+  },
+  /*
+   * For "copper mining in gilgit baltistan". Sources: INP WealthPK (GB
+   * official on copper in nine valleys; the 0.2-74% grade range is quoted as
+   * his claim, the top figure is implausible for an ore grade); Searle and
+   * Khan / Malkani compilations via ResearchGate (Danyor, Bagrot, Jutial
+   * occurrences); Wood Mackenzie demand via Express Tribune.
+   */
+  {
+    id: 'copper-mining-gilgit-baltistan',
+    title: 'Copper Mining in Gilgit Baltistan: Where the Copper Is, Who Holds It, and What It Is Worth',
+    seoTitle: 'Copper Mining in Gilgit Baltistan, Pakistan',
+    excerpt: 'Copper is the most widespread metal in Gilgit Baltistan, recorded in at least nine valleys and on seven of our ten licensed blocks, two of them producing. Here is the geology, the known occurrences, the honest state of the data, and how copper buyers and investors take part.',
+    content: [
+      "If Gilgit Baltistan has a signature metal, it is copper. The green stains of malachite on its rock faces have been noted by geologists for over a century, and the same plate collision that built the Karakoram created the arc rocks in which copper deposits typically form. What the region has not had is systematic, modern exploration, which is why copper here is a story of occurrences and early production rather than proven mines.",
+      "![Green-stained copper ore at a Gilgit Baltistan concession.](/images/copper-generic-2.jpg)",
+      "## Where is copper found in Gilgit Baltistan?",
+      "Widely. A Gilgit Baltistan official told a regional mining forum that copper has been identified in at least nine valleys, among them Ishkoman, Teru, Chalt, Yasin, Skardu, Shigar, Nagar, Diamer and Misgar, as reported by INP WealthPK. Older geological compilations record copper minerals, chalcopyrite, malachite and pyrite, at Danyor and Bagrot near Gilgit and at Jutial Nala, and chalcopyrite in the heavy-mineral sands of the Indus, Gilgit, Nagar and Hunza rivers.",
+      "## Why does Gilgit Baltistan have copper?",
+      "Because of the Kohistan arc. The arc is an ancient line of volcanoes, trapped and folded when India collided with Asia, and old volcanic arcs are where porphyry copper systems form, the deposit type behind most of the world's copper. Copper here often comes with molybdenum, gold and lead, which is exactly the package recorded at our Gultari block. The geology is explained further in our [minerals guide](/news/mines-of-gilgit-baltistan-pakistan-minerals-guide).",
+      "## What grade is Gilgit Baltistan copper?",
+      "Nobody has published a reliable grade for any deposit in the region. The same official quoted grades from 0.2 to 74 percent; the lower end is a normal porphyry grade, while the upper end would describe a hand-picked mineral specimen, not ore. Treat any single headline figure with care, and ask for laboratory assays of systematic samples, ours included.",
+      "::facts\n9+ | valleys with copper occurrences, per GB officials\n7 | of our 10 licensed blocks record copper\n2 | copper blocks producing: Bagicha and Jutial Nala\n42.7 Mt | Wood Mackenzie's forecast global copper demand by 2035",
+      "## Which copper blocks does GB Mines hold?",
+      "Seven of our ten concessions record copper. Two are producing: [Bagicha](/concessions/bagicha-skardu-gemstones-and-minerals) in Skardu, held by [Durr Mine & Minerals](/companies/durr-mines-and-minerals), where a copper vein is exposed at the surface beside the marble, and [Jutial Nala](/concessions/jutial-nala-gilgit-polymetallic-ores) beside Gilgit city, held by [Earth Lux Mines & Minerals](/companies/earth-lux-mines), with copper veins, lead and silver. Copper is also recorded at Gultari, Mahdi Abad and Hilal Abad in Kharmang, at Shigar and at Gupis, all at exploration stage. The block-by-block list is on our [copper page](/commodities/copper-concentrate).",
+      "## Who buys copper from Gilgit Baltistan?",
+      "Mostly smelters and traders in China, which refines more than half the world's copper and sits at the end of the Karakoram Highway, along with buyers in the Gulf and South and East Asia. Global demand is rising with electrification: Wood Mackenzie forecasts it to grow about 24 percent to 42.7 million tonnes a year by 2035, as cited by the Express Tribune. For a mountain producer the deciding factors are grade, road access and the season, since ore moves by road to Karachi.",
+      "## How can I buy copper or invest in copper exploration with you?",
+      "For copper ore and concentrate from the producing blocks, we quote FOB Karachi or CIF against independent assay, with trial shipments before any offtake commitment. For the exploration blocks, the routes are a farm-in or joint venture funding systematic sampling. Both start at the [investor desk](/investor-desk), and the [mining map](/map) shows every block.",
+    ].join('\n\n'),
+    imageUrl: '/images/copper-generic-1.jpg',
+    publishDate: '2026-11-21T11:00:00Z',
+    companyId: 'durr-zircon',
   }
 ];
 
